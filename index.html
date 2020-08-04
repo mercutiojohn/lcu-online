@@ -1,10 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>lcu-online</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LCU在线</title>
+    <!-- FavIcon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="src/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="src/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="src/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <link rel="mask-icon" href="src/assets/favicon/safari-pinned-tab.svg" color="#005663">
+    <meta name="apple-mobile-web-app-title" content="LCU在线">
+    <meta name="application-name" content="LCU在线">
+    <meta name="msapplication-TileColor" content="#005663">
+    <!-- <meta name="theme-color" content="#005663"> -->
+    <!-- <meta name="theme-color" content="#343537"> -->
+    <meta name="theme-color" content="#ffffff">
   </head>
+  <style>
+    :root{
+        --body-color:#f1f3f4;
+    }
+    @media screen and (prefers-color-scheme: light) {
+      :root{
+        --body-color:#f1f3f4;
+      }
+    }
+    @media screen and (prefers-color-scheme: dark) {
+      :root{
+        --body-color:#343537;
+      }
+    }
+    body{
+      background: #444;
+      background: var(--body-color);
+    }
+  </style>
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
