@@ -1,36 +1,47 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png" />
-    <HelloWorld />
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
+  <div id="all">
+    <HeaderBar />
+    <!-- <div id="fake"></div>  -->
+    <transition name="fade">
+      <router-view></router-view>
+    </transition>
+    <!-- <Course /> -->
   </div>
 </template>
-
 <script>
-import HelloWorld from "./components/HelloWorld";
+
+import HeaderBar from "@/components/HeaderBar";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
-  }
+    HeaderBar
+  },
 };
 </script>
 
 <style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+@import "./main.css";
+
+body {
+  margin: 0;
+  padding: 0;
+}
+#all {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: "SF Pro Display", "苹方", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  background: url(https://bing.rthe.net/wallpaper) no-repeat fixed center/cover;
+  /* text-align: center; */
+  /* color: #2c3e50; */
+  /* margin-top: 60px; */
+}
+#fake {
+  height: 1000px;
+  width: 100px;
 }
 </style>
