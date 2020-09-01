@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script type="text/javascript" src="js/jquery-min.js"></script>
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+    <div id="start"></div>
+    <div id="now"></div>
+    <div id="nowADay"></div>
+    <script type="text/javascript">
+        (function () {
+            var start = document.getElementById('start');
+            var now = document.getElementById('now');
+            var nowADay = document.getElementById('nowADay');
+            var startDay = new Date(2020, 7, 1); // 2013,7,26 是开学时间，可以按格式改，月份从0开始
+            var startMs = startDay.getTime();
+            var startYear = startDay.getFullYear();
+            var startMonth = startDay.getMonth() + 1; //月份从0开始
+            var startDate = startDay.getDate();
+            var nowDay = new Date();
+            var nowMs = nowDay.getTime();
+            var nowYear = nowDay.getFullYear();
+            var nowMonth = nowDay.getMonth() + 1;
+            var nowDate = nowDay.getDate();
+            var startDays = parseInt(startMs / 86400000);
+            var nowDays = parseInt(nowMs / 86400000);
+            var totalDays = nowDays - startDays;
+            var week = parseInt(totalDays / 7);
+            var nowdate = totalDays % 7;
+            start.innerHTML = "开学时间：" + startYear + " 年 " + startMonth + " 月 " + startDate + "日";
+            now.innerHTML = "现在时间：" + nowYear + " 年 " + nowMonth + " 月 " + nowDate + "日";
+            nowADay.innerHTML = "第" + week + "周，星期" + nowdate;
+        })();
+    </script>
+</body>
+
+</html>

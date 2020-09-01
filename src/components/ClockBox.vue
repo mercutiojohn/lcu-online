@@ -24,15 +24,15 @@
         <div id="clockbox-calendar-container">
           <!-- <el-calendar v-model="currentDate">
           </el-calendar>-->
-          <!-- <iframe
+          <iframe
             id="left-col-iframe"
             allow="autoplay *; encrypted-media *; geolocation; microphone; camera"
             sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
             src="https://www.dida365.com/webapp/#q/all/today"
             frameborder="0"
             scrolling="auto"
-          ></iframe> -->
-          <van-calendar v-model="show" type="range" :formatter="formatter" />
+          ></iframe>
+          <!-- <van-calendar v-model="show" type="range" :formatter="formatter" /> -->
         </div>
       </div>
     </transition>
