@@ -7,7 +7,7 @@
 }
 
 body {
-    background: var(--body-color);
+    /* background: var(--body-color); */
     margin: 0;
     -moz-user-select: none;
     -khtml-user-select: none;
