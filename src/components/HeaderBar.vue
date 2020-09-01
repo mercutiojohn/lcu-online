@@ -40,12 +40,14 @@ export default {
 
 <style>
 .header-bar-container {
-  padding: 20px 30px 10px 30px;
+  user-select: none;
+  padding: 20px 30px 20px 30px;
   position: sticky;
   top: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index:1000;
 }
 .header-bar-tablist {
   display: flex;
@@ -62,13 +64,14 @@ export default {
   text-shadow: 0 5px 10px #00000083;
 }
 .header-bar-tabitem:hover {
-  color: #000;
+  /* color: #000; */
   font-size: 20px;
   box-shadow: 0 2px 10px 2px #00000023;
-  font-weight: 800;
+  font-weight: 600;
   padding-right: 12px;
   padding-left: 12px;
-  background: #fff;
+  background: #ffffff65;
+  /* backdrop-filter: blur(30px) saturate(180%); */
   transition: all 0.2s ease;
   text-shadow:none;
 }
