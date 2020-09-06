@@ -1,46 +1,55 @@
 <template>
   <div id="searchbar">
-    <div class="searchbar-container">
+    <transition name="fade">
+      <div class="searchbar-wrap" v-show="searchWrapDisplay">
+      </div>
+    </transition>
+    <div class="searchbar-container" v-on:click="changeWrapState('display')">
       <i class="el-icon-search searchbar-icon"></i>
       <form target="_blank" autocomplete="off" action="http://www.baidu.com/s">
-        <input class="searchbar-input" type="text" autocomplete="off" name="wd" placeholder="百度一下，你就知道" v-on:click="searchWrapDisplay = true">
+        <input class="searchbar-input" type="text" autocomplete="off" name="wd" placeholder="百度一下，你就知道">
       </form>
-      <!-- <form :action="targetUrl.url" target="_blank" autocomplete="off">
-        <input
-          autocomplete="off"
-          class="searchbar-input"
-          type="text"
-          :name="targetUrl.queryWord"
-          :placeholder="targetUrl.title"
-          v-on:click="searchWrapDisplay = true"
-        />
-      </form> -->
     </div>
   </div>
 </template>
+
 <script>
 export default {
   name: "SearchBar",
-  data: {
-    targetUrl: {
-      title: "百度一下，你就知道",
-      url: "http://www.baidu.com/s",
-      queryWord: "wd",
-    },
-    searchWrapDisplay:false
+  data(){
+    return{
+      targetUrl: {
+        title: "百度一下，你就知道",
+        url: "http://www.baidu.com/s",
+        queryWord: "wd",
+      },
+      searchWrapDisplay: false
+    }
   },
+  methods:{
+    changeWrapState(item) {
+        if(item=='display'){
+      if (this.searchWrapDisplay == true) {
+        this.searchWrapDisplay = false;
+      } else {
+        this.searchWrapDisplay = true;
+      }}
+      else if(item=='expand'){
+      if (this.searchWrapDisplay == true) {
+        this.searchWrapDisplay = false;
+      } else {
+        this.searchWrapDisplay = true;
+      }}
+    }
+  }
 };
 </script>
 
 <style>
-#searchbar{
-  width:100%;
-  max-width:500px;
-
-}
 .searchbar-container{
   display: flex;
-  width:100%;
+  width:70vw;
+  max-width:500px;
   height:50px;
   background: #ffffff35;
   backdrop-filter: blur(30px) saturate(180%);
@@ -68,5 +77,13 @@ export default {
   justify-content: center;
   align-items: center;
   color:#ffffff78;
+}
+.searchbar-wrap{
+  width:100vw;
+  height:100vh;
+  position:fixed;
+  top:0;
+  left:0;
+  backdrop-filter: blur(50px);
 }
 </style>
