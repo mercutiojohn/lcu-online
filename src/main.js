@@ -25,11 +25,11 @@ Vue.config.productionTip = false
 import Course from '@/pages/Course'
 import HelloPage from '@/pages/HelloPage'
 import Classic from '@/pages/Classic'
-
+import Fanya from '@/pages/Fanya'
 // 1. 定义 (路由) 组件。
 // 可以从其他文件 import 进来
 const Test = {
-  template: '<span>内容待添加</span>'
+  template: '<div style="display:flex;color:#fff;font-size:40px;height:100%;width:100vw;align-items:center;justify-content:center;background:#ffffff56"><span>暂未开放</span></div>'
 }
 
 // 2. 定义路由
@@ -52,6 +52,9 @@ const routes = [{
   {
     path: '/',
     component: HelloPage
+  }, {
+    path: '/fanya',
+    component:Fanya
   }
 ]
 
