@@ -4,14 +4,14 @@
       <router-link to="/">
         <li class="header-bar-tabitem">首页</li>
       </router-link>
-      <router-link to="/course">
+      <router-link to="/test">
         <li class="header-bar-tabitem">学习</li>
+      </router-link>
+      <router-link to="/fanya">
+        <li class="header-bar-tabitem">数字聊大</li>
       </router-link>
       <router-link to="/classic">
         <li class="header-bar-tabitem">经典</li>
-      </router-link>
-      <router-link to="/test">
-        <li class="header-bar-tabitem">测试</li>
       </router-link>
     </ul>
     <SearchBar />
