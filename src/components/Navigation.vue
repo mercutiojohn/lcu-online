@@ -92,6 +92,11 @@ export default {
           color: "#005ffe",
           icon: "ckt.svg",
           url: "https://www.chuangkit.com/designtools/startdesign"
+        },{
+          title: "腾讯云控制台",
+          color: "#ffffff",
+          icon: "txy.svg",
+          url: "https://console.cloud.tencent.com/"
         }
       ],
     };
