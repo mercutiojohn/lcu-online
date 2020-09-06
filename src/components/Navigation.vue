@@ -53,7 +53,7 @@ export default {
         },
         {
           title: "有道精品课",
-          color: "#0bb55a",
+          color: "#fb4a3e",
           icon: "youdao.png",
           url: "https://ke.youdao.com/",
         },
@@ -85,19 +85,26 @@ export default {
           title: "MAKA",
           color: "#ffffff",
           icon: "maka.png",
-          url: "https://www.maka.im/workspace/works"
+          url: "https://www.maka.im/workspace/works",
         },
         {
           title: "创客贴",
           color: "#005ffe",
           icon: "ckt.svg",
-          url: "https://www.chuangkit.com/designtools/startdesign"
-        },{
+          url: "https://www.chuangkit.com/designtools/startdesign",
+        },
+        {
           title: "腾讯云控制台",
           color: "#ffffff",
           icon: "txy.svg",
-          url: "https://console.cloud.tencent.com/"
-        }
+          url: "https://console.cloud.tencent.com/",
+        },
+        {
+          title: "GitHub Stars",
+          color: "#24292e",
+          icon: "github.svg",
+          url: "https://github.com/mercutiojohn?tab=stars",
+        },
       ],
     };
   },
@@ -127,7 +134,6 @@ export default {
   align-items: flex-start;
   justify-content: flex-start;
   overflow: visible;
-
 }
 .nav-block {
   width: 150px;
@@ -140,14 +146,14 @@ export default {
   align-items: center;
   justify-content: center;
   text-align: center;
-  transition: transform 0.5s ease;
+  transition: all 0.1s ease-in;
 }
 .nav-block:hover {
-  backdrop-filter: blur(50px) saturate(180%);
-  background: #ffffff63 !important;
+  /* backdrop-filter: blur(50px) saturate(180%);
+  background: #ffffff63 !important; */
   color: white !important;
   transform: scale(1.04);
-  transition: transform,box-shadow,background 0.5s ease-out;
+  transition: all 0.3s ease-out;
   box-shadow: 0 5px 20px 5px #00000023;
 }
 .nav-block:active {
@@ -155,7 +161,7 @@ export default {
   background: #00000023 !important;
   color: white !important;
   transform: scale(1);
-  transition: transform,background 0.5s ease-out;
+  transition: transform, background 0.5s ease-out;
 }
 .nav-block-icon {
   height: 40px;
@@ -169,12 +175,12 @@ export default {
   text-shadow: 0 5px 10px #00000083;
   margin-bottom: 20px;
 }
-.nav{
+.nav {
   display: flex;
   /* overflow-x: scroll; */
   /* overflow-y: hidden; */
 }
-.nav-often{
+.nav-often {
   display: flex;
   flex-direction: column;
   width: calc((150px + 10px) * 3);
