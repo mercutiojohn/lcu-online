@@ -16,14 +16,16 @@
 
 <script>
 export default {
+  props: {
+    title: String,
+    sites: Array,
+  },
   name: "Navigation",
   data() {
     return {
-      props:{
-        title:String,
-        sites:Array
-      },
-      imgUrl: "assets/img/"
+      // title:'',
+      // sites:{},
+      imgUrl: "assets/img/",
     };
   },
   methods: {
@@ -35,8 +37,13 @@ export default {
       }
     },
     getIcon(icon) {
-      const a = require("@/assets/img/" + icon);
-      return a;
+      try {
+        const a = require("@/assets/img/" + icon);
+        return a;
+      } catch (err) {
+        console.log(err);
+        return require("@/assets/img/pic.svg");
+      }
     },
   },
 };
@@ -45,13 +52,15 @@ export default {
 <style>
 .nav-content {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   /* width: calc((150px + 10px) * 3); */
-  height: calc((100px + 10px) * 5);
+  /* height: calc((100px + 10px) * 5); */
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: flex-start;
   overflow: visible;
+  width: max-content;
+  width: 100%;
 }
 .nav-block {
   width: 150px;
@@ -101,7 +110,9 @@ export default {
 .nav-often {
   display: flex;
   flex-direction: column;
-  width: calc((150px + 10px) * 3);
+  /* width: calc((150px + 10px) * 3); */
+  width: 100%;
+  width: max-content;
   overflow: visible;
   padding-left: 10px;
 }

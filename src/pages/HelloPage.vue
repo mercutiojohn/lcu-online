@@ -6,7 +6,9 @@
         <CalendarBox />
       </div>
       <div class="navigation">
-        <Navigation title="常用网站" :sites="sites"/>
+        <Navigation title="学习" :sites="learn" />
+        <Navigation title="开发" :sites="dev" />
+        <Navigation title="新媒体" :sites="newMedia" />
       </div>
     </div>
   </div>
@@ -20,11 +22,11 @@ export default {
   name: "HelloPage",
   components: {
     CalendarBox,
-    Navigation
+    Navigation,
   },
   data() {
     return {
-      sites: [
+      learn: [
         {
           title: "U+新工科智慧云",
           color: "#1e83ca",
@@ -85,6 +87,8 @@ export default {
           icon: "yooc.png",
           url: "http://yooc.me/",
         },
+      ],
+      newMedia: [
         {
           title: "MAKA",
           color: "#ffffff",
@@ -96,7 +100,14 @@ export default {
           color: "#005ffe",
           icon: "ckt.svg",
           url: "https://www.chuangkit.com/designtools/startdesign",
-        },
+        },{
+          title: "麦克表单",
+          color: "#1e3035",
+          icon: "mikecrm.png",
+          url: "https://www.mikecrm.com/form.php",
+        }
+      ],
+      dev: [
         {
           title: "腾讯云控制台",
           color: "#ffffff",
@@ -108,8 +119,27 @@ export default {
           color: "#24292e",
           icon: "github.svg",
           url: "https://github.com/mercutiojohn?tab=stars",
+        }
+      ],
+      dev: [
+        {
+          title: "腾讯云控制台",
+          color: "#ffffff",
+          icon: "txy.svg",
+          url: "https://console.cloud.tencent.com/",
         },
-      ]
+        {
+          title: "GitHub Stars",
+          color: "#24292e",
+          icon: "github.svg",
+          url: "https://github.com/mercutiojohn?tab=stars",
+        },{
+          title: "华为云",
+          color: "#24292e",
+          icon: "githb.svg",
+          url: "https://console.huaweicloud.com/ecm/",
+        },
+      ],
     };
   },
   methods: {},
@@ -135,6 +165,13 @@ export default {
   border-radius: 20px;
   margin: 0 20px 20px;
   display: flex;
+  /* flex-direction: column; */
+  overflow-y: scroll;
 }
-
+.navigation {
+  display: flex;
+  width: 70%;
+  overflow: scroll;
+  flex-direction: column;
+}
 </style>
