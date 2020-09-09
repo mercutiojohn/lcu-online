@@ -25,16 +25,18 @@ export default {
 body {
   margin: 0;
   padding: 0;
+  background: url(https://bing.rthe.net/wallpaper) no-repeat fixed center/cover;
+
 }
 #all {
   margin: 0;
   padding: 0;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   font-family: "SF Pro Display", "苹方", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url(https://bing.rthe.net/wallpaper) no-repeat fixed center/cover;
+  /* background: url(https://bing.rthe.net/wallpaper) no-repeat fixed center/cover; */
   /* text-align: center; */
   /* color: #2c3e50; */
   /* margin-top: 60px; */

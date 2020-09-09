@@ -4,9 +4,9 @@
       <span class="nav-title">{{title}}</span>
       <div class="nav-content">
         <a v-for="(item,index) in sites" :key="index" :href="item.url" target="_blank">
-          <div class="nav-block" :style="'background-color:'+item.color">
-            <img class="nav-block-icon" :src="getIcon(item.icon)" alt />
-            <span class="nav-block-title" :style="'color:'+ifWhite(item.color)">{{item.title}}</span>
+          <div :class="'nav-block'+handleBlockNoIcon()+handleBlockNoColor()" :style="'background-color:'+item.color">
+            <img :class="'nav-block-icon'+handleNoIcon()" :src="getIcon(item.icon)" alt />
+            <span :class="'nav-block-title'+handleTitleNoIcon()" :style="'color:'+ifWhite(item.color)">{{item.title}}</span>
           </div>
         </a>
       </div>
@@ -19,6 +19,8 @@ export default {
   props: {
     title: String,
     sites: Array,
+    noIcon: Boolean,
+    noColor: Boolean
   },
   name: "Navigation",
   data() {
@@ -45,6 +47,34 @@ export default {
         return require("@/assets/img/pic.svg");
       }
     },
+    handleNoIcon(){
+      if(this.noIcon){
+        return ' nav-block-no-icon'
+      }else{
+        return ''
+      }
+    },
+    handleBlockNoIcon(){
+      if(this.noIcon){
+        return ' nav-block-small'
+      }else{
+        return ''
+      }
+    },
+    handleTitleNoIcon(){
+      if(this.noIcon){
+        return ' nav-block-title-no-icon'
+      }else{
+        return ''
+      }
+    },
+    handleBlockNoColor(){
+      if(this.noColor){
+        return ' nav-block-no-color'
+      }else{
+        return ''
+      }
+    }
   },
 };
 </script>   
@@ -75,6 +105,11 @@ export default {
   text-align: center;
   transition: all 0.1s ease-in;
 }
+.nav-block-small {
+  height: 50px;
+  width: max-content;
+  padding: 0 10px;
+}
 .nav-block:hover {
   /* backdrop-filter: blur(50px) saturate(180%);
   background: #ffffff63 !important; */
@@ -94,6 +129,12 @@ export default {
   max-height: 40px;
   max-width:80px;
 }
+.nav-block-no-icon{
+  display: none;
+}
+.nav-block-no-color{
+  backdrop-filter: blur(50px) saturate(180%);
+}
 .nav-block-title {
   margin-top: 10px;
 }
@@ -102,6 +143,10 @@ export default {
   font-size: 20px;
   text-shadow: 0 5px 10px #00000083;
   margin-bottom: 20px;
+}
+.nav-block-title-no-icon{
+  margin-top: 0;
+
 }
 .nav {
   display: flex;

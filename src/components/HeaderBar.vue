@@ -97,6 +97,8 @@ export default {
 
 }
 .header-bar-tabitem {
+  flex-shrink:0;
+  width: max-content;
   font-size: 20px;
   color: white;
   margin: 0 5px;
