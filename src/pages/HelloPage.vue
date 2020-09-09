@@ -5,14 +5,14 @@
       <div id="top-info">
         <CalendarBox />
         <div class="about">
-          <a href="http://bing.com"><span class="about-text" style="font-size:10px;">壁纸来自Bing</span></a>
-          <span class="about-text" style="font-size:10px;margin-bottom:20px;">现处预览测试阶段，无法自定义课程</span>
           <span class="about-text">鲁ICP备20018544号</span>
           <a href="http://mercutio.club"><span class="about-text">莫阿白的博客</span></a>
+          <a href="http://bing.com"><span class="about-text" style="font-size:10px;">壁纸来自Bing</span></a>
         </div>
       </div>
       <div class="navigation">
         <Navigation title="我的课程" :sites="myCourses" noIcon="true" noColor="true"/>
+        <span class="about-text-course" style="font-size:10px;margin-bottom:20px;">现处预览测试阶段，无法自定义课程</span>
         <Navigation title="校园事务" :sites="schoolAffairs" />
         <Navigation title="校园学习" :sites="learn" />
         <Navigation title="在线文档" :sites="documents" />
@@ -269,11 +269,14 @@ export default {
   flex-direction: column;
   margin: 10px 30px;
   color: #ffffff;
-
 }
 .about a{
   color: #ffffff;
-  text-decoration: underline;
+  /* text-decoration: underline; */
   cursor: pointer;
+}
+.about-text-course{
+    color: #ffffff;
+    margin-left: 15px;
 }
 </style>
