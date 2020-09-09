@@ -90,7 +90,7 @@ export default {
   transition: all .3s ease;
   color:#000!important;
   padding: 5px 30px 5px 30px;
-
+  box-shadow: 0 0px 5px 10px #00000023;
 }
 .header-bar-tablist {
   display: flex;
