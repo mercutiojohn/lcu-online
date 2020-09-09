@@ -4,14 +4,21 @@
     <div id="hello-content">
       <div id="top-info">
         <CalendarBox />
+        <div class="about">
+          <a href="http://bing.com"><span class="about-text" style="font-size:10px;">壁纸来自Bing</span></a>
+          <span class="about-text" style="font-size:10px;margin-bottom:20px;">现处预览测试阶段，无法自定义课程</span>
+          <span class="about-text">鲁ICP备20018544号</span>
+          <a href="http://mercutio.club"><span class="about-text">莫阿白的博客</span></a>
+        </div>
       </div>
       <div class="navigation">
+        <Navigation title="我的课程" :sites="myCourses" noIcon="true" noColor="true"/>
         <Navigation title="校园事务" :sites="schoolAffairs" />
         <Navigation title="校园学习" :sites="learn" />
-        <Navigation title="自我提升" :sites="selfUpper" />
-        <Navigation title="开发" :sites="dev" />
-        <Navigation title="新媒体" :sites="newMedia" />
         <Navigation title="在线文档" :sites="documents" />
+        <Navigation title="自我提升" :sites="selfUpper" />
+        <Navigation title="新媒体" :sites="newMedia" />
+        <Navigation title="编程开发" :sites="dev" />
       </div>
     </div>
   </div>
@@ -29,6 +36,32 @@ export default {
   },
   data() {
     return {
+      myCourses:[
+        {
+          title: "计算机网络",
+          // color: "#1e83ca",
+          // icon: "uplus.png",
+          url: "https://mooc2-ans.chaoxing.com/mycourse/stu?courseid=214249544&clazzid=31805518&enc=fce609af3fffc4fd165abdcaa725862c&cpi=111705708&pageHeader=0p",
+        },
+        {
+          title: "编译原理",
+          // color: "#1e83ca",
+          // icon: "uplus.png",
+          url: "http://ee-c.lcu.edu.cn/si/student/studentHeadline/fb017e8c6f7b40d5016ff4282ed137b8/teachClassStudent",
+        },
+        {
+          title: "软件测试",
+          // color: "#1e83ca",
+          // icon: "uplus.png",
+          url: "http://ee-c.lcu.edu.cn/si/student/studentHeadline/8a7d8a9573c84c42017462a6758f571f/teachClassStudent",
+        },
+        {
+          title: "软件测试与体系结构",
+          // color: "#1e83ca",
+          // icon: "uplus.png",
+          url: "http://ee-c.lcu.edu.cn/si/student/studentHeadline/8a7d8a9573c84c42017462a6758f571f/teachClassStudent",
+        },
+      ],
       learn: [
         {
           title: "U+新工科智慧云",
@@ -49,8 +82,9 @@ export default {
           url: "http://www.pigai.org/index.php?c=write&a=myclass&f2=login",
         },
         {
-          title: "学习通课堂",
-          color: "#309fff",
+          title: "学习通",
+          // color: "#309fff",
+          color: "#b52831",
           icon: "chaoxing.png",
           url: "https://mooc2-ans.chaoxing.com/visit/interaction",
         },
@@ -152,6 +186,11 @@ export default {
           color: "#059490",
           icon: "tsg.gif",
           url: "http://www-lib.lcu.edu.cn/",
+        },{
+          title: "校园网",
+          color: "#059490",
+          icon: "tsg.gif",
+          url: "http://172.30.2.2:8088/eportal/success.jsp",
         }
       ],
       selfUpper:[
@@ -200,7 +239,7 @@ export default {
   top: 0;
   left: 0;
   z-index: -1;
-  background: url(https://bing.rthe.net/wallpaper) no-repeat fixed center/cover;
+  /* background: url(https://bing.rthe.net/wallpaper) no-repeat fixed center/cover; */
 }
 #hello-content {
   background: #ffffff23;
@@ -212,11 +251,29 @@ export default {
   display: flex;
   /* flex-direction: column; */
   overflow-y: scroll;
+  position: relative;
+}
+#top-info{
+  position: sticky;
+  top:30px;
 }
 .navigation {
   display: flex;
   width: 70%;
   overflow: scroll;
   flex-direction: column;
+}
+
+.about{
+  display: flex;
+  flex-direction: column;
+  margin: 10px 30px;
+  color: #ffffff;
+
+}
+.about a{
+  color: #ffffff;
+  text-decoration: underline;
+  cursor: pointer;
 }
 </style>
