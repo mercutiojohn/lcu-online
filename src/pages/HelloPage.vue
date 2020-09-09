@@ -6,10 +6,12 @@
         <CalendarBox />
       </div>
       <div class="navigation">
-        <Navigation title="学习" :sites="learn" />
+        <Navigation title="校园事务" :sites="schoolAffairs" />
+        <Navigation title="校园学习" :sites="learn" />
+        <Navigation title="自我提升" :sites="selfUpper" />
         <Navigation title="开发" :sites="dev" />
         <Navigation title="新媒体" :sites="newMedia" />
-        <Navigation title="校园事务" :sites="schoolAffairs" />
+        <Navigation title="在线文档" :sites="documents" />
       </div>
     </div>
   </div>
@@ -41,10 +43,10 @@ export default {
           url: "http://210.44.112.108",
         },
         {
-          title: "传智播客",
-          color: "#ffffff",
-          icon: "ityxb.png",
-          url: "http://stu.ityxb.com/Classroom/course/learning",
+          title: "批改网",
+          color: "#28aae1",
+          icon: "pigai.png",
+          url: "http://www.pigai.org/index.php?c=write&a=myclass&f2=login",
         },
         {
           title: "学习通课堂",
@@ -52,41 +54,23 @@ export default {
           icon: "chaoxing.png",
           url: "https://mooc2-ans.chaoxing.com/visit/interaction",
         },
-        {
-          title: "学习通",
-          color: "#b52831",
-          icon: "chaoxing.png",
-          url: "https://i.chaoxing.com/base",
-        },
-        {
-          title: "有道精品课",
-          color: "#fb4a3e",
-          icon: "youdao.png",
-          url: "https://ke.youdao.com/",
-        },
-        {
-          title: "批改网",
-          color: "#28aae1",
-          icon: "pigai.png",
-          url: "http://www.pigai.org/index.php?c=write&a=myclass&f2=login",
-        },
-        {
-          title: "中国大学MOOC",
-          color: "#ffffff",
-          icon: "mooc.png",
-          url: "https://www.icourse163.org/",
-        },
+        // {
+        //   title: "学习通",
+        //   color: "#b52831",
+        //   icon: "chaoxing.png",
+        //   url: "https://i.chaoxing.com/base",
+        // },
         {
           title: "优学院",
           color: "#ea5145",
           icon: "youxy.png",
-          url: "https://www.ulearning.cn/",
+          url: "https://courseweb.ulearning.cn/ulearning/index.html#/index/courseList",
         },
         {
           title: "易班优课",
           color: "#ffffff",
           icon: "yooc.png",
-          url: "http://yooc.me/",
+          url: "https://www.yooc.me/dashboard/mygroup",
         },
       ],
       newMedia: [
@@ -130,31 +114,77 @@ export default {
           url: "https://console.cloud.tencent.com/",
         },
         {
-          title: "GitHub Stars",
+          title: "GitHub",
           color: "#24292e",
           icon: "github.svg",
-          url: "https://github.com/mercutiojohn?tab=stars",
+          url: "https://github.com/",
         },{
           title: "华为云",
-          color: "#24292e",
-          icon: "",
+          color: "#f83a43",
+          icon: "huawei.svg",
           url: "https://console.huaweicloud.com/ecm/",
+        },{
+          title: "gitee",
+          color: "#ffffff",
+          icon: "gitee.svg",
+          url: "https://gitee.com",
+        },{
+          title: "CODING",
+          color: "#ffffff",
+          icon: "coding.png",
+          url: "https://e.coding.net/login",
         },
       ],
       schoolAffairs: [
         {
           title: "数字聊大",
           color: "#059490",
-          icon: "",
+          icon: "lcu.svg",
           url: "http://one.lcu.edu.cn/tp_up",
         },
         {
           title: "教务系统",
-          color: "#24292e",
-          icon: "",
+          color: "#0483d4",
+          icon: "jwxt.png",
           url: "http://jwcweb.lcu.edu.cn/jwglxt/xtgl/login_slogin.html?language=zh_CN",
+        },{
+          title: "图书馆",
+          color: "#059490",
+          icon: "tsg.gif",
+          url: "http://www-lib.lcu.edu.cn/",
         }
       ],
+      selfUpper:[
+        {
+          title: "传智播客",
+          color: "#ffffff",
+          icon: "ityxb.png",
+          url: "http://stu.ityxb.com/Classroom/course/learning",
+        },{
+          title: "中国大学MOOC",
+          color: "#ffffff",
+          icon: "mooc.png",
+          url: "https://www.icourse163.org/home.htm",
+        },{
+          title: "有道精品课",
+          color: "#fb4a3e",
+          icon: "youdao.png",
+          url: "https://ke.youdao.com/user/mycourse",
+        },
+      ],
+      documents:[
+        {
+          title: "麦克表单",
+          color: "#1e3035",
+          icon: "mikecrm.png",
+          url: "https://www.mikecrm.com/form.php",
+        },{
+          title: "腾讯文档",
+          color: "#ffffff",
+          icon: "txdoc.png",
+          url: "https://docs.qq.com/",
+        }
+      ]
     };
   },
   methods: {},
