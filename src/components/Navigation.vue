@@ -91,7 +91,8 @@ export default {
   transition: transform, background 0.5s ease-out;
 }
 .nav-block-icon {
-  height: 40px;
+  max-height: 40px;
+  max-width:80px;
 }
 .nav-block-title {
   margin-top: 10px;
