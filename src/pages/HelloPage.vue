@@ -9,6 +9,7 @@
         <Navigation title="学习" :sites="learn" />
         <Navigation title="开发" :sites="dev" />
         <Navigation title="新媒体" :sites="newMedia" />
+        <Navigation title="校园事务" :sites="schoolAffairs" />
       </div>
     </div>
   </div>
@@ -136,9 +137,23 @@ export default {
         },{
           title: "华为云",
           color: "#24292e",
-          icon: "githb.svg",
+          icon: "",
           url: "https://console.huaweicloud.com/ecm/",
         },
+      ],
+      schoolAffairs: [
+        {
+          title: "数字聊大",
+          color: "#059490",
+          icon: "",
+          url: "http://one.lcu.edu.cn/tp_up",
+        },
+        {
+          title: "教务系统",
+          color: "#24292e",
+          icon: "",
+          url: "http://jwcweb.lcu.edu.cn/jwglxt/xtgl/login_slogin.html?language=zh_CN",
+        }
       ],
     };
   },

@@ -4,10 +4,10 @@
       <div class="searchbar-wrap" v-show="searchWrapDisplay">
       </div>
     </transition>
-    <div class="searchbar-container" v-on:click="changeWrapState('display')">
-      <i class="el-icon-search searchbar-icon"></i>
+    <div :class="'searchbar-container'+handleChangeBarColor()" v-on:click="changeWrapState('display')">
+      <i :class="'el-icon-search searchbar-icon'+handleChangeBarIconColor()"></i>
       <form target="_blank" autocomplete="off" action="http://www.baidu.com/s">
-        <input class="searchbar-input" type="text" autocomplete="off" name="wd" placeholder="百度一下，你就知道">
+        <input :class="'searchbar-input'+handleChangeBarFontColor()" type="text" autocomplete="off" name="wd" placeholder="百度一下，你就知道">
       </form>
     </div>
   </div>
@@ -15,6 +15,7 @@
 
 <script>
 export default {
+  props:['bgEnable'],
   name: "SearchBar",
   data(){
     return{
@@ -40,6 +41,27 @@ export default {
       } else {
         this.searchWrapDisplay = true;
       }}
+    },
+    handleChangeBarColor(){
+      if(this.bgEnable){
+        return ' searchbar-container-bgon'
+      }else{
+        return ''
+      }
+    },
+    handleChangeBarFontColor(){
+      if(this.bgEnable){
+        return ' searchbar-input-bgon'
+      }else{
+        return ''
+      }
+    },
+    handleChangeBarIconColor(){
+      if(this.bgEnable){
+        return ' searchbar-icon-bgon'
+      }else{
+        return ''
+      }
     }
   }
 };
@@ -56,8 +78,22 @@ export default {
   border-radius: 25px;
   transition:all .5s ease;
 }
+.searchbar-container-bgon{
+  background: #00000015;
+  /* backdrop-filter: none; */
+  transition:all .5s ease;
+  color: #000000;
+  height:40px;
+
+}
 .searchbar-container:hover{
   background: #ffffff89;
+  transition:all .2s ease;
+
+}
+.searchbar-container-bgon:hover{
+  /* background: #ffffff89; */
+  background: #00000026!important;
   transition:all .2s ease;
 
 }
@@ -70,6 +106,9 @@ export default {
 .searchbar-input::placeholder{
   color:#ffffff78;
 }
+.searchbar-input-bgon::placeholder{
+  color:#00000078;
+}
 .searchbar-icon{
   height:100%;
   padding:0 20px;
@@ -78,6 +117,10 @@ export default {
   align-items: center;
   color:#ffffff78;
 }
+.searchbar-icon-bgon{
+  color:#00000078;
+}
+
 .searchbar-wrap{
   width:100vw;
   height:100vh;

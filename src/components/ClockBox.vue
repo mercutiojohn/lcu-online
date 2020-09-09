@@ -4,16 +4,16 @@
       :id="!clockWrapDisplay?'clockbox-time':'clockbox-time-active'"
       v-on:click="changeWrapState('display')"
     >
-      <span id="clockbox-week" :class="bgStatus?'bg-text-style':''">
+      <span id="clockbox-week" :class="bgStatus?'bg-text-style':''+handleBgOn()">
         第
         <span id="digits">{{week}}</span>周
       </span>
       <span
         id="clockbox-twelve-label"
         v-if="clockPreferences.twelveFormat"
-        :class="bgStatus ?'bg-text-style':''"
+        :class="bgStatus ?'bg-text-style':''+handleBgOn()"
       >{{clockPreferences.twelveLabel}}</span>
-      <span id="clockbox-time-content" :class="bgStatus ?'bg-text-style':''">{{date}}</span>
+      <span id="clockbox-time-content" :class="bgStatus ?'bg-text-style':''+handleBgOn()">{{date}}</span>
     </div>
     <transition name="fade">
       <div id="clockbox-wrap" v-show="clockWrapDisplay" :class="clockWrapExpand?'clockbox-wrap-expanded':''">
@@ -42,6 +42,9 @@
 
 
 export default {
+  props:[
+    'bgEnable'
+  ],
   name: "ClockBox",
   date: "",
   data() {
@@ -102,6 +105,13 @@ export default {
       }
       return i;
     },
+    handleBgOn(){
+      if(this.bgEnable){
+        return ' clockbox-noshadow'
+      }else{
+        return ''
+      }
+    }
   },
   created() {
     this.date = this.getTime();
@@ -188,5 +198,10 @@ export default {
   border-radius: 12px;
   overflow: scroll;
   height: calc(100% - 90px - var(--wrap-gap));
+}
+.clockbox-noshadow{
+  text-shadow: none!important;
+  color: #000000!important;
+  transition: all .3s ease;
 }
 </style>
