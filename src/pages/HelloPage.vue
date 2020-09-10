@@ -13,7 +13,7 @@
       <div class="navigation">
         <Navigation title="我的课程" :sites="myCourses" noIcon="true" noColor="true"/>
         <span class="about-text-course" style="font-size:10px;margin-bottom:20px;">现处预览测试阶段，无法自定义课程</span>
-        <Navigation title="正在进行" :sites="special" />
+        <Navigation title="正在进行" noIcon="true" noColor="true" :sites="special" />
         <Navigation title="校园事务" :sites="schoolAffairs" />
         <Navigation title="校园学习" :sites="learn" />
         <Navigation title="在线文档" :sites="documents" />
