@@ -6,8 +6,8 @@
     </transition>
     <div :class="'searchbar-container'+handleChangeBarColor()" v-on:click="changeWrapState('display')">
       <i :class="'el-icon-search searchbar-icon'+handleChangeBarIconColor()"></i>
-      <form target="_blank" autocomplete="off" action="http://www.baidu.com/s">
-        <input :class="'searchbar-input'+handleChangeBarFontColor()" type="text" autocomplete="off" name="wd" placeholder="百度一下，你就知道">
+      <form target="_blank" autocomplete="off" :action="targetUrl[currUrl].url">
+        <input :class="'searchbar-input'+handleChangeBarFontColor()" type="text" autocomplete="off" :name="targetUrl[currUrl].queryWord" :placeholder="targetUrl[currUrl].title">
       </form>
     </div>
   </div>
@@ -19,11 +19,16 @@ export default {
   name: "SearchBar",
   data(){
     return{
-      targetUrl: {
+      currUrl:1,
+      targetUrl: [{
         title: "百度一下，你就知道",
         url: "http://www.baidu.com/s",
         queryWord: "wd",
-      },
+      },{
+        title: "秘迹搜",
+        url: "https://mijisou.com/",
+        queryWord: "q",
+      }],
       searchWrapDisplay: false
     }
   },
@@ -128,5 +133,13 @@ export default {
   top:0;
   left:0;
   backdrop-filter: blur(50px);
+}
+@media screen and (max-width: 500px){
+  #searchbar{
+    width:100%;
+  }
+  .searchbar-container{
+    width:100%;
+  }
 }
 </style>

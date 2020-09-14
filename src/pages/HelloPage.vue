@@ -13,7 +13,7 @@
       <div class="navigation">
         <Navigation title="我的课程" :sites="myCourses" noIcon="true" noColor="true"/>
         <span class="about-text-course" style="font-size:10px;margin-bottom:20px;">现处预览测试阶段，无法自定义课程</span>
-        <Navigation title="正在进行" noIcon="true" noColor="true" :sites="special" />
+        <!-- <Navigation title="正在进行" noIcon="true" noColor="true" :sites="special" /> -->
         <Navigation title="校园事务" :sites="schoolAffairs" />
         <Navigation title="校园学习" :sites="learn" />
         <Navigation title="在线文档" :sites="documents" />
@@ -65,7 +65,7 @@ export default {
           url: "http://ee-c.lcu.edu.cn/si/student/studentHeadline/8a7d8a9573c84c42017462a6758f571f/teachClassStudent",
         },
         {
-          title: "软件测试与体系结构",
+          title: "软件设计与体系结构",
           // color: "#1e83ca",
           // icon: "uplus.png",
           url: "http://ee-c.lcu.edu.cn/si/student/studentHeadline/8a7d8a9573c84c42017462a6758f571f/teachClassStudent",
@@ -143,20 +143,6 @@ export default {
           url: "https://console.cloud.tencent.com/",
         },
         {
-          title: "GitHub Stars",
-          color: "#24292e",
-          icon: "github.svg",
-          url: "https://github.com/mercutiojohn?tab=stars",
-        }
-      ],
-      dev: [
-        {
-          title: "腾讯云控制台",
-          color: "#ffffff",
-          icon: "txy.svg",
-          url: "https://console.cloud.tencent.com/",
-        },
-        {
           title: "GitHub",
           color: "#24292e",
           icon: "github.svg",
@@ -197,8 +183,8 @@ export default {
           url: "http://www-lib.lcu.edu.cn/",
         },{
           title: "校园网",
-          color: "#059490",
-          icon: "tsg.gif",
+          color: "#fca40a",
+          icon: "xyw.svg",
           url: "http://172.30.2.2:8088/eportal/success.jsp",
         }
       ],
@@ -218,7 +204,12 @@ export default {
           color: "#fb4a3e",
           icon: "youdao.png",
           url: "https://ke.youdao.com/user/mycourse",
-        },
+        },{
+          title: "知网研学",
+          color: "#3474d9",
+          icon: "",
+          url: "https://x.cnki.net/psmc#/MyStudy",
+        }
       ],
       documents:[
         {
@@ -233,6 +224,7 @@ export default {
           url: "https://docs.qq.com/",
         }
       ]
+
     };
   },
   methods: {},
@@ -252,27 +244,44 @@ export default {
 }
 #hello-content {
   background: #ffffff23;
-  width: calc(100% - 80px);
+  width: calc(100% - 20px * 2 - 20 * 2);
+  /* backdrop-filter: blur(50px) saturate(180%); */
+  height:calc(100vh - 150px);
   min-height: calc(100vh - 150px);
   padding: 20px;
   border-radius: 20px;
   margin: 0 20px 20px;
   display: flex;
-  /* flex-direction: column; */
   overflow-y: scroll;
   position: relative;
 }
+
 #top-info{
   position: sticky;
-  top:30px;
+  top:0px;
 }
+
 .navigation {
   display: flex;
   width: 70%;
-  overflow: scroll;
+  /* overflow: scroll; */
   flex-direction: column;
 }
-
+@media screen and (max-width: 500px){
+  #hello-content {
+    flex-direction: column;
+    margin: 0;
+    width:calc(100% - 20px * 2);
+  }
+  #top-info{
+  position: relative;
+  display: none;
+  /* top:0px; */
+  }
+  .navigation {
+  width: 100%;
+  }
+}
 .about{
   display: flex;
   flex-direction: column;

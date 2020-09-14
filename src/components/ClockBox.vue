@@ -18,17 +18,26 @@
     <transition name="fade">
       <div id="clockbox-wrap" v-show="clockWrapDisplay" :class="clockWrapExpand?'clockbox-wrap-expanded':''">
         <div id="clockbox-space">
-          <span v-on:click="changeWrapState('expand')" style="cursor:pointer;color:white">expand</span>
+          <span v-on:click="changeWrapState('expand')" style="cursor:pointer;color:white"><svg t="1600101820387" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2731" width="200" height="200"><path d="M853.333333 213.333333a42.666667 42.666667 0 0 0-42.666666-42.666666h-213.333334a42.666667 42.666667 0 0 0 0 85.333333h109.653334l-139.946667 140.373333a42.666667 42.666667 0 0 0 0 60.586667 42.666667 42.666667 0 0 0 60.586667 0L768 316.586667V426.666667a42.666667 42.666667 0 0 0 42.666667 42.666666 42.666667 42.666667 0 0 0 42.666666-42.666666zM456.96 567.04a42.666667 42.666667 0 0 0-60.586667 0L256 706.986667V597.333333a42.666667 42.666667 0 0 0-42.666667-42.666666 42.666667 42.666667 0 0 0-42.666666 42.666666v213.333334a42.666667 42.666667 0 0 0 42.666666 42.666666h213.333334a42.666667 42.666667 0 0 0 0-85.333333H316.586667l140.373333-140.373333a42.666667 42.666667 0 0 0 0-60.586667z" p-id="2732" fill="#ffffff"></path></svg></span>
+          <span v-on:click="changeUrl()" style="cursor:pointer;color:white"><svg t="1600101946682" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4641" width="200" height="200"><path d="M768 426.666667a42.666667 42.666667 0 0 0-42.666667-42.666667H230.826667l98.133333-97.706667a42.666667 42.666667 0 0 0-60.586667-60.586666l-170.666666 170.666666a42.666667 42.666667 0 0 0-8.96 46.506667A42.666667 42.666667 0 0 0 128 469.333333h597.333333a42.666667 42.666667 0 0 0 42.666667-42.666666z m167.253333 154.453333A42.666667 42.666667 0 0 0 896 554.666667H298.666667a42.666667 42.666667 0 0 0 0 85.333333h494.506666l-98.133333 97.706667a42.666667 42.666667 0 0 0 0 60.586666 42.666667 42.666667 0 0 0 60.586667 0l170.666666-170.666666a42.666667 42.666667 0 0 0 8.96-46.506667z" p-id="4642" fill="#ffffff"></path></svg></span>
           <!-- <span v-on:click="changeWrapState()" style="cursor:pointer;">关闭</span> -->
         </div>
         <div id="clockbox-calendar-container">
           <!-- <el-calendar v-model="currentDate">
           </el-calendar>-->
-          <iframe
+          <!-- <iframe
             id="left-col-iframe"
             allow="autoplay *; encrypted-media *; geolocation; microphone; camera"
             sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
             src="https://www.dida365.com/webapp/#q/all/today"
+            frameborder="0"
+            scrolling="auto"
+          ></iframe> -->
+          <iframe
+            id="left-col-iframe"
+            allow="autoplay *; encrypted-media *; geolocation; microphone; camera"
+            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+            :src="url[currUrl]"
             frameborder="0"
             scrolling="auto"
           ></iframe>
@@ -49,6 +58,13 @@ export default {
   date: "",
   data() {
     return {
+      currUrl:1,
+      url:[
+        'https://i.ai.mi.com/h5/precache/ai-schedule/#/home',
+        'https://www.dida365.com/webapp/#q/all/today',
+        // 'https://music.163.com/st/difm/index.html',
+        'https://t.bilibili.com/pages/nav/index_new'
+      ],
       clockWrapDisplay: false,
       clockPreferences: {
         twelveFormat: true,
@@ -58,6 +74,13 @@ export default {
     };
   },
   methods: {
+    changeUrl(){
+      if(this.currUrl+1<this.url.length){
+        this.currUrl++;
+      }else{
+        this.currUrl = 0;
+      }
+    },
     changeWrapState(item) {
         if(item=='display'){
       if (this.clockWrapDisplay == true) {
@@ -142,6 +165,9 @@ export default {
 :root {
   --wrap-gap: 10px;
 }
+#clockbox{
+  flex-shrink: 0;
+}
 #clockbox-space {
   height: 80px;
   width: 100%;
@@ -178,7 +204,7 @@ export default {
   text-shadow: 0 5px 10px #00000083;
 }
 #clockbox-wrap {
-  width: 500px;
+  width: 400px;
   height: calc(100vh - var(--wrap-gap) * 2);
   background: var(--blur-color);
   border-radius: 15px;
@@ -203,5 +229,9 @@ export default {
   text-shadow: none!important;
   color: #000000!important;
   transition: all .3s ease;
+}
+#left-col-iframe{
+  background: #fff;
+  
 }
 </style>
