@@ -1,6 +1,7 @@
 <template>
   <div class="hello-page">
     <div id="hello-background"></div>
+    <div id="hello-background-mask"></div>
     <div id="hello-content">
       <div id="top-info">
         <CalendarBox />
@@ -239,8 +240,17 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: -2;
+  background: url(https://source.unsplash.com/random/1920x1080) no-repeat fixed center/cover;
+}
+#hello-background-mask{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: -1;
-  /* background: url(https://bing.rthe.net/wallpaper) no-repeat fixed center/cover; */
+  background-image: radial-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%), radial-gradient(rgba(0, 0, 0, 0) 33%, rgba(0, 0, 0, 0.3) 166%),linear-gradient(180deg, rgba(0, 0, 0, 0) 0%,rgba(0, 0, 0, 0) 0% 75%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
 }
 #hello-content {
   background: #ffffff23;
@@ -267,7 +277,7 @@ export default {
   /* overflow: scroll; */
   flex-direction: column;
 }
-@media screen and (max-width: 500px){
+@media screen and (max-width: 600px){
   #hello-content {
     flex-direction: column;
     margin: 0;
