@@ -25,7 +25,7 @@ export default {
 body {
   margin: 0;
   padding: 0;
-  background: url(https://bing.rthe.net/wallpaper) no-repeat fixed center/cover;
+  /* background: url(https://bing.rthe.net/wallpaper) no-repeat fixed center/cover; */
 
 }
 #all {

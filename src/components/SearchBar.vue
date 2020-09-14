@@ -134,7 +134,7 @@ export default {
   left:0;
   backdrop-filter: blur(50px);
 }
-@media screen and (max-width: 500px){
+@media screen and (max-width: 600px){
   #searchbar{
     width:100%;
   }
