@@ -125,7 +125,7 @@ export default {
   transition: all 0.2s ease;
   text-shadow:none;
 }
-@media screen and (max-width: 500px){
+@media screen and (max-width: 600px){
   .header-bar-tablist{
     display: none;
   }
