@@ -96,7 +96,7 @@ export default {
   width: 150px;
   height: 100px;
   border-radius: 15px;
-  background: #ffffff23;
+  background: #00000056;
   margin: 0 10px 10px 0;
   display: flex;
   flex-direction: column;
@@ -104,6 +104,8 @@ export default {
   justify-content: center;
   text-align: center;
   transition: all 0.1s ease-in;
+  box-shadow: 0 2px 5px 1px #00000023;
+
 }
 .nav-block-small {
   height: 50px;
@@ -114,16 +116,18 @@ export default {
   /* backdrop-filter: blur(50px) saturate(180%);
   background: #ffffff63 !important; */
   color: white !important;
-  transform: scale(1.04);
+  transform: scale(1.02) translateY(-5px);
   transition: all 0.3s ease-out;
-  box-shadow: 0 5px 20px 5px #00000023;
+  box-shadow: 0 7px 10px 1px #00000023;
 }
 .nav-block:active {
-  backdrop-filter: blur(50px) saturate(180%);
+  /* backdrop-filter: blur(50px) saturate(180%); */
   background: #00000023 !important;
   color: white !important;
   transform: scale(1);
-  transition: transform, background 0.5s ease-out;
+  transition: all 0.1s ease-out;
+  box-shadow: 0 2px 5px 1px inset #00000023;
+
 }
 .nav-block-icon {
   max-height: 40px;
@@ -133,7 +137,7 @@ export default {
   display: none;
 }
 .nav-block-no-color{
-  backdrop-filter: blur(50px) saturate(180%);
+  /* backdrop-filter: blur(50px) saturate(180%); */
 }
 .nav-block-title {
   margin-top: 10px;

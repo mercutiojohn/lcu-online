@@ -5,14 +5,14 @@
         <li :class="'header-bar-tabitem'+handleChangeFontColor()">首页</li>
       </router-link>
       <router-link to="/test">
-        <li :class="'header-bar-tabitem'+handleChangeFontColor()">学习</li>
+        <li :class="'header-bar-tabitem'+handleChangeFontColor()">视频学习</li>
       </router-link>
       <router-link to="/fanya">
-        <li :class="'header-bar-tabitem'+handleChangeFontColor()">数字聊大</li>
+        <li :class="'header-bar-tabitem'+handleChangeFontColor()">学习通</li>
       </router-link>
-      <router-link to="/classic">
+      <!-- <router-link to="/classic">
         <li :class="'header-bar-tabitem'+handleChangeFontColor()">经典</li>
-      </router-link>
+      </router-link> -->
     </ul>
     <SearchBar :bgEnable="bgEnable"/>
     <ClockBox :bgEnable="bgEnable"/>
@@ -124,5 +124,14 @@ export default {
   /* backdrop-filter: blur(30px) saturate(180%); */
   transition: all 0.2s ease;
   text-shadow:none;
+}
+@media screen and (max-width: 500px){
+  .header-bar-tablist{
+    display: none;
+  }
+  #clockbox{
+    display: none;
+  }
+  
 }
 </style>
