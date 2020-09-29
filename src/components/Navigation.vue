@@ -4,9 +4,16 @@
       <span class="nav-title">{{title}}</span>
       <div class="nav-content">
         <a v-for="(item,index) in sites" :key="index" :href="item.url" target="_blank">
-          <div :class="'nav-block'+handleBlockNoIcon()+handleBlockNoColor()" :style="'background-color:'+item.color">
+          <div
+            :class="'nav-block'+handleBlockNoIcon()+handleBlockNoColor()"
+            @mouseover="blockOver()" @mousemove="blockMove()"
+            :style="'background-color:'+item.color"
+          >
             <img :class="'nav-block-icon'+handleNoIcon()" :src="getIcon(item.icon)" alt />
-            <span :class="'nav-block-title'+handleTitleNoIcon()" :style="'color:'+ifWhite(item.color)">{{item.title}}</span>
+            <span
+              :class="'nav-block-title'+handleTitleNoIcon()"
+              :style="'color:'+ifWhite(item.color)"
+            >{{item.title}}</span>
           </div>
         </a>
       </div>
@@ -20,7 +27,7 @@ export default {
     title: String,
     sites: Array,
     noIcon: Boolean,
-    noColor: Boolean
+    noColor: Boolean,
   },
   name: "Navigation",
   data() {
@@ -28,9 +35,33 @@ export default {
       // title:'',
       // sites:{},
       imgUrl: "assets/img/",
+      flag:false,
+      box:'',
+      delX:0,
+      delY:0
     };
   },
   methods: {
+    blockOver() {
+      this.flag = true;
+      //获取需要删除的距离
+      this.delX = event.clientX - this.box.offsetLeft;
+      this.delY = event.clientY - this.box.offsetTop;
+
+      console.log("监听事件");
+      
+    },
+    blockMove(){
+        if (this.flag) {
+          //删除多余的距离 保持住按下的位置
+          var x = (event.clientX - this.delX) / 10;
+          var y = (event.clientY - this.delY) / 10;
+          this.box.style.transform =
+            "translateX(" + x + "px)" + "translateY(" + y + "px)";
+        }
+        console.log("监听事件move");
+
+      },
     ifWhite(color) {
       if (color == "#ffffff") {
         return "#000000";
@@ -47,34 +78,53 @@ export default {
         return require("@/assets/img/pic.svg");
       }
     },
-    handleNoIcon(){
-      if(this.noIcon){
-        return ' nav-block-no-icon'
-      }else{
-        return ''
+    handleNoIcon() {
+      if (this.noIcon) {
+        return " nav-block-no-icon";
+      } else {
+        return "";
       }
     },
-    handleBlockNoIcon(){
-      if(this.noIcon){
-        return ' nav-block-small'
-      }else{
-        return ''
+    handleBlockNoIcon() {
+      if (this.noIcon) {
+        return " nav-block-small";
+      } else {
+        return "";
       }
     },
-    handleTitleNoIcon(){
-      if(this.noIcon){
-        return ' nav-block-title-no-icon'
-      }else{
-        return ''
+    handleTitleNoIcon() {
+      if (this.noIcon) {
+        return " nav-block-title-no-icon";
+      } else {
+        return "";
       }
     },
-    handleBlockNoColor(){
-      if(this.noColor){
-        return ' nav-block-no-color'
-      }else{
-        return ''
+    handleBlockNoColor() {
+      if (this.noColor) {
+        return " nav-block-no-color";
+      } else {
+        return "";
       }
-    }
+    },
+  },
+  created() {
+    console.log("created");
+    // this.delX = 0;
+    // this.delY = 0;
+    this.box = document.querySelector(".nav-block");
+    
+      this.box.onmouseout = function () {
+        box.style.transform = "translateX(0px) translateY(0px)";
+        // flag = false;
+      };
+    //1.获取页面元素
+    //设置开关判断鼠标是在box否按下
+    // var flag = false;
+    //2.box绑定鼠标按下事件
+    // box.onmouseover = function () {
+    // };
+    //3.整个文档绑定鼠标移动事件
+    //4.给整个文档绑定了 鼠标抬起事件
   },
 };
 </script>   
@@ -105,7 +155,6 @@ export default {
   text-align: center;
   transition: all 0.1s ease-in;
   box-shadow: 0 2px 5px 1px #00000023;
-
 }
 .nav-block-small {
   height: 50px;
@@ -127,16 +176,15 @@ export default {
   transform: scale(1);
   transition: all 0.1s ease-out;
   box-shadow: 0 2px 5px 1px inset #00000023;
-
 }
 .nav-block-icon {
   max-height: 40px;
-  max-width:80px;
+  max-width: 80px;
 }
-.nav-block-no-icon{
+.nav-block-no-icon {
   display: none;
 }
-.nav-block-no-color{
+.nav-block-no-color {
   /* backdrop-filter: blur(50px) saturate(180%); */
 }
 .nav-block-title {
@@ -148,9 +196,8 @@ export default {
   text-shadow: 0 5px 10px #00000083;
   margin-bottom: 20px;
 }
-.nav-block-title-no-icon{
+.nav-block-title-no-icon {
   margin-top: 0;
-
 }
 .nav {
   display: flex;

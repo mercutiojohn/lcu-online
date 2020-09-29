@@ -69,7 +69,13 @@ export default {
           title: "软件设计与体系结构",
           // color: "#1e83ca",
           // icon: "uplus.png",
-          url: "http://ee-c.lcu.edu.cn/si/student/studentHeadline/8a7d8a9573c84c42017462a6758f571f/teachClassStudent",
+          url: "http://ee-c.lcu.edu.cn/si/student/studentHeadline/8a7d8a9573c84c4201745448465c520a/teachClassStudent",
+        },
+        {
+          title: "算法分析与设计",
+          // color: "#1e83ca",
+          // icon: "uplus.png",
+          url: "http://ee-c.lcu.edu.cn/si/student/studentHeadline/8a7d8a9573c84c42017491a71fc30ec9/teachClassStudent",
         },
       ],
       learn: [
@@ -210,6 +216,11 @@ export default {
           color: "#3474d9",
           icon: "",
           url: "https://x.cnki.net/psmc#/MyStudy",
+        },{
+          url:"https://next.xuetangx.com/my-courses/current"
+        },{
+          title:"Coursera",
+          url:""
         }
       ],
       documents:[
