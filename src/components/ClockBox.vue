@@ -63,7 +63,8 @@ export default {
         'https://i.ai.mi.com/h5/precache/ai-schedule/#/home',
         'https://www.dida365.com/webapp/#q/all/today',
         // 'https://music.163.com/st/difm/index.html',
-        'https://t.bilibili.com/pages/nav/index_new'
+        'https://t.bilibili.com/pages/nav/index_new',
+        'http://music.jsososo.com/'
       ],
       clockWrapDisplay: false,
       clockPreferences: {
