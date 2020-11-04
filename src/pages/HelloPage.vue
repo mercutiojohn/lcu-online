@@ -8,7 +8,7 @@
         <div class="about">
           <span class="about-text">鲁ICP备20018544号</span>
           <a href="http://mercutio.club"><span class="about-text">莫阿白的博客</span></a>
-          <a href="http://bing.com"><span class="about-text" style="font-size:10px;">壁纸来自Bing</span></a>
+          <!-- <a href="http://bing.com"><span class="about-text" style="font-size:10px;">壁纸来自Unsplash</span></a> -->
         </div>
       </div>
       <div class="navigation">
