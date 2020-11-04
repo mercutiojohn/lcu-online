@@ -1,12 +1,35 @@
-[
+[{
+    "title":"CS",
+    "list":[
     {
-        "title":"大学数学",
-        "id":1
+        "title": "CS50 哈佛大学编程入门 Harvard University 2018",
+        "type":"bilibili",
+        "bvid": "1iJ411q71y",
+        "pages": 11
     },{
-        "title":"Web前端",
-        "id":2
+        "title": "CS50 Beyond 哈佛大学编程进阶 Harvard University 2019",
+        "type": "bilibili",
+        "bvid": "1Yt411L7jk",
+        "pages": 12
     },{
         "title":"计算机基础课",
-        "id":3
-    }
-]
+        "type": "others"
+    }]
+},
+{
+    "title": "CS2",
+    "list": [{
+      "title": "CS50 哈佛大学编程入门 Harvard University 2018",
+      "type": "bilibili",
+      "bvid": "1iJ411q71y",
+      "pages": 11
+    }, {
+      "title": "CS50 Beyond 哈佛大学编程进阶 Harvard University 2019",
+      "type": "bilibili",
+      "bvid": "1Yt411L7jk",
+      "pages": 12
+    }, {
+      "title": "计算机基础课",
+      "type": "others"
+    }]
+}]
