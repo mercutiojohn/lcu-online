@@ -4,7 +4,7 @@
       <router-link to="/">
         <li :class="'header-bar-tabitem'+handleChangeFontColor()">首页</li>
       </router-link>
-      <router-link to="/test">
+      <router-link to="/course">
         <li :class="'header-bar-tabitem'+handleChangeFontColor()">视频学习</li>
       </router-link>
       <router-link to="/fanya">

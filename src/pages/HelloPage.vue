@@ -57,26 +57,38 @@ export default {
           title: "编译原理",
           // color: "#1e83ca",
           // icon: "uplus.png",
-          url: "http://ee-c.lcu.edu.cn/si/student/studentHeadline/fb017e8c6f7b40d5016ff4282ed137b8/teachClassStudent",
+          url: "http://ee-c.lcu.edu.cn/u/ordCou/fb017e8c6f7b40d5016ff4282ed137b8/teachClassStudent",
         },
         {
           title: "软件测试",
           // color: "#1e83ca",
           // icon: "uplus.png",
-          url: "http://ee-c.lcu.edu.cn/si/student/studentHeadline/8a7d8a9573c84c42017462a6758f571f/teachClassStudent",
+          url: "http://ee-c.lcu.edu.cn/u/ordCou/8a7d8a9573c84c42017462a6758f571f/teachClassStudent",
         },
         {
           title: "软件设计与体系结构",
           // color: "#1e83ca",
           // icon: "uplus.png",
-          url: "http://ee-c.lcu.edu.cn/si/student/studentHeadline/8a7d8a9573c84c4201745448465c520a/teachClassStudent",
+          url: "http://ee-c.lcu.edu.cn/u/ordCou/8a7d8a9573c84c4201745448465c520a/teachClassStudent",
         },
         {
           title: "算法分析与设计",
           // color: "#1e83ca",
           // icon: "uplus.png",
-          url: "http://ee-c.lcu.edu.cn/si/student/studentHeadline/8a7d8a9573c84c42017491a71fc30ec9/teachClassStudent",
+          url: "http://ee-c.lcu.edu.cn/u/ordCou/8a7d8a9573c84c42017491a71fc30ec9/teachClassStudent",
         },
+        {
+          title: "软件工程经济学",
+          // color: "#1e83ca",
+          // icon: "uplus.png",
+          url: "http://ee-c.lcu.edu.cn/u/ordCou/8a7d8a9573c84c420174ed844b0757d5/1/teachClassStudent"
+        },
+        {
+          title: "软件需求分析",
+          // color: "#1e83ca",
+          // icon: "uplus.png",
+          url: "https://mooc2-ans.chaoxing.com/mycourse/stu?courseid=214167272&clazzid=33545350&cpi=111705708&enc=8c814025620430e64fe111b777e8fc98&t=1603009694245&pageHeader=0"
+        }
       ],
       learn: [
         {
@@ -214,13 +226,18 @@ export default {
         },{
           title: "知网研学",
           color: "#3474d9",
-          icon: "",
+          icon: "cnki.png",
           url: "https://x.cnki.net/psmc#/MyStudy",
         },{
+          title: "学堂在线",
+          icon:"xuetang.png",
+          color: "#ffffff",
           url:"https://next.xuetangx.com/my-courses/current"
         },{
           title:"Coursera",
-          url:""
+          color: "#ffffff",
+          icon: "coursera.svg",
+          url:"https://www.coursera.org/in-progress"
         }
       ],
       documents:[
@@ -239,7 +256,11 @@ export default {
 
     };
   },
-  methods: {},
+  methods: {
+    getList() {
+      this.list = require("@/assets/data/navList.json");
+    },
+  },
 };
 </script>
 
@@ -267,7 +288,7 @@ export default {
   background: #ffffff23;
   width: calc(100% - 20px * 2 - 20 * 2);
   /* backdrop-filter: blur(50px) saturate(180%); */
-  height:calc(100vh - 150px);
+  /*height:calc(100vh - 150px);*/
   min-height: calc(100vh - 150px);
   padding: 20px;
   border-radius: 20px;
