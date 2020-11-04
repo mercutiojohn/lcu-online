@@ -160,25 +160,28 @@ export default {
   background: #fff;
   width:calc(100% - 20px);
 
-  min-height:calc(100vh - 100px);
+  height:calc(100vh - 100px);
   /* padding:20px; */
   overflow: hidden;
   border-radius: 20px;
   /* margin: 0 10px 10px; */
   display: flex;
 }
-#course-video-list-box{
+#course-video-list-box,#course-category-list-box{
   width: 20%;
   height: 100%;
   /* background: #000; */
+  overflow: scroll;
 }
 #course-category-list-box{
   width: 20%;
   height: 100%;
    border-right: 1px solid #ddd;
+  overflow: scroll;
+
 }
 #course-study{
-  width: 100%;
+  width: 60%;
   height: 100%;
   /* background: #000; */
 }
@@ -191,7 +194,8 @@ export default {
 .course-video-list{
   padding-top: 10px;
   background: #eee;
-  height: 100%;
+  /* height: 100%; */
+  /* overflow: scroll; */
   /* color: #fff; */
 }
 .course-video-item{
