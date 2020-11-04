@@ -26,15 +26,15 @@
        <div id="course-category-list-box">
         <ul class="course-video-list">
           <li v-for="(item,index) in list" :key="index" :class="'course-video-item' + (currentList == index ? ' course-video-item-active':'')" @click="changeCurrList(index)">
-              <span>{{item.title}}</span>
+              <span class="course-video-item-title">{{item.title}}</span>
             </li>
         </ul>
       </div>
       <div id="course-video-list-box">
         <ul class="course-video-list">
           <li v-for="(item,index) in list[currentList].list" :key="index" :class="'course-video-item' + (currentVideoIndex == index ? ' course-video-item-active':'')" @click="changeCurrBV(item.bvid,index)">
-              <span>{{item.title}}</span>
-              <span>{{item.bvid}}</span>
+              <span class="course-video-item-title">{{item.title}}</span>
+              <span class="course-video-item-desc">BV{{item.bvid}} · 共{{item.pages}}P · 来自{{item.type}}</span>
               
                 <ul class="course-video-page-list" v-if="currentBV == item.bvid">
                   <li class="course-video-page-item" v-for="page in item.pages" :key="page" @click="changeCurrPage(page)">{{page}}</li>
@@ -167,21 +167,24 @@ export default {
   /* margin: 0 10px 10px; */
   display: flex;
 }
-#course-video-list-box,#course-category-list-box{
+#course-video-list-box{
   width: 20%;
   height: 100%;
   /* background: #000; */
   overflow: scroll;
+  background: #eee;
+
 }
 #course-category-list-box{
-  width: 20%;
+  width: 15%;
   height: 100%;
    border-right: 1px solid #ddd;
   overflow: scroll;
+  background: #eee;
 
 }
 #course-study{
-  width: 60%;
+  width: 65%;
   height: 100%;
   /* background: #000; */
 }
@@ -193,7 +196,6 @@ export default {
 }
 .course-video-list{
   padding-top: 10px;
-  background: #eee;
   /* height: 100%; */
   /* overflow: scroll; */
   /* color: #fff; */
@@ -252,5 +254,12 @@ export default {
 }
 .course-video-page-item:active{
   background: #ffffff64;
+}
+.course-video-item-title{
+  font-size: 15px;
+}
+.course-video-item-desc{
+  font-size: 12px;
+  opacity: .5;
 }
 </style>
