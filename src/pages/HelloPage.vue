@@ -5,11 +5,6 @@
     <div id="hello-content">
       <div id="top-info">
         <CalendarBox />
-        <div class="about">
-          <span class="about-text">鲁ICP备20018544号</span>
-          <a href="http://mercutio.club"><span class="about-text">莫阿白的博客</span></a>
-          <!-- <a href="http://bing.com"><span class="about-text" style="font-size:10px;">壁纸来自Unsplash</span></a> -->
-        </div>
       </div>
       <div class="navigation">
         <Navigation title="我的课程" :sites="myCourses" noIcon="true" noColor="true"/>
@@ -23,6 +18,11 @@
         <Navigation title="编程开发" :sites="dev" />
       </div>
     </div>
+    <div class="about">
+          <span class="about-text">鲁ICP备20018544号</span>
+          <a href="http://mercutio.club"><span class="about-text">莫阿白的博客</span></a>
+          <!-- <a href="http://bing.com"><span class="about-text" style="font-size:10px;">壁纸来自Unsplash</span></a> -->
+        </div>
   </div>
 </template>
 
@@ -325,18 +325,34 @@ export default {
   }
 }
 .about{
+  width:20%;
+  margin: 0 auto 20px;
   display: flex;
-  flex-direction: column;
-  margin: 10px 30px;
-  color: #ffffff;
+  flex-direction: row;
+  justify-content: space-evenly;
+  color: #ffffff45;
+  font-size: 12px;
 }
 .about a{
-  color: #ffffff;
   /* text-decoration: underline; */
   cursor: pointer;
 }
+
+.about-text,.about a{
+  padding: 2px;
+  color: #ffffff67;
+  transition: all .2s ease;
+}
 .about-text-course{
-    color: #ffffff;
-    margin-left: 15px;
+  color: #ffffff;
+  padding-left: 12px;
+}
+.about a:hover{
+  color: #ffffff!important;
+  background: #00000037;
+  border-radius: 5px;
+  /* text-decoration: underline; */
+  cursor: pointer;
+  transition: all .35s ease;
 }
 </style>

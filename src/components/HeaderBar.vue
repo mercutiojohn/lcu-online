@@ -7,9 +7,9 @@
       <router-link to="/course">
         <li :class="'header-bar-tabitem'+handleChangeFontColor()">视频学习</li>
       </router-link>
-      <router-link to="/fanya">
+      <!-- <router-link to="/fanya">
         <li :class="'header-bar-tabitem'+handleChangeFontColor()">学习通</li>
-      </router-link>
+      </router-link> -->
       <!-- <router-link to="/classic">
         <li :class="'header-bar-tabitem'+handleChangeFontColor()">经典</li>
       </router-link> -->
@@ -90,7 +90,7 @@ export default {
   transition: all .3s ease;
   color:#000!important;
   padding: 5px 30px 5px 30px;
-  box-shadow: 0 0px 5px 10px #00000023;
+  box-shadow: 0 0px 10px 4px #00000010;
 }
 .header-bar-tablist {
   display: flex;
@@ -127,10 +127,16 @@ export default {
 }
 @media screen and (max-width: 600px){
   .header-bar-tablist{
-    display: none;
+    /* display: none; */
+    width:0px;
+    max-height:50px;
+    overflow: hidden;
   }
   #clockbox{
-    display: none;
+    /* display: none; */
+    width:0px;
+    overflow: hidden;
+    max-height:50px;
   }
   
 }
