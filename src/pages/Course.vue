@@ -86,14 +86,14 @@ export default {
     },
     getList() {
       this.list = require("@/assets/data/list.json");
-      for (let index = 0; index < this.list.length; index++) {
-        this.videoData[index].title = this.list[index].title;
-        for(let j = 0; j < this.list[index].list.length; j++){
-          e = require("http://api.bilibili.com/x/web-interface/view?bvid=BV"+this.list[index].list[j].bvid);
-          this.videoData[index].list[j] = e.data;
-        }
+      // for (let index = 0; index < this.list.length; index++) {
+      //   this.videoData[index].title = this.list[index].title;
+      //   for(let j = 0; j < this.list[index].list.length; j++){
+      //     e = require("http://api.bilibili.com/x/web-interface/view?bvid=BV"+this.list[index].list[j].bvid);
+      //     this.videoData[index].list[j] = e.data;
+      //   }
         
-      }
+      // }
     },
     getListData(id) {
       // const path = "@/assets/data/list/" + id + ".json";
