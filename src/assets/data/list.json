@@ -90,15 +90,10 @@
   {
     "title": "计算机专业课",
     "list": [{
-      "title": "《算法很美》《数据结构不难》课程-无倍速最全完整版-java实现",
+      "title": "《算法很美》《数据结构不难》- Java实现",
       "type": "bilibili",
       "bvid": "1e7411T7FV",
       "pages": 11
-    }, {
-      "title": "CS50 Beyond 哈佛大学编程进阶 Harvard University 2019",
-      "type": "bilibili",
-      "bvid": "1Yt411L7jk",
-      "pages": 12
     }]
   }
 ]
