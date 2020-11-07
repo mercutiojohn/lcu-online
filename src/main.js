@@ -14,6 +14,8 @@ import 'vant/lib/index.css'
 import 'vant/lib/icon/local.css'
 import '@vant/touch-emulator'
 
+import axios from 'axios'
+
 Vue.use(VueRouter)
 
 Vue.use(ElementUI)

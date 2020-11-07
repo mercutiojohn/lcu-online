@@ -86,9 +86,11 @@ export default {
 }
 .header-bar-container-bgon{
   background: #ffffff;
-  /* backdrop-filter: blur(150px); */
+  /* background: #0000001e; */
+  /* backdrop-filter: blur(150px) saturate(180%); */
   transition: all .3s ease;
   color:#000!important;
+  /* color:#fff!important; */
   padding: 5px 30px 5px 30px;
   box-shadow: 0 0px 10px 4px #00000010;
 }

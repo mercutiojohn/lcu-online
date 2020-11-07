@@ -36,18 +36,18 @@
           <li v-for="(item,index) in list[currentList].list" :key="index" :class="'course-video-item' + (currentVideoIndex == index ? ' course-video-item-active':'')" @click="changeCurrBV(item.bvid,index)">
               <span class="course-video-item-title">{{item.title}}</span>
               <span class="course-video-item-desc">BV{{item.bvid}} · 共{{item.pages}}P · 来自{{item.type}}</span>
-              
-                <ul class="course-video-page-list" v-if="currentBV == item.bvid">
+              <div class="course-video-item-funcbox" v-if="currentBV == item.bvid">
+                <ul class="course-video-page-list">
                   <li  v-for="page in item.pages" :key="page" :class="'course-video-page-item' + (currentPage == page ? ' course-video-page-item-active':'')" @click="changeCurrPage(page)">{{page}}</li>
                 </ul>
-              
+                <a :href="videoUrl" target="_blank"><div class="player-open-in-window" title="新窗口打开">↗</div></a>
+                        <div class="player-switch" @click="switchPlayer()" title="切换播放器">▶⇵</div>
+              </div>
             </li>
         </ul>
       </div>
      
       <div id="course-study">
-        <a :href="videoUrl" target="_blank"><button class="player-open-in-window">新窗口打开</button></a>
-        <button class="player-switch" @click="switchPlayer()">切换播放器</button>
         <iframe id="course-study-video" :src="videoUrl" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
       </div>
       <!-- <span>{{data.title}}</span> -->
@@ -198,14 +198,11 @@ export default {
 }
 #course-video-list-box{
   width: 20%;
-  height: 100%;
-  overflow: scroll;
-  background: #eee;
-  border-right: 1px solid #ddd;
+
 }
 #course-category-list-box{
   width: 15%;
-}1
+}
 #course-category-list-box,#course-video-list-box{
   height: 100%;
   border-right: 1px solid #ddd;
@@ -236,9 +233,8 @@ export default {
   flex-direction: column;
   padding:5px 10px;
   background: #fff;
-  
 }
-.course-video-item,.course-video-item:hover,.course-video-page-item:hover,.course-video-page-item{
+.player-switch:hover,.player-open-in-window:hover,.course-video-item,.course-video-item:hover,.course-video-page-item:hover,.course-video-page-item{
   transition: background-color .2s;
 }
 .course-video-item:hover{
@@ -265,10 +261,17 @@ export default {
   color:#fff;
   cursor: context-menu;
 }
+.course-video-item-funcbox{
+  display: flex;
+  overflow: scroll;
+  flex-wrap: nowrap;
+}
 .course-video-page-list{
   display: flex;
   overflow: scroll;
   flex-wrap: nowrap;
+  /* width: ; */
+  /* flex-shrink: 0; */
 }
 .course-video-page-item{
   display: block;
@@ -278,7 +281,29 @@ export default {
   border-radius: 5px;
   border: 1px solid rgba(253, 253, 253, 0.671);
 }
-.course-video-page-item:hover{
+.player-open-in-window{
+  display: block;
+  flex-shrink: 0;
+  padding: 5px 10px;
+  margin: 3px;
+  border-radius: 5px;
+  border: 1px solid rgba(253, 253, 253, 0.671);
+  /* position:absolute; */
+  /* right:20px; */
+  /* bottom: 50px; */
+  /* opacity: 0.2; */
+  color:#fff;
+}
+.player-switch{
+  display: block;
+  flex-shrink: 0;
+  padding: 5px 10px;
+  margin: 3px;
+  border-radius: 5px;
+  border: 1px solid rgba(253, 253, 253, 0.671);
+}
+
+.player-switch:hover,.player-open-in-window:hover,.course-video-page-item:hover{
   cursor: pointer;
   background: #ffffff34;
 }
@@ -296,22 +321,5 @@ export default {
   font-size: 12px;
   opacity: .5;
 }
-.player-switch{
-  position:absolute;
-  right:20px;
-  bottom: 20px;
-  opacity: 0.2;
-}
-.player-open-in-window{
-  position:absolute;
-  right:20px;
-  bottom: 50px;
-  opacity: 0.2;
-}
-.player-switch:hover{
-  opacity: 1;
-}
-.player-open-in-window:hover{
-  opacity: 1;
-}
+
 </style>

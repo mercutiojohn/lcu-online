@@ -4,9 +4,9 @@
       <div class="searchbar-wrap" v-show="searchWrapDisplay">
         <ul class="searchbar-engines srarchbar-wrap-items">
               <li class="searchbar-engines-item" v-for="(item,index) in targetUrl" :key="index" @click="changeEngine(index)">
-                <div class="searchbar-engines-item-icon"></div>
-                <!-- <span :class="'searchbar-engines-item-title' + (currUrl==index)?' searchbar-engines-item-title-active':''">{{item.title}}</span> -->
-                <span :class="'searchbar-engines-item-title'">{{item.title}}</span>
+                <div :class="'searchbar-engines-item-icon' + (currUrl==index?' searchbar-engines-item-icon-active':'')"></div>
+                <span :class="'searchbar-engines-item-title' + (currUrl==index?' searchbar-engines-item-title-active':'')">{{item.title}}</span>
+                <!-- <span :class="'searchbar-engines-item-title'">{{item.title}}</span> -->
               </li>
         </ul>
         <div class="searchbar-suggestions srarchbar-wrap-items" v-if="suggestions"></div>
