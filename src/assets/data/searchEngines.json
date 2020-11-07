@@ -1,0 +1,60 @@
+{
+  "currUrl": 0,
+  "targetUrl": [{
+    "title": "百度",
+    "url": "http://www.baidu.com/s",
+    "queryWord": "wd",
+    "placeholder": "百度一下，你就知道"
+  }, {
+    "title": "必应",
+    "url": "https://cn.bing.com/search",
+    "queryWord": "q",
+    "placeholder": "Microsoft Bing 必应搜索"
+  }, {
+    "title": "秘迹搜索",
+    "url": "https://mijisou.com/",
+    "queryWord": "q",
+    "placeholder": "秘迹搜索"
+  }, {
+    "title": "多吉",
+    "url": "https://www.dogedoge.com/results",
+    "queryWord": "q",
+    "placeholder": "DogeDoge 多吉搜索"
+  }, {
+    "title": "哔哩哔哩",
+    "url": "https://search.bilibili.com/all",
+    "queryWord": "keyword",
+    "placeholder": "BiliBili ( ゜- ゜)つロ 乾杯~"
+  }, {
+    "title": "知乎",
+    "url": "https://www.zhihu.com/search",
+    "queryWord": "q",
+    "placeholder": "有问题，上知乎"
+  }, {
+    "title": "豆瓣",
+    "url": "https://www.douban.com/search",
+    "queryWord": "q",
+    "placeholder": "豆瓣"
+  }, {
+    "title": "淘宝",
+    "url": "https://s.taobao.com/search",
+    "queryWord": "q",
+    "placeholder": "淘宝，淘到你说好"
+  }, {
+    "title": "Google",
+    "url": "https://www.google.com/search",
+    "queryWord": "q",
+    "placeholder": "Google 搜索"
+  }, {
+    "title": "Ecosia",
+    "url": "https://www.ecosia.org/search",
+    "queryWord": "q",
+    "placeholder": "Ecosia 搜索"
+  }, {
+    "title": "DuckDuckGo",
+    "url": "https://www.duckduckgo.com/search",
+    "queryWord": "q",
+    "placeholder": "DuckDuckGo"
+
+  }]
+}

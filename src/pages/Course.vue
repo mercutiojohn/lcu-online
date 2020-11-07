@@ -46,6 +46,8 @@
       </div>
      
       <div id="course-study">
+        <a :href="videoUrl" target="_blank"><button class="player-open-in-window">新窗口打开</button></a>
+        <button class="player-switch" @click="switchPlayer()">切换播放器</button>
         <iframe id="course-study-video" :src="videoUrl" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
       </div>
       <!-- <span>{{data.title}}</span> -->
@@ -63,7 +65,7 @@ export default {
     return {
       courseData: "",
       list: "",
-      player: 1,
+      player: 0,
       activeName: "second",
       dialogVisible: false,
       currentBV: "1",
@@ -81,9 +83,9 @@ export default {
         })
         .catch((_) => {});
     },
-    getCourseData() {
-      this.list = require("@/assets/data/courseData.json");
-    },
+    // getCourseData() {
+    //   this.list = require("@/assets/data/courseData.json");
+    // },
     getList() {
       this.list = require("@/assets/data/list.json");
       // for (let index = 0; index < this.list.length; index++) {
@@ -119,10 +121,17 @@ export default {
       this.currentList = list;
       this.currentVideoIndex = 0;
       this.currentBV = this.list[list].list[0].bvid;
+    },
+    switchPlayer(){
+      if(this.player == 1){
+        this.player = 0;
+      }else{
+        this.player = 1;
+      }
     }
   },
   created() {
-    this.getCourseData();
+    // this.getCourseData();
     this.getList();
     this.initializeVideoBox();
   },
@@ -190,15 +199,16 @@ export default {
 #course-video-list-box{
   width: 20%;
   height: 100%;
-  /* background: #000; */
   overflow: scroll;
   background: #eee;
-
+  border-right: 1px solid #ddd;
 }
 #course-category-list-box{
   width: 15%;
+}1
+#course-category-list-box,#course-video-list-box{
   height: 100%;
-   border-right: 1px solid #ddd;
+  border-right: 1px solid #ddd;
   overflow: scroll;
   background: #eee;
 
@@ -285,5 +295,23 @@ export default {
 .course-video-item-desc{
   font-size: 12px;
   opacity: .5;
+}
+.player-switch{
+  position:absolute;
+  right:20px;
+  bottom: 20px;
+  opacity: 0.2;
+}
+.player-open-in-window{
+  position:absolute;
+  right:20px;
+  bottom: 50px;
+  opacity: 0.2;
+}
+.player-switch:hover{
+  opacity: 1;
+}
+.player-open-in-window:hover{
+  opacity: 1;
 }
 </style>

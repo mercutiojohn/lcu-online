@@ -58,13 +58,13 @@ export default {
   date: "",
   data() {
     return {
-      currUrl:1,
+      currUrl:0,
       url:[
+        'https://www.dida365.com/webapp/#q/all/today'
         // 'https://i.ai.mi.com/h5/precache/ai-schedule/#/home',
         // 'https://music.163.com/st/difm/index.html',
         // 'https://t.bilibili.com/pages/nav/index_new',
         // 'http://music.jsososo.com/',
-        'https://www.dida365.com/webapp/#q/all/today'
       ],
       clockWrapDisplay: false,
       clockPreferences: {
