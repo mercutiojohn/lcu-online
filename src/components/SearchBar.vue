@@ -2,6 +2,7 @@
   <div id="searchbar">
     <transition name="fade">
       <div class="searchbar-wrap" v-show="searchWrapDisplay">
+        <div class="searchbar-suggestions"></div>
       </div>
     </transition>
     <div :class="'searchbar-container'+handleChangeBarColor()" v-on:click="changeWrapState('display')">
@@ -73,7 +74,17 @@ export default {
 </script>
 
 <style>
+#searchbar{
+  width:100vw;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  top:0;
+  left:0;
+  pointer-events:none;
+}
 .searchbar-container{
+
   display: flex;
   width:70vw;
   max-width:500px;
@@ -81,14 +92,18 @@ export default {
   background: #ffffff35;
   backdrop-filter: blur(30px) saturate(180%);
   border-radius: 25px;
-  transition:all .5s ease;
+  transition:all .2s ease;
+  margin-top: 20px;
+  pointer-events:auto;
+
 }
 .searchbar-container-bgon{
   background: #00000015;
   /* backdrop-filter: none; */
-  transition:all .5s ease;
+  transition:all .2s ease;
   color: #000000;
   height:40px;
+  margin-top: 10px;
 
 }
 .searchbar-container:hover{
@@ -103,9 +118,13 @@ export default {
 
 }
 .searchbar-input{
-  width:300px;
+  width:calc(70vw - 90px);
+  max-width: calc(500px - 90px);
   height:100%;
   background: none;
+  color:white;
+}
+.searchbar-input-bgon{
   color:white;
 }
 .searchbar-input::placeholder{
@@ -133,13 +152,27 @@ export default {
   top:0;
   left:0;
   backdrop-filter: blur(50px);
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
+
+.searchbar-suggestions{
+  margin-top:90px;
+  width:70vw;
+  max-width:500px;
+  height: 100px;
+  border-radius: 20px;
+  background: #ffffff23;
+}
+
 @media screen and (max-width: 600px){
   #searchbar{
     width:100%;
   }
-  .searchbar-container{
-    width:100%;
+  .searchbar-container,.searchbar-suggestions{
+    width:95%;
   }
 }
 </style>

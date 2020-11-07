@@ -2,7 +2,7 @@
     <div class="fanya">
       <div class="fanya-top-bar"></div>
         <!-- <iframe class="fanya-view" src="https://mooc2-ans.chaoxing.com/visit/interaction" frameborder="0"></iframe> -->
-        <iframe class="fanya-view" src="https://mooc2-ans.chaoxing.com/visit/interaction" frameborder="0"></iframe>
+        <iframe class="fanya-view" :src="currUrl" frameborder="0"></iframe>
         <!-- <iframe class="fanya-view" src="http://one.lcu.edu.cn/tp_up" frameborder="0"></iframe> -->
     </div>
 </template>
@@ -10,10 +10,17 @@
 export default {
   name: "Fanya",
   data() {
-    return {};
+    return {
+      fanyaUrl:["http://mooc1-1.chaoxing.com/visit/interaction","https://mooc2-ans.chaoxing.com/visit/interaction"],
+      currUrl: "http://mooc1-1.chaoxing.com/visit/interaction",
+      currIndex:0
+    };
   },
   methods: {
-
+    getUrl(){
+      this.currUrl = this.fanyaUrl[currIndex];
+      return this.fanyaUrl[currIndex];
+    }
   }
 };
 </script>
@@ -30,11 +37,11 @@ export default {
     /* height:90%; */
     height:calc(100vh - 80px + 40px);
     /* background: #ffffff00; */
-    background: #f2f4f7;
+    /* background: #f2f4f7; */
 }
 .fanya-top-bar{
   height:80px;
-  background: #f2f4f7;
+  /* background: #f2f4f7; */
 }
 ::-webkit-scrollbar{
   display: none!important;
