@@ -1,5 +1,6 @@
 <template>
   <div id="course">
+    <div id="course-background"></div>
     <div id="course-box">
       <!-- <el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button> -->
       <!-- <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
@@ -37,7 +38,7 @@
               <span class="course-video-item-desc">BV{{item.bvid}} · 共{{item.pages}}P · 来自{{item.type}}</span>
               
                 <ul class="course-video-page-list" v-if="currentBV == item.bvid">
-                  <li class="course-video-page-item" v-for="page in item.pages" :key="page" @click="changeCurrPage(page)">{{page}}</li>
+                  <li  v-for="page in item.pages" :key="page" :class="'course-video-page-item' + (currentPage == page ? ' course-video-page-item-active':'')" @click="changeCurrPage(page)">{{page}}</li>
                 </ul>
               
             </li>
@@ -62,13 +63,14 @@ export default {
     return {
       courseData: "",
       list: "",
-      player: 0,
+      player: 1,
       activeName: "second",
       dialogVisible: false,
       currentBV: "1",
       currentPage: 1,
       currentList:0,
       currentVideoIndex:0,
+      videoData:{}
     };
   },
   methods: {
@@ -84,6 +86,14 @@ export default {
     },
     getList() {
       this.list = require("@/assets/data/list.json");
+      for (let index = 0; index < this.list.length; index++) {
+        this.videoData[index].title = this.list[index].title;
+        for(let j = 0; j < this.list[index].list.length; j++){
+          e = require("http://api.bilibili.com/x/web-interface/view?bvid=BV"+this.list[index].list[j].bvid);
+          this.videoData[index].list[j] = e.data;
+        }
+        
+      }
     },
     getListData(id) {
       // const path = "@/assets/data/list/" + id + ".json";
@@ -132,13 +142,23 @@ export default {
 <style>
 :root{
   --accent-color:rgb(17, 148, 235);
+  /* --course-box-height:calc(100vh - 90px); */
+  --course-box-height:calc(100vh - 56px);
+  --course-box-width:100%;
 }
-#all {
-  /* background: url(https://bing.rthe.net/wallpaper) no-repeat fixed center/cover; */
+#course-background {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  background: url(https://bing.rthe.net/wallpaper) no-repeat fixed center/cover var(--accent-color);
 }
+
 .course-blank{
-  height: 1000px;
-  width: 10px;
+  /* height: 1000px; */
+  /* width: 10px; */
 }
 .course-tab {
   position: relative;
@@ -158,12 +178,12 @@ export default {
 }
 #course-box{
   background: #fff;
-  width:calc(100% - 20px);
+  width:var(--course-box-width);
 
-  height:calc(100vh - 100px);
+  height:var(--course-box-height);
   /* padding:20px; */
   overflow: hidden;
-  border-radius: 20px;
+  /* border-radius: 10px; */
   /* margin: 0 10px 10px; */
   display: flex;
 }
@@ -254,6 +274,10 @@ export default {
 }
 .course-video-page-item:active{
   background: #ffffff64;
+}
+.course-video-page-item-active, .course-video-page-item-active:hover{
+  background: #ffffff;
+  color:var(--accent-color);
 }
 .course-video-item-title{
   font-size: 15px;
