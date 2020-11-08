@@ -1,5 +1,23 @@
-[
-  {
+[{
+    "title": "考研数学",
+    "list": [{
+      "title": "【更新中】2021考研数学高数基础课程——文都考研 汤家凤",
+      "type": "bilibili",
+      "bvid": "1K7411j7PT",
+      "pages": 30
+    }, {
+      "title": "Taylim · 2020考研数学刷题班视频",
+      "type": "bilibili",
+      "bvid": "1JJ411E77G",
+      "pages": 13
+    }, {
+      "title": "李林880题逐题精讲&考研真题分类精讲",
+      "type": "bilibili",
+      "bvid": "1i7411N7DR",
+      "pages": 16
+
+    }]
+  }, {
     "title": "考研专业课",
     "list": [{
         "title": "王道考研 · 2019 计算机网络",
@@ -59,19 +77,6 @@
       "type": "bilibili",
       "bvid": "12E411B7A5",
       "pages": 134
-    }]
-  }, {
-    "title": "考研数学",
-    "list": [{
-      "title": "Taylim · 2020考研数学刷题班视频",
-      "type": "bilibili",
-      "bvid": "1JJ411E77G",
-      "pages": 13
-    }, {
-      "title": "李林880题逐题精讲&考研真题分类精讲",
-      "type": "bilibili",
-      "bvid": "1i7411N7DR",
-      "pages": 16
     }]
   }, {
     "title": "国外计算机专业课",
