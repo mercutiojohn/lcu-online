@@ -3,57 +3,50 @@
     <div id="hello-background"></div>
     <div id="hello-background-mask"></div>
     <div id="hello-content">
-      <div id="top-info">
+      <div id="left-info">
         <CalendarBox />
-        <div>
-          {{test}}
-        </div>
-      </div>
-      <div class="navigation">
-        <Navigation v-for="(item,index) in list" :title="item.title" :sites="item.list" :key="index" :noIcon="item.noIcon" :noColor="item.noColor"> </Navigation>
-        <span class="about-text-course" style="font-size:10px;margin-bottom:20px;">现处预览测试阶段，无法自定义课程</span>
-      </div>
-    </div>
-    <div class="about">
+        <Hitokoto />
+        <div class="about">
           <span class="about-text">鲁ICP备20018544号</span>
           <a href="http://mercutio.club"><span class="about-text">莫阿白的博客</span></a>
           <!-- <a href="http://bing.com"><span class="about-text" style="font-size:10px;">壁纸来自Unsplash</span></a> -->
         </div>
+      </div>
+      <div class="navigation">
+        <Navigation v-for="(item,index) in list" :title="item.title" :sites="item.list" :key="index" :noIcon="item.noIcon?true:false" :noColor="item.noColor?true:false"> </Navigation>
+        <span class="about-text-course">现处预览测试阶段，无法自定义内容。</span>
+        <span class="about-text-course">如果想来一起做后端，欢迎博客留言💜</span>
+      </div>
+    </div>
+    
   </div>
 </template>
 
 <script>
 import CalendarBox from "@/components/CalendarBox";
 import Navigation from "@/components/Navigation";
+import Hitokoto from "@/components/Hitokoto";
 
 export default {
   name: "HelloPage",
   components: {
     CalendarBox,
     Navigation,
+    Hitokoto
   },
   data() {
     return {
-      test:"你好，世界！"
+      
     };
   },
   methods: {
     getList() {
       this.list = require("@/assets/data/navList.json");
     },
-    getHitokoto(){
-      axios.get('https://v1.hitokoto.cn')
-      .then(({ data }) => {
-        this.test = data.hitokoto
-      })
-      .catch(console.error)
-    }
+    
   },
   created(){
     this.getList();
-  },
-  mounted(){
-    this.getHitokoto();
   }
 };
 </script>
@@ -82,8 +75,8 @@ export default {
   background: #ffffff23;
   width: calc(100% - 20px * 2 - 20 * 2);
   /* backdrop-filter: blur(50px) saturate(180%); */
-  /*height:calc(100vh - 150px);*/
-  min-height: calc(100vh - 150px);
+  height:calc(100vh - 150px);
+  /* min-height: calc(100vh - 150px); */
   padding: 20px;
   border-radius: 20px;
   margin: 0 20px 20px;
@@ -92,7 +85,7 @@ export default {
   position: relative;
 }
 
-#top-info{
+#left-info{
   position: sticky;
   top:0px;
 }
@@ -100,8 +93,10 @@ export default {
 .navigation {
   display: flex;
   width: 70%;
-  /* overflow: scroll; */
+  overflow: scroll;
   flex-direction: column;
+  /* height:calc(100vh - 150px); */
+  user-select: none;
 }
 @media screen and (max-width: 600px){
   #hello-content {
@@ -109,7 +104,7 @@ export default {
     margin: 0;
     width:calc(100% - 20px * 2);
   }
-  #top-info{
+  #left-info{
   position: relative;
   display: none;
   /* top:0px; */
@@ -119,11 +114,14 @@ export default {
   }
 }
 .about{
-  width:20%;
-  margin: 0 auto 20px;
+  position: absolute;
+  bottom:10px;
+  left:25px;
+  width:100%;
+  /* margin: 0 auto 20px; */
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
   color: #ffffff45;
   font-size: 12px;
 }
@@ -140,6 +138,7 @@ export default {
 .about-text-course{
   color: #ffffff;
   padding-left: 12px;
+  font-size:10px;
 }
 .about a:hover{
   color: #ffffff!important;

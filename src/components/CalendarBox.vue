@@ -6,12 +6,12 @@
     </span>
     <div class="right">
       <span class="bloc-today year-content">
-        {{year}}年
-        {{month}}月
+        {{year}} <span style="font-family:sans-serif; font-weight:300;">/</span> {{month}}
       </span>
       <!-- <span class="block month-content"><span id="month"></span>月</span> -->
-      <span class="block-today week-content">星期{{week}}</span>
-      <span class="block-today school-week-content">第{{schoolWeek}}周</span>
+      <div>
+        <span class="block-today week-content">星期{{week}} 第{{schoolWeek}}周</span>
+    </div>
     </div>
     <!-- <span class="block-today time-content" id="localtime">{{localtime}}</span> -->
   </div>
@@ -200,5 +200,10 @@ export default {
   /* background: #aaa; */
   color: #fff;
   user-select: none;
+}
+.week-content,
+.school-week-content {
+font-size:20px;
+margin:7px 0;
 }
 </style>
