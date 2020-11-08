@@ -1,21 +1,21 @@
 # lcu-online
 
-> LCU Online App
+> LCU Online, 一个简单的自定义导航模板
 
 ## Build Setup
 
 ``` bash
-# install dependencies
+# 安装依赖
 npm install
 
-# serve with hot reload at localhost:8080
+# 在 localhost:8080 上部署热更新的开发模式服务器 
 npm run dev
 
-# build for production with minification
+# 生成成品
 npm run build
 
-# build for production and view the bundle analyzer report
+# 生成成品 and view the bundle analyzer report
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+详情见： [介绍和步骤说明](http://vuejs-templates.github.io/webpack/) 和 [vue-loader 文档](http://vuejs.github.io/vue-loader).
