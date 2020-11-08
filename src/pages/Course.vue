@@ -40,8 +40,8 @@
                 <ul class="course-video-page-list">
                   <li  v-for="page in item.pages" :key="page" :class="'course-video-page-item' + (currentPage == page ? ' course-video-page-item-active':'')" @click="changeCurrPage(page)">{{page}}</li>
                 </ul>
-                <a :href="videoUrl" target="_blank"><div class="player-open-in-window" title="新窗口打开">↗</div></a>
-                        <div class="player-switch" @click="switchPlayer()" title="切换播放器">▶⇵</div>
+                <a :href="videoUrl" target="_blank"><div class="player-open-in-window" title="新窗口打开"><img :src="require('@/assets/img/function/share.svg')" alt="" srcset=""></div></a>
+                        <div class="player-switch" @click="switchPlayer()" title="切换播放器"><img :src="require('@/assets/img/function/switch.svg')" alt="" srcset=""></div>
               </div>
             </li>
         </ul>
@@ -154,6 +154,9 @@ export default {
   /* --course-box-height:calc(100vh - 90px); */
   --course-box-height:calc(100vh - 56px);
   --course-box-width:100%;
+}
+#course{
+  user-select: none;
 }
 #course-background {
   width: 100vw;
@@ -284,8 +287,8 @@ export default {
 .player-open-in-window{
   display: block;
   flex-shrink: 0;
-  padding: 5px 10px;
-  margin: 3px;
+  padding: 6px 5px;
+  margin: 3px 4px 3px 10px;
   border-radius: 5px;
   border: 1px solid rgba(253, 253, 253, 0.671);
   /* position:absolute; */
@@ -293,16 +296,25 @@ export default {
   /* bottom: 50px; */
   /* opacity: 0.2; */
   color:#fff;
+  display: flex;
+  justify-content: center;
+}
+.player-open-in-window img{
+  width:17px;
 }
 .player-switch{
   display: block;
   flex-shrink: 0;
-  padding: 5px 10px;
+  padding: 0 5px;
   margin: 3px;
   border-radius: 5px;
   border: 1px solid rgba(253, 253, 253, 0.671);
+  display: flex;
+  justify-content: center;
 }
-
+.player-switch img{
+  width:20px;
+}
 .player-switch:hover,.player-open-in-window:hover,.course-video-page-item:hover{
   cursor: pointer;
   background: #ffffff34;

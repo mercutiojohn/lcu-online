@@ -101,11 +101,11 @@ export default {
     },
     getIcon(icon) {
       try {
-        const a = require("@/assets/img/" + icon);
+        const a = require("@/assets/img/content/" + icon);
         return a;
       } catch (err) {
         console.log(err);
-        return require("@/assets/img/pic.svg");
+        return require("@/assets/img/function/pic.svg");
       }
     },
     handleNoIcon() {

@@ -21,7 +21,6 @@ Vue.use(VueRouter)
 Vue.use(ElementUI)
 
 // Vue.use(Vant) 
-
 Vue.config.productionTip = false
 
 import Course from '@/pages/Course'
