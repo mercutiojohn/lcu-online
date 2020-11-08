@@ -2,8 +2,7 @@
 
 > LCU Online, 一个简单的自定义导航模板
 
-## Build Setup
-
+## 编译步骤
 ``` bash
 # 安装依赖
 npm install
@@ -11,10 +10,10 @@ npm install
 # 在 localhost:8080 上部署热更新的开发模式服务器 
 npm run dev
 
-# 生成成品
+# 编译生成成品
 npm run build
 
-# 生成成品 and view the bundle analyzer report
+# 编译生成成品，并查看依赖包分析报告
 npm run build --report
 ```
 
