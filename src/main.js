@@ -25,7 +25,6 @@ Vue.config.productionTip = false
 
 import Course from '@/pages/Course'
 import HelloPage from '@/pages/HelloPage'
-import Classic from '@/pages/Classic'
 import Fanya from '@/pages/Fanya'
 // 1. 定义 (路由) 组件。
 // 可以从其他文件 import 进来
