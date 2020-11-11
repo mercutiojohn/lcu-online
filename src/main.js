@@ -45,10 +45,6 @@ const routes = [{
     path: '/test',
     component: Test
   },
-    {
-      path: '/classic',
-      component: Classic
-    },
   {
     path: '/',
     component: HelloPage

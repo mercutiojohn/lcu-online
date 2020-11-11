@@ -151,6 +151,7 @@ export default {
   height:100%;
   background: none;
   color:white;
+  border: none;
 }
 .searchbar-input-bgon{
   color:white;
