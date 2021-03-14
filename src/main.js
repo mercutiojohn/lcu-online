@@ -2,19 +2,29 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 
+import App from './App'
+
+// Router
+import VueRouter from 'vue-router'
+
+// Element UI
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
-import App from './App'
-
-import VueRouter from 'vue-router'
-
+// Vant
 import Vant from 'vant'
 import 'vant/lib/index.css'
 import 'vant/lib/icon/local.css'
 import '@vant/touch-emulator'
 
+// Axios
 import axios from 'axios'
+
+// Video.js
+import Video from 'video.js'
+import 'video.js/dist/video-js.css'
+
+Vue.prototype.$video = Video
 
 Vue.use(VueRouter)
 

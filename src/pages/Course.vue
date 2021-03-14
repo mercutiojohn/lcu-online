@@ -2,14 +2,13 @@
   <div id="course">
     <div id="course-background"></div>
     <div id="course-box">
-      <!-- <el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button> -->
-      <!-- <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
+      <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
         <span>这是一段信息</span>
         <span slot="footer" class="dialog-footer">
           <el-button @click="dialogVisible = false">取 消</el-button>
           <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
         </span>
-      </el-dialog> -->
+      </el-dialog>
       <!-- <el-tabs v-model="activeName" @tab-click="handleClick" class="course-tab">
         <el-tab-pane label="用户管理" name="first">
           <div class="course-blank">用户管理</div>
@@ -30,7 +29,13 @@
               <span class="course-video-item-title">{{item.title}}</span>
             </li>
         </ul>
+            <el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button>
       </div>
+
+      <div class="course-separator">
+       <i></i><i></i>
+     </div>
+
       <div id="course-video-list-box">
         <ul class="course-video-list">
           <li v-for="(item,index) in list[currentList].list" :key="index" :class="'course-video-item' + (currentVideoIndex == index ? ' course-video-item-active':'')" @click="changeCurrBV(item.bvid,index)">
@@ -46,7 +51,11 @@
             </li>
         </ul>
       </div>
-     
+
+     <div class="course-separator">
+       <i></i><i></i>
+     </div>
+
       <div id="course-study">
         <iframe id="course-study-video" :src="videoUrl" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
       </div>
@@ -165,7 +174,7 @@ export default {
   top: 0;
   left: 0;
   z-index: -2;
-  background: url(https://bing.rthe.net/wallpaper) no-repeat fixed center/cover var(--accent-color);
+  background: url(https://source.unsplash.com/random/1920x1080) no-repeat fixed center/cover #444;
 }
 
 .course-blank{
@@ -191,13 +200,16 @@ export default {
 #course-box{
   background: #fff;
   width:var(--course-box-width);
-
   height:var(--course-box-height);
   /* padding:20px; */
   overflow: hidden;
   /* border-radius: 10px; */
   /* margin: 0 10px 10px; */
   display: flex;
+
+  width:var(--box-width);
+  height: var(--box-height);
+  border-radius: var(--box-radius);
 }
 #course-video-list-box{
   width: 20%;
@@ -229,6 +241,25 @@ export default {
   /* height: 100%; */
   /* overflow: scroll; */
   /* color: #fff; */
+}
+.course-separator{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 100%;
+  background-color: white;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, .15);
+  cursor: col-resize;
+}
+.course-separator i{
+  background: rgba(0, 0, 0, .35);
+  height: 14px;
+  width: 1px;
+  margin: 0 1px;
 }
 .course-video-item{
   border-bottom: 1px solid #ddd;

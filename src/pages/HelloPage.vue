@@ -53,6 +53,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.hello-page{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 #hello-background {
   width: 100vw;
   height: 100vh;
@@ -73,13 +79,13 @@ export default {
 }
 #hello-content {
   background: #ffffff23;
-  width: calc(100% - 20px * 2 - 20 * 2);
+  width:var(--box-width);
   /* backdrop-filter: blur(50px) saturate(180%); */
-  height:calc(100vh - 150px);
+  height:var(--box-height);
   /* min-height: calc(100vh - 150px); */
-  padding: 20px;
-  border-radius: 20px;
-  margin: 0 20px 20px;
+  /* padding: 20px; */
+  border-radius: var(--box-radius);
+  /* margin: 0 20px 20px; */
   display: flex;
   overflow-y: scroll;
   position: relative;

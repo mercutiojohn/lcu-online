@@ -176,6 +176,7 @@ export default {
 <style>
 .nav {
   height: max-content;
+  padding-top: 20px;
 }
 .nav-content {
   display: flex;
@@ -215,14 +216,20 @@ export default {
   transform: scale(1.02) translateY(-5px);
   transition: all 0.3s ease-out;
   box-shadow: 0 7px 10px 1px #00000023;
+  filter: brightness(1.1);
+
 }
 .nav-block:active {
   /* backdrop-filter: blur(50px) saturate(180%); */
-  background: #00000023 !important;
+  filter: brightness(0.7);
+  overflow: hidden;
+  /* background: #00000023 !important; */
   color: white !important;
   transform: scale(1);
   transition: all 0.1s ease-out;
-  box-shadow: 0 2px 5px 1px inset #00000023;
+  /* box-shadow: 0 2px 5px 1px inset #00000023; */
+  box-shadow: 0 2px 5px 1px #00000023;
+
 }
 .nav-block-top-area{
   height:50%;
@@ -241,6 +248,7 @@ export default {
   height:100%;
 }
 .nav-block-icon {
+  height: fit-content;
   max-height: 40px;
   max-width: 80px;
 }
