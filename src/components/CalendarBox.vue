@@ -4,15 +4,17 @@
     <span class="block-today day-content">
       <span id="day">{{day}}</span>
     </span>
-    <div class="right">
       <span class="bloc-today year-content">
         {{year}} <span style="font-family:sans-serif; font-weight:300;">/</span> {{month}}
       </span>
       <!-- <span class="block month-content"><span id="month"></span>月</span> -->
-      <div>
-        <span class="block-today week-content">星期{{week}} 第{{schoolWeek}}周</span>
-    </div>
-    </div>
+        <span class="block-today week-content">星期{{week}}</span>
+        <span class="block-today week-content">
+          <span v-if="schoolWeek<0">开学还有</span>
+          <span v-else>第</span>
+          {{Math.abs(schoolWeek)}}
+          周
+        </span>
     <!-- <span class="block-today time-content" id="localtime">{{localtime}}</span> -->
   </div>
 </template>
@@ -130,7 +132,7 @@ export default {
   },
   computed: {
     schoolWeek: function () {
-      var startDay = new Date(2020, 8, 1); // 开学时间，可以按格式改，月份从0开始
+      var startDay = new Date(2021, 3, 1); // 开学时间，可以按格式改，月份从0开始
       var startMs = startDay.getTime();
       var startYear = startDay.getFullYear();
       var startMonth = startDay.getMonth() + 1; //月份从0开始
@@ -166,7 +168,7 @@ export default {
 .school-week-content {
   font-size: 30px;
   /* background: #aaa; */
-  text-align: left;
+  text-align: center;
   text-shadow: 0 5px 10px #00000083;
 }
 .time-content {
@@ -181,22 +183,22 @@ export default {
 }
 .day-content {
   font-size: 120px;
-  font-family: Politica, Mitype2018-50, Palatino, Caecilia, Bookerly;
+  font-family: Mitype2018-90, Palatino, Caecilia, Bookerly;
   text-shadow: 0 5px 10px #00000083;
   font-weight: 200;
   /* background: #eee; */
 }
 
 .calendar {
-  font-family: Mitype2018-60, "苹方", "微软雅黑", MiLan, Helvetica, Futura;
+  font-family: Politica, Mitype2018-60, "苹方", "微软雅黑", MiLan, Helvetica, Futura;
   width: 300px;
   font-weight: 800;
   /* background: #555; */
-  margin: 40px 0 0 30px;
+  margin: 40px 0 0 0px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   /* background: #aaa; */
   color: #fff;
   user-select: none;

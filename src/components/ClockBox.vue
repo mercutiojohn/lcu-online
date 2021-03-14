@@ -173,7 +173,7 @@ export default {
   margin-right: 200px;
   border-right: 1px solid #ffffff45;
   padding-right: 10px;
-  margin: 15px 200px 15px 0;
+  margin: 5px 200px 5px 0;
 }
 #clockbox-time {
   position: relative;
