@@ -4,12 +4,9 @@
       <router-link to="/">
         <li :class="'header-bar-tabitem'+handleChangeFontColor()">首页</li>
       </router-link>
-      <router-link to="/course">
-        <li :class="'header-bar-tabitem'+handleChangeFontColor()">视频学习</li>
+      <router-link :to="item.url" v-for="(item,index) in navs" :key="index">
+        <li :class="'header-bar-tabitem'+handleChangeFontColor()">{{item.name}}</li>
       </router-link>
-      <!-- <router-link to="/fanya">
-        <li :class="'header-bar-tabitem'+handleChangeFontColor()">学习通</li>
-      </router-link> -->
       <!-- <router-link to="/classic">
         <li :class="'header-bar-tabitem'+handleChangeFontColor()">经典</li>
       </router-link> -->
@@ -31,7 +28,15 @@ export default {
   },
   data() {
     return {
-      bgEnable:false
+      bgEnable:false,
+      navs:[{
+        name:"收藏夹",
+        url:"/fanya"
+      },
+      {
+        name:"网课",
+        url:"/course"
+      }]
     };
   },
   methods: {
@@ -83,6 +88,7 @@ export default {
   z-index:1000;
   transition: all .3s ease;
 
+  padding: 5px 30px 5px 30px;
 }
 .header-bar-container-bgon{
   background: #ffffff;
@@ -91,7 +97,7 @@ export default {
   transition: all .3s ease;
   color:#000!important;
   /* color:#fff!important; */
-  padding: 5px 30px 5px 30px;
+
   box-shadow: 0 0px 10px 4px #00000010;
 }
 .header-bar-tablist {

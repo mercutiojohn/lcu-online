@@ -1,4 +1,9 @@
 :root {
+
+  --box-width: calc(100% - 10px * 2);
+  --box-height: calc(100vh - 64px - 10px);
+  --box-radius: 15px;
+
   --mode: 'unknown';
   --tab-height: 63px;
   --app-height: calc(100vh - var(--tab-height));

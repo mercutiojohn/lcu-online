@@ -123,7 +123,9 @@ export default {
   transition:all .2s ease;
   margin-top: 20px;
   pointer-events:auto;
-
+  
+  height:40px;
+  margin-top: 10px;
 }
 .searchbar-container-bgon{
   background: #00000015;

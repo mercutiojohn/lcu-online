@@ -21,6 +21,11 @@
     "queryWord": "q",
     "placeholder": "DogeDoge 多吉搜索"
   }, {
+    "title": "学习通",
+    "url": "https://m.chaoxing.com/search",
+    "queryWord": "sw",
+    "placeholder": "学习通·学习是一种信仰"
+  }, {
     "title": "哔哩哔哩",
     "url": "https://search.bilibili.com/all",
     "queryWord": "keyword",
@@ -55,6 +60,5 @@
     "url": "https://www.duckduckgo.com/search",
     "queryWord": "q",
     "placeholder": "DuckDuckGo"
-
   }]
 }
