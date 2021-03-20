@@ -1,6 +1,7 @@
 <template>
   <div :class="'header-bar-container'+handleShowBg()">
     <ul class="header-bar-tablist">
+      <Player />
       <router-link to="/">
         <li :class="'header-bar-tabitem'+handleChangeFontColor()">首页</li>
       </router-link>
@@ -10,21 +11,27 @@
       <!-- <router-link to="/classic">
         <li :class="'header-bar-tabitem'+handleChangeFontColor()">经典</li>
       </router-link> -->
+
     </ul>
     <SearchBar :bgEnable="bgEnable"/>
-    <ClockBox :bgEnable="bgEnable"/>
+    <div class="header-bar-right">
+      <ClockBox :bgEnable="bgEnable"/>
+    </div>
+    
   </div>
 </template>
  
 <script>
 import ClockBox from '@/components/ClockBox'
 import SearchBar from '@/components/SearchBar'
+import Player from '@/components/Player'
 
 export default {
   name: "HeaderBar",
   components: {
     ClockBox,
-    SearchBar
+    SearchBar,
+    Player
   },
   data() {
     return {
@@ -87,7 +94,6 @@ export default {
   align-items: center;
   z-index:1000;
   transition: all .3s ease;
-
   padding: 5px 30px 5px 30px;
 }
 .header-bar-container-bgon{
@@ -100,9 +106,11 @@ export default {
 
   box-shadow: 0 0px 10px 4px #00000010;
 }
+
 .header-bar-tablist {
   display: flex;
-
+  align-items: center;
+  justify-content: center;
 }
 .header-bar-tabitem {
   flex-shrink:0;
@@ -132,6 +140,9 @@ export default {
   /* backdrop-filter: blur(30px) saturate(180%); */
   transition: all 0.2s ease;
   text-shadow:none;
+}
+.header-bar-right{
+  display: flex;
 }
 @media screen and (max-width: 600px){
   .header-bar-tablist{

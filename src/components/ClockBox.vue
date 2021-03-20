@@ -1,25 +1,72 @@
 <template>
   <div id="clockbox">
     <div
-      :id="!clockWrapDisplay?'clockbox-time':'clockbox-time-active'"
+      :id="!clockWrapDisplay ? 'clockbox-time' : 'clockbox-time-active'"
       v-on:click="changeWrapState('display')"
     >
-      <span id="clockbox-week" :class="bgStatus?'bg-text-style':''+handleBgOn()">
+      <span
+        id="clockbox-week"
+        :class="bgStatus ? 'bg-text-style' : '' + handleBgOn()"
+      >
         第
-        <span id="digits">{{week}}</span>周
+        <span id="digits">{{ week }}</span
+        >周
       </span>
       <span
         id="clockbox-twelve-label"
         v-if="clockPreferences.twelveFormat"
-        :class="bgStatus ?'bg-text-style':''+handleBgOn()"
-      >{{clockPreferences.twelveLabel}}</span>
-      <span id="clockbox-time-content" :class="bgStatus ?'bg-text-style':''+handleBgOn()">{{date}}</span>
+        :class="bgStatus ? 'bg-text-style' : '' + handleBgOn()"
+        >{{ clockPreferences.twelveLabel }}</span
+      >
+      <span
+        id="clockbox-time-content"
+        :class="bgStatus ? 'bg-text-style' : '' + handleBgOn()"
+        >{{ date }}</span
+      >
     </div>
     <transition name="fade">
-      <div id="clockbox-wrap" v-show="clockWrapDisplay" :class="clockWrapExpand?'clockbox-wrap-expanded':''">
+      <div
+        id="clockbox-wrap"
+        v-show="clockWrapDisplay"
+        :class="clockWrapExpand ? 'clockbox-wrap-expanded' : ''"
+      >
         <div id="clockbox-space">
-          <span v-on:click="changeWrapState('expand')" style="cursor:pointer;color:white"><svg t="1600101820387" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2731" width="200" height="200"><path d="M853.333333 213.333333a42.666667 42.666667 0 0 0-42.666666-42.666666h-213.333334a42.666667 42.666667 0 0 0 0 85.333333h109.653334l-139.946667 140.373333a42.666667 42.666667 0 0 0 0 60.586667 42.666667 42.666667 0 0 0 60.586667 0L768 316.586667V426.666667a42.666667 42.666667 0 0 0 42.666667 42.666666 42.666667 42.666667 0 0 0 42.666666-42.666666zM456.96 567.04a42.666667 42.666667 0 0 0-60.586667 0L256 706.986667V597.333333a42.666667 42.666667 0 0 0-42.666667-42.666666 42.666667 42.666667 0 0 0-42.666666 42.666666v213.333334a42.666667 42.666667 0 0 0 42.666666 42.666666h213.333334a42.666667 42.666667 0 0 0 0-85.333333H316.586667l140.373333-140.373333a42.666667 42.666667 0 0 0 0-60.586667z" p-id="2732" fill="#ffffff"></path></svg></span>
-          <span v-on:click="changeUrl()" style="cursor:pointer;color:white"><svg t="1600101946682" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4641" width="200" height="200"><path d="M768 426.666667a42.666667 42.666667 0 0 0-42.666667-42.666667H230.826667l98.133333-97.706667a42.666667 42.666667 0 0 0-60.586667-60.586666l-170.666666 170.666666a42.666667 42.666667 0 0 0-8.96 46.506667A42.666667 42.666667 0 0 0 128 469.333333h597.333333a42.666667 42.666667 0 0 0 42.666667-42.666666z m167.253333 154.453333A42.666667 42.666667 0 0 0 896 554.666667H298.666667a42.666667 42.666667 0 0 0 0 85.333333h494.506666l-98.133333 97.706667a42.666667 42.666667 0 0 0 0 60.586666 42.666667 42.666667 0 0 0 60.586667 0l170.666666-170.666666a42.666667 42.666667 0 0 0 8.96-46.506667z" p-id="4642" fill="#ffffff"></path></svg></span>
+          <span
+            v-on:click="changeWrapState('expand')"
+            style="cursor: pointer; color: white"
+            ><svg
+              t="1600101820387"
+              class="icon"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="2731"
+              width="200"
+              height="200"
+            >
+              <path
+                d="M853.333333 213.333333a42.666667 42.666667 0 0 0-42.666666-42.666666h-213.333334a42.666667 42.666667 0 0 0 0 85.333333h109.653334l-139.946667 140.373333a42.666667 42.666667 0 0 0 0 60.586667 42.666667 42.666667 0 0 0 60.586667 0L768 316.586667V426.666667a42.666667 42.666667 0 0 0 42.666667 42.666666 42.666667 42.666667 0 0 0 42.666666-42.666666zM456.96 567.04a42.666667 42.666667 0 0 0-60.586667 0L256 706.986667V597.333333a42.666667 42.666667 0 0 0-42.666667-42.666666 42.666667 42.666667 0 0 0-42.666666 42.666666v213.333334a42.666667 42.666667 0 0 0 42.666666 42.666666h213.333334a42.666667 42.666667 0 0 0 0-85.333333H316.586667l140.373333-140.373333a42.666667 42.666667 0 0 0 0-60.586667z"
+                p-id="2732"
+                fill="#ffffff"
+              ></path></svg
+          ></span>
+          <span v-on:click="changeUrl()" style="cursor: pointer; color: white"
+            ><svg
+              t="1600101946682"
+              class="icon"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="4641"
+              width="200"
+              height="200"
+            >
+              <path
+                d="M768 426.666667a42.666667 42.666667 0 0 0-42.666667-42.666667H230.826667l98.133333-97.706667a42.666667 42.666667 0 0 0-60.586667-60.586666l-170.666666 170.666666a42.666667 42.666667 0 0 0-8.96 46.506667A42.666667 42.666667 0 0 0 128 469.333333h597.333333a42.666667 42.666667 0 0 0 42.666667-42.666666z m167.253333 154.453333A42.666667 42.666667 0 0 0 896 554.666667H298.666667a42.666667 42.666667 0 0 0 0 85.333333h494.506666l-98.133333 97.706667a42.666667 42.666667 0 0 0 0 60.586666 42.666667 42.666667 0 0 0 60.586667 0l170.666666-170.666666a42.666667 42.666667 0 0 0 8.96-46.506667z"
+                p-id="4642"
+                fill="#ffffff"
+              ></path></svg
+          ></span>
         </div>
         <div id="clockbox-calendar-container">
           <iframe
@@ -30,26 +77,21 @@
             frameborder="0"
             scrolling="auto"
           ></iframe>
-          <!-- <van-calendar v-model="show" type="range" :formatter="formatter" /> -->
         </div>
       </div>
     </transition>
   </div>
 </template>
 <script>
-
-
 export default {
-  props:[
-    'bgEnable'
-  ],
+  props: ["bgEnable"],
   name: "ClockBox",
   date: "",
   data() {
     return {
-      currUrl:0,
-      url:[
-        'https://www.dida365.com/webapp/#q/all/today'
+      currUrl: 0,
+      url: [
+        "https://www.dida365.com/webapp/#q/all/today",
         // 'https://i.ai.mi.com/h5/precache/ai-schedule/#/home',
         // 'https://music.163.com/st/difm/index.html',
         // 'https://t.bilibili.com/pages/nav/index_new',
@@ -64,26 +106,27 @@ export default {
     };
   },
   methods: {
-    changeUrl(){
-      if(this.currUrl+1<this.url.length){
+    changeUrl() {
+      if (this.currUrl + 1 < this.url.length) {
         this.currUrl++;
-      }else{
+      } else {
         this.currUrl = 0;
       }
     },
     changeWrapState(item) {
-        if(item=='display'){
-      if (this.clockWrapDisplay == true) {
-        this.clockWrapDisplay = false;
-      } else {
-        this.clockWrapDisplay = true;
-      }}
-      else if(item=='expand'){
-      if (this.clockWrapExpand == true) {
-        this.clockWrapExpand = false;
-      } else {
-        this.clockWrapExpand = true;
-      }}
+      if (item == "display") {
+        if (this.clockWrapDisplay == true) {
+          this.clockWrapDisplay = false;
+        } else {
+          this.clockWrapDisplay = true;
+        }
+      } else if (item == "expand") {
+        if (this.clockWrapExpand == true) {
+          this.clockWrapExpand = false;
+        } else {
+          this.clockWrapExpand = true;
+        }
+      }
     },
     getTime() {
       var today = new Date();
@@ -118,13 +161,13 @@ export default {
       }
       return i;
     },
-    handleBgOn(){
-      if(this.bgEnable){
-        return ' clockbox-noshadow'
-      }else{
-        return ''
+    handleBgOn() {
+      if (this.bgEnable) {
+        return " clockbox-noshadow";
+      } else {
+        return "";
       }
-    }
+    },
   },
   created() {
     this.date = this.getTime();
@@ -155,11 +198,11 @@ export default {
 :root {
   --wrap-gap: 10px;
 }
-#clockbox{
+#clockbox {
   flex-shrink: 0;
   padding: 3px;
 }
-#clockbox:hover{
+#clockbox:hover {
   background: #80808054;
   border-radius: 5px;
   cursor: pointer;
@@ -218,7 +261,7 @@ export default {
   flex-direction: column;
 }
 .clockbox-wrap-expanded {
-  width: calc(100vw - var(--wrap-gap) * 2)!important;
+  width: calc(100vw - var(--wrap-gap) * 2) !important;
   transition: all 0.1s;
 }
 #clockbox-calendar-container {
@@ -227,24 +270,24 @@ export default {
   overflow: scroll;
   height: calc(100% - 70px - 5px);
 }
-.clockbox-noshadow{
-  text-shadow: none!important;
-  color: #000000!important;
-  transition: all .3s ease;
+.clockbox-noshadow {
+  text-shadow: none !important;
+  color: #000000 !important;
+  transition: all 0.3s ease;
 }
-#left-col-iframe{
+#left-col-iframe {
   background: #fff;
   width: 100%;
   height: 100%;
 }
-.icon{
+.icon {
   width: 20px;
   height: 20px;
   margin: 5px;
   padding: 4px;
   border-radius: 3px;
 }
-.icon:hover{
+.icon:hover {
   background: #ffffff45;
 }
 </style>
