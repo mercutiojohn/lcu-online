@@ -24,6 +24,8 @@ import axios from 'axios'
 import Video from 'video.js'
 import 'video.js/dist/video-js.css'
 
+import '../static/icon/line-icon/iconfont.css'
+import '../static/icon/music-controls/iconfont.css'
 Vue.prototype.$video = Video
 
 Vue.use(VueRouter)
@@ -36,6 +38,7 @@ Vue.config.productionTip = false
 import Course from '@/pages/Course'
 import HelloPage from '@/pages/HelloPage'
 import Fanya from '@/pages/Fanya'
+
 // 1. 定义 (路由) 组件。
 // 可以从其他文件 import 进来
 const Test = {

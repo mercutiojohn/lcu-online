@@ -1,3 +1,19 @@
 {
-    "liveServer.settings.port": 5502
+    "liveServer.settings.port": 5502,
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "MySQL",
+            "database": "merc",
+            "username": "root",
+            "password": "gyc123456"
+        }
+    ],
+    "search-online.search-engine": "Baidu"
 }
