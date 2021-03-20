@@ -298,7 +298,10 @@ export default {
   box-shadow: 0 1px 20px 5px #00000023;
 }
 .player-media {
-    display: none;
+    display: none!important;
+    width: 0;
+    height: 0;
+    overflow: hidden;
   position: relative;
   top: 0;
   width: 100%;
