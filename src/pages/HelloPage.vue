@@ -5,8 +5,6 @@
     <div id="hello-content">
       <div id="left-info">
         <CalendarBox />
-        <Player />
-
         <Hitokoto />
         <div class="about">
           <span class="about-text">鲁ICP备20018544号</span>
