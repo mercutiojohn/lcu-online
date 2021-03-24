@@ -63,11 +63,7 @@ export default {
 
 <style>
 .hitokoto-box{
-    background: #ffffff75;
-    backdrop-filter: blur(30px) saturate(180%);
-    box-shadow: 0 5px 8px 3px #00000014;
     padding: 15px;
-    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;

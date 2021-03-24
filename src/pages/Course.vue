@@ -7,7 +7,7 @@
         :visible.sync="dialogVisible"
         width="30%"
         :before-close="handleClose"
-      >
+      > 
         <span>这是一段信息</span>
         <span slot="footer" class="dialog-footer">
           <el-button @click="dialogVisible = false">取 消</el-button>
@@ -135,8 +135,6 @@
 </template>
 
 <script>
-// import courseData from "@/assets/data/courseData.json";
-// import list from "@/assets/data/list.json"
 
 export default {
   name: "Course",
