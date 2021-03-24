@@ -1,21 +1,26 @@
 <template>
   <div class="calendar">
+    <div class="calendar-background"></div>
     <!-- <span class="block date-content"><span id="localdate"></span></span> -->
-    <span class="block-today day-content">
-      <span id="day">{{day}}</span>
-    </span>
+    <div class="calendar-content">
+      <span class="block-today day-content">
+        <span id="day">{{ day }}</span>
+      </span>
       <span class="bloc-today year-content">
-        {{year}} <span style="font-family:sans-serif; font-weight:300;">/</span> {{month}}
+        {{ year }}
+        <span style="font-family: sans-serif; font-weight: 300">/</span>
+        {{ month }}
       </span>
       <!-- <span class="block month-content"><span id="month"></span>月</span> -->
-        <span class="block-today week-content">星期{{week}}</span>
-        <span class="block-today week-content">
-          <span v-if="schoolWeek<0">开学还有</span>
-          <!-- <span v-else>第</span>
+      <span class="block-today week-content">星期{{ week }}</span>
+      <span class="block-today week-content">
+        <span v-if="schoolWeek < 0">开学还有</span>
+        <!-- <span v-else>第</span>
           {{Math.abs(schoolWeek)}}
           周 -->
-        </span>
-    <!-- <span class="block-today time-content" id="localtime">{{localtime}}</span> -->
+      </span>
+      <!-- <span class="block-today time-content" id="localtime">{{localtime}}</span> -->
+    </div>
   </div>
 </template>
 
@@ -168,9 +173,8 @@ export default {
 .school-week-content {
   font-size: 30px;
   /* background: #aaa; */
-  text-align: center;
+  text-align: left;
   text-shadow: 0 0px 20px #00000083;
-
 }
 .time-content {
   font-size: 30px;
@@ -185,7 +189,8 @@ export default {
 .day-content {
   font-size: 120px;
   line-height: 110px;
-  font-family:  Politica, Mitype2018-60, Mitype2018-90, Palatino, Caecilia, Bookerly;
+  font-family: Politica, Mitype2018-60, Mitype2018-90, Palatino, Caecilia,
+    Bookerly;
   text-shadow: 0 0px 30px #00000083;
   font-weight: 200;
   padding-bottom: 10px;
@@ -194,13 +199,10 @@ export default {
 
 .calendar {
   box-sizing: border-box;
-  font-family: Mitype2018-60, Politica,  "PingFang SC", "微软雅黑", MiLan, Helvetica, Futura;
+  font-family: Mitype2018-60, Politica, "PingFang SC", "微软雅黑", MiLan,
+    Helvetica, Futura;
   /* width: 300px; */
-  backdrop-filter: blur(30px) saturate(180%);
-  box-shadow: 0 5px 8px 3px #00000014;
   font-weight: 800;
-  border-radius: 10px;
-  background: #ffffff75;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -212,7 +214,7 @@ export default {
 }
 .week-content,
 .school-week-content {
-font-size:20px;
-margin:7px 0;
+  font-size: 20px;
+  margin: 7px 0;
 }
 </style>
