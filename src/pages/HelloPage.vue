@@ -133,7 +133,7 @@ export default {
 }
 .about{
   position: absolute;
-  bottom:10px;
+  bottom:0;
   left:25px;
   width:100%;
   /* margin: 0 auto 20px; */
