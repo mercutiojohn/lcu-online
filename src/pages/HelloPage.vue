@@ -78,7 +78,9 @@ export default {
   background-image: radial-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%), radial-gradient(rgba(0, 0, 0, 0) 33%, rgba(0, 0, 0, 0.3) 166%),linear-gradient(180deg, rgba(0, 0, 0, 0) 0%,rgba(0, 0, 0, 0) 0% 75%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
 }
 #hello-content {
-  background: #ffffff23;
+  box-sizing: border-box;
+  /* background: #ffffff23; */
+  border:  1px solid #ffffff45;
   width:var(--box-width);
   /* backdrop-filter: blur(50px) saturate(180%); */
   height:var(--box-height);
@@ -92,8 +94,18 @@ export default {
 }
 
 #left-info{
+  box-sizing: border-box;
   position: sticky;
-  top:0px;
+  top:0;
+  padding: 40px 20px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+#left-info *{
+  margin: 10px 0;
 }
 
 .navigation {

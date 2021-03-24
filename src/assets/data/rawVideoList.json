@@ -1,0 +1,392 @@
+{
+  "code": 0,
+  "message": "0",
+  "ttl": 1,
+  "data": [{
+      "id": 1,
+      "name": "我创建的收藏夹",
+      "mediaListResponse": {
+        "count": 16,
+        "list": [{
+            "id": 983722234,
+            "fid": 9837222,
+            "mid": 604883934,
+            "attr": 0,
+            "title": "默认收藏夹",
+            "cover": "http://i1.hdslb.com/bfs/archive/41ddf5daa55efe75f323e39cbb7dafee95ebc439.jpg",
+            "upper": {
+              "mid": 604883934,
+              "name": "",
+              "face": ""
+            },
+            "cover_type": 2,
+            "intro": "",
+            "ctime": 1591519378,
+            "mtime": 1591519378,
+            "state": 0,
+            "fav_state": 0,
+            "media_count": 48,
+            "view_count": 0,
+            "type": 0,
+            "link": ""
+          },
+          {
+            "id": 1200320534,
+            "fid": 12003205,
+            "mid": 604883934,
+            "attr": 22,
+            "title": "Java",
+            "cover": "http://i2.hdslb.com/bfs/archive/c9958e7a5a8553c1a93aa1787ef5847e06748650.jpg",
+            "upper": {
+              "mid": 604883934,
+              "name": "",
+              "face": ""
+            },
+            "cover_type": 2,
+            "intro": "",
+            "ctime": 1615625793,
+            "mtime": 1615625793,
+            "state": 0,
+            "fav_state": 0,
+            "media_count": 9,
+            "view_count": 0,
+            "type": 0,
+            "link": ""
+          },
+          {
+            "id": 1200081034,
+            "fid": 12000810,
+            "mid": 604883934,
+            "attr": 2,
+            "title": "复习全书",
+            "cover": "http://i0.hdslb.com/bfs/archive/55dee94ccf825f5cabf863e45de08d6f24d83a28.jpg",
+            "upper": {
+              "mid": 604883934,
+              "name": "",
+              "face": ""
+            },
+            "cover_type": 2,
+            "intro": "",
+            "ctime": 1615616910,
+            "mtime": 1615617012,
+            "state": 0,
+            "fav_state": 0,
+            "media_count": 2,
+            "view_count": 0,
+            "type": 0,
+            "link": ""
+          },
+          {
+            "id": 1190761434,
+            "fid": 11907614,
+            "mid": 604883934,
+            "attr": 22,
+            "title": "外刊",
+            "cover": "http://i2.hdslb.com/bfs/archive/0bf881ef35ac326586da0080f228631e47fa151d.jpg",
+            "upper": {
+              "mid": 604883934,
+              "name": "",
+              "face": ""
+            },
+            "cover_type": 2,
+            "intro": "",
+            "ctime": 1614436686,
+            "mtime": 1614436686,
+            "state": 0,
+            "fav_state": 0,
+            "media_count": 1,
+            "view_count": 0,
+            "type": 0,
+            "link": ""
+          },
+          {
+            "id": 1182060234,
+            "fid": 11820602,
+            "mid": 604883934,
+            "attr": 22,
+            "title": "小学信息技术课",
+            "cover": "http://i0.hdslb.com/bfs/archive/e5e5b6f7662e5439dfe9e09561ba5e7b95d7fd1f.png",
+            "upper": {
+              "mid": 604883934,
+              "name": "",
+              "face": ""
+            },
+            "cover_type": 2,
+            "intro": "",
+            "ctime": 1613568755,
+            "mtime": 1615625512,
+            "state": 0,
+            "fav_state": 0,
+            "media_count": 8,
+            "view_count": 0,
+            "type": 0,
+            "link": ""
+          },
+          {
+            "id": 1182059934,
+            "fid": 11820599,
+            "mid": 604883934,
+            "attr": 22,
+            "title": "考研数学",
+            "cover": "http://i2.hdslb.com/bfs/archive/54bfc4472f031d0e6d4cdbf01e063624d7b63031.jpg",
+            "upper": {
+              "mid": 604883934,
+              "name": "",
+              "face": ""
+            },
+            "cover_type": 2,
+            "intro": "",
+            "ctime": 1613568692,
+            "mtime": 1613568692,
+            "state": 0,
+            "fav_state": 0,
+            "media_count": 2,
+            "view_count": 0,
+            "type": 0,
+            "link": ""
+          },
+          {
+            "id": 1166058534,
+            "fid": 11660585,
+            "mid": 604883934,
+            "attr": 22,
+            "title": "1800",
+            "cover": "http://i2.hdslb.com/bfs/archive/6131a9bd1b85c6d4aeb55b7cd2bc1e9a989f7314.jpg",
+            "upper": {
+              "mid": 604883934,
+              "name": "",
+              "face": ""
+            },
+            "cover_type": 2,
+            "intro": "",
+            "ctime": 1612095735,
+            "mtime": 1612095735,
+            "state": 0,
+            "fav_state": 0,
+            "media_count": 6,
+            "view_count": 0,
+            "type": 0,
+            "link": ""
+          },
+          {
+            "id": 1165978434,
+            "fid": 11659784,
+            "mid": 604883934,
+            "attr": 22,
+            "title": "暴走动画",
+            "cover": "http://i1.hdslb.com/bfs/archive/9f084b6cb1a697efbd6e6aefb2025c622d27e2e5.jpg",
+            "upper": {
+              "mid": 604883934,
+              "name": "",
+              "face": ""
+            },
+            "cover_type": 2,
+            "intro": "",
+            "ctime": 1612096154,
+            "mtime": 1612096154,
+            "state": 0,
+            "fav_state": 0,
+            "media_count": 4,
+            "view_count": 0,
+            "type": 0,
+            "link": ""
+          },
+          {
+            "id": 1165977334,
+            "fid": 11659773,
+            "mid": 604883934,
+            "attr": 22,
+            "title": "朱伟 5500 7000",
+            "cover": "http://i0.hdslb.com/bfs/archive/1ddbb104e783e8b49eca27e1b14ee8e55bbeaa04.jpg",
+            "upper": {
+              "mid": 604883934,
+              "name": "",
+              "face": ""
+            },
+            "cover_type": 2,
+            "intro": "",
+            "ctime": 1612095922,
+            "mtime": 1612095922,
+            "state": 0,
+            "fav_state": 0,
+            "media_count": 5,
+            "view_count": 0,
+            "type": 0,
+            "link": ""
+          },
+          {
+            "id": 1165896234,
+            "fid": 11658962,
+            "mid": 604883934,
+            "attr": 22,
+            "title": "算法",
+            "cover": "http://i0.hdslb.com/bfs/archive/9c92882f6cfc8f2e34b4d1453f00077170d2eab8.jpg",
+            "upper": {
+              "mid": 604883934,
+              "name": "",
+              "face": ""
+            },
+            "cover_type": 2,
+            "intro": "",
+            "ctime": 1612096319,
+            "mtime": 1612096319,
+            "state": 0,
+            "fav_state": 0,
+            "media_count": 2,
+            "view_count": 0,
+            "type": 0,
+            "link": ""
+          },
+          {
+            "id": 1165895934,
+            "fid": 11658959,
+            "mid": 604883934,
+            "attr": 22,
+            "title": "英语",
+            "cover": "http://i1.hdslb.com/bfs/archive/9b4221ffaff9e8d3f5c994e4ef29487b1a3563bc.jpg",
+            "upper": {
+              "mid": 604883934,
+              "name": "",
+              "face": ""
+            },
+            "cover_type": 2,
+            "intro": "",
+            "ctime": 1612096255,
+            "mtime": 1612096255,
+            "state": 0,
+            "fav_state": 0,
+            "media_count": 4,
+            "view_count": 0,
+            "type": 0,
+            "link": ""
+          },
+          {
+            "id": 1165892934,
+            "fid": 11658929,
+            "mid": 604883934,
+            "attr": 22,
+            "title": "660",
+            "cover": "http://i0.hdslb.com/bfs/archive/2123c3fed57351700a941ba7ff22a4ad063311e4.jpg",
+            "upper": {
+              "mid": 604883934,
+              "name": "",
+              "face": ""
+            },
+            "cover_type": 2,
+            "intro": "",
+            "ctime": 1612095708,
+            "mtime": 1612095708,
+            "state": 0,
+            "fav_state": 0,
+            "media_count": 5,
+            "view_count": 0,
+            "type": 0,
+            "link": ""
+          },
+          {
+            "id": 1165800834,
+            "fid": 11658008,
+            "mid": 604883934,
+            "attr": 22,
+            "title": "专业课",
+            "cover": "http://i1.hdslb.com/bfs/archive/167fd4e4c72609f4e8a53d23a545ededfd1c9e13.jpg",
+            "upper": {
+              "mid": 604883934,
+              "name": "",
+              "face": ""
+            },
+            "cover_type": 2,
+            "intro": "",
+            "ctime": 1612095821,
+            "mtime": 1612095821,
+            "state": 0,
+            "fav_state": 0,
+            "media_count": 5,
+            "view_count": 0,
+            "type": 0,
+            "link": ""
+          },
+          {
+            "id": 1158554034,
+            "fid": 11585540,
+            "mid": 604883934,
+            "attr": 22,
+            "title": "干货",
+            "cover": "http://i1.hdslb.com/bfs/archive/75e33b39c04cb5c63ec87885c0988c9a57a96a1f.jpg",
+            "upper": {
+              "mid": 604883934,
+              "name": "",
+              "face": ""
+            },
+            "cover_type": 2,
+            "intro": "",
+            "ctime": 1611412864,
+            "mtime": 1611412864,
+            "state": 0,
+            "fav_state": 0,
+            "media_count": 21,
+            "view_count": 0,
+            "type": 0,
+            "link": ""
+          },
+          {
+            "id": 1157299334,
+            "fid": 11572993,
+            "mid": 604883934,
+            "attr": 22,
+            "title": "高数",
+            "cover": "http://i2.hdslb.com/bfs/archive/82b3584f8a670689d32ba59da286db36fbdd7742.jpg",
+            "upper": {
+              "mid": 604883934,
+              "name": "",
+              "face": ""
+            },
+            "cover_type": 2,
+            "intro": "",
+            "ctime": 1611309107,
+            "mtime": 1611309107,
+            "state": 0,
+            "fav_state": 0,
+            "media_count": 1,
+            "view_count": 0,
+            "type": 0,
+            "link": ""
+          },
+          {
+            "id": 1012667034,
+            "fid": 10126670,
+            "mid": 604883934,
+            "attr": 23,
+            "title": "催眠",
+            "cover": "http://i0.hdslb.com/bfs/archive/67ccc83bd56eb88677b6880ec9edbb67f5d44b32.png",
+            "upper": {
+              "mid": 604883934,
+              "name": "",
+              "face": ""
+            },
+            "cover_type": 2,
+            "intro": "",
+            "ctime": 1594994730,
+            "mtime": 1594994730,
+            "state": 0,
+            "fav_state": 0,
+            "media_count": 1,
+            "view_count": 0,
+            "type": 0,
+            "link": ""
+          }
+        ],
+        "has_more": false
+      }
+    },
+    {
+      "id": 2,
+      "name": "稍后再看",
+      "mediaListResponse": {
+        "count": 8,
+        "list": null,
+        "has_more": false
+      }
+    }
+  ]
+}
