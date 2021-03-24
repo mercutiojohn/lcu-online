@@ -6,7 +6,7 @@
               <li class="searchbar-engines-item" v-for="(item,index) in targetUrl" :key="index" @click="changeEngine(index)">
                 <div :class="'searchbar-engines-item-icon' + (currUrl==index?' searchbar-engines-item-icon-active':'')">
                   <div :style="'background:'+item.bg+';width:100%;height:100%;'">
-                    <img :src="item.src" alt="" srcset="">
+                    <img :src="getIcon(item.icon)" alt="" srcset="">
                   </div>
                 </div>
                 <span :class="'searchbar-engines-item-title' + (currUrl==index?' searchbar-engines-item-title-active':'')">{{item.title}}</span>
@@ -42,10 +42,20 @@ export default {
         placeholder: "Microsoft Bing 必应搜索"
       }],
       searchWrapDisplay: false,
-      suggestions: false
+      suggestions: false,
+      iconUrl:''
     }
   },
   methods:{
+     getIcon(icon) {
+      try {
+        const a = require("@/assets/img/search-engines/" + icon);
+        return a;
+      } catch (err) {
+        console.log(err);
+        return require("@/assets/img/function/pic.svg");
+      }
+    },
     getList() {
       var searchEngines = require("@/assets/data/searchEngines.json");
       this.currUrl = searchEngines.currUrl;
@@ -241,11 +251,21 @@ export default {
 }
 
 .searchbar-engines-item-icon{
+
   width: 50px;
   height: 50px;
   background: #ffffff56;
   border-radius: 10px;
   overflow: hidden;
+}
+.searchbar-engines-item-icon div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchbar-engines-item-icon img{
+  width:90%;
+  height:90%;
 }
 .searchbar-engines-item-title{
   display: flex;
@@ -265,6 +285,7 @@ export default {
 .searchbar-recommends{
   height:500px;
 }
+
 @media screen and (max-width: 600px){
   #searchbar{
     width:100%;

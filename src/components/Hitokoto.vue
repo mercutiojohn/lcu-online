@@ -66,9 +66,6 @@ export default {
     background: #ffffff75;
     backdrop-filter: blur(30px) saturate(180%);
     box-shadow: 0 5px 8px 3px #00000014;
-    /* height: 100px; */
-    width: 250px;
-    margin:30px 20px 0;
     padding: 15px;
     border-radius: 10px;
     display: flex;
@@ -77,12 +74,13 @@ export default {
     flex-direction: column;
 }
 .hitokoto-content {
-    width: 100%;
+  text-shadow: 0 0 40px #ffffff94;
+  width: 100%;
   color: #000;
-    display: flex;
-justify-content: flex-start;
-    font-size: 20px;
-    font-weight: 600;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 20px;
+  font-weight: 600;
 }
 .hitokoto-from {
     margin-top: 20px;

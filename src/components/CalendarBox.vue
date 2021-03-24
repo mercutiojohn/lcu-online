@@ -11,9 +11,9 @@
         <span class="block-today week-content">星期{{week}}</span>
         <span class="block-today week-content">
           <span v-if="schoolWeek<0">开学还有</span>
-          <span v-else>第</span>
+          <!-- <span v-else>第</span>
           {{Math.abs(schoolWeek)}}
-          周
+          周 -->
         </span>
     <!-- <span class="block-today time-content" id="localtime">{{localtime}}</span> -->
   </div>
@@ -169,7 +169,8 @@ export default {
   font-size: 30px;
   /* background: #aaa; */
   text-align: center;
-  text-shadow: 0 5px 10px #00000083;
+  text-shadow: 0 0px 20px #00000083;
+
 }
 .time-content {
   font-size: 30px;
@@ -183,25 +184,31 @@ export default {
 }
 .day-content {
   font-size: 120px;
-  font-family: Mitype2018-90, Palatino, Caecilia, Bookerly;
-  text-shadow: 0 5px 10px #00000083;
+  line-height: 110px;
+  font-family:  Politica, Mitype2018-60, Mitype2018-90, Palatino, Caecilia, Bookerly;
+  text-shadow: 0 0px 30px #00000083;
   font-weight: 200;
+  padding-bottom: 10px;
   /* background: #eee; */
 }
 
 .calendar {
-  font-family: Politica, Mitype2018-60, "苹方", "微软雅黑", MiLan, Helvetica, Futura;
-  width: 300px;
+  box-sizing: border-box;
+  font-family: Mitype2018-60, Politica,  "PingFang SC", "微软雅黑", MiLan, Helvetica, Futura;
+  /* width: 300px; */
+  backdrop-filter: blur(30px) saturate(180%);
+  box-shadow: 0 5px 8px 3px #00000014;
   font-weight: 800;
-  /* background: #555; */
-  margin: 40px 0 0 0px;
+  border-radius: 10px;
+  background: #ffffff75;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   /* background: #aaa; */
   color: #fff;
   user-select: none;
+  padding: 20px;
 }
 .week-content,
 .school-week-content {
