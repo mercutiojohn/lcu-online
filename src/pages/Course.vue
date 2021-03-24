@@ -30,7 +30,7 @@
           定时任务补偿
           </el-tab-pane>
       </el-tabs> -->
-      <div id="course-category-list-box" class="scalable">
+      <div id="course-category-list-box">
         <div class="course-video-list">
           <ul>
             <li
@@ -46,13 +46,12 @@
             </li>
           </ul>
           <el-button type="text" @click="dialogVisible = true"
-            >点击打开 Dialog</el-button
-          >
+            >点击打开 Dialog</el-button>
         </div>
-        <div class="course-separator"><i></i><i></i></div>
+        <!-- <div class="course-separator"><i></i><i></i></div> -->
       </div>
 
-      <div id="course-video-list-box">
+      <div id="course-video-list-box" class="scalable">
         <div class="course-video-list">
           <ul class="course-video-list">
             <li
@@ -112,13 +111,16 @@
             </li>
           </ul>
         </div>
-        <!-- <div class="course-separator"><i></i><i></i></div> -->
+        <div class="course-separator">
+          <i></i>
+        </div>
       </div>
 
       <div id="course-study">
         <iframe
           id="course-study-video"
           :src="videoUrl"
+          :data-src="videoUrl"
           scrolling="no"
           border="0"
           frameborder="no"
@@ -140,8 +142,8 @@ export default {
   name: "Course",
   data() {
     return {
-      startX:'',
-      startWidth:'',
+      startX: "",
+      startWidth: "",
       courseData: "",
       list: "",
       player: 0,
@@ -156,21 +158,24 @@ export default {
   },
   methods: {
     startDrag(e) {
-        this.startX = e.clientX
-        this.startWidth = parseInt(window.getComputedStyle(document.querySelector('.scalable')).width, 10) //10是十进制
-        console.log(this.startWidth)
+      this.startX = e.clientX;
+      this.startWidth = parseInt(
+        window.getComputedStyle(document.querySelector(".scalable")).width,
+        10
+      ); //10是十进制
+      console.log(this.startWidth);
 
-        document.documentElement.addEventListener('mousemove', this.onDrag)
-        document.documentElement.addEventListener('mouseup', this.stopDrag)
+      document.documentElement.addEventListener("mousemove", this.onDrag);
+      document.documentElement.addEventListener("mouseup", this.stopDrag);
     },
 
     onDrag(e) {
-        let newWidth = this.startWidth + e.clientX - this.startX
-        document.querySelector('.scalable').style.width = newWidth + 'px'
+      let newWidth = this.startWidth + e.clientX - this.startX;
+      document.querySelector(".scalable").style.width = newWidth + "px";
     },
     stopDrag(e) {
-        document.documentElement.removeEventListener('mousemove', this.onDrag)
-        document.documentElement.removeEventListener('mouseup', this.stopDrag)
+      document.documentElement.removeEventListener("mousemove", this.onDrag);
+      document.documentElement.removeEventListener("mouseup", this.stopDrag);
     },
     handleClose(done) {
       this.$confirm("确认关闭？")
@@ -226,10 +231,12 @@ export default {
     },
   },
   mounted() {
-    setTimeout(()=>{
-      console.log(document.querySelector('.course-separator'));
-      document.querySelector('.course-separator').addEventListener('mousedown', this.startDrag)
-    },5000)
+    setTimeout(() => {
+      console.log(document.querySelector(".course-separator"));
+      document
+        .querySelector(".course-separator")
+        .addEventListener("mousedown", this.startDrag);
+    }, 5000);
   },
   created() {
     // this.getCourseData();
@@ -315,14 +322,15 @@ export default {
   border-radius: var(--box-radius);
 }
 #course-video-list-box {
-  width: 20%;
+  width: 320px;
+  max-width: 1000px;
+  min-width: 100px;
   z-index: 9;
-
 }
 #course-category-list-box {
   width: 200px;
   max-width: 200px;
-  min-width: 30px;
+  min-width: 50px;
   z-index: 10;
 }
 #course-category-list-box,
@@ -334,7 +342,7 @@ export default {
   position: relative;
 }
 #course-study {
-  flex:1;
+  flex: 1;
   /* width: 65%; */
   height: 100%;
   /* background: #000; */
@@ -350,7 +358,7 @@ export default {
   overflow: scroll;
   /* color: #fff; */
 }
-.course-separator {
+.cate-separator {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -364,11 +372,33 @@ export default {
   cursor: col-resize;
   border-radius: 10px;
 }
+.course-separator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  /* background: var(--accent-color); */
+  /* box-shadow: 0 0 5px 1px #00000025; */
+  cursor: col-resize;
+  top: 0;
+  height: 100%;
+  opacity: 0;
+  right: -5px;
+  width: 10px;
+}
+.course-separator:hover {
+  right: -50px;
+  width: 100px;
+  opacity: 1;
+  background: #ffffff03;
+  transition: all .2s ease;
+  /* transform: scale(1.1); */
+}
 .course-separator i {
-  background: rgba(0, 0, 0, 0.35);
-  height: 14px;
-  width: 1px;
-  margin: 0 1px;
+  background: var(--accent-color);
+  height: 100%;
+  width: 5px;
+  /* margin: 0 1px; */
 }
 .course-video-item {
   border-bottom: 1px solid #ddd;
@@ -475,6 +505,10 @@ export default {
   color: var(--accent-color);
 }
 .course-video-item-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
   font-size: 15px;
 }
 .course-video-item-desc {

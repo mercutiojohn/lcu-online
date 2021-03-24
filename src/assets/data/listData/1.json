@@ -1,11 +1,94 @@
-[
-    {
-        id:"46968562",
-        title:"高数叔《概率统计》基础知识",
-        cover:"https://i2.hdslb.com/bfs/archive/ceb90e80b92af53db928ba9797c721d9473d4fdf.jpg"
-    },{
-        id:"45683335",
-        title:"【美赛|数学建模】2019美赛尖端培训课",
-        cover:"https://i0.hdslb.com/bfs/archive/8a1ec988e6c5ceec23403a3e83645a25678eec48.jpg"
-    }
-]
+{
+  "code": 0,
+  "message": "0",
+  "ttl": 1,
+  "data": {
+    "info": {
+      "id": 1200081034,
+      "fid": 12000810,
+      "mid": 604883934,
+      "attr": 2,
+      "title": "复习全书",
+      "cover": "http://i0.hdslb.com/bfs/archive/55dee94ccf825f5cabf863e45de08d6f24d83a28.jpg",
+      "upper": {
+        "mid": 604883934,
+        "name": "莫阿白abai",
+        "face": "http://i2.hdslb.com/bfs/face/57331619a4dca3a0450e52e6b19bb69bfdbef32e.jpg",
+        "followed": false,
+        "vip_type": 0,
+        "vip_statue": 0
+      },
+      "cover_type": 2,
+      "cnt_info": {
+        "collect": 0,
+        "play": 0,
+        "thumb_up": 0,
+        "share": 0
+      },
+      "type": 11,
+      "intro": "",
+      "ctime": 1615616910,
+      "mtime": 1615617012,
+      "state": 0,
+      "fav_state": 0,
+      "like_state": 0,
+      "media_count": 2
+    },
+    "medias": [{
+        "id": 202032327,
+        "type": 2,
+        "title": "考研数学武忠祥 l 两小时搞定大纲新增内容",
+        "cover": "http://i0.hdslb.com/bfs/archive/55dee94ccf825f5cabf863e45de08d6f24d83a28.jpg",
+        "intro": "",
+        "page": 1,
+        "duration": 7042,
+        "upper": {
+          "mid": 688379639,
+          "name": "考研数学武忠祥老师",
+          "face": "http://i1.hdslb.com/bfs/face/0f24c3739bd4585507ad0ddaa21d912cf1268937.jpg"
+        },
+        "attr": 0,
+        "cnt_info": {
+          "collect": 10860,
+          "play": 144336,
+          "danmaku": 2888
+        },
+        "link": "bilibili://video/202032327",
+        "ctime": 1600157796,
+        "pubtime": 1600157796,
+        "fav_time": 1615701143,
+        "bv_id": "BV14h411R7YG",
+        "bvid": "BV14h411R7YG",
+        "season": null
+      },
+      {
+        "id": 713795877,
+        "type": 2,
+        "title": "【建议收藏】22考研数学 | 李永乐 |《复习全书基础篇》典型例题精讲 | 基础复习必备 | 新手、小白必看",
+        "cover": "http://i0.hdslb.com/bfs/archive/1d03e4c2049bf9220d798df29262cf5a14cf743d.jpg",
+        "intro": "本视频由李永乐团队新生力量吴老师讲解喜欢的同学们，记得给我们投币点赞转发呀！\n使用图书：2022考研数学李永乐《复习全书基础篇》（高数部分第一章、第二章【常考题型及典型例题】部分）\n\n【本书全部题目讲解可前往公众号：V研客考研，回复“ 1元课”，获取链接，每科仅需1元】\n\n祝大家逢考必过，成功上岸！",
+        "page": 57,
+        "duration": 19486,
+        "upper": {
+          "mid": 296842815,
+          "name": "李永乐考研团队",
+          "face": "http://i0.hdslb.com/bfs/face/4d0f8fe6c77712ad28667bc648a349d99100b7c5.jpg"
+        },
+        "attr": 0,
+        "cnt_info": {
+          "collect": 11009,
+          "play": 101916,
+          "danmaku": 166
+        },
+        "link": "bilibili://video/713795877",
+        "ctime": 1611232297,
+        "pubtime": 1611232297,
+        "fav_time": 1615701143,
+        "bv_id": "BV1VX4y1T7bC",
+        "bvid": "BV1VX4y1T7bC",
+        "season": null
+      }
+    ],
+    "has_more": false
+  }
+}
