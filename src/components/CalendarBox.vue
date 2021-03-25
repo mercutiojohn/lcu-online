@@ -201,16 +201,14 @@ export default {
   box-sizing: border-box;
   font-family: Mitype2018-60, Politica, "PingFang SC", "微软雅黑", MiLan,
     Helvetica, Futura;
-  /* width: 300px; */
   font-weight: 800;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  /* background: #aaa; */
   color: #fff;
   user-select: none;
-  padding: 20px;
+  flex: 1;
 }
 .week-content,
 .school-week-content {

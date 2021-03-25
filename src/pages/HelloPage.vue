@@ -1,10 +1,10 @@
 <template>
   <div class="hello-page">
     <!-- <div id="hello-background"></div> -->
-    <!-- <div id="hello-background-mask"></div> -->
     <div id="hello-content">
       <div id="left-info">
-        <div class="left-info-content"><CalendarBox /></div>
+      <Player />
+        <!-- <div class="left-info-content"><CalendarBox /></div> -->
         <div class="left-info-content"><Hitokoto /></div>
         <div class="about">
           <span class="about-text">鲁ICP备20018544号</span>
@@ -12,11 +12,9 @@
           <!-- <a href="http://bing.com"><span class="about-text" style="font-size:10px;">壁纸来自Unsplash</span></a> -->
         </div>
       </div>
-      <div class="navigation">
+      <div class="home-wrap">
         <DynamicMainContent />
         <Navigation v-for="(item,index) in list" :title="item.title" :sites="item.list" :key="index" :noIcon="item.noIcon?true:false" :noColor="item.noColor?true:false"> </Navigation>
-        <span class="about-text-course">现处预览测试阶段，无法自定义内容。</span>
-        <span class="about-text-course">如果想来一起做后端，欢迎博客留言💜</span>
       </div>
     </div>
     
@@ -24,6 +22,7 @@
 </template>
 
 <script>
+import Player from '@/components/Player'
 import CalendarBox from "@/components/CalendarBox";
 import Navigation from "@/components/Navigation";
 import Hitokoto from "@/components/Hitokoto";
@@ -35,7 +34,8 @@ export default {
     CalendarBox,
     Navigation,
     Hitokoto,
-    DynamicMainContent
+    DynamicMainContent,
+    Player
   },
   data() {
     return {
@@ -56,7 +56,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+:root{
+  --left-bar-width: 300px;
+}
 .hello-page{
   display: flex;
   align-items: center;
@@ -71,37 +73,21 @@ export default {
   z-index: -2;
   /* background: url(https://source.unsplash.com/random/1920x1080) no-repeat fixed center/cover; */
 }
-#hello-background-mask{
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  background-image: radial-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%), radial-gradient(rgba(0, 0, 0, 0) 33%, rgba(0, 0, 0, 0.3) 166%),linear-gradient(180deg, rgba(0, 0, 0, 0) 0%,rgba(0, 0, 0, 0) 0% 75%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-}
+
 #hello-content {
   box-sizing: border-box;
-  /* background: #ffffff23; */
-  /* border:  1px solid #ffffff45; */
   width:var(--box-width);
-  /* backdrop-filter: blur(50px) saturate(180%); */
-  /* height:var(--box-height); */
-  /* min-height: calc(100vh - 150px); */
-  /* padding: 20px; */
-  border-radius: var(--box-radius);
-  /* margin: 0 20px 20px; */
   display: flex;
-  /* overflow-y: scroll; */
   position: relative;
+  max-width: 1300px;
 }
 
 #left-info{
   box-sizing: border-box;
-  position: sticky;
-  top:0;
-  padding: 40px 20px;
-  width: 300px;
+  position: fixed;
+  bottom: 0;
+  padding: 40px 10px;
+  width: 350px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -115,9 +101,10 @@ export default {
   box-shadow: 0 5px 8px 3px #00000014;
 }
 
-.navigation {
+.home-wrap {
+  padding-left: calc(350px + 20px);
   display: flex;
-  width: 70%;
+  flex:1;
   overflow: scroll;
   flex-direction: column;
   /* height:calc(100vh - 150px); */
@@ -134,7 +121,7 @@ export default {
   display: none;
   /* top:0px; */
   }
-  .navigation {
+  .home-wrap {
   width: 100%;
   }
 }
@@ -147,17 +134,16 @@ export default {
   display: flex;
   flex-direction: row;
   /* justify-content: space-evenly; */
-  color: #ffffff45;
   font-size: 12px;
 }
 .about a{
   /* text-decoration: underline; */
   cursor: pointer;
+  color: #000;
 }
 
 .about-text,.about a{
   padding: 2px;
-  color: #ffffff67;
   transition: all .2s ease;
 }
 .about-text-course{
@@ -166,8 +152,8 @@ export default {
   font-size:10px;
 }
 .about a:hover{
-  color: #ffffff!important;
-  background: #00000037;
+  /* color: #ffffff!important; */
+  background: #00000027;
   border-radius: 5px;
   /* text-decoration: underline; */
   cursor: pointer;

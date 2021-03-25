@@ -193,7 +193,7 @@ export default {
 .nav-block {
   width: 150px;
   height: 100px;
-  border-radius: 15px;
+  border-radius: 5px;
   background: #00000056;
   margin: 0 10px 10px 0;
   display: flex;
@@ -266,9 +266,9 @@ export default {
   font-size: 15px;
 }
 .nav-title {
-  color: #fff;
+  color: #000;
   font-size: 20px;
-  text-shadow: 0 5px 10px #00000083;
+  /* text-shadow: 0 5px 10px #00000083; */
   margin-bottom: 20px;
 }
 .nav-block-title-no-icon {
@@ -286,6 +286,5 @@ export default {
   width: 100%;
   width: max-content;
   overflow: visible;
-  padding-left: 10px;
 }
 </style>
