@@ -1,7 +1,6 @@
 <template>
   <div :class="'header-bar-container'+handleShowBg()">
     <ul class="header-bar-tablist">
-      <Player />
       <router-link to="/">
         <li :class="'header-bar-tabitem'+handleChangeFontColor()">首页</li>
       </router-link>
@@ -24,14 +23,13 @@
 <script>
 import ClockBox from '@/components/ClockBox'
 import SearchBar from '@/components/SearchBar'
-import Player from '@/components/Player'
+
 
 export default {
   name: "HeaderBar",
   components: {
     ClockBox,
-    SearchBar,
-    Player
+    SearchBar
   },
   data() {
     return {
@@ -97,9 +95,9 @@ export default {
   padding: 5px 30px 5px 30px;
 }
 .header-bar-container-bgon{
-  background: #ffffff;
+  background: #ffffffcc;
   /* background: #0000001e; */
-  /* backdrop-filter: blur(150px) saturate(180%); */
+  backdrop-filter: blur(40px) saturate(120%);
   transition: all .3s ease;
   color:#000!important;
   /* color:#fff!important; */

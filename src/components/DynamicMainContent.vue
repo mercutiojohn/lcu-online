@@ -2,7 +2,10 @@
     <div id="dynamic-main-content">
         <div class="dynamic-left">
             <div class="dynamic-left-background">
+            <div id="hello-background-mask"></div>
                 <CalendarBox />
+                <div class="dynamic-hitokoto">
+                <Hitokoto /></div>
             </div>
         </div>
         <div class="dynamic-right">
@@ -11,11 +14,13 @@
 </template>
 <script>
 import CalendarBox from "@/components/CalendarBox";
+import Hitokoto from "@/components/Hitokoto";
 
 export default {
     name:'DynamicMainContent',
     components:{
-        CalendarBox
+        CalendarBox,
+        Hitokoto
     },
     data() {
         return {
@@ -33,7 +38,7 @@ export default {
 }
 #dynamic-main-content{
     box-sizing: border-box;
-    height: 300px;
+    height: 350px;
     display: flex;
 }
 .dynamic-left{
@@ -52,11 +57,27 @@ export default {
     border-radius: var(--dynamic-border-radius);
 }
 .dynamic-left-background{
+    padding: 20px;
   width: 100%;
   height: 100%;
   position: relative;
   z-index: 0;
+  /* background: url(https://source.unsplash.com/random/1920x1080) no-repeat fixed
+    center/cover #444; */
   background: url(https://source.unsplash.com/random/1920x1080) no-repeat fixed
     center/cover #444;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+#hello-background-mask{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: radial-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 100%), radial-gradient(rgba(0, 0, 0, 0) 33%, rgba(0, 0, 0, 0.2) 166%),linear-gradient(180deg, rgba(0, 0, 0, 0) 0%,rgba(0, 0, 0, 0) 0% 75%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
 }
 </style>

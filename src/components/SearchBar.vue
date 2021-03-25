@@ -132,12 +132,10 @@ export default {
   max-width:500px;
   height:50px;
   background: #ffffff35;
-  backdrop-filter: blur(30px) saturate(180%);
   border-radius: 25px;
   transition:all .2s ease;
   margin-top: 20px;
   pointer-events:auto;
-  
   height:40px;
   margin-top: 10px;
 }
