@@ -15,23 +15,34 @@
         </div>
       </div>
     </div>
-    <div class="dynamic-right"></div>
+    <div class="dynamic-right">
+      <Navigation v-for="(item,index) in list" :title="item.title" :sites="item.list" :key="index" :ifSmall="true"> </Navigation>
+    </div>
   </div>
 </template>
 <script>
 import CalendarBox from "@/components/CalendarBox";
 import Hitokoto from "@/components/Hitokoto";
+import Navigation from "@/components/Navigation";
 
 export default {
   name: "DynamicMainContent",
   components: {
     CalendarBox,
     Hitokoto,
+    Navigation
   },
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    getList() {
+      this.list = require("@/assets/data/uniNavList.json");
+    },
+  },
+  created() {
+    this.getList();
+  },
 };
 </script>
 <style>
@@ -55,8 +66,18 @@ export default {
 .dynamic-right {
   width: 300px;
   height: 100%;
-  background: #ccc;
+  background: var(--elem-color);
+  display: flex;
+  padding: 10px 0;
+  justify-content: center;
   border-radius: var(--dynamic-border-radius);
+  overflow: hidden;
+}
+.dynamic-right .nav{
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px;
+  flex: 1;
 }
 .dynamic-left-background {
   box-sizing: border-box;

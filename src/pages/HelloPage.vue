@@ -3,8 +3,8 @@
     <!-- <div id="hello-background"></div> -->
     <div id="hello-content">
       <div id="left-info">
-      <Player />
         <div class="left-info-content"><homeworks /></div>
+      <div class="left-info-content"><Player /></div>
         <div class="about">
           <span class="about-text">鲁ICP备20018544号</span>
           <a href="http://mercutio.club"><span class="about-text">莫阿白的博客</span></a>
@@ -64,6 +64,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 10px 0 0 0;
 }
 #hello-background {
   width: 100vw;
@@ -84,6 +85,7 @@ export default {
 }
 
 #left-info{
+  height: 710px;
   box-sizing: border-box;
   position: fixed;
   bottom: 20px;
@@ -93,6 +95,7 @@ export default {
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
+  overflow: scroll;
 }
 #left-info .left-info-content{
   margin: 10px 0;

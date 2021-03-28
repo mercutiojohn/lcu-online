@@ -1,0 +1,28 @@
+[
+  {
+    "title": "聊城大学",
+    "list": [{
+        "title": "数字聊大",
+        "color": "#059490",
+        "icon": "lcu.svg",
+        "url": "http://one.lcu.edu.cn/tp_up"
+      },
+      {
+        "title": "教务系统",
+        "color": "#0483d4",
+        "icon": "jwxt.png",
+        "url": "http://jwxt.lcu.edu.cn/jwglxt/xtgl/login_slogin.html?language=zh_CN"
+      }, {
+        "title": "图书馆",
+        "color": "#059490",
+        "icon": "tsg.gif",
+        "url": "http://www-lib.lcu.edu.cn/"
+      }, {
+        "title": "校园网",
+        "color": "#fca40a",
+        "icon": "xyw.svg",
+        "url": "http://172.30.2.2:8088/eportal/success.jsp"
+      }
+    ]
+  }
+]
