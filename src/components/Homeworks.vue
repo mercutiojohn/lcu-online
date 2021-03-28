@@ -1,7 +1,7 @@
 <template>
   <div class="homeworks">
     <div class="homeworks-title">
-      <span>作业通知</span>
+      <span>作业通知（模拟）</span>
     </div>
     <div class="homeworks-list">
       <a v-for="(item, key) in data" :key="key" :href="item.url">
@@ -35,7 +35,7 @@ export default {
           course_name: "移动应用开发",
           isStopped: 0,
           time: 1616943600.0,
-          title: "第六12次作业",
+          title: "第六次作业（模拟）",
           type: "作业",
           url:
             "https://www.eec-cn.com/workAnswer/4028804277b8a7530177cb1af99d10c2/40288042786ec36d0178718b5b520876/true?isPiYue=noPiYue",
@@ -45,7 +45,7 @@ export default {
           course_name: "移动应用开发",
           isStopped: 0,
           time: 1616943600.0,
-          title: "第六12次作业",
+          title: "第七次作业（模拟）",
           type: "作业",
           url:
             "https://www.eec-cn.com/workAnswer/4028804277b8a7530177cb1af99d10c2/40288042786ec36d0178718b5b520876/true?isPiYue=noPiYue",
@@ -55,8 +55,8 @@ export default {
           course_name: "移动应用开发",
           isStopped: 0,
           time: 1616943600.0,
-          title: "第六12次作业",
-          type: "作业",
+          title: "第八次作业（模拟）",
+          type: "实验",
           url:
             "https://www.eec-cn.com/workAnswer/4028804277b8a7530177cb1af99d10c2/40288042786ec36d0178718b5b520876/true?isPiYue=noPiYue",
         },

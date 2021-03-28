@@ -213,7 +213,7 @@ export default {
   padding: 0 10px;
 }
 .nav-block-smaller {
-  height: 90px;
+  height: 120px;
   width: 105px;
   padding: 0 10px;
 }
