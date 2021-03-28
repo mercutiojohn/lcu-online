@@ -16,17 +16,12 @@
             <source :type="audioType" :src="audioSrc" />
           </video>
           <img class="player-cover-image" :src="cover" :alt="title" srcset="" />
-      </div>
+         </div>
           <div class="player-info">
             <span class="player-info-title">{{ audioTitle }}</span>
             <span class="player-info-artist">{{ artist }}</span>
           </div>
           <div class="player-control-area">
-            <!-- <i
-        class="player-control-btn-medium iconfont icon-chevron-left"
-        @click="audioChange('pre')"
-      >
-      </i> -->
             <div @click="audioControl" class="player-control-btn-playpause">
               <i
                 v-if="audioStatus"
@@ -45,7 +40,6 @@
           </div>
         </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -109,7 +103,7 @@ export default {
       this.audioObj = this.$video("myVideo", {
         //确定播放器是否具有用户可以与之交互的控件。没有控件，启动视频播放的唯一方法是使用autoplay属性或通过Player API。
         controls: true,
-        autoplay: false
+        autoplay: false,
         // poster: this.cover
       });
     },
@@ -174,7 +168,7 @@ export default {
   z-index: 1000;
 }
 .player-wrap {
-  width:100%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -185,7 +179,7 @@ export default {
   /* background: #79797943; */
   /* backdrop-filter: blur(100px); */
   /* box-shadow: 0 5px 10px 2px #00000043; */
-  transition: all .2s ease;
+  transition: all 0.2s ease;
   /* position: fixed;
   bottom: 50px;
   left: 0;
@@ -199,30 +193,27 @@ export default {
   background: #000;
   border-radius: 5px;
   overflow: hidden;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
   cursor: pointer;
-
 }
 .player-cover-image {
   position: relative;
   /* bottom: calc(var(--audio-content-height)); */
   width: 100%;
   z-index: 1000;
-
 }
-.player-cover:hover{
-    transform: scale(1.05);
-    transition: all .2s ease;
+.player-cover:hover {
+  transform: scale(1.05);
+  transition: all 0.2s ease;
 }
-.player-cover:active{
-    transform: scale(0.95);
-    transition: all .2s ease;
-
+.player-cover:active {
+  transform: scale(0.95);
+  transition: all 0.2s ease;
 }
-.player-expanded-content{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.player-expanded-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .player-info {
   color: var(--main-color);
@@ -255,7 +246,7 @@ export default {
 }
 .player-control-btn-medium {
   font-size: 35px !important;
-  padding:0 1px;
+  padding: 0 1px;
   margin: 0 5px;
 }
 .player-control-btn-playpause {
@@ -285,10 +276,10 @@ export default {
   box-shadow: 0 3px 8px 1px #00000023;
 }
 .player-media {
-    display: none!important;
-    width: 0;
-    height: 0;
-    overflow: hidden;
+  display: none !important;
+  width: 0;
+  height: 0;
+  overflow: hidden;
   position: relative;
   top: 0;
   width: 100%;
