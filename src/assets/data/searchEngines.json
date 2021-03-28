@@ -30,6 +30,13 @@
     "bg":"#ffffff",
     "icon":"doge.png"
   }, {
+    "title": "Ecosia",
+    "url": "https://www.ecosia.org/search",
+    "queryWord": "q",
+    "placeholder": "Ecosia 搜索",
+    "bg": "#ffffff",
+    "icon": "ecosia.svg"
+  }, {
     "title": "DuckDuckGo",
     "url": "https://www.duckduckgo.com/search",
     "queryWord": "q",
@@ -71,13 +78,6 @@
     "placeholder": "学习通·学习是一种信仰",
     "bg": "#e14046",
     "icon": "chaoxing.svg"
-  }, {
-    "title": "Ecosia",
-    "url": "https://www.ecosia.org/search",
-    "queryWord": "q",
-    "placeholder": "Ecosia 搜索",
-    "bg":"#ffffff",
-    "icon": "ecosia.svg"
   }, {
     "title": "秘迹搜索",
     "url": "https://mijisou.com/",
