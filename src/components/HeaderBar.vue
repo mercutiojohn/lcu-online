@@ -49,7 +49,7 @@ export default {
       let scrollTop =
         window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
       // let offsetTop = document.querySelector("body").offsetTop;
-      console.log(scrollTop);
+      // console.log(scrollTop);
       // console.log(offsetTop);
       if (scrollTop) {
         this.bgEnable = true;
@@ -95,11 +95,10 @@ export default {
   padding: 5px 30px 5px 30px;
 }
 .header-bar-container-bgon{
-  background: #ffffffcc;
+  background: var(--blur-color);
   /* background: #0000001e; */
   backdrop-filter: blur(40px) saturate(120%);
   transition: all .3s ease;
-  color:#000!important;
   /* color:#fff!important; */
 
   box-shadow: 0 0px 10px 4px #00000010;
@@ -114,16 +113,15 @@ export default {
   flex-shrink:0;
   width: max-content;
   font-size: 20px;
-  color: white;
+  color: var(--main-color);
   margin: 0 5px;
   padding-right: 12px;
   padding-left: 12px;
   font-weight: 400;
   border-radius: 15px;
-  text-shadow: 0 5px 10px #00000083;
+  /* text-shadow: 0 5px 10px #00000083; */
 }
 .header-bar-tabitem-bgon {
-  color: black;
   text-shadow: none;
 
 }

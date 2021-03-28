@@ -8,19 +8,20 @@
     "bg":"#ffffff",
     "icon": "baidu.svg"
   }, {
+    "title": "Google",
+    "url": "https://www.google.com/search",
+    "queryWord": "q",
+    "placeholder": "Google 搜索",
+    "bg": "#ffffff",
+    "icon": "google.svg"
+  }, {
     "title": "必应",
     "url": "https://cn.bing.com/search",
     "queryWord": "q",
     "placeholder": "Microsoft Bing 必应搜索",
-    "bg": "#168989",
+    "bg": "#ffffff",
     "icon": "bing.svg"
 
-  }, {
-    "title": "秘迹搜索",
-    "url": "https://mijisou.com/",
-    "queryWord": "q",
-    "placeholder": "秘迹搜索",
-    "bg": "#ffffff"
   }, {
     "title": "多吉",
     "url": "https://www.dogedoge.com/results",
@@ -29,19 +30,19 @@
     "bg":"#ffffff",
     "icon":"doge.png"
   }, {
-    "title": "学习通",
-    "url": "https://m.chaoxing.com/search",
-    "queryWord": "sw",
-    "placeholder": "学习通·学习是一种信仰",
-    "bg": "#e14046",
-    "icon":"chaoxing.svg"
+    "title": "DuckDuckGo",
+    "url": "https://www.duckduckgo.com/search",
+    "queryWord": "q",
+    "placeholder": "DuckDuckGo",
+    "bg": "#ffffff",
+    "icon": "duckduckgo.svg"
   }, {
     "title": "哔哩哔哩",
     "url": "https://search.bilibili.com/all",
     "queryWord": "keyword",
     "placeholder": "BiliBili ( ゜- ゜)つロ 乾杯~",
     "bg": "#fa4b81",
-    "icon":"bilibili.svg"
+    "icon": "bilibili.svg"
   }, {
     "title": "知乎",
     "url": "https://www.zhihu.com/search",
@@ -64,12 +65,12 @@
     "bg": "#fd4200",
     "icon": "taobao.svg"
   }, {
-    "title": "Google",
-    "url": "https://www.google.com/search",
-    "queryWord": "q",
-    "placeholder": "Google 搜索",
-    "bg":"#ffffff",
-    "icon": "google.svg"
+    "title": "学习通",
+    "url": "https://m.chaoxing.com/search",
+    "queryWord": "sw",
+    "placeholder": "学习通·学习是一种信仰",
+    "bg": "#e14046",
+    "icon": "chaoxing.svg"
   }, {
     "title": "Ecosia",
     "url": "https://www.ecosia.org/search",
@@ -78,11 +79,10 @@
     "bg":"#ffffff",
     "icon": "ecosia.svg"
   }, {
-    "title": "DuckDuckGo",
-    "url": "https://www.duckduckgo.com/search",
+    "title": "秘迹搜索",
+    "url": "https://mijisou.com/",
     "queryWord": "q",
-    "placeholder": "DuckDuckGo",
-    "bg":"#ffffff",
-    "icon": "duckduckgo.svg"
+    "placeholder": "秘迹搜索",
+    "bg": "#ffffff"
   }]
 }

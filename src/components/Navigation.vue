@@ -266,7 +266,7 @@ export default {
   font-size: 15px;
 }
 .nav-title {
-  color: #000;
+  color: var(--main-color);
   font-size: 20px;
   /* text-shadow: 0 5px 10px #00000083; */
   margin-bottom: 20px;
