@@ -8,7 +8,8 @@
         <div class="about">
           <span class="about-text">鲁ICP备20018544号</span>
           <a href="http://mercutio.club"><span class="about-text">莫阿白的博客</span></a>
-          <!-- <a href="http://bing.com"><span class="about-text" style="font-size:10px;">壁纸来自Unsplash</span></a> -->
+          <a href="https://github.com/mercutiojohn/lcu-online/projects/1?fullscreen=true"><span class="about-text" style="font-size:10px;">迭代路线</span></a>
+          <a href="https://github.com/mercutiojohn/lcu-online/issues"><span class="about-text" style="font-size:10px;">提意见</span></a>
         </div>
       </div>
       <div class="home-wrap">
@@ -85,7 +86,7 @@ export default {
 }
 
 #left-info{
-  height: 710px;
+  height: calc(100vh - 46px);
   box-sizing: border-box;
   position: fixed;
   bottom: 20px;
@@ -95,7 +96,10 @@ export default {
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  user-select: none;
+
 }
 #left-info .left-info-content{
   margin: 10px 0;
@@ -140,7 +144,8 @@ export default {
   width:100%;
   /* margin: 0 auto 20px; */
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  /* flex-direction: row; */
   /* justify-content: space-evenly; */
   font-size: 12px;
 }

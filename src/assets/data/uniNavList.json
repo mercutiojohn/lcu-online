@@ -13,15 +13,20 @@
         "icon": "jwxt.png",
         "url": "http://jwxt.lcu.edu.cn/jwglxt/xtgl/login_slogin.html?language=zh_CN"
       }, {
-        "title": "图书馆",
-        "color": "#059490",
-        "icon": "tsg.gif",
-        "url": "http://www-lib.lcu.edu.cn/"
-      }, {
         "title": "校园网",
         "color": "#fca40a",
         "icon": "xyw.svg",
         "url": "http://172.30.2.2:8088/eportal/success.jsp"
+      }, {
+        "title": "U+聊城大学",
+        "color": "#1e83ca",
+        "icon": "uplus.png",
+        "url": "http://ee-c.lcu.edu.cn/student/group"
+      }, {
+        "title": "馆藏查询",
+        "color": "#059490",
+        "icon": "tsg.gif",
+        "url": "http://lib-opac.lcu.edu.cn:8080/opac/search.php"
       }
     ]
   }

@@ -101,8 +101,9 @@ export default {
   transition: all 0.2s ease;
 }
 .homeworks-title {
+  color: var(--main-color);
   padding: 10px 20px;
-  border-bottom: 5px solid #00000013;
+  border-bottom: 5px solid #92929213;
 }
 .card-title {
   display: flex;

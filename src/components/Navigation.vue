@@ -11,7 +11,7 @@
         >
           <div
             :class="'nav-block' + handleBlockNoIcon() + handleBlockNoColor()"
-            :id="'nav-block_' + title + index"
+            :id="'nav-block_'+ index"
             :style="'background-color:' + item.color"
           >
             <!--
@@ -213,7 +213,7 @@ export default {
   padding: 0 10px;
 }
 .nav-block-smaller {
-  height: 120px;
+  height: 80px;
   width: 105px;
   padding: 0 10px;
 }
