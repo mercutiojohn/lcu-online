@@ -103,6 +103,7 @@ export default {
       },
       currentDate: new Date(),
       clockWrapExpand: false,
+      bgStatus:true
     };
   },
   methods: {
@@ -242,9 +243,9 @@ export default {
 #clockbox-time-content,
 #clockbox-twelve-label,
 #clockbox-week {
-  color: #fff;
+  color: var(--main-color);
   margin-left: 5px;
-  text-shadow: 0 5px 10px #00000083;
+  /* text-shadow: 0 5px 10px #00000083; */
 }
 #clockbox-wrap {
   width: 400px;
@@ -272,7 +273,6 @@ export default {
 }
 .clockbox-noshadow {
   text-shadow: none !important;
-  color: #000000 !important;
   transition: all 0.3s ease;
 }
 #left-col-iframe {

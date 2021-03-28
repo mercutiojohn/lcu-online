@@ -1,6 +1,6 @@
 <template>
     <div class="fanya">
-      <div id="fanya-background"></div>
+      <!-- <div id="fanya-background"></div> -->
       <div class="chaoxing-box">
         <!-- <div v-for="(item,index) in chaoxingUrls" :key="index" @click="changeUrl(item.url)">
           {{ item.name }}

@@ -1,6 +1,6 @@
 <template>
   <div id="course">
-    <div id="course-background"></div>
+    <!-- <div id="course-background"></div> -->
     <div id="course-box">
       <el-dialog
         title="提示"
@@ -267,8 +267,7 @@ export default {
 <style>
 :root {
   --accent-color: rgb(17, 148, 235);
-  /* --course-box-height:calc(100vh - 90px); */
-  --course-box-height: calc(100vh - 56px);
+  --course-box-height: calc(100vh - 69px);
   --course-box-width: 100%;
 }
 #course {
@@ -285,10 +284,6 @@ export default {
     center/cover #444;
 }
 
-.course-blank {
-  /* height: 1000px; */
-  /* width: 10px; */
-}
 .course-tab {
   position: relative;
 }
@@ -302,10 +297,10 @@ export default {
 #course {
   min-height: 100%;
   display: flex;
-  /* align-items: center; */
   justify-content: center;
 }
 #course-box {
+  box-sizing: border-box;
   background: #fff;
   width: var(--course-box-width);
   height: var(--course-box-height);
@@ -314,10 +309,6 @@ export default {
   /* border-radius: 10px; */
   /* margin: 0 10px 10px; */
   display: flex;
-
-  width: var(--box-width);
-  height: var(--box-height);
-  border-radius: var(--box-radius);
 }
 #course-video-list-box {
   width: 320px;

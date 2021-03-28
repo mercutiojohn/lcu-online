@@ -4,8 +4,7 @@
     <div id="hello-content">
       <div id="left-info">
       <Player />
-        <!-- <div class="left-info-content"><CalendarBox /></div> -->
-        <div class="left-info-content"><Hitokoto /></div>
+        <div class="left-info-content"><homeworks /></div>
         <div class="about">
           <span class="about-text">鲁ICP备20018544号</span>
           <a href="http://mercutio.club"><span class="about-text">莫阿白的博客</span></a>
@@ -27,6 +26,7 @@ import CalendarBox from "@/components/CalendarBox";
 import Navigation from "@/components/Navigation";
 import Hitokoto from "@/components/Hitokoto";
 import DynamicMainContent from "@/components/DynamicMainContent";
+import Homeworks from "@/components/Homeworks";
 
 export default {
   name: "HelloPage",
@@ -35,7 +35,8 @@ export default {
     Navigation,
     Hitokoto,
     DynamicMainContent,
-    Player
+    Player,
+    Homeworks
   },
   data() {
     return {
@@ -85,7 +86,7 @@ export default {
 #left-info{
   box-sizing: border-box;
   position: fixed;
-  bottom: 0;
+  bottom: 20px;
   padding: 40px 10px;
   width: 350px;
   display: flex;
@@ -95,10 +96,14 @@ export default {
 }
 #left-info .left-info-content{
   margin: 10px 0;
-  background: #ffffff75;
+  background: var(--elem-color);
+  border-radius: 5px;
+  box-shadow: 0 2px 6px 1px #00000014;
+  /* background: #ffffff75;
   backdrop-filter: blur(30px) saturate(180%);
   border-radius: 10px;
-  box-shadow: 0 5px 8px 3px #00000014;
+  box-shadow: 0 5px 8px 3px #00000014; */
+      overflow: hidden;
 }
 
 .home-wrap {
@@ -143,17 +148,18 @@ export default {
 }
 
 .about-text,.about a{
+  color: var(--main-color);
   padding: 2px;
   transition: all .2s ease;
 }
 .about-text-course{
-  color: #ffffff;
+  color: var(--main-color);
   padding-left: 12px;
   font-size:10px;
 }
 .about a:hover{
   /* color: #ffffff!important; */
-  background: #00000027;
+  background: var(--main-color-opa);
   border-radius: 5px;
   /* text-decoration: underline; */
   cursor: pointer;
