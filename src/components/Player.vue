@@ -2,7 +2,6 @@
   <div id="player">
 
     <div class="player-wrap">
-      <div class="player-entry" @click="changePlayerDisplay">
         <div class="player-cover">
           <video
             id="myVideo"
@@ -17,11 +16,7 @@
             <source :type="audioType" :src="audioSrc" />
           </video>
           <img class="player-cover-image" :src="cover" :alt="title" srcset="" />
-        </div>
       </div>
-
-      <transition name="fade-in-out">
-        <div class="player-expanded-content" v-show="playerWrapDisplay">
           <div class="player-info">
             <span class="player-info-title">{{ audioTitle }}</span>
             <span class="player-info-artist">{{ artist }}</span>
@@ -49,7 +44,6 @@
             ></i>
           </div>
         </div>
-      </transition>
     </div>
   </div>
 </template>
@@ -81,13 +75,6 @@ export default {
     };
   },
   methods: {
-    changePlayerDisplay() {
-      if (this.playerWrapDisplay == false) {
-        this.playerWrapDisplay = true;
-      } else {
-        this.playerWrapDisplay = false;
-      }
-    },
     getMediaSource() {
       // this.mediaList = require("@/assets/data/mediaList.json")
     },
@@ -137,7 +124,7 @@ export default {
 </script>
 
 <style>
-@keyframes bounce-in{
+/* @keyframes bounce-in{
   0% {
     transform: scaleX(0);
   }
@@ -163,7 +150,7 @@ export default {
 .fade-in-out-leave-active {
   transform-origin: left center;
   animation:bounce-out .1s ease-out;
-}
+} */
 :root {
   --audio-player-width: 400px;
   --audio-player-height: 60px;
@@ -187,21 +174,22 @@ export default {
   z-index: 1000;
 }
 .player-wrap {
-  position: fixed;
-  bottom: 50px;
-  left: 0;
-  z-index: 1000;
+  width:100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   border-radius: 0 10px 10px 0;
   padding: 6px;
   /* padding-left: 15px; */
-  background: #79797943;
-  backdrop-filter: blur(100px);
-  box-shadow: 0 5px 10px 2px #00000043;
+  /* background: #79797943; */
+  /* backdrop-filter: blur(100px); */
+  /* box-shadow: 0 5px 10px 2px #00000043; */
   transition: all .2s ease;
+  /* position: fixed;
+  bottom: 50px;
+  left: 0;
+  z-index: 1000; */
 }
 .player-cover {
   width: var(--audio-content-height);
@@ -212,6 +200,7 @@ export default {
   border-radius: 5px;
   overflow: hidden;
   transition: all .2s ease;
+  cursor: pointer;
 
 }
 .player-cover-image {
@@ -236,12 +225,12 @@ export default {
     justify-content: center;
 }
 .player-info {
-  color: #fff;
-  text-shadow: 0 0 15px #00000057;
+  color: var(--main-color);
   /* width: var(--audio-content-width); */
   display: flex;
   flex-direction: column;
   margin: 0 10px;
+  flex: 1;
 }
 .player-control-area {
   width: var(--audio-content-width);
@@ -253,13 +242,12 @@ export default {
 .player-control-btn-large,
 .player-control-btn-medium,
 .player-control-btn-small {
-  color: #fff;
-  text-shadow: 0 0 25px #00000067;
-
+  color: var(--main-color);
   border-radius: 50%;
   flex-shrink: none;
   /* background: #000; */
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 
 .player-control-btn-large {
@@ -276,8 +264,7 @@ export default {
   justify-content: center;
   width: 40px;
   height: 40px;
-  background: #ffffff34;
-  box-shadow: 0 0 45px #00000037;
+  background: var(--main-color-opa);
 
   border-radius: 50%;
   transition: all 0.2s ease;
@@ -288,14 +275,14 @@ export default {
 .player-control-btn-small:hover {
   background: #ffffff78;
   transform: scale(1.1);
-  box-shadow: 0 5px 20px 5px #00000023;
+  box-shadow: 0 5px 10px 2px #00000023;
   transition: all 0.2s ease;
 }
 .player-control-btn-playpause:active,
 .player-control-btn-medium:active,
 .player-control-btn-small:active {
   transform: scale(0.96);
-  box-shadow: 0 1px 20px 5px #00000023;
+  box-shadow: 0 3px 8px 1px #00000023;
 }
 .player-media {
     display: none!important;

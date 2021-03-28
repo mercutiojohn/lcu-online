@@ -47,6 +47,7 @@ export default {
     sites: Array,
     noIcon: Boolean,
     noColor: Boolean,
+    ifSmall: Boolean 
   },
   name: "Navigation",
   data() {
@@ -118,6 +119,8 @@ export default {
     handleBlockNoIcon() {
       if (this.noIcon) {
         return " nav-block-small";
+      } else if (this.ifSmall){
+        return " nav-block-smaller";
       } else {
         return "";
       }
@@ -207,6 +210,11 @@ export default {
 .nav-block-small {
   height: 50px;
   width: max-content;
+  padding: 0 10px;
+}
+.nav-block-smaller {
+  height: 90px;
+  width: 105px;
   padding: 0 10px;
 }
 .nav-block:hover {
