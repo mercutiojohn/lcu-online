@@ -5,7 +5,7 @@
         <div class="searchbar-mask" @click="changeWrapState($event)"></div>
         <div class="searchbar-box" @click.prevent.stop="searchWrapDisplay = searchWrapDisplay">
           <div :class="'searchbar-container'+handleChangeBarColor()">
-      <i :class="'el-icon-search searchbar-icon'+handleChangeBarIconColor()"></i>
+      <i :class="'iconfont icon-search searchbar-icon'+handleChangeBarIconColor()"></i>
       <form target="_blank" autocomplete="off" :action="targetUrl[currUrl].url">
         <input :class="'searchbar-input'+handleChangeBarFontColor()" type="text" ref="search" autofocus autocomplete="off" :name="targetUrl[currUrl].queryWord" :placeholder="targetUrl[currUrl].placeholder">
       </form>
@@ -27,7 +27,7 @@
       </div>
     <!-- </transition> -->
     <div :class="'searchbar-opener'+handleChangeBarColor()"  @click="changeWrapState($event)">
-      <i :class="'el-icon-search searchbar-icon'+handleChangeBarIconColor()"></i>
+      <i :class="'iconfont icon-search searchbar-icon'+handleChangeBarIconColor()"></i>
       <form target="_blank" autocomplete="off" :action="targetUrl[currUrl].url">
         <input :class="'searchbar-input'+handleChangeBarFontColor()" disabled type="text" autocomplete="off" :name="targetUrl[currUrl].queryWord" :placeholder="targetUrl[currUrl].placeholder">
       </form>
