@@ -54,15 +54,15 @@ export default {
         "https://tse1-mm.cn.bing.net/th/id/OIP.Fpc8QMrHr12cQ9n_ed5iKAHaHa?pid=ImgDet&rs=1",
       audioTitle: "CRI Hit FM",
       audioType: "application/x-mpegURL",
-      artist: "中央人民广播电台",
+      artist: "China Radio International",
       audioStatus: "",
       mediaList: [
         {
           id: 0,
           url: "http://sk.cri.cn/887.m3u8",
-          cover: "assets/img/cover.jpg",
+          cover: "https://tse1-mm.cn.bing.net/th/id/OIP.Fpc8QMrHr12cQ9n_ed5iKAHaHa?pid=ImgDet&rs=1",
           title: "CRI Hit FM",
-          artist: "中央人民广播电台",
+          artist: "China Radio International",
         },
       ],
       audioObj: "",
