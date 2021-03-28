@@ -64,6 +64,7 @@ export default {
   overflow: hidden;
 }
 .dynamic-right {
+  box-sizing: border-box;
   width: 300px;
   height: 100%;
   background: var(--elem-color);

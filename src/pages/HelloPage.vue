@@ -64,7 +64,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 10px 0 0 0;
+  margin: 10px 0 100px 0;
 }
 #hello-background {
   width: 100vw;
