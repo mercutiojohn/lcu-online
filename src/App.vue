@@ -51,6 +51,25 @@ body {
   /* background: url(https://bing.rthe.net/wallpaper) no-repeat fixed center/cover; */
 
 }
+@media screen and (max-width: 1030px) {
+  body::before{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    content:"暂不支持过窄宽度";
+    color: #fff;
+    position: fixed;
+    top:0;
+    left: 0;
+    z-index: 10000;
+    background: #00000094;
+    backdrop-filter: blur(50px);
+    width: 100vw;
+    height: 100vh;
+    padding: 30px 0;
+  }
+}
+
 #all {
   margin: 0;
   padding: 0;

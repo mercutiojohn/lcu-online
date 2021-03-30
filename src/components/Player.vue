@@ -1,8 +1,8 @@
 <template>
   <div id="player">
-
     <div class="player-wrap">
-        <div class="player-cover">
+      <div class="player-entry">
+        <div class="player-cover" @click="changeWrapState">
           <video
             id="myVideo"
             class="player-media video-js vjs-default-skin vjs-big-play-centered"
@@ -15,62 +15,120 @@
           >
             <source :type="audioType" :src="audioSrc" />
           </video>
-          <img class="player-cover-image" :src="cover" :alt="title" srcset="" />
-         </div>
-          <div class="player-info">
-            <span class="player-info-title">{{ audioTitle }}</span>
-            <span class="player-info-artist">{{ artist }}</span>
-          </div>
-          <div class="player-control-area">
-            <div @click="audioControl" class="player-control-btn-playpause">
-              <i
-                v-if="audioStatus"
-                class="player-control-btn-large iconfont icon-pause1"
-              >
-              </i>
-              <i
-                v-else
-                class="player-control-btn-large iconfont icon-play1"
-              ></i>
-            </div>
+          <img
+            class="player-cover-image"
+            :src="getImage(cover)"
+            :alt="audioTitle"
+            srcset=""
+          />
+        </div>
+        <div class="player-info">
+          <span class="player-info-title">{{ audioTitle }}</span>
+          <span class="player-info-artist">{{ artist }}</span>
+        </div>
+        <div class="player-control-area">
+          <div @click="audioControl" class="player-control-btn-playpause">
             <i
-              class="player-control-btn-medium iconfont icon-chevron-right"
-              @click="audioChange('next')"
-            ></i>
+              v-if="audioStatus"
+              class="player-control-btn-large iconfont icon-pause1"
+            >
+            </i>
+            <i v-else class="player-control-btn-large iconfont icon-play1"></i>
+          </div>
+          <i
+            class="player-control-btn-medium iconfont icon-chevron-right"
+            @click="audioChange('next')"
+          ></i>
+        </div>
+      </div>
+      <transition name="fade-in-out">
+        <div class="player-expanded-content" v-if="playerWrapDisplay">
+          <div class="media-list">
+            <div
+              class="media-item homework-card"
+              v-for="(item, index) in mediaList"
+              :key="index"
+            >
+              <div class="media-item-image">
+                <img
+                  class="media-item-image-s"
+                  :src="getImage(item.cover)"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+              <div class="media-item-content">
+                <span class="card-title">{{ item.title }}</span>
+                <span class="card-details">{{ item.artist }}</span>
+              </div>
+            </div>
           </div>
         </div>
+      </transition>
     </div>
+  </div>
 </template>
 
 <script>
+// import VideoPlayer from "@/components/VideoPlayer";
 export default {
   name: "Player",
+  components: {
+    // VideoPlayer,
+  },
   data() {
     return {
       playerWrapDisplay: false,
       audioId: 0,
       audioSrc: "http://sk.cri.cn/887.m3u8",
-      cover:
-        "https://tse1-mm.cn.bing.net/th/id/OIP.Fpc8QMrHr12cQ9n_ed5iKAHaHa?pid=ImgDet&rs=1",
+      cover: "hitfm.jpg",
       audioTitle: "CRI Hit FM",
       audioType: "application/x-mpegURL",
       artist: "China Radio International",
       audioStatus: "",
-      mediaList: [
-        {
-          id: 0,
-          url: "http://sk.cri.cn/887.m3u8",
-          cover: "https://tse1-mm.cn.bing.net/th/id/OIP.Fpc8QMrHr12cQ9n_ed5iKAHaHa?pid=ImgDet&rs=1",
-          title: "CRI Hit FM",
-          artist: "China Radio International",
-        },
-      ],
-      audioObj: "",
+      mediaList: [],
+      audioObj: null,
+      videoOptions: {
+        autoplay: true,
+        controls: true,
+        sources: [
+          {
+            src: "http://sk.cri.cn/887.m3u8",
+            type: "application/x-mpegURL",
+          },
+        ],
+      },
     };
   },
   methods: {
+    changeWrapState() {
+      if (this.playerWrapDisplay == true) {
+        this.playerWrapDisplay = false;
+      } else {
+        this.playerWrapDisplay = true;
+      }
+    },
     getMediaSource() {
-      // this.mediaList = require("@/assets/data/mediaList.json")
+      try {
+        this.mediaList = require("@/assets/data/mediaList.json");
+        this.audioTitle = this.mediaList[0].title;
+        this.artist = this.mediaList[0].artist;
+        this.cover = this.mediaList[0].cover;
+        this.audioSrc = this.mediaList[0].src;
+        this.initVideo();
+      } catch (error) {
+        console.error(error);
+        this.audioTitle = "获取音频列表失败";
+      }
+    },
+    getImage(img) {
+      try {
+        const a = require("@/assets/img/radio/" + img);
+        return a;
+      } catch (err) {
+        console.log(err);
+        return require("@/assets/img/function/pic.svg");
+      }
     },
     audioControl() {
       if (this.audioStatus == "playing") {
@@ -103,48 +161,48 @@ export default {
       this.audioObj = this.$video("myVideo", {
         //确定播放器是否具有用户可以与之交互的控件。没有控件，启动视频播放的唯一方法是使用autoplay属性或通过Player API。
         controls: true,
-        autoplay: false,
+        autoplay: false
         // poster: this.cover
       });
     },
   },
   created() {
-    // this.getMediaSource();
-  },
+    },
   mounted() {
-    this.initVideo();
+    this.getMediaSource();
+    // this.initVideo();
   },
 };
 </script>
 
 <style>
-/* @keyframes bounce-in{
+@keyframes bounce-in {
   0% {
-    transform: scaleX(0);
+    transform: scaleY(0);
   }
   30% {
-    transform: scaleX(1.03);
+    transform: scaleY(1.01);
   }
   100% {
-    transform: scaleX(1);
+    transform: scaleY(1);
   }
 }
-@keyframes bounce-out{
+@keyframes bounce-out {
   0% {
-    transform: scaleX(1);
+    transform: scaleY(1);
   }
   100% {
-    transform: scaleX(0);
+    transform: scaleY(0);
   }
 }
 .fade-in-out-enter-active {
-  transform-origin: left center;
-  animation:bounce-in .5s ease;
+  transform-origin: top center;
+  animation: bounce-in 0.5s ease;
 }
 .fade-in-out-leave-active {
-  transform-origin: left center;
-  animation:bounce-out .1s ease-out;
-} */
+  transform-origin: top center;
+  animation: bounce-out 0.1s ease-out;
+}
 :root {
   --audio-player-width: 400px;
   --audio-player-height: 60px;
@@ -153,15 +211,6 @@ export default {
 #player {
   display: flex;
 }
-/* .player-entry {
-  width: 45px;
-  height: max-content;
-  min-height: var(--audio-content-width);
-  height: 45px;
-  background: #000;
-  border-radius: 5px;
-  overflow: hidden;
-} */
 .player-entry-cover-image {
   position: relative;
   width: 100%;
@@ -170,27 +219,27 @@ export default {
 .player-wrap {
   width: 100%;
   display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: space-between;
+  border-radius: 0 10px 10px 0;
+  transition: all 0.2s ease;
+}
+.player-entry {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border-radius: 0 10px 10px 0;
-  padding: 6px;
-  /* padding-left: 15px; */
-  /* background: #79797943; */
-  /* backdrop-filter: blur(100px); */
-  /* box-shadow: 0 5px 10px 2px #00000043; */
-  transition: all 0.2s ease;
-  /* position: fixed;
-  bottom: 50px;
-  left: 0;
-  z-index: 1000; */
+  padding: 12px;
 }
 .player-cover {
   width: var(--audio-content-height);
   /* height: max-content; */
   /* min-height: var(--audio-content-width); */
   height: var(--audio-content-height);
-  background: #000;
+  background: var(--first-assist-color);
   border-radius: 5px;
   overflow: hidden;
   transition: all 0.2s ease;
@@ -198,7 +247,6 @@ export default {
 }
 .player-cover-image {
   position: relative;
-  /* bottom: calc(var(--audio-content-height)); */
   width: 100%;
   z-index: 1000;
 }
@@ -211,13 +259,15 @@ export default {
   transition: all 0.2s ease;
 }
 .player-expanded-content {
+  width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  border-top: 5px solid #92929213;
 }
 .player-info {
   color: var(--main-color);
-  /* width: var(--audio-content-width); */
   display: flex;
   flex-direction: column;
   margin: 0 10px;
@@ -256,7 +306,6 @@ export default {
   width: 40px;
   height: 40px;
   background: var(--main-color-opa);
-
   border-radius: 50%;
   transition: all 0.2s ease;
 }
@@ -273,7 +322,7 @@ export default {
 .player-control-btn-medium:active,
 .player-control-btn-small:active {
   transform: scale(0.96);
-  box-shadow: 0 3px 8px 1px #00000023;
+  box-shadow: 0 3px 3px 1px #00000023;
 }
 .player-media {
   display: none !important;
@@ -291,5 +340,34 @@ export default {
 }
 .player-info-artist {
   font-size: 12px;
+}
+
+.media-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: space-between;
+}
+.media-item {
+  width: 100%;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--main-color-opa);
+  display: flex;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+.media-item-image {
+  width: 40px;
+  height: 40px;
+  background: var(--first-assist-color);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.media-item-image-s {
+  width: 100%;
+}
+.media-item-content {
+  margin: 0 0 0 10px;
 }
 </style>

@@ -34,10 +34,11 @@ export default {
   data() {
     return {
       bgEnable:false,
-      navs:[{
-        name:"收藏夹",
-        url:"/fanya"
-      },
+      navs:[
+      //   {
+      //   name:"收藏夹",
+      //   url:"/fanya"
+      // },
       {
         name:"网课",
         url:"/course"
