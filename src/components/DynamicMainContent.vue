@@ -4,9 +4,9 @@
       <div class="dynamic-left-background">
         <img
           id="dynamic-left-background-image"
-          src="https://source.unsplash.com/random/1920x1080"
+          :src="bgSrc"
           alt=""
-          srcset=""
+          :onerror="defaultBg"
         />
         <div id="dynamic-left-background-mask"></div>
         <div class="dynamic-content">
@@ -33,7 +33,10 @@ export default {
     Navigation
   },
   data() {
-    return {};
+    return {
+      bgSrc:"https://source.unsplash.com/random/1366x768",
+      
+    };
   },
   methods: {
     getList() {
@@ -42,6 +45,11 @@ export default {
   },
   created() {
     this.getList();
+  },
+  computed: {
+    defaultBg: function(){
+      return require("@/assets/img/bg/temp-bg.jpg");
+    }
   },
 };
 </script>
@@ -88,10 +96,6 @@ export default {
   position: relative;
   z-index: 0;
   background: #444;
-  /* background: url(https://source.unsplash.com/random/1920x1080) no-repeat fixed
-    center/cover #444; */
-  /* background: url(https://source.unsplash.com/random/1920x1080) no-repeat fixed
-    center/cover #444; */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -101,8 +105,8 @@ export default {
   position: absolute;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
   z-index: 1;
 }
 #dynamic-left-background-mask {

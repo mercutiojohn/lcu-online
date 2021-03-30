@@ -7,7 +7,7 @@
           <div :class="'searchbar-container'+handleChangeBarColor()">
       <i :class="'iconfont icon-search searchbar-icon'+handleChangeBarIconColor()"></i>
       <form target="_blank" autocomplete="off" :action="targetUrl[currUrl].url">
-        <input :class="'searchbar-input'+handleChangeBarFontColor()" type="text" ref="search" autofocus autocomplete="off" :name="targetUrl[currUrl].queryWord" :placeholder="targetUrl[currUrl].placeholder">
+        <input :class="'searchbar-input'+handleChangeBarFontColor()" type="text" ref="search" autocomplete="off" :name="targetUrl[currUrl].queryWord" :placeholder="targetUrl[currUrl].placeholder">
       </form>
     </div>
         <ul class="searchbar-engines srarchbar-wrap-items">
@@ -79,7 +79,9 @@ export default {
 	      }
       } else {
         this.searchWrapDisplay = true;
-        this.$refs.search.focus();
+        this.$nextTick(()=>{
+          this.$refs.search.focus();
+        })
       }
     },
     handleChangeBarColor(){
