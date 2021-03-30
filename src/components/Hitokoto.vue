@@ -8,7 +8,7 @@
 </template>
 
 <script>
-const axios = require("axios");
+
 export default {
   name: "Hitokoto",
   data() {
@@ -46,7 +46,7 @@ export default {
 
   methods: {
     getHitokoto() {
-      axios
+      this.$axios
         .get("https://v1.hitokoto.cn?c="+this.hitoKind)
         .then(({ data }) => {
           this.data = data;

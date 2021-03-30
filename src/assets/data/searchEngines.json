@@ -30,19 +30,12 @@
     "bg":"#ffffff",
     "icon":"doge.png"
   }, {
-    "title": "Ecosia",
-    "url": "https://www.ecosia.org/search",
+    "title": "Magi",
+    "url": "https://magi.com/search",
     "queryWord": "q",
-    "placeholder": "Ecosia 搜索",
-    "bg": "#ffffff",
-    "icon": "ecosia.svg"
-  }, {
-    "title": "DuckDuckGo",
-    "url": "https://www.duckduckgo.com/search",
-    "queryWord": "q",
-    "placeholder": "DuckDuckGo",
-    "bg": "#ffffff",
-    "icon": "duckduckgo.svg"
+    "placeholder": "Mag[i]: 问题 / 关键词 / 表达式",
+    "bg": "#1c1c20",
+    "icon": "magi.svg"
   }, {
     "title": "哔哩哔哩",
     "url": "https://search.bilibili.com/all",
@@ -61,16 +54,30 @@
     "title": "豆瓣",
     "url": "https://www.douban.com/search",
     "queryWord": "q",
-    "placeholder": "豆瓣",
+    "placeholder": "豆瓣 书影音 艺人",
     "bg": "#05c210",
     "icon": "douban.svg"
   }, {
     "title": "淘宝",
     "url": "https://s.taobao.com/search",
     "queryWord": "q",
-    "placeholder": "淘宝，淘到你说好",
+    "placeholder": "淘宝搜索",
     "bg": "#fd4200",
     "icon": "taobao.svg"
+  }, {
+    "title": "Ecosia",
+    "url": "https://www.ecosia.org/search",
+    "queryWord": "q",
+    "placeholder": "Ecosia 搜索",
+    "bg": "#ffffff",
+    "icon": "ecosia.svg"
+  }, {
+    "title": "DuckDuckGo",
+    "url": "https://www.duckduckgo.com/search",
+    "queryWord": "q",
+    "placeholder": "DuckDuckGo",
+    "bg": "#ffffff",
+    "icon": "duckduckgo.svg"
   }, {
     "title": "学习通",
     "url": "https://m.chaoxing.com/search",
@@ -78,11 +85,5 @@
     "placeholder": "学习通·学习是一种信仰",
     "bg": "#e14046",
     "icon": "chaoxing.svg"
-  }, {
-    "title": "秘迹搜索",
-    "url": "https://mijisou.com/",
-    "queryWord": "q",
-    "placeholder": "秘迹搜索",
-    "bg": "#ffffff"
   }]
 }

@@ -19,6 +19,7 @@ import '@vant/touch-emulator'
 
 // Axios
 import axios from 'axios'
+Vue.prototype.$axios = axios
 
 // Video.js
 import Video from 'video.js'
