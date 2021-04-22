@@ -6,9 +6,11 @@ import App from './App'
 
 // Router
 import VueRouter from 'vue-router'
+Vue.use(VueRouter)
 
 // Element UI
 import ElementUI from 'element-ui'
+Vue.use(ElementUI)
 import 'element-ui/lib/theme-chalk/index.css'
 
 // Vant
@@ -16,6 +18,8 @@ import Vant from 'vant'
 import 'vant/lib/index.css'
 import 'vant/lib/icon/local.css'
 import '@vant/touch-emulator'
+// Vue.use(Vant) 
+
 
 // Axios
 import axios from 'axios'
@@ -25,15 +29,17 @@ Vue.prototype.$axios = axios
 import Video from 'video.js'
 import 'video.js/dist/video-js.css'
 
+// iconfont
 import '../static/icon/line-icon/iconfont.css'
 import '../static/icon/music-controls/iconfont.css'
 Vue.prototype.$video = Video
+// jsonp
+import { VueJsonp } from 'vue-jsonp'
+Vue.use(VueJsonp)
+// import JsonpCommon from './js/jsonp-common.js'
+// Vue.use(JsonpCommon)
 
-Vue.use(VueRouter)
 
-Vue.use(ElementUI)
-
-// Vue.use(Vant) 
 Vue.config.productionTip = false
 
 import Course from '@/pages/Course'

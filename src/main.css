@@ -155,11 +155,11 @@
 } */
 
 .fade-enter-active {
-  transition: opacity .4s ease;
+  transition: opacity .2s ease;
 }
 
 .fade-leave-active {
-  transition: opacity .2s ease;
+  transition: opacity .1s ease;
 }
 
 .fade-enter,

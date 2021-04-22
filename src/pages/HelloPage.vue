@@ -23,7 +23,8 @@
         <el-form-item label="记住密码">
           <el-switch
           v-model="login.savePwd"
-          inactive-color="#eee">
+          inactive-color="#eee"
+          disabled>
         </el-switch>
         </el-form-item>
       </el-form>
@@ -36,14 +37,13 @@
     <div id="hello-content">
       <div id="left-info">
         <div class="left-info-content">
-          <Homeworks @makeGlobalDialogVisible="dialogVisible = true" />
+          <Homeworks @makeGlobalDialogVisible="dialogVisible = true" :vals="this.login"/>
         </div>
         <div class="left-info-content"><Player /></div>
         <div class="about">
           <span class="about-text">鲁ICP备20018544号</span>
           <a href="http://mercutio.club"
-            ><span class="about-text">莫阿白的博客</span></a
-          >
+            ><span class="about-text">莫阿白的博客</span></a>
           <a
             href="https://github.com/mercutiojohn/lcu-online/projects/1?fullscreen=true"
             ><span class="about-text" style="font-size: 10px">迭代路线</span></a
@@ -96,6 +96,7 @@ export default {
         radio: "qst",
         savePwd:'false'
       },
+      labelPosition:'right'
     };
   },
   methods: {
@@ -107,6 +108,7 @@ export default {
         .catch((_) => {});
     },
     handleSubmit() {
+      this.$emit('getLogin', this.login)
       this.dialogVisible = false;
     },
     getList() {
@@ -179,7 +181,8 @@ export default {
   padding-left: calc(350px + 20px);
   display: flex;
   flex: 1;
-  overflow: scroll;
+  width: calc(100vw - (350px + 40px));
+  /* overflow: scroll; */
   flex-direction: column;
   /* height:calc(100vh - 150px); */
   user-select: none;

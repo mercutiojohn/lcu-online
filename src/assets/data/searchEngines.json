@@ -1,12 +1,12 @@
 {
   "currUrl": 0,
   "targetUrl": [{
-    "title": "百度",
-    "url": "http://www.baidu.com/s",
-    "queryWord": "wd",
-    "placeholder": "百度一下，你就知道",
-    "bg":"#ffffff",
-    "icon": "baidu.svg"
+      "title": "必应",
+      "url": "https://cn.bing.com/search",
+      "queryWord": "q",
+      "placeholder": "Microsoft Bing 必应搜索",
+      "bg": "#ffffff",
+      "icon": "bing.svg"
   }, {
     "title": "Google",
     "url": "https://www.google.com/search",
@@ -15,13 +15,12 @@
     "bg": "#ffffff",
     "icon": "google.svg"
   }, {
-    "title": "必应",
-    "url": "https://cn.bing.com/search",
-    "queryWord": "q",
-    "placeholder": "Microsoft Bing 必应搜索",
+    "title": "百度",
+    "url": "http://www.baidu.com/s",
+    "queryWord": "wd",
+    "placeholder": "百度一下，你就知道",
     "bg": "#ffffff",
-    "icon": "bing.svg"
-
+    "icon": "baidu.svg"
   }, {
     "title": "多吉",
     "url": "https://www.dogedoge.com/results",
@@ -29,13 +28,6 @@
     "placeholder": "DogeDoge 多吉搜索",
     "bg":"#ffffff",
     "icon":"doge.png"
-  }, {
-    "title": "Magi",
-    "url": "https://magi.com/search",
-    "queryWord": "q",
-    "placeholder": "Mag[i]: 问题 / 关键词 / 表达式",
-    "bg": "#1c1c20",
-    "icon": "magi.svg"
   }, {
     "title": "哔哩哔哩",
     "url": "https://search.bilibili.com/all",
@@ -64,6 +56,41 @@
     "placeholder": "淘宝搜索",
     "bg": "#fd4200",
     "icon": "taobao.svg"
+  }, {
+    "title": "GitHub",
+    "url": "https://github.com/search",
+    "queryWord": "q",
+    "placeholder": "GitHub Repositories",
+    "bg": "#24292e",
+    "icon": "github.svg"
+  }, {
+    "title": "百度开发",
+    "url": "https://kaifa.baidu.com/searchPage",
+    "queryWord": "wd",
+    "placeholder": "百度开发者搜索 · Beta",
+    "bg": "#ffffff",
+    "icon": "baidu-kaifa.svg"
+  }, {
+    "title": "博客园",
+    "url": "https://zzk.cnblogs.com/s",
+    "queryWord": "w",
+    "placeholder": "博客园 · 找找看",
+    "bg": "#ffffff",
+    "icon": "cnblogs.svg"
+  }, {
+    "title": "CSDN",
+    "url": "https://so.csdn.net/search?mode=1&",
+    "queryWord": "q",
+    "placeholder": "CSDN搜索",
+    "bg": "#ffffff",
+    "icon": "csdn.svg"
+  }, {
+    "title": "Magi",
+    "url": "https://magi.com/search",
+    "queryWord": "q",
+    "placeholder": "Mag[i]: 问题 / 关键词 / 表达式",
+    "bg": "#1c1c20",
+    "icon": "magi.svg"
   }, {
     "title": "Ecosia",
     "url": "https://www.ecosia.org/search",
