@@ -46,6 +46,8 @@ export default {
 @import "./main.css";
 
 body {
+  /* perspective:550px; */
+
   margin: 0;
   padding: 0;
   /* background: url(https://bing.rthe.net/wallpaper) no-repeat fixed center/cover; */

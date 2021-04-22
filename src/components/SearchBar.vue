@@ -1,6 +1,6 @@
 <template>
   <div id="searchbar">
-    <!-- <transition name="fade"> -->
+    <transition name="fade">
     <div class="searchbar-wrap" v-show="searchWrapDisplay">
       <div class="searchbar-mask" @click="changeWrapState($event)"></div>
       <div
@@ -89,7 +89,7 @@
 
       <!-- <div class="searchbar-recommends srarchbar-wrap-items" v-for="i in 100" :key="i"></div> -->
     </div>
-    <!-- </transition> -->
+    </transition>
     <div
       :class="'searchbar-opener' + handleChangeBarColor()"
       @click="changeWrapState($event)"
@@ -325,7 +325,7 @@ export default {
   margin-top: 10px;
   background: #00000015;
   color: var(--main-color);
-  transition: all 0.2s ease;
+  transition: background-color 0.4s ease;
 }
 
 /* @media screen and (prefers-color-scheme: light) {
@@ -338,6 +338,8 @@ export default {
 .searchbar-opener:hover {
   background: #ffffff;
   transition: all 0.2s ease;
+  /* box-shadow: 0 4px 80px 1px #00000024; */
+
 }
 .searchbar-opener:active {
   background: #ffffff;
@@ -346,11 +348,12 @@ export default {
 @media screen and (prefers-color-scheme: dark) {
   .searchbar-opener {
     background: #ffffff25;
-    transition: all 0.2s ease;
   }
   .searchbar-opener:hover {
     background: #00000026 !important;
     transition: all 0.2s ease;
+  box-shadow: 0 4px 80px 1px #00000024;
+
   }
   .searchbar-opener:active {
     background: #00000026 !important;
@@ -404,7 +407,8 @@ export default {
   /* backdrop-filter: blur(50px); */
   width: 500px;
   height: auto;
-  box-shadow: 0 4px 80px 1px #00000024;
+  /* box-shadow: 0 4px 80px 1px #00000024; */
+  box-shadow: 0 2px 10px 1px #00000014;
   border-radius: 10px;
   overflow: hidden;
   z-index: 100;

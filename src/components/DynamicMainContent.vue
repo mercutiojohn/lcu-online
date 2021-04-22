@@ -1,12 +1,14 @@
 <template>
   <div id="dynamic-main-content">
-    <div class="dynamic-left">
+    <transition name="fade">
+    <div :class="{'dynamic-left':true,'dynamic-left-fullscreen':fullscreen}" @click="changeWrapState">
       <div class="dynamic-left-background">
         <img
           id="dynamic-left-background-image"
           :src="bgSrc"
           alt=""
           :onerror="defaultBg"
+          ref="bgImg"
         />
         <div id="dynamic-left-background-mask"></div>
         <div class="dynamic-content">
@@ -15,6 +17,7 @@
         </div>
       </div>
     </div>
+    </transition>
     <div class="dynamic-right">
       <Navigation v-for="(item,index) in list" :title="item.title" :sites="item.list" :key="index" :ifSmall="true"> </Navigation>
     </div>
@@ -35,15 +38,32 @@ export default {
   data() {
     return {
       bgSrc:"https://source.unsplash.com/random/1366x768",
-      
+      fullscreen:false
     };
   },
   methods: {
+    changeWrapState() {
+        if (this.fullscreen == true) {
+          this.fullscreen = false;
+        } else {
+          this.fullscreen = true;
+        }
+    },
     getList() {
       this.list = require("@/assets/data/uniNavList.json");
     },
+    changeBackground(){
+      // let a = this.$refs.bgImg;
+      if(this.bgSrc == "https://source.unsplash.com/random/1920x1080")
+        this.bgSrc = "https://source.unsplash.com/random/1366x768";
+      else
+        this.bgSrc = "https://source.unsplash.com/random/1920x1080";
+      // let a = document.querySelector("#dynamic-left-background-image");
+      // a.setAttribute('src',"https://source.unsplash.com/random/1920x1080");
+    }
   },
   created() {
+    setInterval(this.changeBackground,100000);
     this.getList();
   },
   computed: {
@@ -64,12 +84,35 @@ export default {
 }
 .dynamic-left {
   /* width: 60%; */
+  box-sizing: border-box;
   flex: 1;
   height: 100%;
   background: #000;
   border-radius: var(--dynamic-border-radius);
   margin-right: 10px;
   overflow: hidden;
+  cursor: pointer;
+  transform: translate(0);
+  transition:transform .1s ease;
+  z-index:80;
+}
+.dynamic-left:hover{
+  transform: scale(1.02) translate(0);
+}
+.dynamic-left:active{
+  transform: scale(0.98) translate(0);
+}
+.dynamic-left-fullscreen{
+  transform: scale(1) translate(0)!important;
+  border-radius: 0;
+  top:0;
+  left: 0;
+  position: fixed;
+  width:100vw;
+  height: 100vh;
+  z-index: 1000;
+  /* padding: 50px; */
+
 }
 .dynamic-right {
   box-sizing: border-box;
@@ -94,7 +137,7 @@ export default {
   width: 100%;
   height: 100%;
   position: relative;
-  z-index: 0;
+  z-index: 99;
   background: #444;
   display: flex;
   flex-direction: column;
@@ -102,11 +145,12 @@ export default {
   justify-content: flex-start;
 }
 #dynamic-left-background-image {
+  object-fit: cover;
   position: absolute;
   left: 0;
   top: 0;
-  min-width: 100%;
-  min-height: 100%;
+  width: 100%;
+  height: 100%;
   z-index: 1;
 }
 #dynamic-left-background-mask {
@@ -128,6 +172,7 @@ export default {
       rgba(0, 0, 0, 0) 0%,
       rgba(0, 0, 0, 0.2) 100%
     );
+    pointer-events: none;
 }
 .dynamic-content{
   box-sizing: border-box;
@@ -140,5 +185,6 @@ export default {
   width: 100%;
   height: 100%;
   z-index: 3;
+  pointer-events: none;
 }
 </style>

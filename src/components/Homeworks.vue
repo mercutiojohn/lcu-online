@@ -2,10 +2,9 @@
   <div class="homeworks">
     <div class="homeworks-header">
       <span class="homeworks-title">作业通知</span>
-      <div class="left-info-icon-area" @click="makeGlobalDialogVisible">
+      <!-- <div class="left-info-icon-area" @click="makeGlobalDialogVisible">
         <i class="iconfont icon-user left-info-icon"></i>
-        登录
-      </div>
+      </div> -->
       <div class="left-info-icon-area" @click="changeWrapState">
         <i class="iconfont icon-chevron-down left-info-icon"></i>
       </div>
@@ -26,24 +25,48 @@
         </a>
       </div>
       <div class="homeworks-list-placeholder" v-else>
+        <lottie :options="defaultOptions" :height="200" :width="200" v-on:animCreated="handleAnimation"/>
+        <!-- <div>
+           
+            <p>Speed: x{{animationSpeed}}</p>
+            <input type="range" value="1" min="0" max="3" step="0.5"
+                   v-on:change="onSpeedChange" v-model="animationSpeed">
+        </div>
+        <button v-on:click="stop">stop</button>
+        <button v-on:click="pause">pause</button>
+        <button v-on:click="play">play</button> -->
         {{error}}
       </div>
     </div>
   </div>
 </template>
 <script>
+import Lottie from '@/components/lottie'
+import * as animationData from '@/assets/img/lottie/relax.json';
 const axios = require("axios");
 export default {
   name: "Homeworks",
+  components:{
+      lottie: Lottie
+  },
+  props:{
+    vals: Object,
+  },
   data() {
     return {
       hmwkListWrapDisplay: true,
+      hmwkListDisplay: false,
       login: {
-        uname: "LCU2018205700",
-        pwd: "gyc123456",
+        uname: "",
+        pwd: "",
       },
       hmwkList: [],
-      error:""
+      error:"U+平台升级，API失效，暂停服务",
+      defaultOptions: {
+        animationData: animationData,
+        loop:false
+      },
+      animationSpeed: 0.25
     };
   },
   methods: {
@@ -58,30 +81,62 @@ export default {
         }
     },
     getContent() {
-      axios
-        .get("http://api.mercutio.club/fuck_qst/"+this.login.uname+'/'+this.login.pwd, {
-          method: "GET",
-          timeout: 50000,
-          withCredentials: true,
-          transformRequest: [
-            function (data, headers) {
-              return data;
-            },
-          ],
+      this.$jsonp
+        ("http://api.mercutio.club/json_qst/"+this.login.uname+'/'+this.login.pwd, {
+          output: 'jsonp'
         })
-        .then(({ data }) => {
-          console.log(data);
-          this.hmwkList = data.content;
-          print("");
+        .then((res) => {
+          console.log(res);
+          this.hmwkList = res.content
         })
         .catch((error)=>{
           this.hmwkListDisplay = false;
           this.error = error;
+          console.log(error);
         });
     },
+    handleAnimation: function (anim) {
+      this.anim = anim;
+    },
+
+    stop: function () {
+      this.anim.stop();
+    },
+
+    play: function () {
+      this.anim.play();
+    },
+
+    pause: function () {
+      this.anim.pause();
+    },
+
+    onSpeedChange: function () {
+      this.anim.setSpeed(this.animationSpeed);
+    }
+  },
+  watch:{
+    vals: {
+      handler(newValue,oldValue){
+      console.log(newValue);
+      this.login = newValue
+      this.getContent();
+
+    },
+    deep:true,
+    immediate:false
+    }
   },
   created() {
-    this.getContent();
+    // this.$on("getLogin",function(res){
+    //   console.log(res);
+    //   this.login.uname = res.uname;
+    //   this.login.pwd = res.pwd;
+    //   this.getContent();
+    // })
+  },
+  mounted() {
+    // this.getContent();
   },
 };
 </script>
@@ -153,6 +208,8 @@ export default {
 .homeworks-list-placeholder{
   box-sizing: border-box;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   justify-content: center;
   padding: 10px;
