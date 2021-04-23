@@ -92,14 +92,15 @@ export default {
   justify-content: space-between;
   align-items: center;
   z-index:1000;
-  transition: all .3s ease;
+  transition: all .6s ease;
   padding: 5px 30px 5px 30px;
 }
 .header-bar-container-bgon{
   background: var(--blur-color);
   /* background: #0000001e; */
   backdrop-filter: blur(40px) saturate(120%);
-  transition: all .3s ease;
+  transition: all .05s ease;
+
   /* color:#fff!important; */
 
   box-shadow: 0 0px 10px 4px #00000010;

@@ -151,11 +151,11 @@ export default {
 }
 
 #left-info {
-  height: calc(100vh - 46px);
+  height: calc(100vh - 115px);
   box-sizing: border-box;
   position: fixed;
-  bottom: 20px;
-  padding: 40px 10px;
+  bottom: 50px;
+  padding: 0 10px 80px 10px;
   width: 350px;
   display: flex;
   flex-direction: column;
@@ -175,6 +175,7 @@ export default {
   border-radius: 10px;
   box-shadow: 0 5px 8px 3px #00000014; */
   overflow: hidden;
+  flex-shrink: 0 ;
 }
 
 .home-wrap {
@@ -203,9 +204,9 @@ export default {
   }
 }
 .about {
-  position: absolute;
-  bottom: 0;
-  left: 25px;
+  position: fixed;
+  bottom: 22px;
+  /* left: 25px; */
   width: 100%;
   /* margin: 0 auto 20px; */
   display: flex;
