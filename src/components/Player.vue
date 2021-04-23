@@ -3,7 +3,7 @@
     <div class="player-wrap">
       <div class="player-entry">
         <div class="player-cover" @click="changeWrapState">
-          <video
+          <!-- <video
             id="myVideo"
             class="player-media video-js vjs-default-skin vjs-big-play-centered"
             x-webkit-airplay="true"
@@ -14,7 +14,8 @@
             x5-video-player-typ="h5"
           >
             <source :type="audioType" :src="audioSrc" />
-          </video>
+          </video> -->
+          <audio-player @sendPlayerItem="updatePlayerItem" :options="videoOptions" :key="timer"/>
           <img
             class="player-cover-image"
             :src="getImage(cover)"
@@ -47,8 +48,7 @@
             <div
               class="media-item homework-card"
               v-for="(item, index) in mediaList"
-              :key="index"
-            >
+              :key="index" @click="audioSwitch(index)">
               <div class="media-item-image">
                 <img
                   class="media-item-image-s"
@@ -70,31 +70,30 @@
 </template>
 
 <script>
-// import VideoPlayer from "@/components/VideoPlayer";
+import AudioPlayer from "@/components/AudioPlayer";
 export default {
   name: "Player",
   components: {
-    // VideoPlayer,
+    AudioPlayer
   },
   data() {
     return {
       playerWrapDisplay: false,
       audioId: 0,
-      audioSrc: "http://sk.cri.cn/887.m3u8",
-      cover: "hitfm.jpg",
-      audioTitle: "CRI Hit FM",
-      audioType: "application/x-mpegURL",
-      artist: "China Radio International",
+      cover: "",
+      audioTitle: "",
+      artist: "",
       audioStatus: "",
+      timer:"",
       mediaList: [],
       audioObj: null,
       videoOptions: {
-        autoplay: true,
-        controls: true,
+        autoplay: false,
+        controls: false,
         sources: [
           {
-            src: "http://sk.cri.cn/887.m3u8",
-            type: "application/x-mpegURL",
+            src: "",
+            type: "",
           },
         ],
       },
@@ -114,12 +113,15 @@ export default {
         this.audioTitle = this.mediaList[0].title;
         this.artist = this.mediaList[0].artist;
         this.cover = this.mediaList[0].cover;
-        this.audioSrc = this.mediaList[0].src;
-        this.initVideo();
+        this.videoOptions.sources[0].src = this.mediaList[0].url;
+        this.videoOptions.sources[0].type = this.mediaList[0].type;
+        this.initAudio();
+        this.timer = new Date().getTime();
       } catch (error) {
         console.error(error);
         this.audioTitle = "获取音频列表失败";
       }
+      this.timer = new Date().getTime();
     },
     getImage(img) {
       try {
@@ -132,46 +134,80 @@ export default {
     },
     audioControl() {
       if (this.audioStatus == "playing") {
+        this.$emit("audio_pause");
         this.audioObj.pause();
         this.audioStatus = "";
       } else {
+        this.$emit("audio_play");
         this.audioObj.play();
         this.audioStatus = "playing";
       }
     },
     audioChange(changeType) {
-      let index = this.audioId;
+      let index = parseInt(this.audioId);
       if (index >= 0 && index <= this.mediaList.length) {
         //上一首
         if (changeType == "pre" && index > 0) {
           index = index - 1;
-        } else if (changeType == "next" && index < this.mediaList.length) {
+          this.audioId = index;
+        } else if (changeType == "next" && index < this.mediaList.length - 1) {
           index = index + 1;
+          this.audioId = index;
+        } else if (changeType == "next" && index == this.mediaList.length - 1) {
+          index = 0;
+          this.audioId = index;
         } else {
           return;
         }
-        this.audioId = this.mediaList[index].id;
-        this.title = this.mediaList[index].title;
-        this.artist = this.mediaList[index].artists[0].name;
-        this.audioSrc = this.mediaList[index].src;
+        // this.audioId = this.mediaList[index].id;
+        this.audioTitle = this.mediaList[index].title;
+        this.artist = this.mediaList[index].artist;
+        this.videoOptions.sources[0].src = this.mediaList[index].url;
+        this.videoOptions.sources[0].type = this.mediaList[index].type;
+        this.cover = this.mediaList[index].cover;
+        this.timer = new Date().getTime();
+        setTimeout(()=>{
+          this.$emit("audio_play");
+          this.audioObj.play();
+          this.audioStatus = "playing";
+        },500);
+        window.localStorage.setItem("audio_index",this.index);
+        
       }
     },
-    initVideo() {
-      //初始化视频方法
-      this.audioObj = this.$video("myVideo", {
-        //确定播放器是否具有用户可以与之交互的控件。没有控件，启动视频播放的唯一方法是使用autoplay属性或通过Player API。
-        controls: true,
-        autoplay: false
-        // poster: this.cover
-      });
+    audioSwitch(index){
+         // this.audioId = this.mediaList[index].id;
+        this.audioTitle = this.mediaList[index].title;
+        this.artist = this.mediaList[index].artist;
+        this.videoOptions.sources[0].src = this.mediaList[index].url;
+        this.videoOptions.sources[0].type = this.mediaList[index].type;
+        this.cover = this.mediaList[index].cover;
+        this.timer = new Date().getTime();
+        setTimeout(()=>{
+          this.$emit("audio_play");
+          this.audioObj.play();
+          this.audioStatus = "playing";
+        },500);
+        window.localStorage.setItem("audio_index",this.index);
     },
+    initAudio() {
+      //初始化视频方法
+      this.timer = new Date().getTime();
+    },
+    updatePlayerItem(playerItem){
+      this.audioObj = playerItem;
+    }
   },
   created() {
+    this.index = localStorage.getItem("audio_index");
+
     },
   mounted() {
     this.getMediaSource();
-    // this.initVideo();
   },
+  beforeDestroy(){
+    window.localStorage.setItem("audio_index",this.index);
+  }
 };
 </script>
 
@@ -356,6 +392,14 @@ export default {
   display: flex;
   justify-content: flex-start;
   cursor: pointer;
+}
+.media-item:hover{
+  background: #00000023;
+  transition: all 0.2s ease;
+}
+.media-item:active{
+  background: #00000033;
+  /* transition: all 0.2s ease; */
 }
 .media-item-image {
   width: 40px;

@@ -407,8 +407,8 @@ export default {
   /* backdrop-filter: blur(50px); */
   width: 500px;
   height: auto;
-  /* box-shadow: 0 4px 80px 1px #00000024; */
-  box-shadow: 0 2px 10px 1px #00000014;
+  box-shadow: 0 4px 80px 1px #00000024;
+  /* box-shadow: 0 2px 10px 1px #00000014; */
   border-radius: 10px;
   overflow: hidden;
   z-index: 100;
