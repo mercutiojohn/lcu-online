@@ -99,6 +99,7 @@ export default {
       },
     };
   },
+  
   methods: {
     changeWrapState() {
       if (this.playerWrapDisplay == true) {
@@ -155,7 +156,6 @@ export default {
         } else {
           return;
         }
-        // this.audioId = this.mediaList[index].id;
         this.audioTitle = this.mediaList[this.audioId].title;
         this.artist = this.mediaList[this.audioId].artist;
         this.videoOptions.sources[0].src = this.mediaList[this.audioId].url;
@@ -167,12 +167,11 @@ export default {
           this.audioObj.play();
           this.audioStatus = "playing";
         },500);
-        window.localStorage.setItem("audio_index",this.audioId);
         
       }
     },
     audioSwitch(index){
-         // this.audioId = this.mediaList[index].id;
+        this.audioId = index;
         this.audioTitle = this.mediaList[index].title;
         this.artist = this.mediaList[index].artist;
         this.videoOptions.sources[0].src = this.mediaList[index].url;
@@ -184,6 +183,7 @@ export default {
           this.audioObj.play();
           this.audioStatus = "playing";
         },500);
+
     },
     initAudio() {
       //初始化视频方法
