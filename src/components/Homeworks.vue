@@ -1,12 +1,12 @@
 <template>
   <div class="homeworks">
     <div class="homeworks-header">
-      <span class="homeworks-title">作业通知</span>
+      <span class="homeworks-title">U+ 作业通知</span>
       <!-- <div class="left-info-icon-area" @click="makeGlobalDialogVisible">
         <i class="iconfont icon-user left-info-icon"></i>
       </div> -->
       <div class="left-info-icon-area" @click="changeWrapState">
-        <i class="iconfont icon-chevron-down left-info-icon"></i>
+        <i :class="{'iconfont':true,'icon-chevron-up':hmwkListWrapDisplay, 'icon-chevron-down':!hmwkListWrapDisplay,'left-info-icon':true} "></i>
       </div>
     </div>
     <div class="homework-expanded"  v-show="hmwkListWrapDisplay">
@@ -54,7 +54,7 @@ export default {
   },
   data() {
     return {
-      hmwkListWrapDisplay: false,
+      hmwkListWrapDisplay: true,
       hmwkListDisplay: false,
       login: {
         uname: "",
@@ -198,6 +198,7 @@ export default {
   margin: 0 0 0 4px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .left-info-icon-area:hover{
   background: var(--first-assist-color);

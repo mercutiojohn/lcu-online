@@ -110,11 +110,11 @@ export default {
     getMediaSource() {
       try {
         this.mediaList = require("@/assets/data/mediaList.json");
-        this.audioTitle = this.mediaList[0].title;
-        this.artist = this.mediaList[0].artist;
-        this.cover = this.mediaList[0].cover;
-        this.videoOptions.sources[0].src = this.mediaList[0].url;
-        this.videoOptions.sources[0].type = this.mediaList[0].type;
+        this.audioTitle = this.mediaList[this.audioId].title;
+        this.artist = this.mediaList[this.audioId].artist;
+        this.cover = this.mediaList[this.audioId].cover;
+        this.videoOptions.sources[0].src = this.mediaList[this.audioId].url;
+        this.videoOptions.sources[0].type = this.mediaList[this.audioId].type;
         this.initAudio();
         this.timer = new Date().getTime();
       } catch (error) {
@@ -144,27 +144,23 @@ export default {
       }
     },
     audioChange(changeType) {
-      let index = parseInt(this.audioId);
-      if (index >= 0 && index <= this.mediaList.length) {
+      if (this.audioId >= 0 && this.audioId <= this.mediaList.length) {
         //上一首
-        if (changeType == "pre" && index > 0) {
-          index = index - 1;
-          this.audioId = index;
-        } else if (changeType == "next" && index < this.mediaList.length - 1) {
-          index = index + 1;
-          this.audioId = index;
-        } else if (changeType == "next" && index == this.mediaList.length - 1) {
-          index = 0;
-          this.audioId = index;
+        if (changeType == "pre" && this.audioId > 0) {
+          this.audioId = this.audioId - 1;
+        } else if (changeType == "next" && this.audioId < this.mediaList.length - 1) {
+          this.audioId = this.audioId + 1;
+        } else if (changeType == "next" && this.audioId == this.mediaList.length - 1) {
+          this.audioId = 0;
         } else {
           return;
         }
         // this.audioId = this.mediaList[index].id;
-        this.audioTitle = this.mediaList[index].title;
-        this.artist = this.mediaList[index].artist;
-        this.videoOptions.sources[0].src = this.mediaList[index].url;
-        this.videoOptions.sources[0].type = this.mediaList[index].type;
-        this.cover = this.mediaList[index].cover;
+        this.audioTitle = this.mediaList[this.audioId].title;
+        this.artist = this.mediaList[this.audioId].artist;
+        this.videoOptions.sources[0].src = this.mediaList[this.audioId].url;
+        this.videoOptions.sources[0].type = this.mediaList[this.audioId].type;
+        this.cover = this.mediaList[this.audioId].cover;
         this.timer = new Date().getTime();
         setTimeout(()=>{
           this.$emit("audio_play");
@@ -188,7 +184,6 @@ export default {
           this.audioObj.play();
           this.audioStatus = "playing";
         },500);
-        window.localStorage.setItem("audio_index",this.audioId);
     },
     initAudio() {
       //初始化视频方法
@@ -198,15 +193,19 @@ export default {
       this.audioObj = playerItem;
     }
   },
-  created() {
-    this.audioId = localStorage.getItem("audio_index");
-
+  watch:{
+    audioId(newId){
+      localStorage.audio_index = newId;
+    }
+  },
+  beforeCreate() {
     },
   mounted() {
+    if(localStorage.audio_index)
+      this.audioId = Number(localStorage.audio_index);
     this.getMediaSource();
   },
   beforeDestroy(){
-    window.localStorage.setItem("audio_index",this.audioId);
   }
 };
 </script>

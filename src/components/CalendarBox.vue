@@ -14,7 +14,7 @@
       <!-- <span class="block month-content"><span id="month"></span>月</span> -->
       <span class="block-today week-content">星期{{ week }}</span>
       <span class="block-today week-content">
-        <span v-if="schoolWeek < 0">开学还有</span>
+        <!-- <span v-if="schoolWeek < 0">开学还有</span> -->
         <!-- <span v-else>第</span>
           {{Math.abs(schoolWeek)}}
           周 -->
