@@ -65,11 +65,9 @@ export default {
 </script>
 
 <style>
-:root {
-  --accent-color: rgb(17, 148, 235);
-  --accent-color-opa: rgb(17, 148, 235,.6);
-}
+
 #utils {
+  color: var(--main-color);
   display: flex;
 }
 .tools-list {
@@ -77,14 +75,14 @@ export default {
   padding: 20px;
   height: calc(100vh - 64px);
   width: 300px;
-  /* background: #fff; */
+  /* background: var(--elem-color); */
   position: sticky;
   top: 64px;
   overflow-y: scroll;
 }
 .tool-page {
   width: calc(100vw - 300px);
-  background: #fff;
+  background: var(--elem-color);
   border-radius: 10px 0 0 0;
 }
 .tools-category{
@@ -96,7 +94,7 @@ export default {
 }
 .tools-category-list {
   border-radius: 10px;
-  background: #fff;
+  background: var(--elem-color);
   overflow: hidden;
 }
 .tool-item {
@@ -120,6 +118,6 @@ export default {
 }
 .tool-item .active {
   background: var(--accent-color);
-  color: #fff;
+  color: var(--elem-color);
 }
 </style>

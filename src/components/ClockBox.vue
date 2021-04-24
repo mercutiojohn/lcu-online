@@ -33,40 +33,10 @@
         <div id="clockbox-space">
           <span
             v-on:click="changeWrapState('expand')"
-            style="cursor: pointer; color: white"
-            ><svg
-              t="1600101820387"
-              class="icon"
-              viewBox="0 0 1024 1024"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              p-id="2731"
-              width="200"
-              height="200"
-            >
-              <path
-                d="M853.333333 213.333333a42.666667 42.666667 0 0 0-42.666666-42.666666h-213.333334a42.666667 42.666667 0 0 0 0 85.333333h109.653334l-139.946667 140.373333a42.666667 42.666667 0 0 0 0 60.586667 42.666667 42.666667 0 0 0 60.586667 0L768 316.586667V426.666667a42.666667 42.666667 0 0 0 42.666667 42.666666 42.666667 42.666667 0 0 0 42.666666-42.666666zM456.96 567.04a42.666667 42.666667 0 0 0-60.586667 0L256 706.986667V597.333333a42.666667 42.666667 0 0 0-42.666667-42.666666 42.666667 42.666667 0 0 0-42.666666 42.666666v213.333334a42.666667 42.666667 0 0 0 42.666666 42.666666h213.333334a42.666667 42.666667 0 0 0 0-85.333333H316.586667l140.373333-140.373333a42.666667 42.666667 0 0 0 0-60.586667z"
-                p-id="2732"
-                fill="#ffffff"
-              ></path></svg
-          ></span>
-          <span v-on:click="changeUrl()" style="cursor: pointer; color: white"
-            ><svg
-              t="1600101946682"
-              class="icon"
-              viewBox="0 0 1024 1024"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              p-id="4641"
-              width="200"
-              height="200"
-            >
-              <path
-                d="M768 426.666667a42.666667 42.666667 0 0 0-42.666667-42.666667H230.826667l98.133333-97.706667a42.666667 42.666667 0 0 0-60.586667-60.586666l-170.666666 170.666666a42.666667 42.666667 0 0 0-8.96 46.506667A42.666667 42.666667 0 0 0 128 469.333333h597.333333a42.666667 42.666667 0 0 0 42.666667-42.666666z m167.253333 154.453333A42.666667 42.666667 0 0 0 896 554.666667H298.666667a42.666667 42.666667 0 0 0 0 85.333333h494.506666l-98.133333 97.706667a42.666667 42.666667 0 0 0 0 60.586666 42.666667 42.666667 0 0 0 60.586667 0l170.666666-170.666666a42.666667 42.666667 0 0 0 8.96-46.506667z"
-                p-id="4642"
-                fill="#ffffff"
-              ></path></svg
-          ></span>
+            style="cursor: pointer"
+            ><i class="iconfont icon-expand"></i></span>
+          <span v-on:click="changeUrl()" style="cursor: pointer"
+            ><i class="iconfont icon-switch"></i></span>
         </div>
         <div id="clockbox-calendar-container" class="">
           <div class="card-frame"><Player /></div>
@@ -98,6 +68,7 @@ export default {
     return {
       currUrl: 0,
       url: [
+        "https://app.raindrop.io/my/0",
         "https://www.dida365.com/webapp/#q/all/today",
         // 'https://i.ai.mi.com/h5/precache/ai-schedule/#/home',
         // 'https://music.163.com/st/difm/index.html',
@@ -216,14 +187,31 @@ export default {
   cursor: pointer;
 }
 #clockbox-space {
-  height: 64px;
+  height: var(--headbar-height);
   /* width: 100%; */
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  border-right: 1px solid #ffffff45;
+  border-right: 1px solid #7e7e7e45;
   padding-right: 10px;
   margin: 5px 220px 5px 0;
+  color: var(--main-color);
+}
+#clockbox-space span{
+  padding: 7px;
+  border-radius: 7px;
+  margin: 0 0 0 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+#clockbox-space span i{
+  font-size: 20px;
+}
+#clockbox-space span:hover{
+  background: var(--accent-color);
+  color: #fff;
 }
 #clockbox-time {
   position: relative;
@@ -303,7 +291,7 @@ export default {
 #left-col-iframe {
   background: #fff;
   width: 100%;
-  height: 600px;
+  height: calc(100vh - var(--headbar-height) - 25px);
 }
 .icon {
   width: 20px;

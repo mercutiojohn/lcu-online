@@ -1,4 +1,5 @@
 :root {
+    --headbar-height: 64px;
     --box-width: calc(100% - 10px * 2);
     --box-height: calc(100vh - 64px - 10px);
     --box-radius: 15px;
@@ -24,6 +25,8 @@
     --shadow-color: var(--shadow-color-light);
     --shadow-color-light: rgba(29, 29, 29, 0.219);
     --shadow-color-dark: rgba(29, 29, 29, 0.411);
+    --accent-color: rgb(17, 148, 235);
+    --accent-color-opa: rgb(17, 148, 235, .6);
 }
 
 @media screen and (prefers-color-scheme: light) {
@@ -33,6 +36,7 @@
         --elem-color: #ffffff;
         --first-assist-color: #eee;
         --main-color: #000000;
+        --main-color-revert: #ffffff;
         --main-color-assist: #424242;
         --main-color-opa: #00000023;
         --body-color: #f1f3f4;
@@ -40,6 +44,8 @@
         --blur-color: var(--blur-color-light);
         --blur-color-solid: var(--blur-color-light-solid);
         --shadow-color: var(--shadow-color-light);
+        --accent-color: rgb(17, 148, 235);
+        --accent-color-opa: rgb(17, 148, 235, .6);
     }
     .bg-enable {
         background: none !important;
@@ -61,6 +67,8 @@
         --blur-color: var(--blur-color-dark);
         --blur-color-solid: var(--blur-color-dark-solid);
         --shadow-color: var(--shadow-color-dark);
+        --accent-color: rgb(17, 148, 235);
+        --accent-color-opa: rgb(17, 148, 235, .6);
     }
     .bg-enable {
         /* background: #00000058 !important; */
