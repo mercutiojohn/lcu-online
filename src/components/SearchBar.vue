@@ -1,94 +1,99 @@
 <template>
   <div id="searchbar">
     <transition name="fade">
-    <div class="searchbar-wrap" v-show="searchWrapDisplay">
-      <div class="searchbar-mask" @click="changeWrapState($event)"></div>
-      <div
-        class="searchbar-box"
-        @click.prevent.stop="searchWrapDisplay = searchWrapDisplay"
-      >
-        <div :class="'searchbar-container' + handleChangeBarColor()">
-          <i
-            :class="
-              'iconfont icon-search searchbar-icon' + handleChangeBarIconColor()
-            "
-          ></i>
-          <form
-            target="_blank"
-            autocomplete="off"
-            :action="targetUrl[currUrl].url"
-          >
-            <input
-              :class="'searchbar-input' + handleChangeBarFontColor()"
-              type="text"
-              ref="search"
-              autocomplete="off"
-              :name="targetUrl[currUrl].queryWord"
-              :placeholder="targetUrl[currUrl].placeholder"
-              @keyup="getResult($event)"
-              @keydown.down="changeDown()"
-              @keydown.up="changeUp()"
-              @keydown.esc="changeEsc()"
-              v-model="searchItem"
-            />
-          </form>
-        </div>
-        <ul
-          id="searchbar-engines"
-          class="searchbar-engines srarchbar-wrap-items"
-          @scroll.prevent="onScroll"
+      <div class="searchbar-wrap" v-show="searchWrapDisplay">
+        <div class="searchbar-mask" @click="changeWrapState($event)"></div>
+        <div
+          class="searchbar-box"
+          @click.prevent.stop="searchWrapDisplay = searchWrapDisplay"
         >
-          <li
-            :class="{'searchbar-engines-item':true,
-                'searchbar-engines-item-current': currUrl === index,
-              }"
-            v-for="(item, index) in targetUrl"
-            :key="index"
-            @click="changeEngine(index)"
+          <div :class="'searchbar-container' + handleChangeBarColor()">
+            <i
+              :class="
+                'iconfont icon-search searchbar-icon' +
+                handleChangeBarIconColor()
+              "
+            ></i>
+            <form
+              target="_blank"
+              autocomplete="off"
+              :action="targetUrl[currUrlIndex].url"
+            >
+              <input
+                :class="'searchbar-input' + handleChangeBarFontColor()"
+                type="text"
+                ref="search"
+                autocomplete="off"
+                :name="targetUrl[currUrlIndex].queryWord"
+                :placeholder="targetUrl[currUrlIndex].placeholder"
+                @keyup="getResult($event)"
+                @keydown.down="changeDown()"
+                @keydown.up="changeUp()"
+                @keydown.esc="changeEsc()"
+                v-model="searchItem"
+              />
+            </form>
+          </div>
+          <ul
+            id="searchbar-engines"
+            class="searchbar-engines srarchbar-wrap-items"
+            @scroll.prevent="onScroll"
           >
-            <div
-              :id="index"
+            <li
               :class="{
-                'searchbar-engines-item-icon': true}"
+                'searchbar-engines-item': true,
+                'searchbar-engines-item-current': currUrlIndex === index,
+              }"
+              v-for="(item, index) in targetUrl"
+              :key="index"
+              @click="changeEngine(index)"
             >
               <div
-                :style="'background:' + item.bg + ';width:100%;height:100%;'"
+                :id="index"
+                :class="{
+                  'searchbar-engines-item-icon': true,
+                }"
               >
-                <img :src="getIcon(item.icon)" alt="" srcset="" />
+                <div
+                  :style="'background:' + item.bg + ';width:100%;height:100%;'"
+                >
+                  <img :src="getIcon(item.icon)" alt="" srcset="" />
+                </div>
               </div>
-            </div>
-            <span
-              :class="
-                'searchbar-engines-item-title' +
-                (currUrl == index ? ' searchbar-engines-item-title-active' : '')
-              "
-              >{{ item.title }}</span
-            >
-            <!-- <span :class="'searchbar-engines-item-title'">{{item.title}}</span> -->
-          </li>
-        </ul>
-        <div
-          class="searchbar-suggestions srarchbar-wrap-items"
-          v-if="suggestions"
-        >
-          <ul>
-            <li
-              v-for="(item, index) in myData"
-              :class="{
-                'searchbar-suggestions-item': true,
-                'searchbar-suggestions-item-selected':
-                  index === suggestSelected,
-              }"
-              :key="index"
-            >
-              {{ item }}
+              <span
+                :class="
+                  'searchbar-engines-item-title' +
+                  (currUrlIndex == index
+                    ? ' searchbar-engines-item-title-active'
+                    : '')
+                "
+                >{{ item.title }}</span
+              >
+              <!-- <span :class="'searchbar-engines-item-title'">{{item.title}}</span> -->
             </li>
           </ul>
+          <div
+            class="searchbar-suggestions srarchbar-wrap-items"
+            v-if="suggestions"
+          >
+            <ul>
+              <li
+                v-for="(item, index) in myData"
+                :class="{
+                  'searchbar-suggestions-item': true,
+                  'searchbar-suggestions-item-selected':
+                    index === suggestSelected,
+                }"
+                :key="index"
+              >
+                {{ item }}
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
 
-      <!-- <div class="searchbar-recommends srarchbar-wrap-items" v-for="i in 100" :key="i"></div> -->
-    </div>
+        <!-- <div class="searchbar-recommends srarchbar-wrap-items" v-for="i in 100" :key="i"></div> -->
+      </div>
     </transition>
     <div
       :class="'searchbar-opener' + handleChangeBarColor()"
@@ -99,14 +104,14 @@
           'iconfont icon-search searchbar-icon' + handleChangeBarIconColor()
         "
       ></i>
-      <form target="_blank" autocomplete="off" :action="targetUrl[currUrl].url">
+      <form target="_blank" autocomplete="off" :action="targetUrl[currUrlIndex].url">
         <input
           :class="'searchbar-input' + handleChangeBarFontColor()"
           disabled
           type="text"
           autocomplete="off"
-          :name="targetUrl[currUrl].queryWord"
-          :placeholder="targetUrl[currUrl].placeholder"
+          :name="targetUrl[currUrlIndex].queryWord"
+          :placeholder="targetUrl[currUrlIndex].placeholder"
         />
       </form>
     </div>
@@ -119,8 +124,7 @@ export default {
   name: "SearchBar",
   data() {
     return {
-      // currIndex:0,
-      currUrl: 0,
+      currUrlIndex:0,
       searchItem: "",
       targetUrl: [
         {
@@ -137,6 +141,11 @@ export default {
       myData: [],
       suggestSelected: -1,
     };
+  },
+  watch:{
+    currUrlIndex(newUrlIndex){
+      localStorage.search_engine_index = newUrlIndex;
+    }
   },
   methods: {
     onScroll() {},
@@ -187,7 +196,7 @@ export default {
     },
     getList() {
       var searchEngines = require("@/assets/data/searchEngines.json");
-      this.currUrl = searchEngines.currUrl;
+      // this.currUrlIndex = searchEngines.currUrlIndex;
       this.targetUrl = searchEngines.targetUrl;
     },
     changeWrapState(event) {
@@ -237,7 +246,8 @@ export default {
       };
     },
     changeEngine(index) {
-      this.currUrl = index;
+      this.currUrlIndex = index;
+      
     },
     getResult(e) {
       // 请求限制 按了上下箭头
@@ -284,15 +294,23 @@ export default {
       this.move();
     },
   },
+  beforeCreate() {
+    console.log(this.currUrlIndex);
+  },
   created() {
-    this.currUrl = localStorage.getItem("search_engine_index");
+    console.log(this.currUrlIndex);
     this.getList();
+
   },
   mounted() {
+    if(localStorage.search_engine_index)
+      this.currUrlIndex = Number(localStorage.search_engine_index);
     this.setScroll();
+    // console.log(this.currUrlIndex);
+
   },
   beforeDestroy() {
-    localStorage.setItem("search_engine_index",this.currUrl);
+    window.localStorage.setItem("search_engine_index", this.currUrlIndex);
     if (!this.documentObj) return;
     this.documentObj.removeEventListener(
       "DOMMouseScroll",
@@ -341,7 +359,6 @@ export default {
   background: #ffffff;
   transition: all 0.2s ease;
   /* box-shadow: 0 4px 80px 1px #00000024; */
-
 }
 .searchbar-opener:active {
   background: #ffffff;
@@ -354,8 +371,7 @@ export default {
   .searchbar-opener:hover {
     background: #00000026 !important;
     transition: all 0.2s ease;
-  box-shadow: 0 4px 80px 1px #00000024;
-
+    box-shadow: 0 4px 80px 1px #00000024;
   }
   .searchbar-opener:active {
     background: #00000026 !important;

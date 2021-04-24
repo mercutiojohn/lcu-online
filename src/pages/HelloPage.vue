@@ -36,6 +36,9 @@
     <!-- <div id="hello-background"></div> -->
     <div id="hello-content">
       <div id="left-info">
+        <div class="left-info-content">
+          <Countdown />
+        </div>
         <div class="left-info-content"><iframe
             class="left-info-iframe"
             allow="autoplay *; encrypted-media *; geolocation; microphone; camera"
@@ -85,6 +88,7 @@ import Navigation from "@/components/Navigation";
 import Hitokoto from "@/components/Hitokoto";
 import DynamicMainContent from "@/components/DynamicMainContent";
 import Homeworks from "@/components/Homeworks";
+import Countdown from "@/components/Countdown";
 
 export default {
   name: "HelloPage",
@@ -95,6 +99,7 @@ export default {
     DynamicMainContent,
     Player,
     Homeworks,
+    Countdown
   },
   data() {
     return {
