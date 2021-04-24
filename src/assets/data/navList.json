@@ -38,37 +38,14 @@
                 "url": "https://courseweb.ulearning.cn/ulearning/index.html#/index/courseList"
             }
         ]
-    },
-    {
-        "title": "学术研究",
-        "list": [{
-                "title": "Sci-Hub",
-                "color": "#ffffff",
-                "icon": "scihub.png",
-                "url": "https://www.sci-hub.ren/"
-            },
-            {
-                "title": "中国知网",
-                "color": "#1b66e6",
-                "icon": "cnki.png",
-                "url": "https://www.cnki.net/"
-            },
-            {
-                "title": "万方知识平台",
-                "color": "#ffffff",
-                "icon": "wanfang.png",
-                "url": "https://www.wanfangdata.com.cn/index.html"
-            },
-            {
-                "title": "知网研学",
-                "color": "#ffffff",
-                "icon": "cnki-learn.png",
-                "url": "https://x.cnki.net/psmc#/MyStudy"
-            }
-        ]
     }, {
         "title": "网课平台",
         "list": [{
+                "title": "百度网盘",
+                "color": "#ffffff",
+                "icon": "baidunetdisk.png",
+                "url": "https://pan.baidu.com/disk/main#/index"
+            }, {
                 "title": "学堂在线",
                 "icon": "xuetang.png",
                 "color": "#ffffff",
@@ -137,6 +114,34 @@
                 "url": "https://www.coursera.org/in-progress"
             }
         ]
+    },
+    {
+        "title": "学术研究",
+        "list": [{
+                "title": "Sci-Hub",
+                "color": "#ffffff",
+                "icon": "scihub.png",
+                "url": "https://www.sci-hub.ren/"
+            },
+            {
+                "title": "中国知网",
+                "color": "#1b66e6",
+                "icon": "cnki.png",
+                "url": "https://www.cnki.net/"
+            },
+            {
+                "title": "万方知识平台",
+                "color": "#ffffff",
+                "icon": "wanfang.png",
+                "url": "https://www.wanfangdata.com.cn/index.html"
+            },
+            {
+                "title": "知网研学",
+                "color": "#ffffff",
+                "icon": "cnki-learn.png",
+                "url": "https://x.cnki.net/psmc#/MyStudy"
+            }
+        ]
     }, {
         "title": "在线文档",
         "list": [{
@@ -171,7 +176,7 @@
             }
         ]
     }, {
-        "title": "编程开发",
+        "title": "开发平台",
         "list": [{
                 "title": "腾讯云",
                 "color": "#ffffff",
@@ -179,27 +184,31 @@
                 "url": "https://console.cloud.tencent.com/"
             },
             {
-                "title": "GitHub",
-                "color": "#24292e",
-                "icon": "github.svg",
-                "url": "https://github.com/"
-            }, {
                 "title": "华为云",
                 "color": "#f83a43",
                 "icon": "huawei.svg",
                 "url": "https://console.huaweicloud.com/ecm/"
-            }, {
-                "title": "gitee",
-                "color": "#ffffff",
-                "icon": "gitee.svg",
-                "url": "https://gitee.com"
-            }, {
-                "title": "CODING",
-                "color": "#ffffff",
-                "icon": "coding.png",
-                "url": "https://e.coding.net/login"
             }
         ]
+    },
+    {
+        "title": "代码托管/协同编程",
+        "list": [{
+            "title": "GitHub",
+            "color": "#24292e",
+            "icon": "github.svg",
+            "url": "https://github.com/"
+        }, {
+            "title": "gitee",
+            "color": "#ffffff",
+            "icon": "gitee.svg",
+            "url": "https://gitee.com"
+        }, {
+            "title": "CODING",
+            "color": "#ffffff",
+            "icon": "coding.png",
+            "url": "https://e.coding.net/login"
+        }]
     }, {
         "title": "编程学习",
         "list": [{

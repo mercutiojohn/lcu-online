@@ -30,23 +30,27 @@ export default {
     return {
       toolsList: [
         {
-          title: "常用工具",
+          title: "编码转换",
           items: [
             {
-              title: "Base64 编解码",
+              title: "Base64 编码",
               path: "",
             },
             {
-              title: "URL 编解码",
+              title: "URL 编码",
               path: "",
             },
           ],
         },
         {
-          title: "转换工具",
+          title: "类型转换",
           items: [
             {
               title: "图片与 Data URL 互转",
+              path: "",
+            },
+            {
+              title: "Unix 时间戳转换",
               path: "",
             }
           ],
