@@ -67,6 +67,7 @@ export default {
 <style>
 :root {
   --accent-color: rgb(17, 148, 235);
+  --accent-color-opa: rgb(17, 148, 235,.6);
 }
 #utils {
   display: flex;
@@ -109,11 +110,13 @@ export default {
   border-bottom: none;
 }
 .tool-item:hover {
-  background: var(--accent-color);
+  background: var(--accent-color-opa);
   color: #fff;
 }
 .tool-item:active {
-  filter: saturate(280%);
+  background: var(--accent-color);
+  color: #fff;
+
 }
 .tool-item .active {
   background: var(--accent-color);
