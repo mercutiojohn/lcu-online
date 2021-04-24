@@ -37,7 +37,7 @@ export default {
   },
   data() {
     return {
-      bgSrc:"https://source.unsplash.com/random/1366x768",
+      bgSrc:"https://source.unsplash.com/random/1920x1080",
       fullscreen:false
     };
   },
@@ -55,7 +55,7 @@ export default {
     changeBackground(){
       // let a = this.$refs.bgImg;
       if(this.bgSrc == "https://source.unsplash.com/random/1920x1080")
-        this.bgSrc = "https://source.unsplash.com/random/1366x768";
+        this.bgSrc = "https://source.unsplash.com/random/4096x2160";
       else
         this.bgSrc = "https://source.unsplash.com/random/1920x1080";
       // let a = document.querySelector("#dynamic-left-background-image");
@@ -63,8 +63,10 @@ export default {
     }
   },
   created() {
-    setInterval(this.changeBackground,100000);
     this.getList();
+  },
+  mounted() {
+    setInterval(this.changeBackground,480000);
   },
   computed: {
     defaultBg: function(){

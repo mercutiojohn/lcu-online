@@ -54,7 +54,7 @@ export default {
   },
   data() {
     return {
-      hmwkListWrapDisplay: true,
+      hmwkListWrapDisplay: false,
       hmwkListDisplay: false,
       login: {
         uname: "",

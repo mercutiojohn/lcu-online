@@ -189,9 +189,9 @@ export default {
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: flex-start;
-  overflow: visible;
-  width: max-content;
-  width: 100%;
+  /* overflow: visible; */
+  /* width: max-content; */
+  /* width: 100%; */
 }
 .nav-block {
   width: 150px;

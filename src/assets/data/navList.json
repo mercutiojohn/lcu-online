@@ -1,140 +1,212 @@
 [{
-  "title": "校园学习",
-  "list": [{
-      "title": "易班",
-      "color": "#33aacd",
-      "icon": "yiban.svg",
-      "url": "https://www.yooc.me/dashboard/mygroup"
-    },
-    {
-      "title": "U+新工科智慧云",
-      "color": "#1e83ca",
-      "icon": "uplus.svg",
-      "url": "http://www.eec-cn.com/student/group"
-    },
-    {
-      "title": "Unipus",
-      "color": "#289cfb",
-      "icon": "unipus.png",
-      "url": "http://210.44.112.108"
-    },
-    {
-      "title": "批改网",
-      "color": "#28aae1",
-      "icon": "pigai.png",
-      "url": "http://www.pigai.org/index.php?c=write&a=myclass&f2=login"
-    },
-    {
-      "title": "学习通",
+        "title": "校园学习",
+        "list": [{
+                "title": "易班",
+                "color": "#33aacd",
+                "icon": "yiban.svg",
+                "url": "https://www.yooc.me/dashboard/mygroup"
+            },
+            {
+                "title": "U+新工科智慧云",
+                "color": "#1e83ca",
+                "icon": "uplus.svg",
+                "url": "http://www.eec-cn.com/student/group"
+            },
+            {
+                "title": "Unipus",
+                "color": "#289cfb",
+                "icon": "unipus.png",
+                "url": "http://210.44.112.108"
+            },
+            {
+                "title": "批改网",
+                "color": "#28aae1",
+                "icon": "pigai.png",
+                "url": "http://www.pigai.org/index.php?c=write&a=myclass&f2=login"
+            },
+            {
+                "title": "学习通",
 
-      "color": "#b52831",
-      "icon": "chaoxing.png",
-      "url": "https://mooc2-ans.chaoxing.com/visit/interaction"
+                "color": "#b52831",
+                "icon": "chaoxing.png",
+                "url": "https://mooc2-ans.chaoxing.com/visit/interaction"
+            },
+            {
+                "title": "优学院",
+                "color": "#ea5145",
+                "icon": "youxy.png",
+                "url": "https://courseweb.ulearning.cn/ulearning/index.html#/index/courseList"
+            }
+        ]
     },
     {
-      "title": "优学院",
-      "color": "#ea5145",
-      "icon": "youxy.png",
-      "url": "https://courseweb.ulearning.cn/ulearning/index.html#/index/courseList"
+        "title": "学术研究",
+        "list": [{
+                "title": "Sci-Hub",
+                "color": "#ffffff",
+                "icon": "scihub.png",
+                "url": "https://www.sci-hub.ren/"
+            },
+            {
+                "title": "中国知网",
+                "color": "#1b66e6",
+                "icon": "cnki.png",
+                "url": "https://www.cnki.net/"
+            },
+            {
+                "title": "万方知识平台",
+                "color": "#ffffff",
+                "icon": "wanfang.png",
+                "url": "https://www.wanfangdata.com.cn/index.html"
+            },
+            {
+                "title": "知网研学",
+                "color": "#ffffff",
+                "icon": "cnki-learn.png",
+                "url": "https://x.cnki.net/psmc#/MyStudy"
+            }
+        ]
+    }, {
+        "title": "网课平台",
+        "list": [{
+                "title": "学堂在线",
+                "icon": "xuetang.png",
+                "color": "#ffffff",
+                "url": "https://next.xuetangx.com/my-courses/current"
+            },
+            {
+                "title": "智慧树",
+                "icon": "zhihuishu.png",
+                "color": "#ffffff",
+                "url": "https://onlineh5.zhihuishu.com/onlineWeb.html#/studentIndex"
+            },
+            {
+                "title": "中国大学MOOC",
+                "color": "#ffffff",
+                "icon": "mooc.png",
+                "url": "https://www.icourse163.org/home.htm"
+            }, {
+                "title": "网易云课堂",
+                "color": "#ffffff",
+                "icon": "nestudy.png",
+                "url": "https://study.163.com/my#/jpk"
+            }, {
+                "title": "腾讯课堂",
+                "color": "#ffffff",
+                "icon": "txstudy.png",
+                "url": "https://ke.qq.com/user/index/index.html#/plan/"
+            },
+            {
+                "title": "新东方在线",
+                "color": "#ffffff",
+                "icon": "xdf.png",
+                "url": "https://study.koolearn.com/my"
+            },
+            {
+                "title": "爱启航",
+                "color": "#ffffff",
+                "icon": "iqihang.png",
+                "url": "https://www.iqihang.com/vipIindex/vipMain?tabName=first"
+            }, {
+                "title": "新文道",
+                "color": "#ffffff",
+                "icon": "xwd.png",
+                "url": "https://www.xinwendao.cn/member/study"
+            },
+            {
+                "title": "橙啦",
+                "color": "#ffffff",
+                "icon": "orangevip.png",
+                "url": "https://www.orangevip.com/userCenter/myCourse"
+            }, {
+                "title": "粉笔",
+                "color": "#ffffff",
+                "icon": "fenbi.png",
+                "url": "https://www.fenbi.com/spa/pwa/mycourse/index"
+            }, {
+                "title": "一笑而过",
+                "color": "#ffffff",
+                "icon": "alpass.png",
+                "url": "https://pc.xiaoguo101.com/my/course"
+            },
+
+            {
+                "title": "Coursera",
+                "color": "#ffffff",
+                "icon": "coursera.svg",
+                "url": "https://www.coursera.org/in-progress"
+            }
+        ]
+    }, {
+        "title": "在线文档",
+        "list": [{
+            "title": "金山文档",
+            "color": "#ffffff",
+            "icon": "kdocs.svg",
+            "url": "https://www.kdocs.cn/?show=all"
+        }, {
+            "title": "腾讯文档",
+            "color": "#ffffff",
+            "icon": "txdoc.svg",
+            "url": "https://docs.qq.com/desktop/"
+        }]
+    }, {
+        "title": "新媒体",
+        "list": [{
+                "title": "MAKA",
+                "color": "#ffffff",
+                "icon": "maka.png",
+                "url": "https://www.maka.im/workspace/works"
+            },
+            {
+                "title": "创客贴",
+                "color": "#005ffe",
+                "icon": "ckt.svg",
+                "url": "https://www.chuangkit.com/designtools/startdesign"
+            }, {
+                "title": "麦客表单",
+                "color": "#1e3035",
+                "icon": "mikecrm.png",
+                "url": "https://www.mikecrm.com/form.php"
+            }
+        ]
+    }, {
+        "title": "编程开发",
+        "list": [{
+                "title": "腾讯云",
+                "color": "#ffffff",
+                "icon": "txy.svg",
+                "url": "https://console.cloud.tencent.com/"
+            },
+            {
+                "title": "GitHub",
+                "color": "#24292e",
+                "icon": "github.svg",
+                "url": "https://github.com/"
+            }, {
+                "title": "华为云",
+                "color": "#f83a43",
+                "icon": "huawei.svg",
+                "url": "https://console.huaweicloud.com/ecm/"
+            }, {
+                "title": "gitee",
+                "color": "#ffffff",
+                "icon": "gitee.svg",
+                "url": "https://gitee.com"
+            }, {
+                "title": "CODING",
+                "color": "#ffffff",
+                "icon": "coding.png",
+                "url": "https://e.coding.net/login"
+            }
+        ]
+    }, {
+        "title": "编程学习",
+        "list": [{
+            "title": "传智播客",
+            "color": "#ffffff",
+            "icon": "ityxb.png",
+            "url": "http://stu.ityxb.com/Classroom/course/learning"
+        }]
     }
-  ]
-}, {
-  "title": "自我提升",
-  "list": [{
-    "title": "中国大学MOOC",
-    "color": "#ffffff",
-    "icon": "mooc.png",
-    "url": "https://www.icourse163.org/home.htm"
-  }, {
-    "title": "有道精品课",
-    "color": "#fb4a3e",
-    "icon": "youdao.png",
-    "url": "https://ke.youdao.com/user/mycourse"
-  }, {
-    "title": "知网研学",
-    "color": "#3474d9",
-    "icon": "cnki.png",
-    "url": "https://x.cnki.net/psmc#/MyStudy"
-  }, {
-    "title": "学堂在线",
-    "icon": "xuetang.png",
-    "color": "#ffffff",
-    "url": "https://next.xuetangx.com/my-courses/current"
-  }, {
-    "title": "Coursera",
-    "color": "#ffffff",
-    "icon": "coursera.svg",
-    "url": "https://www.coursera.org/in-progress"
-  }]
-}, {
-  "title": "在线文档",
-  "list": [{
-    "title": "麦克表单",
-    "color": "#1e3035",
-    "icon": "mikecrm.png",
-    "url": "https://www.mikecrm.com/form.php"
-  }, {
-    "title": "腾讯文档",
-    "color": "#ffffff",
-    "icon": "txdoc.png",
-    "url": "https://docs.qq.com/desktop/"
-  }]
-}, {
-  "title": "新媒体",
-  "list": [{
-      "title": "MAKA",
-      "color": "#ffffff",
-      "icon": "maka.png",
-      "url": "https://www.maka.im/workspace/works"
-    },
-    {
-      "title": "创客贴",
-      "color": "#005ffe",
-      "icon": "ckt.svg",
-      "url": "https://www.chuangkit.com/designtools/startdesign"
-    }, {
-      "title": "麦克表单",
-      "color": "#1e3035",
-      "icon": "mikecrm.png",
-      "url": "https://www.mikecrm.com/form.php"
-    }
-  ]
-}, {
-  "title": "编程开发",
-  "list": [{
-      "title": "腾讯云控制台",
-      "color": "#ffffff",
-      "icon": "txy.svg",
-      "url": "https://console.cloud.tencent.com/"
-    },
-    {
-      "title": "GitHub",
-      "color": "#24292e",
-      "icon": "github.svg",
-      "url": "https://github.com/"
-    }, {
-      "title": "华为云",
-      "color": "#f83a43",
-      "icon": "huawei.svg",
-      "url": "https://console.huaweicloud.com/ecm/"
-    }, {
-      "title": "gitee",
-      "color": "#ffffff",
-      "icon": "gitee.svg",
-      "url": "https://gitee.com"
-    }, {
-      "title": "CODING",
-      "color": "#ffffff",
-      "icon": "coding.png",
-      "url": "https://e.coding.net/login"
-    }
-  ] 
-}, {
-  "title": "编程学习",
-  "list": [{
-    "title": "传智播客",
-    "color": "#ffffff",
-    "icon": "ityxb.png",
-    "url": "http://stu.ityxb.com/Classroom/course/learning"
-  }]
-}]
+]

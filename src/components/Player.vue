@@ -171,7 +171,7 @@ export default {
           this.audioObj.play();
           this.audioStatus = "playing";
         },500);
-        window.localStorage.setItem("audio_index",this.index);
+        window.localStorage.setItem("audio_index",this.audioId);
         
       }
     },
@@ -188,7 +188,7 @@ export default {
           this.audioObj.play();
           this.audioStatus = "playing";
         },500);
-        window.localStorage.setItem("audio_index",this.index);
+        window.localStorage.setItem("audio_index",this.audioId);
     },
     initAudio() {
       //初始化视频方法
@@ -199,14 +199,14 @@ export default {
     }
   },
   created() {
-    this.index = localStorage.getItem("audio_index");
+    this.audioId = localStorage.getItem("audio_index");
 
     },
   mounted() {
     this.getMediaSource();
   },
   beforeDestroy(){
-    window.localStorage.setItem("audio_index",this.index);
+    window.localStorage.setItem("audio_index",this.audioId);
   }
 };
 </script>

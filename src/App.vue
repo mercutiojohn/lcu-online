@@ -53,6 +53,10 @@ body {
   /* background: url(https://bing.rthe.net/wallpaper) no-repeat fixed center/cover; */
 
 }
+body::before{
+    transition:all .2s ease;
+  
+}
 @media screen and (max-width: 1030px) {
   body::before{
     display: flex;
@@ -61,15 +65,27 @@ body {
     content:"暂不支持过窄宽度";
     color: #fff;
     position: fixed;
-    top:0;
-    left: 0;
+    top:calc(50% - 100px);
+    left: calc(50% - 100px);
     z-index: 10000;
     background: #00000094;
     backdrop-filter: blur(50px);
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+  /* body::after{
+    z-index: 1000;
+    display: flex;
+    position: fixed;
+    top:0;
+    left: 0;
     width: 100vw;
     height: 100vh;
-    padding: 30px 0;
-  }
+    background: #00000023;
+    content: "";
+  } */
 }
 
 #all {
