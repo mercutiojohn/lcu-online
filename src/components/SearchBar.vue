@@ -369,7 +369,7 @@ export default {
     background: #ffffff25;
   }
   .searchbar-opener:hover {
-    background: #00000026 !important;
+    background: #2d2e30 !important;
     transition: all 0.2s ease;
     box-shadow: 0 4px 80px 1px #00000024;
   }

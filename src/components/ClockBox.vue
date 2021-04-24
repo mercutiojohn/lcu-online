@@ -259,7 +259,7 @@ export default {
   height: 100vh;
   /* background: var(--blur-color); */
   background: #91919113;
-  background: #dadada;
+  background: var(--bg-color);
   /* border-radius: 5px; */
   /* backdrop-filter: blur(100px); */
   position: fixed;

@@ -1,9 +1,16 @@
 <template>
   <div id="countdown">
     <div class="countdown-expand" @click="changeExpand()">
-      <i :class="{'iconfont':true,'icon-chevron-up':expand, 'icon-chevron-down':!expand,'left-info-icon':true} "></i>
+      <i
+        :class="{
+          iconfont: true,
+          'icon-chevron-up': expand,
+          'icon-chevron-down': !expand,
+          'left-info-icon': true,
+        }"
+      ></i>
     </div>
-    
+
     <div class="countdown-expanded" v-if="expand">
       <div class="countDown-title">距离 {{ year }} 考研</div>
       <div class="countdown-days">
@@ -27,17 +34,16 @@ export default {
   data() {
     return {
       year: "",
-      expand: true
+      expand: true,
     };
   },
-  watch:{
-    expand(value){
-      if(value)
-        localStorage.kaoyan_status = 1;
-      else{
+  watch: {
+    expand(value) {
+      if (value) localStorage.kaoyan_status = 1;
+      else {
         localStorage.kaoyan_status = 0;
       }
-    }
+    },
   },
   computed: {
     days: function () {
@@ -67,30 +73,30 @@ export default {
     },
   },
   methods: {
-    changeExpand(){
-      if(this.expand == true){
-        this.expand = false;}
-      else{
+    changeExpand() {
+      if (this.expand == true) {
+        this.expand = false;
+      } else {
         this.expand = true;
       }
       // window.localStorage.setItem("kaoyan_status",this.expand);
-    }
-  },
-  beforeCreate(){
     },
-  created(){
+  },
+  beforeCreate() {},
+  created() {
     this.timer = new Date();
   },
   mounted() {
-    if(localStorage.kaoyan_status)
+    if (localStorage.kaoyan_status)
       this.expand = Number(localStorage.kaoyan_status);
     this.year = new Date().getFullYear();
-  }
+  },
 };
 </script>
 
 <style>
 #countdown {
+  color: var(--main-color);
   display: flex;
   flex-direction: column;
 }
