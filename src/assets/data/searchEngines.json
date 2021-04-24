@@ -24,14 +24,7 @@
             "bg": "#ffffff",
             "icon": "baidu.svg"
         },
-        {
-            "title": "多吉",
-            "url": "https://www.dogedoge.com/results",
-            "queryWord": "q",
-            "placeholder": "DogeDoge 多吉搜索",
-            "bg": "#ffffff",
-            "icon": "doge.png"
-        },
+
         {
             "title": "哔哩哔哩",
             "url": "https://search.bilibili.com/all",
@@ -127,6 +120,13 @@
             "placeholder": "学习通·学习是一种信仰",
             "bg": "#e14046",
             "icon": "chaoxing.svg"
+        }, {
+            "title": "多吉",
+            "url": "https://www.dogedoge.com/results",
+            "queryWord": "q",
+            "placeholder": "DogeDoge 多吉搜索",
+            "bg": "#ffffff",
+            "icon": "doge.png"
         }
     ],
     "enginesList": [{
