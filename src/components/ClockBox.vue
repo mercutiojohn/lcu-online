@@ -68,25 +68,32 @@
               ></path></svg
           ></span>
         </div>
-        <div id="clockbox-calendar-container">
+        <div id="clockbox-calendar-container" class="">
+          <div class="card-frame"><Player /></div>
+          <!-- <div class="card-frame">
           <iframe
             id="left-col-iframe"
+            
             allow="autoplay *; encrypted-media *; geolocation; microphone; camera"
             sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
             :src="url[currUrl]"
             frameborder="0"
             scrolling="auto"
           ></iframe>
+          </div> -->
         </div>
       </div>
     </transition>
   </div>
 </template>
 <script>
+import Player from "@/components/Player";
 export default {
   props: ["bgEnable"],
   name: "ClockBox",
-  date: "",
+  components: {
+    Player
+  },
   data() {
     return {
       currUrl: 0,
@@ -209,15 +216,14 @@ export default {
   cursor: pointer;
 }
 #clockbox-space {
-  height: 40px;
+  height: 64px;
   /* width: 100%; */
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-right: 200px;
   border-right: 1px solid #ffffff45;
   padding-right: 10px;
-  margin: 5px 200px 5px 0;
+  margin: 5px 220px 5px 0;
 }
 #clockbox-time {
   position: relative;
@@ -249,27 +255,46 @@ export default {
 }
 #clockbox-wrap {
   width: 400px;
-  height: calc(100vh - var(--wrap-gap) * 2);
-  background: var(--blur-color);
-  border-radius: 15px;
-  backdrop-filter: blur(100px);
+  /* height: calc(100vh - var(--wrap-gap) * 2); */
+  height: 100vh;
+  /* background: var(--blur-color); */
+  background: #91919113;
+  background: #dadada;
+  /* border-radius: 5px; */
+  /* backdrop-filter: blur(100px); */
   position: fixed;
-  top: var(--wrap-gap);
-  right: var(--wrap-gap);
+  /* top: var(--wrap-gap); */
+  /* right: var(--wrap-gap); */
+  top:0;
+  right: 0;
   transition: all 0.1s;
-  box-shadow: 0 5px 10px 2px #00000043;
+  box-shadow: 0 5px 10px -2px #00000023;
   display: flex;
   flex-direction: column;
 }
 .clockbox-wrap-expanded {
-  width: calc(100vw - var(--wrap-gap) * 2) !important;
-  transition: all 0.1s;
+  /* width: calc(100vw - var(--wrap-gap) * 2) !important; */
+  width: 100vw !important;
+  transition: all 0.2s ease;
 }
 #clockbox-calendar-container {
-  margin: 0 5px 5px 5px;
-  border-radius: 5px 5px 12px 12px;
+  margin: 0 10px 5px;
+  /* border-radius: 5px 5px 12px 12px; */
   overflow: scroll;
-  height: calc(100% - 70px - 5px);
+  /* height: 100%; */
+  /* flex: 1; */
+}
+.card-frame {
+  margin: 10px 0;
+  background: var(--elem-color);
+  border-radius: 5px;
+  box-shadow: 0 2px 6px 1px #00000014;
+  /* background: #ffffff75;
+  backdrop-filter: blur(30px) saturate(180%);
+  border-radius: 10px;
+  box-shadow: 0 5px 8px 3px #00000014; */
+  overflow: hidden;
+  flex-shrink: 0 ;
 }
 .clockbox-noshadow {
   text-shadow: none !important;
@@ -278,7 +303,7 @@ export default {
 #left-col-iframe {
   background: #fff;
   width: 100%;
-  height: 100%;
+  height: 600px;
 }
 .icon {
   width: 20px;

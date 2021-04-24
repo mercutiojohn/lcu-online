@@ -35,12 +35,12 @@ export default {
     return {
       bgEnable:false,
       navs:[
-      //   {
-      //   name:"收藏夹",
-      //   url:"/fanya"
-      // },
+        {
+        name:"工具",
+        url:"/utils"
+      },
       {
-        name:"网课",
+        name:"视频教程",
         url:"/course"
       }]
     };

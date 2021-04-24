@@ -285,12 +285,14 @@ export default {
     },
   },
   created() {
+    this.currUrl = localStorage.getItem("search_engine_index");
     this.getList();
   },
   mounted() {
     this.setScroll();
   },
   beforeDestroy() {
+    localStorage.setItem("search_engine_index",this.currUrl);
     if (!this.documentObj) return;
     this.documentObj.removeEventListener(
       "DOMMouseScroll",

@@ -45,8 +45,8 @@
               <span class="course-video-item-title">{{ item.title }}</span>
             </li>
           </ul>
-          <el-button type="text" @click="dialogVisible = true"
-            >点击打开 Dialog</el-button>
+          <!-- <el-button type="text" @click="dialogVisible = true" hidden
+            >点击打开 Dialog</el-button> -->
         </div>
         <!-- <div class="course-separator"><i></i><i></i></div> -->
       </div>

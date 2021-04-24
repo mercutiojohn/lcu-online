@@ -36,10 +36,19 @@
     <!-- <div id="hello-background"></div> -->
     <div id="hello-content">
       <div id="left-info">
+        <div class="left-info-content"><iframe
+            class="left-info-iframe"
+            allow="autoplay *; encrypted-media *; geolocation; microphone; camera"
+            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+            src="https://www.dida365.com/webapp/#q/all/today"
+            frameborder="0"
+            scrolling="auto"
+          ></iframe></div>
         <div class="left-info-content">
           <Homeworks @makeGlobalDialogVisible="dialogVisible = true" :vals="this.login"/>
         </div>
-        <div class="left-info-content"><Player /></div>
+        <!-- <div class="left-info-content"><Player /></div> -->
+        
         <div class="about">
           <span class="about-text">鲁ICP备20018544号</span>
           <a href="http://mercutio.club"
@@ -177,12 +186,15 @@ export default {
   overflow: hidden;
   flex-shrink: 0 ;
 }
-
+#left-info .left-info-content .left-info-iframe{
+  width: 100%;
+  height:500px;
+}
 .home-wrap {
   padding-left: calc(350px + 20px);
   display: flex;
   flex: 1;
-  width: calc(100vw - (350px + 40px));
+  width: calc(1300px - (350px + 20px));
   /* overflow: scroll; */
   flex-direction: column;
   /* height:calc(100vh - 150px); */
