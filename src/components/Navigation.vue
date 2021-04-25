@@ -237,6 +237,7 @@ export default {
   padding: 3px;
   border-radius: 5px;
   margin-right: 7px;
+  cursor: pointer;
 }
 .nav-toggle-expand:hover{
   background: var(--second-assist-color);
