@@ -449,6 +449,12 @@ export default {
 .srarchbar-wrap-items {
   width: 100%;
   flex-shrink: 0;
+  
+  margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0;
 }
 .searchbar-suggestions {
   border-top: 5px solid #92929213;
@@ -533,12 +539,21 @@ export default {
 }
 
 @media screen and (max-width: 600px) {
-  #searchbar {
+  .header-bar-container {
     width: 100%;
   }
-  .searchbar-container,
-  .srarchbar-wrap-items {
-    width: 95%;
+  .searchbar-opener,.searchbar-box{
+    width: calc(100% - 20px);
+  }
+  .searchbar-opener form,.searchbar-box form{
+    flex:1;
+  }
+  .searchbar-container{
+    width: 100%;
+    max-width: 100%;
+  }
+  .searchbar-opener form input,.searchbar-box form input{
+    width: 100%;
   }
 }
 </style>

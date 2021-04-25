@@ -1,25 +1,35 @@
 <template>
   <div id="dynamic-main-content">
     <transition name="fade">
-    <div :class="{'dynamic-left':true,'dynamic-left-fullscreen':fullscreen}" @click="changeWrapState">
-      <div class="dynamic-left-background">
-        <img
-          id="dynamic-left-background-image"
-          :src="bgSrc"
-          alt=""
-          :onerror="defaultBg"
-          ref="bgImg"
-        />
-        <div id="dynamic-left-background-mask"></div>
-        <div class="dynamic-content">
-          <CalendarBox />
-          <Hitokoto />
+      <div
+        :class="{ 'dynamic-left': true, 'dynamic-left-fullscreen': fullscreen }"
+        @click="changeWrapState"
+      >
+        <div class="dynamic-left-background">
+          <img
+            id="dynamic-left-background-image"
+            :src="bgSrc"
+            alt=""
+            :onerror="defaultBg"
+            ref="bgImg"
+          />
+          <div id="dynamic-left-background-mask"></div>
+          <div class="dynamic-content">
+            <CalendarBox />
+            <Hitokoto />
+          </div>
         </div>
       </div>
-    </div>
     </transition>
     <div class="dynamic-right">
-      <Navigation v-for="(item,index) in list" :title="item.title" :sites="item.list" :key="index" :ifSmall="true"> </Navigation>
+      <Navigation
+        v-for="(item, index) in list"
+        :title="item.title"
+        :sites="item.list"
+        :key="index"
+        :ifSmall="true"
+      >
+      </Navigation>
     </div>
   </div>
 </template>
@@ -33,45 +43,44 @@ export default {
   components: {
     CalendarBox,
     Hitokoto,
-    Navigation
+    Navigation,
   },
   data() {
     return {
-      bgSrc:"https://source.unsplash.com/random/1920x1080",
-      fullscreen:false
+      bgSrc: "https://source.unsplash.com/random/1920x1080",
+      fullscreen: false,
     };
   },
   methods: {
     changeWrapState() {
-        if (this.fullscreen == true) {
-          this.fullscreen = false;
-        } else {
-          this.fullscreen = true;
-        }
+      if (this.fullscreen == true) {
+        this.fullscreen = false;
+      } else {
+        this.fullscreen = true;
+      }
     },
     getList() {
       this.list = require("@/assets/data/uniNavList.json");
     },
-    changeBackground(){
+    changeBackground() {
       // let a = this.$refs.bgImg;
-      if(this.bgSrc == "https://source.unsplash.com/random/1920x1080")
+      if (this.bgSrc == "https://source.unsplash.com/random/1920x1080")
         this.bgSrc = "https://source.unsplash.com/random/4096x2160";
-      else
-        this.bgSrc = "https://source.unsplash.com/random/1920x1080";
+      else this.bgSrc = "https://source.unsplash.com/random/1920x1080";
       // let a = document.querySelector("#dynamic-left-background-image");
       // a.setAttribute('src',"https://source.unsplash.com/random/1920x1080");
-    }
+    },
   },
   created() {
     this.getList();
   },
   mounted() {
-    setInterval(this.changeBackground,480000);
+    setInterval(this.changeBackground, 480000);
   },
   computed: {
-    defaultBg: function(){
+    defaultBg: function () {
       return require("@/assets/img/bg/temp-bg.jpg");
-    }
+    },
   },
 };
 </script>
@@ -79,6 +88,7 @@ export default {
 :root {
   --dynamic-border-radius: 5px;
 }
+
 #dynamic-main-content {
   box-sizing: border-box;
   height: 350px;
@@ -95,26 +105,25 @@ export default {
   overflow: hidden;
   cursor: pointer;
   transform: translate(0);
-  transition:transform .1s ease;
-  z-index:80;
+  transition: transform 0.1s ease;
+  z-index: 80;
 }
-.dynamic-left:hover{
+.dynamic-left:hover {
   transform: scale(1.02) translate(0);
 }
-.dynamic-left:active{
+.dynamic-left:active {
   transform: scale(0.98) translate(0);
 }
-.dynamic-left-fullscreen{
-  transform: scale(1) translate(0)!important;
+.dynamic-left-fullscreen {
+  transform: scale(1) translate(0) !important;
   border-radius: 0;
-  top:0;
+  top: 0;
   left: 0;
   position: fixed;
-  width:100vw;
+  width: 100vw;
   height: 100vh;
   z-index: 1000;
   /* padding: 50px; */
-
 }
 .dynamic-right {
   box-sizing: border-box;
@@ -127,7 +136,7 @@ export default {
   border-radius: var(--dynamic-border-radius);
   overflow: hidden;
 }
-.dynamic-right .nav{
+.dynamic-right .nav {
   box-sizing: border-box;
   width: 100%;
   padding: 15px;
@@ -174,9 +183,9 @@ export default {
       rgba(0, 0, 0, 0) 0%,
       rgba(0, 0, 0, 0.2) 100%
     );
-    pointer-events: none;
+  pointer-events: none;
 }
-.dynamic-content{
+.dynamic-content {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -188,5 +197,25 @@ export default {
   height: 100%;
   z-index: 3;
   pointer-events: none;
+}
+@media screen and (max-width: 700px) {
+  #dynamic-main-content {
+    box-sizing: border-box;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+  }
+  .dynamic-left {
+    height: max-content;
+    margin: 0;
+    margin: 10px 0;
+  }
+  .dynamic-left-background {
+    min-height: 350px;
+  }
+  .dynamic-right {
+    width: 100%;
+    /* height: 300px; */
+  }
 }
 </style>

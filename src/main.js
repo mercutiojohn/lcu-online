@@ -46,6 +46,7 @@ import Course from '@/pages/Course'
 import HelloPage from '@/pages/HelloPage'
 import Fanya from '@/pages/Fanya'
 import Utilities from '@/pages/Utilities'
+import MobileHome from '@/pages/MobileHome'
 
 // 1. 定义 (路由) 组件。
 // 可以从其他文件 import 进来
@@ -76,6 +77,9 @@ const routes = [{
     }, {
         path: '/fanya',
         component: Fanya
+    }, {
+        path: '/mobile',
+        component: MobileHome
     }
 ]
 

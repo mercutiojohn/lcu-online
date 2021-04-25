@@ -114,6 +114,24 @@ export default {
     };
   },
   methods: {
+    linktab() {
+      let goUrl = this.isMobile();
+      if (goUrl === 1) {
+        //移动端地址
+        // location = "http://127.0.0.1:8043";
+        // alert("hello");
+        location = "#/mobile";
+      } else {
+        //PC地址
+      }
+    },
+    isMobile() {
+      let flag = navigator.userAgent.match(
+        /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+      );
+      let goUrl = flag ? 1 : 0;
+      return goUrl;
+    },
     handleClose(done) {
       this.$confirm("确认关闭？")
         .then((_) => {
@@ -130,6 +148,7 @@ export default {
     },
   },
   created() {
+    this.linktab();
     this.getList();
   },
 };
@@ -145,6 +164,40 @@ export default {
   align-items: center;
   justify-content: center;
   margin: 10px 0 100px 0;
+}
+.hello-page::before{
+    transition:all .2s ease;
+  
+}
+@media screen and (max-width: 1030px) {
+  .hello-page::before{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    content:"暂不支持过窄宽度";
+    color: #fff;
+    position: fixed;
+    top:calc(50% - 100px);
+    left: calc(50% - 100px);
+    z-index: 10000;
+    background: #00000094;
+    backdrop-filter: blur(50px);
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+  /* body::after{
+    z-index: 1000;
+    display: flex;
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #00000023;
+    content: "";
+  } */
 }
 #hello-background {
   width: 100vw;
