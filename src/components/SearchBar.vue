@@ -338,11 +338,10 @@ export default {
   display: flex;
   width: 70vw;
   max-width: 500px;
-  height: 50px;
   border-radius: 10px;
   pointer-events: auto;
   height: 40px;
-  margin-top: 10px;
+  margin-top: 12px;
   background: #00000015;
   color: var(--main-color);
   transition: background-color 0.4s ease;
@@ -420,7 +419,7 @@ export default {
 .searchbar-box {
   box-sizing: border-box;
   /* border: 0.5px solid #00000022; */
-  margin: 10px 0;
+  margin: 12px 0;
   background: var(--elem-color);
   /* backdrop-filter: blur(50px); */
   width: 500px;

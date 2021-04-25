@@ -393,7 +393,7 @@ export default {
   }
   .nav-block {
     min-width: 60px;
-    width: calc((100vw - 130px) / 3 - 10px);
+    width: calc((100vw - 130px) / 3 - 15px);
     flex: 1;
     height: 80px;
     border-radius: 5px;

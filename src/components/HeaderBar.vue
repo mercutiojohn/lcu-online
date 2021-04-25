@@ -85,6 +85,7 @@ export default {
 <style>
 
 .header-bar-container {
+  box-sizing: border-box;
   user-select: none;
   padding: 20px 30px 20px 30px;
   position: sticky;
@@ -145,7 +146,7 @@ export default {
 }
 @media screen and (max-width: 1100px){
   .header-bar-container{
-    height: 50px;
+    height: 64px;
   }
   .header-bar-tablist{
     display: none;
