@@ -170,7 +170,7 @@ export default {
       var start = new Date(2020, 2, 17);
       return getYearWeek(start);
     },
-  },
+  }
 };
 </script>
 <style>

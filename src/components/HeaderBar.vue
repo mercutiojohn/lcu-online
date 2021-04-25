@@ -83,6 +83,7 @@ export default {
 </script>
 
 <style>
+
 .header-bar-container {
   user-select: none;
   padding: 20px 30px 20px 30px;
@@ -143,17 +144,15 @@ export default {
   display: flex;
 }
 @media screen and (max-width: 600px){
+  .header-bar-container{
+    height: 64px;
+  }
   .header-bar-tablist{
-    /* display: none; */
-    width:0px;
-    max-height:50px;
-    overflow: hidden;
+    display: none;
   }
   #clockbox{
-    /* display: none; */
-    width:0px;
-    overflow: hidden;
-    max-height:50px;
+    display: none;
+
   }
   
 }

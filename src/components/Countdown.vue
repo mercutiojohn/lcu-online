@@ -107,6 +107,7 @@ export default {
 }
 .countdown-expand {
   position: absolute;
+  flex:0;
   right: 20px;
   top: 20px;
   padding: 3px;

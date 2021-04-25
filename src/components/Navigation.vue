@@ -295,4 +295,61 @@ export default {
   width: max-content;
   overflow: visible;
 }
+@media screen and (max-width: 700px) {
+  .nav-often {
+  /* align-items: center;
+  justify-content: center; */
+  width: 100%;
+  /* width: calc((150px + 10px) * 3); */
+}
+  .nav-content {
+  width: 100%;
+
+  display: flex;
+  /* flex-direction: column; */
+  /* width: calc((150px + 10px) * 3); */
+  /* height: calc((100px + 10px) * 5); */
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  /* overflow: visible; */
+  /* width: max-content; */
+  /* width: 100%; */
+}
+  .nav-block {
+    min-width: 80px;
+    width: calc((100vw - 130px) / 3 - 10px);
+    flex: 1;
+    height: 80px;
+    border-radius: 5px;
+    background: #00000056;
+    margin: 0 10px 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: all 0.1s ease-in;
+    box-shadow: 0 2px 5px 1px #00000023;
+  }
+  .nav-content > *:last-child{
+    align-self: flex-start;
+  }
+  .nav-content > *:nth-last-child(1){
+    align-self: flex-start;
+  }
+  .nav-block:hover {
+    /* backdrop-filter: blur(50px) saturate(180%);
+    background: #ffffff63 !important; */
+    color: white !important;
+    transform: none;
+    transition: all 0.3s ease-out;
+    box-shadow: 0 2px 5px 1px #00000023;
+    filter: brightness(1.1);
+
+  }
+  .nav-block:active{
+    transform: scale(0.88);
+  }
+}
 </style>
