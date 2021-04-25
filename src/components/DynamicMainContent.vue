@@ -200,15 +200,18 @@ export default {
 }
 @media screen and (max-width: 700px) {
   #dynamic-main-content {
+    /* zoom: 0.2; */
     box-sizing: border-box;
     height: max-content;
     display: flex;
     flex-direction: column;
   }
   .dynamic-left {
+    zoom:0.8;
     height: max-content;
     margin: 0;
     margin: 10px 0;
+    pointer-events: none;
   }
   .dynamic-left-background {
     min-height: 350px;

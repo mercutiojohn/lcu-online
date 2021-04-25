@@ -143,9 +143,9 @@ export default {
 .header-bar-right{
   display: flex;
 }
-@media screen and (max-width: 600px){
+@media screen and (max-width: 1100px){
   .header-bar-container{
-    height: 64px;
+    height: 50px;
   }
   .header-bar-tablist{
     display: none;

@@ -11,7 +11,7 @@
         >
           <div
             :class="'nav-block' + handleBlockNoIcon() + handleBlockNoColor()"
-            :id="'nav-block_'+ index"
+            :id="'nav-block_' + index"
             :style="'background-color:' + item.color"
           >
             <!--
@@ -47,7 +47,7 @@ export default {
     sites: Array,
     noIcon: Boolean,
     noColor: Boolean,
-    ifSmall: Boolean 
+    ifSmall: Boolean,
   },
   name: "Navigation",
   data() {
@@ -67,12 +67,12 @@ export default {
       //获取需要删除的距离
       console.log("#nav-block_" + this.title + index);
       this.delX =
-        event.clientX - document.querySelector("#nav-block_" + this.title + index).offsetLeft;
-
+        event.clientX -
+        document.querySelector("#nav-block_" + this.title + index).offsetLeft;
 
       this.delY =
-        event.clientY - document.querySelector("#nav-block_" + this.title + index).offsetTop;
-
+        event.clientY -
+        document.querySelector("#nav-block_" + this.title + index).offsetTop;
 
       // console.log("监听事件");
     },
@@ -80,18 +80,21 @@ export default {
       if (this.flag) {
         //删除多余的距离 保持住按下的位置
         var x = (event.clientX - this.delX) / 10;
-        console.log(event.clientX+' '+this.delX);
+        console.log(event.clientX + " " + this.delX);
         var y = (event.clientY - this.delY) / 10;
-        console.log(event.clientY+' '+this.delY);
-        document.querySelector("#nav-block_" + this.title + index).style.transform =
+        console.log(event.clientY + " " + this.delY);
+        document.querySelector(
+          "#nav-block_" + this.title + index
+        ).style.transform =
           "translateX(" + x + "px)" + "translateY(" + y + "px)";
       }
       // console.log("监听事件move");
     },
     blockOut(index) {
       this.flag = false;
-      document.querySelector("#nav-block_" + this.title + index).style.transform =
-        "translateX(0px) translateY(0px)";
+      document.querySelector(
+        "#nav-block_" + this.title + index
+      ).style.transform = "translateX(0px) translateY(0px)";
     },
     ifWhite(color) {
       if (color == "#ffffff") {
@@ -119,7 +122,7 @@ export default {
     handleBlockNoIcon() {
       if (this.noIcon) {
         return " nav-block-small";
-      } else if (this.ifSmall){
+      } else if (this.ifSmall) {
         return " nav-block-smaller";
       } else {
         return "";
@@ -132,14 +135,14 @@ export default {
         return "";
       }
     },
-    handleBottomAreaNoIcon(){
+    handleBottomAreaNoIcon() {
       if (this.noIcon) {
         return " nav-block-bottom-area-no-icon";
       } else {
         return "";
       }
     },
-    handleTopAreaNoIcon(){
+    handleTopAreaNoIcon() {
       if (this.noIcon) {
         return " nav-block-top-area-no-icon";
       } else {
@@ -225,7 +228,6 @@ export default {
   transition: all 0.3s ease-out;
   box-shadow: 0 7px 10px 1px #00000023;
   filter: brightness(1.1);
-
 }
 .nav-block:active {
   /* backdrop-filter: blur(50px) saturate(180%); */
@@ -237,30 +239,30 @@ export default {
   transition: all 0.1s ease-out;
   /* box-shadow: 0 2px 5px 1px inset #00000023; */
   box-shadow: 0 2px 5px 1px #00000023;
-
 }
-.nav-block-top-area{
-  height:50%;
+.nav-block-top-area {
+  height: 50%;
   margin-top: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.nav-block-bottom-area{
-  height:40%;
+.nav-block-bottom-area {
+  height: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.nav-block-bottom-area-no-icon{
-  height:100%;
+.nav-block-bottom-area-no-icon {
+  height: 100%;
 }
 .nav-block-icon {
   height: fit-content;
   max-height: 40px;
   max-width: 80px;
 }
-.nav-block-no-icon,.nav-block-top-area-no-icon {
+.nav-block-no-icon,
+.nav-block-top-area-no-icon {
   display: none;
 }
 .nav-block-no-color {
@@ -272,12 +274,18 @@ export default {
   /* background-color: #000; */
   /* margin-top: 10px; */
   font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .nav-title {
   color: var(--main-color);
   font-size: 20px;
   /* text-shadow: 0 5px 10px #00000083; */
   margin-bottom: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .nav-block-title-no-icon {
   position: static;
@@ -297,27 +305,27 @@ export default {
 }
 @media screen and (max-width: 700px) {
   .nav-often {
-  /* align-items: center;
+    /* align-items: center;
   justify-content: center; */
-  width: 100%;
-  /* width: calc((150px + 10px) * 3); */
-}
+    width: 100%;
+    /* width: calc((150px + 10px) * 3); */
+  }
   .nav-content {
-  width: 100%;
+    width: 100%;
 
-  display: flex;
-  /* flex-direction: column; */
-  /* width: calc((150px + 10px) * 3); */
-  /* height: calc((100px + 10px) * 5); */
-  flex-wrap: wrap;
-  align-items: stretch;
-  justify-content: flex-start;
-  /* overflow: visible; */
-  /* width: max-content; */
-  /* width: 100%; */
-}
+    display: flex;
+    /* flex-direction: column; */
+    /* width: calc((150px + 10px) * 3); */
+    /* height: calc((100px + 10px) * 5); */
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    /* overflow: visible; */
+    /* width: max-content; */
+    /* width: 100%; */
+  }
   .nav-block {
-    min-width: 80px;
+    min-width: 60px;
     width: calc((100vw - 130px) / 3 - 10px);
     flex: 1;
     height: 80px;
@@ -332,10 +340,10 @@ export default {
     transition: all 0.1s ease-in;
     box-shadow: 0 2px 5px 1px #00000023;
   }
-  .nav-content > *:last-child{
+  .nav-content > *:last-child {
     align-self: flex-start;
   }
-  .nav-content > *:nth-last-child(1){
+  .nav-content > *:nth-last-child(1) {
     align-self: flex-start;
   }
   .nav-block:hover {
@@ -346,9 +354,8 @@ export default {
     transition: all 0.3s ease-out;
     box-shadow: 0 2px 5px 1px #00000023;
     filter: brightness(1.1);
-
   }
-  .nav-block:active{
+  .nav-block:active {
     transform: scale(0.88);
   }
 }
