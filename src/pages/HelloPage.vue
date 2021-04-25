@@ -74,6 +74,7 @@
           :key="index"
           :noIcon="item.noIcon ? true : false"
           :noColor="item.noColor ? true : false"
+          :index="index"
         >
         </Navigation>
       </div>

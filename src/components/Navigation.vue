@@ -1,8 +1,13 @@
 <template>
-  <div class="nav">
+  <div :class="{'nav':true,'nav-folded':!expand}">
     <div class="nav-often">
-      <span class="nav-title">{{ title }}</span>
-      <div class="nav-content">
+      <div class="nav-head" :class="{'nav-head-folded':!expand}">
+        <div class="nav-toggle-expand" @click="changeWrapState">
+          <i :class="{'iconfont':true,'icon-chevron-up':expand,'icon-chevron-down':!expand}"></i>
+        </div>
+        <span class="nav-title"  @click="changeWrapState">{{ title }}</span>
+      </div>
+      <div :class="{'nav-content':true,'nav-content-folded':!expand}">
         <a
           v-for="(item, index) in sites"
           :key="index"
@@ -48,10 +53,12 @@ export default {
     noIcon: Boolean,
     noColor: Boolean,
     ifSmall: Boolean,
+    index: Number
   },
   name: "Navigation",
   data() {
     return {
+      expand: true,
       // title:'',
       // sites:{},
       imgUrl: "assets/img/",
@@ -62,6 +69,13 @@ export default {
     };
   },
   methods: {
+    changeWrapState() {
+        if (this.expand == true) {
+          this.expand = false;
+        } else {
+          this.expand = true;
+        }
+    },
     blockOver(index) {
       this.flag = true;
       //获取需要删除的距离
@@ -157,6 +171,13 @@ export default {
       }
     },
   },
+  mounted(){
+    if(window.localStorage.getItem("nav_"+this.index+"_expand")=='0'){
+      this.expand = false;
+    }else{
+      this.expand = true;
+    }
+  },
   created() {
     console.log("created");
     // this.delX = 0;
@@ -176,6 +197,15 @@ export default {
     //3.整个文档绑定鼠标移动事件
     //4.给整个文档绑定了 鼠标抬起事件
   },
+  watch:{
+    expand(newStat){
+      if(newStat){
+        window.localStorage.setItem("nav_"+this.index+"_expand",1); 
+      }else{
+        window.localStorage.setItem("nav_"+this.index+"_expand",0); 
+      }
+    }
+  }
 };
 </script>
 
@@ -183,8 +213,38 @@ export default {
 .nav {
   height: max-content;
   padding-top: 20px;
+  transition: all .2s ease;
+}
+.nav-folded{
+  /* padding-top: 5px; */
+
+}
+.nav-head {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  
+}
+.nav-head-folded{
+  margin-bottom: 0px;
+
+}
+.nav-toggle-expand .iconfont {
+  font-size: 25px;
+}
+.nav-toggle-expand {
+  color: var(--main-color);
+  padding: 3px;
+  border-radius: 5px;
+  margin-right: 7px;
+}
+.nav-toggle-expand:hover{
+  background: var(--second-assist-color);
 }
 .nav-content {
+  box-sizing: border-box;
+  margin: 10px 0 0;
+  padding:8px 5px;
   display: flex;
   /* flex-direction: column; */
   /* width: calc((150px + 10px) * 3); */
@@ -195,6 +255,14 @@ export default {
   /* overflow: visible; */
   /* width: max-content; */
   /* width: 100%; */
+  transition: all 0.2s ease;
+  max-height: calc(100vh - 50px);
+  overflow: hidden;
+}
+.nav-content-folded{
+  padding:0 5px;
+  max-height: 0;
+  margin: 0 0;
 }
 .nav-block {
   width: 150px;
@@ -217,7 +285,7 @@ export default {
 }
 .nav-block-smaller {
   height: 80px;
-  width: 105px;
+  width: 100px;
   padding: 0 10px;
 }
 .nav-block:hover {
@@ -282,7 +350,6 @@ export default {
   color: var(--main-color);
   font-size: 20px;
   /* text-shadow: 0 5px 10px #00000083; */
-  margin-bottom: 20px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

@@ -3,7 +3,7 @@
         "list": [{
                 "title": "百度网盘",
                 "color": "#ffffff",
-                "icon": "baidunetdisk.png",
+                "icon": "baidunetdisk.svg",
                 "url": "https://pan.baidu.com/disk/main#/index"
             },
             {
@@ -15,7 +15,7 @@
             {
                 "title": "中国大学MOOC",
                 "color": "#ffffff",
-                "icon": "mooc.png",
+                "icon": "mooc.svg",
                 "url": "https://www.icourse163.org/home.htm"
             },
             {
@@ -104,25 +104,25 @@
             {
                 "title": "Unipus",
                 "color": "#289cfb",
-                "icon": "unipus.png",
+                "icon": "unipus.svg",
                 "url": "http://210.44.112.108"
             },
             {
                 "title": "批改网",
                 "color": "#28aae1",
-                "icon": "pigai.png",
+                "icon": "pigai.svg",
                 "url": "http://www.pigai.org/index.php?c=write&a=myclass&f2=login"
             },
             {
                 "title": "学习通",
                 "color": "#b52831",
-                "icon": "chaoxing.png",
+                "icon": "chaoxing.svg",
                 "url": "https://mooc2-ans.chaoxing.com/visit/interaction"
             },
             {
                 "title": "优学院",
                 "color": "#ea5145",
-                "icon": "youxy.png",
+                "icon": "youxy.svg",
                 "url": "https://courseweb.ulearning.cn/ulearning/index.html#/index/courseList"
             }
         ]
@@ -136,15 +136,27 @@
                 "url": "https://www.sci-hub.ren/"
             },
             {
+                "title": "Web of Science",
+                "color": "#ffffff",
+                "icon": "wos.svg",
+                "url": "http://apps.webofknowledge.com/WOS_GeneralSearch_input.do"
+            },
+            {
+                "title": "Web of Science New",
+                "color": "#000000",
+                "icon": "wosnew.svg",
+                "url": "https://www.webofscience.com/wos/woscc/basic-search"
+            },
+            {
                 "title": "中国知网",
                 "color": "#1b66e6",
-                "icon": "cnki.png",
+                "icon": "cnki.svg",
                 "url": "https://www.cnki.net/"
             },
             {
                 "title": "万方知识平台",
                 "color": "#ffffff",
-                "icon": "wanfang.png",
+                "icon": "wanfang.svg",
                 "url": "https://www.wanfangdata.com.cn/index.html"
             },
             {
@@ -174,12 +186,6 @@
     {
         "title": "新媒体",
         "list": [{
-                "title": "MAKA",
-                "color": "#ffffff",
-                "icon": "maka.png",
-                "url": "https://www.maka.im/workspace/works"
-            },
-            {
                 "title": "创客贴",
                 "color": "#005ffe",
                 "icon": "ckt.svg",
@@ -190,6 +196,11 @@
                 "color": "#1e3035",
                 "icon": "mikecrm.png",
                 "url": "https://www.mikecrm.com/form.php"
+            }, {
+                "title": "MAKA",
+                "color": "#ffffff",
+                "icon": "maka.png",
+                "url": "https://www.maka.im/workspace/works"
             }
         ]
     },
@@ -206,6 +217,17 @@
                 "color": "#f83a43",
                 "icon": "huawei.svg",
                 "url": "https://console.huaweicloud.com/ecm/"
+            }, {
+                "title": "阿里云",
+                "color": "#ffffff",
+                "icon": "aliyun.svg",
+                "url": "https://homenew.console.aliyun.com/home/dashboard/Operation"
+            },
+            {
+                "title": "亚马逊云服务",
+                "color": "#232f3e",
+                "icon": "aws.svg",
+                "url": "https://console.aws.amazon.com/"
             }
         ]
     },
@@ -236,7 +258,7 @@
         "list": [{
             "title": "传智播客",
             "color": "#ffffff",
-            "icon": "ityxb.png",
+            "icon": "ityxb.svg",
             "url": "http://stu.ityxb.com/Classroom/course/learning"
         }]
     }
