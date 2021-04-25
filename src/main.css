@@ -35,6 +35,7 @@
         --bg-color: #dddddd;
         --elem-color: #ffffff;
         --first-assist-color: #eee;
+        --second-assist-color: #d6d6d6;
         --main-color: #000000;
         --main-color-revert: #ffffff;
         --main-color-assist: #424242;
@@ -58,6 +59,7 @@
         --bg-color: #17181a;
         --elem-color: #2d2e30;
         --first-assist-color: #595a5e;
+        --second-assist-color: #a8a8a8;
         --main-color: #ffffff;
         --main-color-assist: #afafaf;
         --main-color-opa: #ffffff23;

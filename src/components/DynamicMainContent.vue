@@ -131,7 +131,7 @@ export default {
   height: 100%;
   background: var(--elem-color);
   display: flex;
-  padding: 10px 0;
+  /* padding: 10px 0; */
   justify-content: center;
   border-radius: var(--dynamic-border-radius);
   overflow: hidden;
