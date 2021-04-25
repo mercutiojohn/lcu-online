@@ -99,6 +99,7 @@ export default {
   color: var(--main-color);
   display: flex;
   flex-direction: column;
+  transition: all .2s ease;
 }
 .countdown-days {
   font-size: 80px;

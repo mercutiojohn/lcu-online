@@ -16,9 +16,9 @@ export default {
       data: {
         id: 5244,
         uuid: "da22aded-e58b-4b9d-8e2d-55d302ea95ed",
-        hitokoto: "最困难的事，是在黑夜里找光。",
+        hitokoto: "",
         type: "k",
-        from: "Mercutio.",
+        from: "Mercutio",
         from_who: null,
         creator: "a632079",
         creator_uid: 1044,
@@ -27,7 +27,7 @@ export default {
         created_at: "1583784351",
         length: 26,
       },
-      hitoKind:"k"
+      hitoKind:"a&c=b&c=c&c=d&c=e&c=f&c=g&c=h&c=i&c=j&c=k"
         // a	动画
         // b	漫画
         // c	游戏
