@@ -243,9 +243,10 @@ export default {
   background: var(--second-assist-color);
 }
 .nav-content {
+  transform: translateX(-10px);
   box-sizing: border-box;
   margin: 10px 0 0;
-  padding:8px 5px;
+  padding:8px 0 8px 10px;
   display: flex;
   /* flex-direction: column; */
   /* width: calc((150px + 10px) * 3); */
@@ -261,7 +262,8 @@ export default {
   overflow: hidden;
 }
 .nav-content-folded{
-  padding:0 5px;
+  padding-top:0;
+  padding-bottom:0;
   max-height: 0;
   margin: 0 0;
 }
