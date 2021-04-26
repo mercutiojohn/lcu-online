@@ -142,7 +142,7 @@
                 "url": "http://apps.webofknowledge.com/WOS_GeneralSearch_input.do"
             },
             {
-                "title": "Web of Science New",
+                "title": "Web of Science Beta",
                 "color": "#000000",
                 "icon": "wosnew.svg",
                 "url": "https://www.webofscience.com/wos/woscc/basic-search"
@@ -186,21 +186,43 @@
     {
         "title": "新媒体",
         "list": [{
+                "title": "秀米",
+                "color": "#fd8b72",
+                "icon": "xiumi.png",
+                "url": "https://xiumi.us/studio/v5#/paper/for/new/cube/0"
+            }, {
                 "title": "创客贴",
                 "color": "#005ffe",
                 "icon": "ckt.svg",
                 "url": "https://www.chuangkit.com/designtools/startdesign"
+            }, {
+                "title": "MAKA",
+                "color": "#ffffff",
+                "icon": "maka.png",
+                "url": "https://www.maka.im/workspace/works"
+            },
+            {
+                "title": "图怪兽",
+                "color": "#f43a6d",
+                "icon": "818ps.png",
+                "url": "https://818ps.com/imageeditor.html"
+            }, {
+                "title": "135编辑器",
+                "color": "#ffffff",
+                "icon": "135.png",
+                "url": "https://www.135editor.com/"
             },
             {
                 "title": "麦客表单",
                 "color": "#1e3035",
                 "icon": "mikecrm.png",
                 "url": "https://www.mikecrm.com/form.php"
-            }, {
-                "title": "MAKA",
-                "color": "#ffffff",
-                "icon": "maka.png",
-                "url": "https://www.maka.im/workspace/works"
+            },
+            {
+                "title": "Markdown转公众号",
+                "color": "#000000",
+                "icon": "markdown.svg",
+                "url": "https://md.qikqiak.com/"
             }
         ]
     },
@@ -250,6 +272,12 @@
                 "color": "#ffffff",
                 "icon": "coding.png",
                 "url": "https://e.coding.net/login"
+            },
+            {
+                "title": "GitLab",
+                "color": "#ffffff",
+                "icon": "gitlab.svg",
+                "url": "https://gitlab.com/"
             }
         ]
     },
