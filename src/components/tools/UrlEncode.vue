@@ -1,46 +1,23 @@
 <template>
   <div class="encode-template">
-    <h1>Base64编码转换</h1>
-    <textarea
-      class="editor-area"
-      name=""
-      id=""
-      cols="30"
-      rows="10"
-      v-model="input"
-    ></textarea>
-    <!-- <Editor :value="input" index="1" @updateValue="input = $event" /> -->
+    <h1>URL Encode / Decode编码转换</h1>
+    <textarea class="editor-area" name="" id="" cols="30" rows="10" v-model="input"></textarea>
+      <!-- <Editor :value="input" index="1" @updateValue="input = $event" /> -->
     <div class="options">
-      <button
-        class="convert-button convert-button-active"
-        @click="convert('btoa')"
-      >
-        文本转换为Base64
-      </button>
-      <button
-        class="convert-button convert-button-active"
-        @click="convert('atob')"
-      >
-        Base64转换为文本
-      </button>
+      <button class="convert-button convert-button-active" @click="convert('encode')">URL Encode</button>
+      <button class="convert-button convert-button-active" @click="convert('decode')">URL Decode</button>
       <!-- <span>{{this.values.input}}</span> -->
     </div>
-    <textarea
-      class="editor-area"
-      name=""
-      id=""
-      cols="30"
-      rows="10"
-      v-model="output"
-    ></textarea>
+    <textarea class="editor-area" name="" id="" cols="30" rows="10" v-model="output"></textarea>
 
-    <!-- <Editor :value="output" index="2" ref="outputEditor" :key="timer" @updateValue="output = $event" /> -->
+      <!-- <Editor :value="output" index="2" ref="outputEditor" :key="timer" @updateValue="output = $event" /> -->
   </div>
 </template>
 
 <script>
+
 export default {
-  name: "Base64",
+  name: "UrlEncode",
   components: {
     // Editor
   },
@@ -48,28 +25,28 @@ export default {
     return {
       input: "",
       output: "",
-      timer: "",
+      timer:""
     };
   },
   methods: {
     convert(mode) {
-      if (mode == "btoa") {
-        this.output = window.btoa(this.input);
-      } else {
-        this.output = window.atob(this.input);
+      if(mode == 'encode'){
+        this.output = encodeURIComponent(this.input);
+      }else{
+        this.output = decodeURIComponent(this.input);
       }
     },
   },
   watch: {
-    output(newVal) {
+    output(newVal){
       this.timer = new Date().getTime();
       // console.log(newVal);
       // this.outputEditor.changeData(newVal);
-    },
+    }
   },
-  mounted() {
+  mounted(){
     this.timer = new Date().getTime();
-  },
+  }
 };
 </script>
 
@@ -92,32 +69,32 @@ export default {
 }
 .editor-area:focus {
   border-color:var(--accent-color);
-}
-.encode-template .options {
+  /* box-shadow: 0 0 10px -6px var(--accent-color); */
+}.encode-template .options{
   margin: 15px 0;
   display: flex;
   justify-content: center;
   /* align-items: center; */
-}
-.convert-button {
+}.convert-button{
   margin-right: 10px;
-  border: none;
+  border:none;
   padding: 8px 12px;
   border-radius: 10px;
-  transition: all 0.2s ease;
+  transition: all .2s ease;
 }
-.convert-button-active {
+.convert-button-active{
   background: var(--accent-color);
   color: #fff;
 }
-.convert-button-active:hover {
+.convert-button-active:hover{
   transform: scale(1.03);
   background: var(--accent-color-opa);
   cursor: pointer;
 }
-.convert-button-active:active {
+.convert-button-active:active{
   background: var(--accent-color);
   /* filter: brightness(70%); */
   transform: scale(0.98);
+
 }
 </style>

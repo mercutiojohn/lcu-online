@@ -21,11 +21,8 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="记住密码">
-          <el-switch
-          v-model="login.savePwd"
-          inactive-color="#eee"
-          disabled>
-        </el-switch>
+          <el-switch v-model="login.savePwd" inactive-color="#eee" disabled>
+          </el-switch>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -39,23 +36,33 @@
         <div class="left-info-content">
           <Countdown />
         </div>
-        <div class="left-info-content"><iframe
+        <div class="left-info-content">
+          <iframe
             class="left-info-iframe"
             allow="autoplay *; encrypted-media *; geolocation; microphone; camera"
             sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
             src="https://www.dida365.com/webapp/#q/all/today"
             frameborder="0"
             scrolling="auto"
-          ></iframe></div>
-        <div class="left-info-content">
-          <Homeworks @makeGlobalDialogVisible="dialogVisible = true" :vals="this.login"/>
+          ></iframe>
         </div>
+        <div class="left-info-content">
+          <Homeworks
+            @makeGlobalDialogVisible="dialogVisible = true"
+            :vals="this.login"
+          />
+        </div>
+        <div class="left-info-content">
+          <TVNoise />
+        </div>
+
         <!-- <div class="left-info-content"><Player /></div> -->
-        
+
         <div class="about">
           <span class="about-text">鲁ICP备20018544号</span>
           <a href="http://mercutio.club"
-            ><span class="about-text">莫阿白的博客</span></a>
+            ><span class="about-text">莫阿白的博客</span></a
+          >
           <a
             href="https://github.com/mercutiojohn/lcu-online/projects/1?fullscreen=true"
             ><span class="about-text" style="font-size: 10px">迭代路线</span></a
@@ -90,6 +97,7 @@ import Hitokoto from "@/components/Hitokoto";
 import DynamicMainContent from "@/components/DynamicMainContent";
 import Homeworks from "@/components/Homeworks";
 import Countdown from "@/components/Countdown";
+import TVNoise from "@/components/arts/TVNoise";
 
 export default {
   name: "HelloPage",
@@ -100,7 +108,8 @@ export default {
     DynamicMainContent,
     Player,
     Homeworks,
-    Countdown
+    Countdown,
+    TVNoise,
   },
   data() {
     return {
@@ -109,9 +118,9 @@ export default {
         uname: "",
         pwd: "",
         radio: "qst",
-        savePwd:'false'
+        savePwd: "false",
       },
-      labelPosition:'right'
+      labelPosition: "right",
     };
   },
   methods: {
@@ -141,7 +150,7 @@ export default {
         .catch((_) => {});
     },
     handleSubmit() {
-      this.$emit('getLogin', this.login)
+      this.$emit("getLogin", this.login);
       this.dialogVisible = false;
     },
     getList() {
@@ -166,19 +175,18 @@ export default {
   justify-content: center;
   margin: 10px 0 100px 0;
 }
-.hello-page::before{
-    transition:all .2s ease;
-  
+.hello-page::before {
+  transition: all 0.2s ease;
 }
 @media screen and (max-width: 1030px) {
-  .hello-page::before{
+  .hello-page::before {
     display: flex;
     align-items: center;
     justify-content: center;
-    content:"暂不支持过窄宽度";
+    content: "暂不支持过窄宽度";
     color: #fff;
     position: fixed;
-    top:calc(50% - 100px);
+    top: calc(50% - 100px);
     left: calc(50% - 100px);
     z-index: 10000;
     background: #00000094;
@@ -243,11 +251,12 @@ export default {
   border-radius: 10px;
   box-shadow: 0 5px 8px 3px #00000014; */
   overflow: hidden;
-  flex-shrink: 0 ;
+  flex-shrink: 0;
 }
-#left-info .left-info-content .left-info-iframe{
+#left-info .left-info-content .left-info-iframe {
   width: 100%;
-  height:500px;
+  height: 500px;
+  display: block;
 }
 .home-wrap {
   padding-left: calc(350px + 20px);
