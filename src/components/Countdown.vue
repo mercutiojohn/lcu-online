@@ -1,6 +1,16 @@
 <template>
   <div id="countdown">
-    <div class="countdown-expand" @click="changeExpand()">
+
+    
+    <div class="countdown-header">
+      <div :class="{'countdown-closed':true,'countdown-closed-hidden':expand}">
+        <div class="countDown-title">{{ year }} 考研</div>
+        <div class="countdown-closed-days">
+          {{ days }}
+        </div>
+        <div id="countDown-title">天</div>
+      </div>
+      <div class="countdown-expand" @click="changeExpand()">
       <i
         :class="{
           iconfont: true,
@@ -10,21 +20,15 @@
         }"
       ></i>
     </div>
-
-    <div class="countdown-expanded" v-if="expand">
+    </div>
+    <div :class="{'countdown-expanded':true,'countdown-expanded-hidden':!expand}">
       <div class="countDown-title">距离 {{ year }} 考研</div>
       <div class="countdown-days">
         {{ days }}
       </div>
       <div id="countDown-title">天</div>
     </div>
-    <div class="countdown-closed" v-else>
-      <div class="countDown-title">{{ year }} 考研</div>
-      <div class="countdown-closed-days">
-        {{ days }}
-      </div>
-      <div id="countDown-title">天</div>
-    </div>
+    
   </div>
 </template>
 
@@ -107,15 +111,16 @@ export default {
     Bookerly;
 }
 .countdown-expand {
-  position: absolute;
-  flex:0;
+  /* position:relative;
   right: 20px;
-  top: 20px;
+  top: 20px; */
   padding: 3px;
   border-radius: 5px;
   display: flex;
   align-items: center;
   cursor: pointer;
+  flex-grow:0;
+  /* height: min-content; */
 }
 .countdown-expand:hover {
   background: var(--first-assist-color);
@@ -123,19 +128,40 @@ export default {
 .countdown-expand:active {
   background: var(--first-assist-color);
 }
-.countdown-closed {
+.countdown-header {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  /* flex: 1; */
+  padding: 8px 20px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap-reverse;
+}
+.countdown-closed{
   width: 100%;
   display: flex;
   flex: 1;
-  padding: 8px 20px;
   align-items: center;
+  transition: all .5s ease;
+}
+.countdown-closed-hidden{
+  opacity: 0;
 }
 .countdown-expanded {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 25px 0;
+  padding: 0 0 25px;
+  overflow: hidden;
+  max-height: 200px;
+  transition: all .3s;
+}
+.countdown-expanded-hidden{
+  max-height: 0;
+  padding: 0;
+  opacity: 0;
 }
 .countdown-closed-days {
   font-size: 25px;

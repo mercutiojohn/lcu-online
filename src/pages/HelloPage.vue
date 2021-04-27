@@ -37,6 +37,9 @@
           <Countdown />
         </div>
         <div class="left-info-content">
+          <EmbedFrame url="https://www.dida365.com/webapp/#q/all/today" title="滴答清单" height="500" />
+        </div>
+        <!-- <div class="left-info-content">
           <iframe
             class="left-info-iframe"
             allow="autoplay *; encrypted-media *; geolocation; microphone; camera"
@@ -45,7 +48,7 @@
             frameborder="0"
             scrolling="auto"
           ></iframe>
-        </div>
+        </div> -->
         <div class="left-info-content">
           <Homeworks
             @makeGlobalDialogVisible="dialogVisible = true"
@@ -98,6 +101,7 @@ import DynamicMainContent from "@/components/DynamicMainContent";
 import Homeworks from "@/components/Homeworks";
 import Countdown from "@/components/Countdown";
 import TVNoise from "@/components/arts/TVNoise";
+import EmbedFrame from "@/components/EmbedFrame";
 
 export default {
   name: "HelloPage",
@@ -110,6 +114,7 @@ export default {
     Homeworks,
     Countdown,
     TVNoise,
+    EmbedFrame
   },
   data() {
     return {
