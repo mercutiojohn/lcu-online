@@ -31,13 +31,18 @@
       </span>
     </el-dialog>
     <!-- <div id="hello-background"></div> -->
+
     <div id="hello-content">
       <div id="left-info">
         <div class="left-info-content">
           <Countdown />
         </div>
         <div class="left-info-content">
-          <EmbedFrame url="https://www.dida365.com/webapp/#q/all/today" title="滴答清单" height="500" />
+          <EmbedFrame
+            url="https://www.dida365.com/webapp/#q/all/today"
+            title="滴答清单"
+            height="500"
+          />
         </div>
         <!-- <div class="left-info-content">
           <iframe
@@ -55,9 +60,9 @@
             :vals="this.login"
           />
         </div>
-        <div class="left-info-content">
+        <!-- <div class="left-info-content">
           <TVNoise />
-        </div>
+        </div> -->
 
         <!-- <div class="left-info-content"><Player /></div> -->
 
@@ -114,7 +119,7 @@ export default {
     Homeworks,
     Countdown,
     TVNoise,
-    EmbedFrame
+    EmbedFrame,
   },
   data() {
     return {
@@ -183,36 +188,7 @@ export default {
 .hello-page::before {
   transition: all 0.2s ease;
 }
-@media screen and (max-width: 1030px) {
-  .hello-page::before {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    content: "暂不支持过窄宽度";
-    color: #fff;
-    position: fixed;
-    top: calc(50% - 100px);
-    left: calc(50% - 100px);
-    z-index: 10000;
-    background: #00000094;
-    backdrop-filter: blur(50px);
-    width: 200px;
-    height: 200px;
-    border-radius: 10px;
-    box-sizing: border-box;
-  }
-  /* body::after{
-    z-index: 1000;
-    display: flex;
-    position: fixed;
-    top:0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #00000023;
-    content: "";
-  } */
-}
+
 #hello-background {
   width: 100vw;
   height: 100vh;
@@ -273,21 +249,7 @@ export default {
   /* height:calc(100vh - 150px); */
   user-select: none;
 }
-@media screen and (max-width: 600px) {
-  #hello-content {
-    flex-direction: column;
-    margin: 0;
-    width: calc(100% - 20px * 2);
-  }
-  #left-info {
-    position: relative;
-    display: none;
-    /* top:0px; */
-  }
-  .home-wrap {
-    width: 100%;
-  }
-}
+
 .about {
   position: fixed;
   bottom: 22px;
@@ -324,5 +286,58 @@ export default {
   /* text-decoration: underline; */
   cursor: pointer;
   transition: all 0.35s ease;
+}
+@media screen and (max-width: 1030px) {
+  /* .hello-page::before {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    content: "暂不支持过窄宽度";
+    color: #fff;
+    position: fixed;
+    top: calc(50% - 100px);
+    left: calc(50% - 100px);
+    z-index: 10000;
+    background: #00000094;
+    backdrop-filter: blur(50px);
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    box-sizing: border-box;
+  } */
+  /* body::after{
+    z-index: 1000;
+    display: flex;
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #00000023;
+    content: "";
+  } */
+}
+@media screen and (max-width: 600px) {
+  #hello-content {
+    /* display: none; */
+    flex-direction: column;
+    margin: 0;
+    width: calc(100% - 20px * 2);
+  }
+  #left-info {
+    position: unset;
+    width: 100%;
+    height: unset;
+    /* display: none; */
+    /* top:0px; */
+    padding: 0;
+    overflow: visible;
+  }
+  .home-wrap {
+    width: 100%;
+    /* display: none; */
+    padding-left: 0;
+  }
+
 }
 </style>

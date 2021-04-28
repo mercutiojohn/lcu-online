@@ -36,9 +36,13 @@ import '../static/icon/music-controls/iconfont.css'
 // jsonp
 import { VueJsonp } from 'vue-jsonp'
 Vue.use(VueJsonp)
-    // import JsonpCommon from './js/jsonp-common.js'
-    // Vue.use(JsonpCommon)
 
+// import JsonpCommon from './js/jsonp-common.js'
+// Vue.use(JsonpCommon)
+
+// GeminiScrollBar
+import GeminiScrollbar from 'vue-gemini-scrollbar'
+Vue.use(GeminiScrollbar)
 
 Vue.config.productionTip = false
 

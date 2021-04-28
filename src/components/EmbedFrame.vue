@@ -46,8 +46,8 @@ export default {
     url: String,
     title: String,
     height: {
-      type: Number,
-      default: 200,
+      type: String,
+      default: '200',
     },
   },
   data() {
