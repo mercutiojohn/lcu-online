@@ -72,8 +72,8 @@ body {
   /* color: #2c3e50; */
   /* margin-top: 60px; */
 }
-#fake {
+/* #fake {
   height: 1000px;
   width: 100px;
-}
+} */
 </style>

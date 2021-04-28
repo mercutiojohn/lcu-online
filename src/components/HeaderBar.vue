@@ -1,11 +1,11 @@
 <template>
-  <div :class="'header-bar-container'+handleShowBg()">
-    <ul class="header-bar-tablist">
+  <div :class="{'header-bar-container':true,'header-bar-container-bgon':bgEnable}">
+    <ul class="header-bar-tablist"  @click="printPath()">
       <router-link to="/">
-        <li :class="'header-bar-tabitem'+handleChangeFontColor()">首页</li>
+        <li :class="{'header-bar-tabitem':true,'header-bar-tabitem-bgon':bgEnable,'header-bar-tabitem-active':currTab == '/'}">首页</li>
       </router-link>
       <router-link :to="item.url" v-for="(item,index) in navs" :key="index">
-        <li :class="'header-bar-tabitem'+handleChangeFontColor()">{{item.name}}</li>
+        <li :class="{'header-bar-tabitem':true,'header-bar-tabitem-bgon':bgEnable,'header-bar-tabitem-active':currTab == item.url}">{{item.name}}</li>
       </router-link>
       <!-- <router-link to="/classic">
         <li :class="'header-bar-tabitem'+handleChangeFontColor()">经典</li>
@@ -45,7 +45,15 @@ export default {
       }]
     };
   },
+  computed:{
+    currTab:function(){
+      return this.$route.path;
+    }
+  },
   methods: {
+    printPath(){
+      console.log(this.$route.path)
+    },
     handleScroll() {
       let scrollTop =
         window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
@@ -73,6 +81,7 @@ export default {
       }
     }
   },
+  
   mounted(){
     window.addEventListener("scroll", this.handleScroll);
   },
@@ -116,14 +125,13 @@ export default {
 .header-bar-tabitem {
   flex-shrink:0;
   width: max-content;
-  font-size: 20px;
+  /* font-size: 15px; */
   color: var(--main-color);
   margin: 0 5px;
-  padding-right: 12px;
-  padding-left: 12px;
+  padding: 8px 15px;
   font-weight: 400;
-  border-radius: 15px;
-  /* text-shadow: 0 5px 10px #00000083; */
+  border-radius: 25px;
+  transition: all 0.2s ease;
 }
 .header-bar-tabitem-bgon {
   text-shadow: none;
@@ -131,12 +139,27 @@ export default {
 }
 .header-bar-tabitem:hover {
   /* color: #000; */
-  font-size: 20px;
-  box-shadow: 0 2px 10px 2px #00000023;
-  font-weight: 600;
-  padding-right: 12px;
-  padding-left: 12px;
-  background: #ffffff65;
+  /* font-size: 20px; */
+  /* box-shadow: 0 2px 10px 2px #00000023; */
+  /* font-weight: 600; */
+  /* background: #ffffff65; */
+  background: var(--accent-color-opa);
+  color: #fff;
+  /* backdrop-filter: blur(30px) saturate(180%); */
+  text-shadow:none;
+}
+.header-bar-tabitem:active,
+.header-bar-tabitem-active{
+  /* font-size: 20px; */
+  /* box-shadow: 0 2px 10px 2px #00000023; */
+  /* font-weight: 600; */
+  /* padding-right: 12px;
+  padding-left: 12px; */
+  
+  /* background: #ffffff65; */
+  background: var(--accent-color)!important;
+  color: #fff;
+
   /* backdrop-filter: blur(30px) saturate(180%); */
   transition: all 0.2s ease;
   text-shadow:none;

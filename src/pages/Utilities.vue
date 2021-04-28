@@ -163,7 +163,8 @@ export default {
   color: #fff;
 }
 .tool-item-active {
-  background: var(--accent-color);
+  background: var(--accent-color)!important;
   color: var(--elem-color);
+  cursor:unset;
 }
 </style>
