@@ -280,6 +280,7 @@ export default {
   text-align: center;
   transition: all 0.1s ease-in;
   box-shadow: 0 2px 5px 1px #00000023;
+  overflow: hidden;
 }
 .nav-block-small {
   height: 50px;
@@ -323,6 +324,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 .nav-block-bottom-area-no-icon {
   height: 100%;
@@ -348,6 +350,10 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  max-width: 100%;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 .nav-title {
   color: var(--main-color);
@@ -393,22 +399,27 @@ export default {
     /* overflow: visible; */
     /* width: max-content; */
     /* width: 100%; */
+    transform: none;
   }
   .nav-block {
     min-width: 60px;
-    width: calc((100vw - 130px) / 3 - 15px);
+    width: calc((100vw - 130px) / 3 - 5px);
     flex: 1;
     height: 80px;
     border-radius: 5px;
     background: #00000056;
-    margin: 0 10px 10px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    transition: all 0.1s ease-in;
-    box-shadow: 0 2px 5px 1px #00000023;
+    padding: 0 10px;
+  }
+    .nav-block-icon {
+    height: fit-content;
+    max-height: 32px;
+    max-width: 55px;
+  }
+  .nav-block-smaller{
+    width: calc((100vw - 130px) / 3 - 15px);
+  }
+  .nav-block-title{
+    font-size: smaller;
   }
   .nav-content > *:last-child {
     align-self: flex-start;

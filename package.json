@@ -21,7 +21,8 @@
     "vue-gemini-scrollbar": "^2.0.1",
     "vue-jsonp": "^2.0.0",
     "vue-lottie": "^0.2.1",
-    "vue-router": "^3.5.1"
+    "vue-router": "^3.5.1",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

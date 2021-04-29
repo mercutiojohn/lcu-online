@@ -1,10 +1,10 @@
 <template>
   <div id="searchbar">
-    <transition name="fade">
-      <div class="searchbar-wrap" v-show="searchWrapDisplay">
+    <transition name="fade-delay">
+      <div :class="{'searchbar-wrap':true}" v-show="searchWrapDisplay">
         <div class="searchbar-mask" @click="changeWrapState($event)"></div>
         <div
-          class="searchbar-box"
+          :class="{'searchbar-box':true,'searchbar-box-bg-off':!searchWrapDisplay}"
           @click.prevent.stop="searchWrapDisplay = searchWrapDisplay"
         >
           <div :class="'searchbar-container' + handleChangeBarColor()">
@@ -36,7 +36,7 @@
           </div>
           <!-- <ul
             id="searchbar-engines"
-            class="searchbar-engines srarchbar-wrap-items"
+            class="searchbar-engines searchbar-wrap-items"
             @scroll.prevent="onScroll"
           >
             <li
@@ -74,7 +74,7 @@
               <!-- <span :class="'searchbar-engines-item-title'">{{item.title}}</span> -->
           
           <div
-            class="searchbar-suggestions srarchbar-wrap-items"
+            class="searchbar-suggestions searchbar-wrap-items"
             v-if="suggestions"
           >
             <ul>
@@ -92,7 +92,7 @@
             </ul>
           </div>
           <div
-            class="searchbar-engines srarchbar-wrap-items" 
+            class="searchbar-engines searchbar-wrap-items" 
           >
             <div
             id="searchbar-engines"
@@ -143,7 +143,7 @@
         </div>
         
 
-        <!-- <div class="searchbar-recommends srarchbar-wrap-items" v-for="i in 100" :key="i"></div> -->
+        <!-- <div class="searchbar-recommends searchbar-wrap-items" v-for="i in 100" :key="i"></div> -->
       </div>
     </transition>
     <div
@@ -401,6 +401,20 @@ export default {
 </script>
 
 <style>
+.fade-delay-enter-active {
+    transition: opacity .15s ease;
+    /* transition-delay: -500ms; */
+}
+
+.fade-delay-leave-active {
+    transition: opacity .1s ease;
+    transition-delay: 200ms;
+}
+
+.fade-delay-enter,
+.fade-delay-leave-to {
+    opacity: 0;
+}
 #searchbar {
   width: 100vw;
   position: fixed;
@@ -486,6 +500,9 @@ export default {
   pointer-events: auto;
   overflow: scroll !important;
 }
+.searchbar-wrap-bg-off{
+  /* pointer-events:visible; */
+}
 .searchbar-mask {
   position: absolute;
   width: 100vw;
@@ -505,6 +522,17 @@ export default {
   border-radius: 10px;
   overflow: hidden;
   z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all .2s cubic-bezier(0.18,-0.01, 0, 0.99);
+  max-height: calc(100vh - 12px * 2);
+  transition-delay: 100ms;
+}
+.searchbar-box-bg-off {
+  max-height: 40px;
+  transition-delay: 0ms;
+  /* opacity: 0; */
 }
 .searchbar-container {
   display: flex;
@@ -515,23 +543,100 @@ export default {
   height: 40px;
   color: var(--main-color);
   border-bottom: 1px solid var(--main-color-opa);
+  flex-shrink: 0;
 }
 /* @media screen and (prefers-color-scheme: dark) {
   .searchbar-container{
   color: #ffffff;
   }
 } */
-.srarchbar-wrap-items {
+.searchbar-wrap-items::-webkit-scrollbar {
+    display: block;
+    width: 8px;
+    height: 0;
+    position: absolute;
+    right: 0;
+    transition: all .2s ease;
+    cursor: pointer;
+
+}
+.searchbar-wrap-items::-webkit-scrollbar:window-inactive{
+  /* display: none; */
+  width: 0;
+}
+.searchbar-wrap-items::-webkit-scrollbar-button,
+.searchbar-wrap-items::-webkit-scrollbar-corner,
+.searchbar-wrap-items::-webkit-scrollbar-track {
+    background-color: transparent
+}
+
+.searchbar-wrap-items::-webkit-scrollbar-button {
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.searchbar-wrap-items::-webkit-scrollbar-button:vertical {
+    background-position: 50%;
+    width: 18px;
+    height: 18px
+}
+
+.searchbar-wrap-items::-webkit-scrollbar-button:horizontal {
+    background-position: 50%;
+    width: 0;
+}
+.searchbar-wrap-items::-webkit-scrollbar-track {
+    background: transparent;
+    /* width: 100px; */
+}
+
+.searchbar-wrap-items::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.searchbar-wrap-items::-webkit-scrollbar-thumb:hover {
+    background-color: #888
+}
+/* 
+.searchbar-wrap-items::-webkit-scrollbar-resizer {
+    background-color: #ff6e00
+} */
+.searchbar-wrap-items::-webkit-scrollbar-button:vertical:increment {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAUUlEQVQ4T6XLMQ6AMAwEwfz/bXRIfOeQCxckK8iKYgqvfCPJLxgNjAZGA6OB0VjCcV55M/8/jkbDMv+VJbSdccHYvsYFo4HRwGhgNDAaGPdl3LNlBnofQ4+bAAAAAElFTkSuQmCC)
+}
+
+.searchbar-wrap-items::-webkit-scrollbar-button:vertical:increment:hover {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAUklEQVQ4T6XLsQ2AMAwF0ey/A1swAnt95MIFyQlyoniFT/4jyS8YDYwGRgOjgdFYwnFeeTP/P45GwzL/lSW0nXHB2L7GBaOB0cBoYDQwGhj3Zdx8sf7rjOGQqwAAAABJRU5ErkJggg==)
+}
+
+.searchbar-wrap-items::-webkit-scrollbar-button:vertical:decrement {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAVUlEQVQ4T6XMMQoAIQxEUe9/NrsFrzOSIqDxgzu7xSv8ZGySfsHowOjA6MDowOjAmPozFGpfYQw5vn2CsY5TvQtHoOGq3m+PLzA6MDowOjA6ML6nNgFW+wZ6kTk6FAAAAABJRU5ErkJggg==)
+}
+
+.searchbar-wrap-items::-webkit-scrollbar-button:vertical:decrement:hover {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAVklEQVQ4T6XMwQ3AIAwEQfrvgS5SAn0d8sMSmJXIJY95sPLRJP2C0YHRgdGB0YHRgTH1ZyjUvsIYcnz7BGMdp3oXjkDDVb3fHl9gdGB0YHRgdGB8T20CB+X+675uLU0AAAAASUVORK5CYII=)
+}
+
+
+.searchbar-wrap-items {
   width: 100%;
   flex-shrink: 0;
   overflow: scroll;
   max-height: 320px;
   padding-bottom: 10px;
+  margin-right: 5px;
+}
+.searchbar-wrap-items:window-inactive {
+  margin-right: 0px;
+  
 }
 .searchbar-suggestions {
   border-top: 5px solid #92929213;
 }
 .engines-categories-list {
+  box-sizing: border-box;
   display: flex;
   padding: 5px 0;
   overflow: scroll;
@@ -540,9 +645,15 @@ export default {
   border-radius: 10px;
 
 }
+.engines-categories-list::-webkit-scrollbar{
+  display: none;
+}
 .categories-list-title{
+  color: var(--main-color);
+  box-sizing: border-box;
   display: block;
-  padding: 10px;
+  padding: 10px 15px;
+
 }
 .searchbar-engines-item {
   display: flex;

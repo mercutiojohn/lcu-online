@@ -338,6 +338,18 @@ export default {
     /* display: none; */
     padding-left: 0;
   }
-
+  .about {
+  position: absolute;
+  bottom: -80px;
+  /* left: 25px; */
+  width: 100%;
+  /* margin: 0 auto 20px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* flex-direction: row; */
+  /* justify-content: space-evenly; */
+  font-size: 12px;
+}
 }
 </style>

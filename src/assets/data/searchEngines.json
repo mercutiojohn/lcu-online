@@ -1,134 +1,5 @@
 {
     "currUrl": 0,
-    "targetUrl": [{
-            "title": "必应",
-            "url": "https://cn.bing.com/search",
-            "queryWord": "q",
-            "placeholder": "Microsoft Bing 必应搜索",
-            "bg": "#ffffff",
-            "icon": "bing.svg"
-        },
-        {
-            "title": "Google",
-            "url": "https://www.google.com/search",
-            "queryWord": "q",
-            "placeholder": "Google 搜索",
-            "bg": "#ffffff",
-            "icon": "google.svg"
-        },
-        {
-            "title": "百度",
-            "url": "http://www.baidu.com/s",
-            "queryWord": "wd",
-            "placeholder": "百度一下，你就知道",
-            "bg": "#ffffff",
-            "icon": "baidu.svg"
-        },
-
-        {
-            "title": "哔哩哔哩",
-            "url": "https://search.bilibili.com/all",
-            "queryWord": "keyword",
-            "placeholder": "BiliBili ( ゜- ゜)つロ 乾杯~",
-            "bg": "#fa4b81",
-            "icon": "bilibili.svg"
-        },
-        {
-            "title": "知乎",
-            "url": "https://www.zhihu.com/search",
-            "queryWord": "q",
-            "placeholder": "有问题，上知乎",
-            "bg": "#0066ff",
-            "icon": "zhihu.svg"
-        },
-        {
-            "title": "豆瓣",
-            "url": "https://www.douban.com/search",
-            "queryWord": "q",
-            "placeholder": "豆瓣 书影音 艺人",
-            "bg": "#05c210",
-            "icon": "douban.svg"
-        },
-        {
-            "title": "淘宝",
-            "url": "https://s.taobao.com/search",
-            "queryWord": "q",
-            "placeholder": "淘宝搜索",
-            "bg": "#fd4200",
-            "icon": "taobao.svg"
-        },
-        {
-            "title": "GitHub",
-            "url": "https://github.com/search",
-            "queryWord": "q",
-            "placeholder": "GitHub Repositories",
-            "bg": "#24292e",
-            "icon": "github.svg"
-        },
-        {
-            "title": "百度开发",
-            "url": "https://kaifa.baidu.com/searchPage",
-            "queryWord": "wd",
-            "placeholder": "百度开发者搜索 · Beta",
-            "bg": "#ffffff",
-            "icon": "baidu-kaifa.svg"
-        },
-        {
-            "title": "博客园",
-            "url": "https://zzk.cnblogs.com/s",
-            "queryWord": "w",
-            "placeholder": "博客园 · 找找看",
-            "bg": "#ffffff",
-            "icon": "cnblogs.svg"
-        },
-        {
-            "title": "CSDN",
-            "url": "https://so.csdn.net/search?mode=1&",
-            "queryWord": "q",
-            "placeholder": "CSDN搜索",
-            "bg": "#ffffff",
-            "icon": "csdn.svg"
-        },
-        {
-            "title": "Magi",
-            "url": "https://magi.com/search",
-            "queryWord": "q",
-            "placeholder": "Mag[i]: 问题 / 关键词 / 表达式",
-            "bg": "#1c1c20",
-            "icon": "magi.svg"
-        },
-        {
-            "title": "Ecosia",
-            "url": "https://www.ecosia.org/search",
-            "queryWord": "q",
-            "placeholder": "Ecosia 搜索",
-            "bg": "#ffffff",
-            "icon": "ecosia.svg"
-        },
-        {
-            "title": "DuckDuckGo",
-            "url": "https://www.duckduckgo.com/search",
-            "queryWord": "q",
-            "placeholder": "DuckDuckGo",
-            "bg": "#ffffff",
-            "icon": "duckduckgo.svg"
-        },
-        {
-            "title": "学习通",
-            "url": "https://m.chaoxing.com/search",
-            "queryWord": "sw",
-            "placeholder": "学习通·学习是一种信仰",
-            "bg": "#e14046",
-            "icon": "chaoxing.svg"
-        }, {
-            "title": "多吉",
-            "url": "https://www.dogedoge.com/results",
-            "queryWord": "q",
-            "placeholder": "DogeDoge 多吉搜索",
-            "bg": "#ffffff",
-            "icon": "doge.png"
-        }
-    ],
     "enginesList": [{
             "name": "网页搜索",
             "urls": [{
@@ -213,6 +84,22 @@
                     "placeholder": "豆瓣 书影音 艺人",
                     "bg": "#05c210",
                     "icon": "douban.svg"
+                },
+                {
+                    "title": "网易云音乐",
+                    "url": "https://music.163.com/#/search/m/",
+                    "queryWord": "s",
+                    "placeholder": "网易云音乐 · 音乐的力量",
+                    "bg": "#e60026",
+                    "icon": "cloudmusic.svg"
+                },
+                {
+                    "title": "QQ音乐",
+                    "url": "https://y.qq.com/n/ryqq/search",
+                    "queryWord": "w",
+                    "placeholder": "QQ音乐",
+                    "bg": "#ffffff",
+                    "icon": "qqmusic.svg"
                 }
             ]
         },

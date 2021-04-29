@@ -60,13 +60,14 @@ export default {
           title: "编码转换",
           items: [
             {
-              title: "Base64 编码",
-              component: "Base64",
-            },
-            {
               title: "URL 编码",
               component: "UrlEncode",
             },
+            {
+              title: "Base64 编码",
+              component: "Base64",
+            },
+            
           ],
         },
         // {
@@ -164,7 +165,7 @@ export default {
 }
 .tool-item-active {
   background: var(--accent-color)!important;
-  color: var(--elem-color);
+  color: #fff;
   cursor:unset;
 }
 </style>
