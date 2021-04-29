@@ -170,6 +170,11 @@
     {
         "title": "在线文档",
         "list": [{
+                "title": "Notion",
+                "color": "#ffffff",
+                "icon": "notion.svg",
+                "url": "https://www.notion.so/"
+            }, {
                 "title": "金山文档",
                 "color": "#ffffff",
                 "icon": "kdocs.svg",

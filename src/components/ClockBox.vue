@@ -24,19 +24,19 @@
         >{{ date }}</span
       >
     </div>
-    <transition name="fade">
+    <transition name="trans">
       <div
         id="clockbox-wrap"
         v-show="clockWrapDisplay"
         :class="clockWrapExpand ? 'clockbox-wrap-expanded' : ''"
       >
         <div id="clockbox-space">
-          <span
+          <!-- <span
             v-on:click="changeWrapState('expand')"
             style="cursor: pointer"
             ><i class="iconfont icon-expand"></i></span>
           <span v-on:click="changeUrl()" style="cursor: pointer"
-            ><i class="iconfont icon-switch"></i></span>
+            ><i class="iconfont icon-switch"></i></span> -->
         </div>
         <div id="clockbox-calendar-container" class="">
           <div class="card-frame"><Player /></div>
@@ -62,7 +62,7 @@ export default {
   props: ["bgEnable"],
   name: "ClockBox",
   components: {
-    Player
+    Player,
   },
   data() {
     return {
@@ -81,8 +81,17 @@ export default {
       },
       currentDate: new Date(),
       clockWrapExpand: false,
-      bgStatus:true
+      bgStatus: true,
     };
+  },
+  watch: {
+    clockWrapDisplay(newStat) {
+      const _this = this;
+        console.log(this.$store.state.clockBoxStat);
+        console.log(newStat);
+        _this.$store.commit('update',['clockBoxStat',newStat]);
+        console.log(this.$store.state.clockBoxStat);
+    },
   },
   methods: {
     changeUrl() {
@@ -170,10 +179,26 @@ export default {
       var start = new Date(2020, 2, 17);
       return getYearWeek(start);
     },
-  }
+  },
 };
 </script>
 <style>
+.trans-enter-active {
+  transition: all 0.15s cubic-bezier(0.36, 0.13, 0.04, 1);
+}
+
+.trans-leave-active {
+  transition: all 0.1s cubic-bezier(0.43, 0.2, 0.86, 0.88);
+  /* transition-delay: 200ms; */
+}
+
+.trans-enter,
+.trans-leave-to {
+  /* background: transparent; */
+  transform: translateX(25px);
+  opacity: 0;
+  /* backdrop-filter: blur(10px); */
+}
 :root {
   --wrap-gap: 10px;
 }
@@ -197,19 +222,19 @@ export default {
   margin: 5px 220px 5px 0;
   color: var(--main-color);
 }
-#clockbox-space span{
+#clockbox-space span {
   padding: 7px;
   border-radius: 7px;
   margin: 0 0 0 5px;
   display: flex;
   align-items: center;
   cursor: pointer;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
-#clockbox-space span i{
+#clockbox-space span i {
   font-size: 20px;
 }
-#clockbox-space span:hover{
+#clockbox-space span:hover {
   background: var(--accent-color);
   color: #fff;
 }
@@ -242,47 +267,34 @@ export default {
   /* text-shadow: 0 5px 10px #00000083; */
 }
 #clockbox-wrap {
+  min-width: 400px;
+  max-width: 100vw;
   width: 400px;
-  /* height: calc(100vh - var(--wrap-gap) * 2); */
   height: 100vh;
-  /* background: var(--blur-color); */
-  background: #91919113;
-  background: var(--bg-color);
-  /* border-radius: 5px; */
-  /* backdrop-filter: blur(100px); */
+  background: var(--blur-color);
+  backdrop-filter: blur(120px) saturate(200%);
   position: fixed;
-  /* top: var(--wrap-gap); */
-  /* right: var(--wrap-gap); */
-  top:0;
+  top: 0;
   right: 0;
-  transition: all 0.1s;
   box-shadow: 0 5px 10px -2px #00000023;
   display: flex;
   flex-direction: column;
 }
 .clockbox-wrap-expanded {
-  /* width: calc(100vw - var(--wrap-gap) * 2) !important; */
   width: 100vw !important;
   transition: all 0.2s ease;
 }
 #clockbox-calendar-container {
-  margin: 0 10px 5px;
-  /* border-radius: 5px 5px 12px 12px; */
+  margin: 0 0 5px;
   overflow: scroll;
-  /* height: 100%; */
-  /* flex: 1; */
 }
 .card-frame {
-  margin: 10px 0;
+  margin: 10px 10px;
   background: var(--elem-color);
   border-radius: 5px;
   box-shadow: 0 2px 6px 1px #00000014;
-  /* background: #ffffff75;
-  backdrop-filter: blur(30px) saturate(180%);
-  border-radius: 10px;
-  box-shadow: 0 5px 8px 3px #00000014; */
   overflow: hidden;
-  flex-shrink: 0 ;
+  flex-shrink: 0;
 }
 .clockbox-noshadow {
   text-shadow: none !important;
