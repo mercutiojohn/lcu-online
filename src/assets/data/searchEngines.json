@@ -87,8 +87,9 @@
                 },
                 {
                     "title": "网易云音乐",
-                    "url": "https://music.163.com/#/search/m/",
+                    "url": "https://music.163.com/#/search/m/?s=",
                     "queryWord": "s",
+                    "suffix": true,
                     "placeholder": "网易云音乐 · 音乐的力量",
                     "bg": "#e60026",
                     "icon": "cloudmusic.svg"
@@ -112,6 +113,13 @@
                 "placeholder": "淘宝搜索",
                 "bg": "#fd4200",
                 "icon": "taobao.svg"
+            }, {
+                "title": "京东",
+                "url": "http://search.jd.com/search",
+                "queryWord": "keyword",
+                "placeholder": "京东搜索",
+                "bg": "#e12319",
+                "icon": "jd.svg"
             }]
         },
         {
@@ -161,25 +169,37 @@
                     "url": "https://developer.mozilla.org/zh-CN/search",
                     "queryWord": "q",
                     "placeholder": "MDN Web Docs",
-                    "bg": "#ffffff",
+                    "bg": "#83d0f2",
                     "icon": "mdn.svg"
                 }
+            ]
+        }, {
+            "name": "设计师",
+            "urls": [{
+                    "title": "iconfont",
+                    "url": "https://www.iconfont.cn/search/index?searchType=icon",
+                    "queryWord": "q",
+                    "placeholder": "iconfont - 阿里巴巴矢量图标库",
+                    "bg": "#e94618",
+                    "icon": "iconfont.svg"
+                }
+
             ]
         },
         {
             "name": "文献搜索",
             "urls": [{
                     "title": "知网",
-                    "url": "https://m.chaoxing.com/search",
+                    "url": "https://kns.cnki.net/kns8/defaultresult/index",
                     "queryWord": "sw",
                     "placeholder": "中国知网",
-                    "bg": "#ffffff",
+                    "bg": "#1b66e6",
                     "icon": "cnki.svg"
                 },
                 {
                     "title": "万方",
-                    "url": "https://m.chaoxing.com/search",
-                    "queryWord": "sw",
+                    "url": "https://s.wanfangdata.com.cn/paper",
+                    "queryWord": "q",
                     "placeholder": "万方文献搜索",
                     "bg": "#ffffff",
                     "icon": "wanfang.svg"
@@ -225,13 +245,13 @@
                 "queryWord": "q",
                 "placeholder": "Matlab文档",
                 "bg": "#ffffff",
-                "icon": "matlab.svg"
+                "icon": "matlab.png"
             }, {
                 "title": "WolframAlpha",
                 "url": "https://www.wolframalpha.com/input/",
                 "queryWord": "i",
                 "placeholder": "Wolfram Alpha",
-                "bg": "#ff6c00",
+                "bg": "#ffffff",
                 "icon": "wolframalpha.svg"
             }]
         }

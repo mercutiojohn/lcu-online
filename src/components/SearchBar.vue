@@ -17,7 +17,7 @@
             <form
               target="_blank"
               autocomplete="off"
-              :action="enginesList[currUrlEnginesListIndex].urls[currUrlIndex].url"
+              :action="enginesList[currUrlEnginesListIndex].urls[currUrlIndex].url+returnSearchItem(enginesList[currUrlEnginesListIndex].urls[currUrlIndex])"
             >
               <input
                 :class="'searchbar-input' + handleChangeBarFontColor()"
@@ -220,6 +220,13 @@ export default {
     },
   },
   methods: {
+    returnSearchItem(item){
+      if(item.suffix){
+        return this.searchItem;
+      }else{
+        return ""
+      }
+    },
     onScroll() {},
     setScroll() {
       this.documentObjs = document.getElementsByClassName("engines-categories-list"); // 获取DOM元素节点
