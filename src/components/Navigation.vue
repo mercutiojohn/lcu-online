@@ -430,11 +430,11 @@ export default {
   .nav-block:hover {
     /* backdrop-filter: blur(50px) saturate(180%);
     background: #ffffff63 !important; */
-    color: white !important;
+    /* color: white !important;
     transform: none;
     transition: all 0.3s ease-out;
     box-shadow: 0 2px 5px 1px #00000023;
-    filter: brightness(1.1);
+    filter: brightness(1.1); */
   }
   .nav-block:active {
     transform: scale(0.88);

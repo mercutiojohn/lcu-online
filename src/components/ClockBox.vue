@@ -1,7 +1,8 @@
 <template>
   <div id="clockbox">
     <div
-      :id="!clockWrapDisplay ? 'clockbox-time' : 'clockbox-time-active'"
+      id="clockbox-time"
+      :class="{'clockbox-time-active':clockWrapDisplay}"
       v-on:click="changeWrapState('display')"
     >
       <span class="clockbox-open-icon"
@@ -13,14 +14,14 @@
           }"
         ></i
       ></span>
-      <span
+      <!-- <span
         id="clockbox-week"
         :class="bgStatus ? 'bg-text-style' : '' + handleBgOn()"
       >
         第
         <span id="digits">{{ week }}</span
         >周
-      </span>
+      </span> -->
       <span
         id="clockbox-twelve-label"
         v-if="clockPreferences.twelveFormat"
@@ -221,8 +222,7 @@ export default {
   padding: 3px;
 }
 #clockbox:hover {
-  background: #80808054;
-  border-radius: 5px;
+  
 }
 #clockbox-space {
   height: var(--headbar-height);
@@ -258,14 +258,18 @@ export default {
   align-items: baseline;
   justify-content: flex-end;
   cursor: pointer;
+  transition: all .2s ease;
+  border-radius: 5px;
 }
-#clockbox-time-active {
-  position: relative;
-  z-index: 99999;
-  display: flex;
-  align-items: baseline;
-  justify-content: flex-end;
-  cursor: pointer;
+#clockbox-time:hover{
+  background: #80808054;
+}
+#clockbox-time:active{
+  background: #80808098;
+
+}
+.clockbox-time-active {
+  
 }
 #clockbox-time-content {
   cursor: pointer;
@@ -285,7 +289,7 @@ export default {
   font-size: 25px !important;
 }
 #clockbox-wrap {
-  min-width: 400px;
+  /* min-width: 400px; */
   max-width: 100vw;
   width: 400px;
   height: 100vh;
