@@ -24,6 +24,7 @@
               @mousemove="blockMove(index)"
               @mouseout="blockOut(index)"
             -->
+            
             <div :class="'nav-block-top-area' + handleTopAreaNoIcon()">
               <img
                 :class="'nav-block-icon' + handleNoIcon()"
