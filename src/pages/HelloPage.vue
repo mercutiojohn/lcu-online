@@ -60,9 +60,7 @@
             :vals="this.login"
           />
         </div>
-        <!-- <div class="left-info-content">
-          <TVNoise />
-        </div> -->
+        
 
         <!-- <div class="left-info-content"><Player /></div> -->
 
@@ -105,7 +103,6 @@ import Hitokoto from "@/components/Hitokoto";
 import DynamicMainContent from "@/components/DynamicMainContent";
 import Homeworks from "@/components/Homeworks";
 import Countdown from "@/components/Countdown";
-import TVNoise from "@/components/arts/TVNoise";
 import EmbedFrame from "@/components/EmbedFrame";
 
 export default {
@@ -118,7 +115,6 @@ export default {
     Player,
     Homeworks,
     Countdown,
-    TVNoise,
     EmbedFrame,
   },
   data() {
@@ -140,7 +136,7 @@ export default {
         //移动端地址
         // location = "http://127.0.0.1:8043";
         // alert("hello");
-        location = "#/mobile";
+        // location = "#/mobile";
       } else {
         //PC地址
       }

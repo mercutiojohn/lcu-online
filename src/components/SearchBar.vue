@@ -757,5 +757,8 @@ export default {
   .searchbar-box form input {
     width: 100%;
   }
+  #searchbar{
+    display: none;
+  }
 }
 </style>

@@ -109,21 +109,18 @@ export default {
   z-index:1000;
   transition: all .6s ease;
   padding: 5px 30px 5px 30px;
-  background: linear-gradient(var(--elem-color),transparent);
+  /* background: linear-gradient(var(--elem-color),transparent); */
+  height: 64px;
 }
 .header-bar-container-bgon{
   background: var(--blur-color);
-  /* background: linear-gradient(var(--elem-color),var(--blur-color),var(--blur-color),var(--blur-color)); */
-  /* background: #0000001e; */
   backdrop-filter: blur(40px) saturate(120%);
   transition: all .05s ease;
-
-  /* color:#fff!important; */
 
   box-shadow: 0 0px 10px 4px #00000010;
 }
 .header-bar-container-bg-no-blur{
-  background: var(--elem-color);
+  background: var(--elem-color)!important;
   backdrop-filter: none;
 }
 .header-bar-tablist {
@@ -176,17 +173,29 @@ export default {
 .header-bar-right{
   display: flex;
 }
-@media screen and (max-width: 1100px){
+@media screen and (max-width: 600px){
   .header-bar-container{
+    position: fixed;
+    top:unset;
+    bottom: 0;
     height: 64px;
+    left: 0;
+    background: var(--blur-color);
+    backdrop-filter: blur(40px) saturate(120%);
   }
   .header-bar-tablist{
-    display: none;
+    /* display: none; */
   }
   #clockbox{
-    display: none;
+    /* display: none; */
 
   }
   
+}
+@media screen and (max-width: 1020px)and (min-width: 600px){
+  .header-bar-tablist{
+    width: 0;
+    overflow: hidden;
+  }
 }
 </style>
