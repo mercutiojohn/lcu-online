@@ -259,6 +259,8 @@ export default {
   /* width: 100%; */
   transition: all 0.2s ease;
   max-height: calc(100vh - 50px);
+  max-height: calc(300vh - 50px);
+
   overflow: hidden;
 }
 .nav-content-folded{

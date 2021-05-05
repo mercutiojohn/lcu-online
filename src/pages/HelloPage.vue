@@ -239,7 +239,8 @@ export default {
   padding-left: calc(350px + 20px);
   display: flex;
   flex: 1;
-  width: calc(1300px - (350px + 20px));
+  /* max-width: calc(1300px - (350px + 20px)); */
+  max-width: calc(100% - (350px + 20px));
   /* overflow: scroll; */
   flex-direction: column;
   /* height:calc(100vh - 150px); */
@@ -330,7 +331,7 @@ export default {
     overflow: visible;
   }
   .home-wrap {
-    width: 100%;
+    max-width: 100%;
     /* display: none; */
     padding-left: 0;
   }
