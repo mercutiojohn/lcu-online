@@ -350,6 +350,9 @@ export default {
   }
   #clockbox-time {
   }
+  #clockbox-space{
+    height: 30px;
+  }
 }
 @media screen and (max-width: 950px) {
   #clockbox-time-content,
@@ -357,8 +360,6 @@ export default {
   #clockbox-week {
     display: none;
   }
-  #clockbox-space{
-    height: 30px;
-  }
+  
 }
 </style>
