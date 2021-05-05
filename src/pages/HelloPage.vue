@@ -236,7 +236,8 @@ export default {
   display: block;
 }
 .home-wrap {
-  padding-left: calc(350px + 20px);
+  padding-left: calc(350px + 10px);
+  padding-right: 20px;
   display: flex;
   flex: 1;
   /* max-width: calc(1300px - (350px + 20px)); */
