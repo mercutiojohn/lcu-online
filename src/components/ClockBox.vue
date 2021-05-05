@@ -4,6 +4,15 @@
       :id="!clockWrapDisplay ? 'clockbox-time' : 'clockbox-time-active'"
       v-on:click="changeWrapState('display')"
     >
+      <span class="clockbox-open-icon"
+        ><i
+          :class="{
+            iconfont: true,
+            'icon-chevron-right': clockWrapDisplay,
+            'icon-chevron-left': !clockWrapDisplay,
+          }"
+        ></i
+      ></span>
       <span
         id="clockbox-week"
         :class="bgStatus ? 'bg-text-style' : '' + handleBgOn()"
@@ -40,6 +49,9 @@
         </div>
         <div id="clockbox-calendar-container" class="">
           <div class="card-frame"><Player /></div>
+          <div class="card-frame">
+            <TVNoise />
+          </div>
           <!-- <div class="card-frame">
           <iframe
             id="left-col-iframe"
@@ -58,11 +70,13 @@
 </template>
 <script>
 import Player from "@/components/Player";
+import TVNoise from "@/components/arts/TVNoise";
 export default {
   props: ["bgEnable"],
   name: "ClockBox",
   components: {
     Player,
+    TVNoise,
   },
   data() {
     return {
@@ -87,10 +101,10 @@ export default {
   watch: {
     clockWrapDisplay(newStat) {
       const _this = this;
-        console.log(this.$store.state.clockBoxStat);
-        console.log(newStat);
-        _this.$store.commit('update',['clockBoxStat',newStat]);
-        console.log(this.$store.state.clockBoxStat);
+      console.log(this.$store.state.clockBoxStat);
+      console.log(newStat);
+      _this.$store.commit("update", ["clockBoxStat", newStat]);
+      console.log(this.$store.state.clockBoxStat);
     },
   },
   methods: {
@@ -209,7 +223,6 @@ export default {
 #clockbox:hover {
   background: #80808054;
   border-radius: 5px;
-  cursor: pointer;
 }
 #clockbox-space {
   height: var(--headbar-height);
@@ -217,7 +230,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  border-right: 1px solid #7e7e7e45;
+  /* border-right: 1px solid #7e7e7e45; */
   padding-right: 10px;
   margin: 5px 220px 5px 0;
   color: var(--main-color);
@@ -244,6 +257,7 @@ export default {
   display: flex;
   align-items: baseline;
   justify-content: flex-end;
+  cursor: pointer;
 }
 #clockbox-time-active {
   position: relative;
@@ -251,6 +265,7 @@ export default {
   display: flex;
   align-items: baseline;
   justify-content: flex-end;
+  cursor: pointer;
 }
 #clockbox-time-content {
   cursor: pointer;
@@ -265,6 +280,9 @@ export default {
   color: var(--main-color);
   margin-left: 5px;
   /* text-shadow: 0 5px 10px #00000083; */
+}
+.clockbox-open-icon i {
+  font-size: 25px !important;
 }
 #clockbox-wrap {
   min-width: 400px;
@@ -314,5 +332,29 @@ export default {
 }
 .icon:hover {
   background: #ffffff45;
+}
+@media screen and (max-width: 600px) {
+  #clockbox-wrap {
+    position: fixed;
+    top: calc(-100vh + 64px);
+    display: flex;
+    width: 100vw;
+    height: calc(100vh - 64px);
+    box-shadow: none;
+    background: #000;
+    background: var(--body-color);
+  }
+  #clockbox-time {
+  }
+}
+@media screen and (max-width: 950px) {
+  #clockbox-time-content,
+  #clockbox-twelve-label,
+  #clockbox-week {
+    display: none;
+  }
+  #clockbox-space{
+    height: 30px;
+  }
 }
 </style>
