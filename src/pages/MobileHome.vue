@@ -1,11 +1,13 @@
 <template>
   <div id="mobile">
     <div class="mobile-tools-list">
-       <div class="mobile-tool-item">
+      <div class="mobile-tool-item main-width">
+        <DynamicMainContent />
+      </div>
+      <div class="mobile-tool-item">
         <Countdown />
       </div>
-        <DynamicMainContent />
-      
+
       <div class="mobile-tool-item">
         <Player />
       </div>
@@ -27,7 +29,7 @@ export default {
     Player,
     Countdown,
     Homeworks,
-    DynamicMainContent
+    DynamicMainContent,
   },
   data() {},
   methods: {
@@ -48,29 +50,44 @@ export default {
       );
       let goUrl = flag ? 1 : 0;
       return goUrl;
-    }
+    },
   },
   mounted() {
-      this.linktab();
+    this.linktab();
   },
   created() {},
 };
 </script>
 
 <style>
+body {
+  background: #000;
+}
+.main-width {
+  width: calc(100vw - 100px);
+}
+.mobile-tool-item > * {
+  zoom: 1;
+}
 .mobile-tools-list {
-  margin: 0 20px;
+  width: 100vw;
+  overflow: scroll;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 0 0 20px;
+  /* margin: 0 20px; */
 }
 .mobile-tool-item {
-  margin: 10px 0;
+  margin: 0 10px;
   background: var(--elem-color);
-  border-radius: 5px;
-  box-shadow: 0 2px 6px 1px #00000014;
+  border-radius: 25px;
+  /* box-shadow: 0 2px 6px 1px #00000014; */
   /* background: #ffffff75;
   backdrop-filter: blur(30px) saturate(180%);
   border-radius: 10px;
   box-shadow: 0 5px 8px 3px #00000014; */
   overflow: hidden;
   flex-shrink: 0;
+  max-height: calc(100vh - 20px);
 }
 </style>
