@@ -382,7 +382,7 @@ export default {
   width: max-content;
   overflow: visible;
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 600px) {
   .nav-often {
     /* align-items: center;
   justify-content: center; */

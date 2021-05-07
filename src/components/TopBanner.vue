@@ -1,18 +1,22 @@
 <template>
-  <div id="dynamic-main-content">
-    <div class="dynamic-left-background">
-      <img
-        id="dynamic-left-background-image"
-        :src="bgSrc"
-        alt=""
-        :onerror="defaultBg"
-        ref="bgImg"
-      />
-      <div id="dynamic-left-background-mask"></div>
-      <div class="dynamic-content">
-        <CalendarBox />
-        <Hitokoto />
+  <div id="top-banner">
+    <transition name="fade">
+      <div
+        :class="{ 'dynamic-left': true, 'dynamic-left-fullscreen': fullscreen }"
+        @click="changeWrapState"
+      >
+        <DynamicMainContent />
       </div>
+    </transition>
+    <div class="dynamic-right">
+      <Navigation
+        v-for="(item, index) in list"
+        :title="item.title"
+        :sites="item.list"
+        :key="index"
+        :ifSmall="true"
+      >
+      </Navigation>
     </div>
   </div>
 </template>
@@ -20,13 +24,15 @@
 import CalendarBox from "@/components/CalendarBox";
 import Hitokoto from "@/components/Hitokoto";
 import Navigation from "@/components/Navigation";
+import DynamicMainContent from "@/components/DynamicMainContent";
 
 export default {
-  name: "DynamicMainContent",
+  name: "TopBanner",
   components: {
     CalendarBox,
     Hitokoto,
     Navigation,
+    DynamicMainContent
   },
   data() {
     return {
@@ -72,10 +78,58 @@ export default {
   --dynamic-border-radius: 5px;
 }
 
-#dynamic-main-content {
+#top-banner {
   box-sizing: border-box;
-  height: 100%;
+  height: 350px;
   display: flex;
+}
+.dynamic-left {
+  /* width: 60%; */
+  box-sizing: border-box;
+  flex: 1;
+  height: 100%;
+  background: #000;
+  border-radius: var(--dynamic-border-radius);
+  margin-right: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transform: translate(0);
+  transition: transform 0.1s ease;
+  z-index: 80;
+}
+.dynamic-left:hover {
+  transform: scale(1.02) translate(0);
+}
+.dynamic-left:active {
+  transform: scale(0.98) translate(0);
+}
+.dynamic-left-fullscreen {
+  transform: scale(1) translate(0) !important;
+  border-radius: 0;
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  /* padding: 50px; */
+}
+.dynamic-right {
+  box-sizing: border-box;
+  width: 300px;
+  height: 100%;
+  background: var(--elem-color);
+  display: flex;
+  /* padding: 10px 0; */
+  justify-content: center;
+  border-radius: var(--dynamic-border-radius);
+  overflow: hidden;
+}
+.dynamic-right .nav {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px;
+  flex: 1;
 }
 .dynamic-left-background {
   box-sizing: border-box;
@@ -134,7 +188,7 @@ export default {
   pointer-events: none;
 }
 @media screen and (max-width: 1100px) {
-  #dynamic-main-content {
+  #top-banner {
     /* zoom: 0.2; */
     box-sizing: border-box;
     height: max-content;
@@ -142,7 +196,7 @@ export default {
     flex-direction: column;
   }
   .dynamic-left {
-    zoom: 0.8;
+    zoom:0.8;
     height: max-content;
     margin: 0;
     margin: 0 0 10px;
