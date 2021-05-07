@@ -1,6 +1,6 @@
 <template>
   <div class="hello-page">
-    <el-dialog
+    <!-- <el-dialog
       title="U+账号登录"
       :visible.sync="dialogVisible"
       width="30%"
@@ -29,12 +29,13 @@
         <el-button @click="dialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="handleSubmit">确 定</el-button>
       </span>
-    </el-dialog>
+    </el-dialog> -->
     <!-- <div id="hello-background"></div> -->
 
     <div id="hello-content">
       <div id="left-info">
-        <div class="left-info-content">
+        <SideBar />
+        <!-- <div class="left-info-content">
           <Countdown />
         </div>
         <div class="left-info-content">
@@ -43,7 +44,7 @@
             title="滴答清单"
             height="500"
           />
-        </div>
+        </div> -->
         <!-- <div class="left-info-content">
           <iframe
             class="left-info-iframe"
@@ -54,16 +55,13 @@
             scrolling="auto"
           ></iframe>
         </div> -->
-        <div class="left-info-content">
+        <!-- <div class="left-info-content">
           <Homeworks
             @makeGlobalDialogVisible="dialogVisible = true"
             :vals="this.login"
           />
-        </div>
-        
-
+        </div> -->
         <!-- <div class="left-info-content"><Player /></div> -->
-
         <div class="about">
           <span class="about-text">鲁ICP备20018544号</span>
           <a href="http://mercutio.club"
@@ -79,7 +77,7 @@
         </div>
       </div>
       <div class="home-wrap">
-        <DynamicMainContent />
+        <top-banner />
         <Navigation
           v-for="(item, index) in list"
           :title="item.title"
@@ -96,14 +94,16 @@
 </template>
 
 <script>
-import Player from "@/components/Player";
 import CalendarBox from "@/components/CalendarBox";
 import Navigation from "@/components/Navigation";
 import Hitokoto from "@/components/Hitokoto";
 import DynamicMainContent from "@/components/DynamicMainContent";
+import SideBar from "@/components/SideBar";
 import Homeworks from "@/components/Homeworks";
 import Countdown from "@/components/Countdown";
 import EmbedFrame from "@/components/EmbedFrame";
+import Player from "@/components/Player";
+import TopBanner from '@/components/TopBanner';
 
 export default {
   name: "HelloPage",
@@ -116,6 +116,8 @@ export default {
     Homeworks,
     Countdown,
     EmbedFrame,
+    SideBar,
+    TopBanner
   },
   data() {
     return {
@@ -203,38 +205,6 @@ export default {
   max-width: 1300px;
 }
 
-#left-info {
-  height: calc(100vh - 115px);
-  box-sizing: border-box;
-  position: fixed;
-  bottom: 50px;
-  padding: 0 10px 80px 10px;
-  width: 350px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-start;
-  overflow-y: scroll;
-  /* overflow-x: hidden; */
-  user-select: none;
-}
-#left-info .left-info-content {
-  margin: 10px 0;
-  background: var(--elem-color);
-  border-radius: 5px;
-  box-shadow: 0 2px 6px 1px #00000014;
-  /* background: #ffffff75;
-  backdrop-filter: blur(30px) saturate(180%);
-  border-radius: 10px;
-  box-shadow: 0 5px 8px 3px #00000014; */
-  overflow: hidden;
-  flex-shrink: 0;
-}
-#left-info .left-info-content .left-info-iframe {
-  width: 100%;
-  height: 500px;
-  display: block;
-}
 .home-wrap {
   padding-left: calc(350px + 10px);
   padding-right: 20px;
@@ -285,6 +255,37 @@ export default {
   cursor: pointer;
   transition: all 0.35s ease;
 }
+
+/* Left */
+#left-info {
+  height: calc(100vh - 115px);
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 50px;
+  padding: 0 10px 10px 10px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: stretch;
+  justify-content: flex-start; */
+  overflow-y: scroll;
+  /* overflow-x: hidden; */
+  user-select: none;
+}
+/* #left-info .left-info-content {
+  margin: 10px 0;
+  background: var(--elem-color);
+  border-radius: 5px;
+  box-shadow: 0 2px 6px 1px #00000014;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+#left-info .left-info-content .left-info-iframe {
+  width: 100%;
+  height: 500px;
+  display: block;
+} */
+
 @media screen and (max-width: 1030px) {
   /* .hello-page::before {
     display: flex;
@@ -334,7 +335,7 @@ export default {
   .home-wrap {
     max-width: 100%;
     /* display: none; */
-    padding-left: 0;
+    padding:0;
   }
   .about {
   position: absolute;
