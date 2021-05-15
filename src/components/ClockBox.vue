@@ -2,7 +2,7 @@
   <div id="clockbox">
     <div
       id="clockbox-time"
-      :class="{'clockbox-time-active':clockWrapDisplay}"
+      :class="{ 'clockbox-time-active': clockWrapDisplay }"
       v-on:click="changeWrapState('display')"
     >
       <span class="clockbox-open-icon"
@@ -222,7 +222,6 @@ export default {
   padding: 3px;
 }
 #clockbox:hover {
-  
 }
 #clockbox-space {
   height: var(--headbar-height);
@@ -258,18 +257,16 @@ export default {
   align-items: baseline;
   justify-content: flex-end;
   cursor: pointer;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
   border-radius: 5px;
 }
-#clockbox-time:hover{
+#clockbox-time:hover {
   background: #80808054;
 }
-#clockbox-time:active{
+#clockbox-time:active {
   background: #80808098;
-
 }
 .clockbox-time-active {
-  
 }
 #clockbox-time-content {
   cursor: pointer;
@@ -287,6 +284,7 @@ export default {
 }
 .clockbox-open-icon i {
   font-size: 25px !important;
+  color: var(--main-color);
 }
 #clockbox-wrap {
   /* min-width: 400px; */
@@ -350,7 +348,7 @@ export default {
   }
   #clockbox-time {
   }
-  #clockbox-space{
+  #clockbox-space {
     height: 30px;
   }
 }
@@ -360,6 +358,5 @@ export default {
   #clockbox-week {
     display: none;
   }
-  
 }
 </style>
