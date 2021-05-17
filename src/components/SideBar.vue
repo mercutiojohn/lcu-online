@@ -87,11 +87,11 @@ export default {
   align-items: stretch;
   justify-content: flex-start;
   overflow-y: scroll;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
   user-select: none;
 }
 #side-bar .side-bar-content {
-  margin: 10px 0;
+  margin: 10px 5px;
   background: var(--elem-color);
   border-radius: 5px;
   box-shadow: 0 2px 6px 1px #00000014;
