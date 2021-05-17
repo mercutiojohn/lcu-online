@@ -51,7 +51,7 @@
         <div id="clockbox-calendar-container" class="">
           <div class="card-frame"><Player /></div>
           <div class="card-frame">
-            <TVNoise />
+            <Television />
           </div>
           <!-- <div class="card-frame">
           <iframe
@@ -72,12 +72,14 @@
 <script>
 import Player from "@/components/Player";
 import TVNoise from "@/components/arts/TVNoise";
+import Television from '@/components/Television';
 export default {
   props: ["bgEnable"],
   name: "ClockBox",
   components: {
     Player,
     TVNoise,
+    Television
   },
   data() {
     return {
