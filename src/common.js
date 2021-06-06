@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
-        clockBoxStat: false
+        clockBoxStat: false,
+        apiPath: "http://api.mercutio.club"
     },
     mutations: {
         update(state, [key, value]) {
