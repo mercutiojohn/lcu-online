@@ -36,6 +36,16 @@ import '../static/icon/music-controls/iconfont.css'
 // jsonp
 import { VueJsonp } from 'vue-jsonp'
 Vue.use(VueJsonp)
+    //swiper
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/swiper-bundle.css'
+Vue.use(VueAwesomeSwiper /* { default options with global component } */ )
+
+import { Swiper as SwiperClass, Pagination, Navigation, Mousewheel, Autoplay } from 'swiper/swiper.esm'
+import getAwesomeSwiper from 'vue-awesome-swiper/dist/exporter'
+SwiperClass.use([Pagination, Mousewheel, Navigation, Autoplay])
+Vue.use(getAwesomeSwiper(SwiperClass))
+const { Swiper, SwiperSlide } = getAwesomeSwiper(SwiperClass)
 
 // import JsonpCommon from './js/jsonp-common.js'
 // Vue.use(JsonpCommon)

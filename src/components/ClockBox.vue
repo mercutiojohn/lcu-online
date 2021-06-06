@@ -53,6 +53,9 @@
           <div class="card-frame">
             <Television />
           </div>
+          <div class="card-frame">
+          <BiliRecommend />
+          </div>
           <!-- <div class="card-frame">
           <iframe
             id="left-col-iframe"
@@ -73,13 +76,15 @@
 import Player from "@/components/Player";
 import TVNoise from "@/components/arts/TVNoise";
 import Television from '@/components/Television';
+import BiliRecommend from "@/components/BiliRecommend";
 export default {
   props: ["bgEnable"],
   name: "ClockBox",
   components: {
     Player,
     TVNoise,
-    Television
+    Television,
+    BiliRecommend
   },
   data() {
     return {
@@ -235,6 +240,7 @@ export default {
   padding-right: 10px;
   margin: 5px 220px 5px 0;
   color: var(--main-color);
+  flex:0 0 var(--headbar-height);
 }
 #clockbox-space span {
   padding: 7px;

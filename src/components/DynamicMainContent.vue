@@ -31,7 +31,8 @@ export default {
   data() {
     return {
       bgSrc: "https://source.unsplash.com/random/1920x1080",
-      fullscreen: false,
+      fullscreen: false
+      
     };
   },
   methods: {
@@ -73,6 +74,7 @@ export default {
 }
 
 #dynamic-main-content {
+  width:100%;
   box-sizing: border-box;
   height: 100%;
   display: flex;

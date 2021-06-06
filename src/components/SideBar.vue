@@ -4,6 +4,9 @@
       <Countdown />
     </div>
     <div class="side-bar-content">
+      <Weather />
+    </div>
+    <div class="side-bar-content">
       <EmbedFrame
         url="https://www.dida365.com/webapp/#q/all/today"
         title="滴答清单"
@@ -21,8 +24,12 @@
           ></iframe>
         </div> -->
     <div class="side-bar-content">
-      <Homeworks />
+      <Weibo />
     </div>
+    <!-- <div class="side-bar-content">
+      <BiliRecommend />
+    </div>
+     -->
     <!-- @makeGlobalDialogVisible="dialogVisible = true" -->
 <!-- 
         :vals="this.login" -->
@@ -49,12 +56,18 @@
 import Homeworks from "@/components/Homeworks";
 import Countdown from "@/components/Countdown";
 import EmbedFrame from "@/components/EmbedFrame";
+import Weibo from "@/components/Weibo";
+import Weather from "@/components/Weather";
+import BiliRecommend from "@/components/BiliRecommend";
 export default {
   name: "SideBar",
   components: {
     Homeworks,
     Countdown,
-    EmbedFrame
+    EmbedFrame,
+    Weibo,
+    Weather,
+    BiliRecommend
   },
   data() {
     return {
