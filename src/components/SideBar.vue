@@ -7,11 +7,7 @@
       <Weather />
     </div>
     <div class="side-bar-content">
-      <EmbedFrame
-        url="https://www.dida365.com/webapp/#q/all/today"
-        title="滴答清单"
-        height="500"
-      />
+      <EmbedFrame url="https://www.dida365.com/webapp/#q/all/today" title="滴答清单" height="500" />
     </div>
     <!-- <div class="side-bar-content">
           <iframe
@@ -22,17 +18,20 @@
             frameborder="0"
             scrolling="auto"
           ></iframe>
-        </div> -->
+    </div>-->
+    <!-- <div class="side-bar-content">
+    </div> -->
+
     <div class="side-bar-content">
       <Weibo />
     </div>
     <!-- <div class="side-bar-content">
       <BiliRecommend />
     </div>
-     -->
+    -->
     <!-- @makeGlobalDialogVisible="dialogVisible = true" -->
-<!-- 
-        :vals="this.login" -->
+    <!-- 
+    :vals="this.login"-->
     <!-- <div class="side-bar-content"><Player /></div> -->
 
     <!-- <div class="about">
@@ -47,7 +46,7 @@
       <a href="https://github.com/mercutiojohn/lcu-online/issues"
         ><span class="about-text" style="font-size: 10px">提意见</span></a
       >
-    </div> -->
+    </div>-->
   </div>
 </template>
 
@@ -77,16 +76,15 @@ export default {
   computed: {},
   watch: {},
   methods: {},
-  created() {},
-  mounted() {},
-  beforeDestroy() {},
+  created() { },
+  mounted() { },
+  beforeDestroy() { },
 };
 </script>
 
 <style>
-
 #side-bar {
-  width:100%;
+  width: 100%;
   height: 100%;
   /* height: calc(100vh - 115px); */
   box-sizing: border-box;
@@ -94,7 +92,7 @@ export default {
   /* bottom: 50px; */
   /* padding: 0 10px 80px 10px; */
   /* width: 350px; */
-  flex:1;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -133,8 +131,7 @@ export default {
   .home-wrap {
     max-width: 100%;
     /* display: none; */
-    padding:0;
+    padding: 0;
   }
-
 }
 </style>

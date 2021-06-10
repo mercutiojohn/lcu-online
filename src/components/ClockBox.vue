@@ -53,9 +53,9 @@
           <div class="card-frame">
             <Television />
           </div>
-          <div class="card-frame">
+          <!-- <div class="card-frame">
           <BiliRecommend />
-          </div>
+          </div> -->
           <!-- <div class="card-frame">
           <iframe
             id="left-col-iframe"
