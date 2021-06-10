@@ -12,7 +12,7 @@
       </router-link> -->
 
     </ul>
-    <SearchBar :bgEnable="bgEnable"/>
+    
     <div class="header-bar-right">
       <ClockBox :bgEnable="bgEnable"/>
     </div>
@@ -22,14 +22,12 @@
  
 <script>
 import ClockBox from '@/components/ClockBox'
-import SearchBar from '@/components/SearchBar'
 
 
 export default {
   name: "HeaderBar",
   components: {
-    ClockBox,
-    SearchBar
+    ClockBox
   },
   data() {
     return {
@@ -63,7 +61,7 @@ export default {
       // let offsetTop = document.querySelector("body").offsetTop;
       // console.log(scrollTop);
       // console.log(offsetTop);
-      console.log(this.$store.state.clockBoxStat);
+      // console.log(this.$store.state.clockBoxStat);
       if (scrollTop) {
         this.bgEnable = true;
       } else{

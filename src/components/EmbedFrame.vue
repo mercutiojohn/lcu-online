@@ -47,7 +47,7 @@ export default {
     title: String,
     height: {
       type: String,
-      default: '200',
+      default: '200'
     },
   },
   data() {

@@ -8,21 +8,26 @@
       <!-- </keep-alive> -->
     </transition>
     <!-- <Course /> -->
+    <loading></loading>
   </div>
 </template>
 <script>
 import HeaderBar from "@/components/HeaderBar";
+import loading from '@/components/loading';
 
 export default {
   name: "App",
   components: {
     HeaderBar,
+    loading
   },
   mounted() {
     const script = document.createElement('script')
     script.src = 'https://v1.cnzz.com/z_stat.php?id=1279258067&web_id=1279258067'
     script.language = 'JavaScript'
     document.body.appendChild(script)
+
+    this.bus.$emit('loading', false);
   },
   methods:{
     

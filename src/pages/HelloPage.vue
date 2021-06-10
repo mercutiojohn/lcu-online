@@ -1,79 +1,37 @@
 <template>
   <div class="hello-page">
-    <!-- <el-dialog
-      title="U+账号登录"
-      :visible.sync="dialogVisible"
-      width="30%"
-      :before-close="handleClose"
-    >
-      <el-form :label-position="labelPosition" label-width="80px">
-        <el-form-item label="用户名">
-          <el-input v-model="login.uname" placeholder="请输入内容"></el-input>
-        </el-form-item>
-        <el-form-item label="密码">
-          <el-input v-model="login.pwd" placeholder="请输入内容" show-password>
-          </el-input>
-        </el-form-item>
-        <el-form-item label="平台">
-          <el-radio-group v-model="login.radio">
-            <el-radio-button label="lcu" disabled>U+聊城大学</el-radio-button>
-            <el-radio-button label="qst">U+新工科智慧云</el-radio-button>
-          </el-radio-group>
-        </el-form-item>
-        <el-form-item label="记住密码">
-          <el-switch v-model="login.savePwd" inactive-color="#eee" disabled>
-          </el-switch>
-        </el-form-item>
-      </el-form>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="handleSubmit">确 定</el-button>
-      </span>
-    </el-dialog> -->
-    <!-- <div id="hello-background"></div> -->
-
+    <div class="charm-intro">
+      <DynamicMainContent />
+    </div>
+    <div class="search-tips">
+      <Hitokoto />
+      <div class="featured-playlists">
+        <span class="playlists-title">推荐歌单</span> <span>快速链接</span>
+        <div class="playlists-list">
+          <div class="playlist-item"></div>
+          <div class="playlist-item"></div>
+          <div class="playlist-item"></div>
+          <div class="playlist-item"></div>
+        </div>
+      </div>
+    </div>
+    <div class="search-area">
+      <SearchBar :bgEnable="bgEnable" />
+    </div>
     <div id="hello-content">
       <div id="left-info">
         <SideBar />
-        <!-- <div class="left-info-content">
-          <Countdown />
-        </div>
-        <div class="left-info-content">
-          <EmbedFrame
-            url="https://www.dida365.com/webapp/#q/all/today"
-            title="滴答清单"
-            height="500"
-          />
-        </div> -->
-        <!-- <div class="left-info-content">
-          <iframe
-            class="left-info-iframe"
-            allow="autoplay *; encrypted-media *; geolocation; microphone; camera"
-            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-            src="https://www.dida365.com/webapp/#q/all/today"
-            frameborder="0"
-            scrolling="auto"
-          ></iframe>
-        </div> -->
-        <!-- <div class="left-info-content">
-          <Homeworks
-            @makeGlobalDialogVisible="dialogVisible = true"
-            :vals="this.login"
-          />
-        </div> -->
-        <!-- <div class="left-info-content"><Player /></div> -->
         <div class="about">
           <span class="about-text">鲁ICP备20018544号</span>
-          <a href="http://mercutio.club"
-            ><span class="about-text">莫阿白的博客</span></a
-          >
-          <a
-            href="https://github.com/mercutiojohn/lcu-online/projects/1?fullscreen=true"
-            ><span class="about-text" style="font-size: 10px">迭代路线</span></a
-          >
-          <a href="https://github.com/mercutiojohn/lcu-online/issues"
-            ><span class="about-text" style="font-size: 10px">提意见</span></a
-          >
+          <a href="http://mercutio.club">
+            <span class="about-text">莫阿白的博客</span>
+          </a>
+          <a href="https://github.com/mercutiojohn/lcu-online/projects/1?fullscreen=true">
+            <span class="about-text" style="font-size: 10px">迭代路线</span>
+          </a>
+          <a href="https://github.com/mercutiojohn/lcu-online/issues">
+            <span class="about-text" style="font-size: 10px">提意见</span>
+          </a>
         </div>
       </div>
       <div class="home-wrap">
@@ -86,8 +44,7 @@
           :noIcon="item.noIcon ? true : false"
           :noColor="item.noColor ? true : false"
           :index="index"
-        >
-        </Navigation>
+        ></Navigation>
       </div>
     </div>
   </div>
@@ -104,6 +61,8 @@ import Countdown from "@/components/Countdown";
 import EmbedFrame from "@/components/EmbedFrame";
 import Player from "@/components/Player";
 import TopBanner from '@/components/TopBanner';
+import SearchBar from '@/components/SearchBar';
+
 
 export default {
   name: "HelloPage",
@@ -117,7 +76,8 @@ export default {
     Countdown,
     EmbedFrame,
     SideBar,
-    TopBanner
+    TopBanner,
+    SearchBar
   },
   data() {
     return {
@@ -129,6 +89,7 @@ export default {
         savePwd: "false",
       },
       labelPosition: "right",
+      headerHeight: 70
     };
   },
   methods: {
@@ -155,7 +116,7 @@ export default {
         .then((_) => {
           done();
         })
-        .catch((_) => {});
+        .catch((_) => { });
     },
     handleSubmit() {
       this.$emit("getLogin", this.login);
@@ -176,17 +137,62 @@ export default {
 <style scoped>
 :root {
   --left-bar-width: 300px;
+  --header-height: 75px;
 }
 .hello-page {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 10px 0 100px 0;
+  /* margin: 10px 0 0 0; */
 }
 .hello-page::before {
   transition: all 0.2s ease;
 }
-
+.charm-intro {
+  position: fixed;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100vh;
+}
+.search-area {
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  margin: calc((100vh - 40px - 64px - 300px) / 3 * 1) 0
+    calc((100vh - 40px - 64px - 300px) / 3 * 2);
+  /* height:300px; */
+  z-index: 10000;
+  pointer-events: none;
+  /* background:#00000078; */
+}
+.search-tips {
+  top: 150px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  transform: translateY(-50px);
+  z-index: 1;
+}
+.featured-playlists{
+  padding-top: 100px;
+}
+.playlists-list {
+  display: flex;
+}
+.playlists-title{
+  color:var(--main-color);
+}
+.playlist-item {
+  width: 100px;
+  height: 100px;
+  background: #123;
+  border-radius: 10px;
+  margin: 5px;
+}
 #hello-background {
   width: 100vw;
   height: 100vh;
@@ -202,7 +208,16 @@ export default {
   width: var(--box-width);
   display: flex;
   position: relative;
-  max-width: 1300px;
+  /* max-width: 1300px; */
+  background: #000;
+  border-radius: 20px 20px 0 0;
+  width: calc(100vw - 20px);
+  margin: 0;
+  padding: 30px 30px 100px;
+  /* height: 100vh; */
+  /* overflow: scroll; */
+  overflow: hidden;
+  z-index: 2;
 }
 
 .home-wrap {
@@ -216,6 +231,9 @@ export default {
   flex-direction: column;
   /* height:calc(100vh - 150px); */
   user-select: none;
+  padding-top: 10px;
+  /* height:calc(100vh - 80px); */
+  /* overflow:scroll; */
 }
 
 .about {
@@ -258,17 +276,17 @@ export default {
 
 /* Left */
 #left-info {
-  height: calc(100vh - 115px);
+  /* height: calc(100vh - 115px); */
   box-sizing: border-box;
-  position: fixed;
-  bottom: 50px;
+  position: absolute;
+  /* top: 70px; */
   padding: 0 10px 10px 10px;
   width: 350px;
   display: flex;
   flex-direction: column;
   /* align-items: stretch;
   justify-content: flex-start; */
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   /* overflow-x: hidden; */
   user-select: none;
 }
@@ -335,20 +353,20 @@ export default {
   .home-wrap {
     max-width: 100%;
     /* display: none; */
-    padding:0;
+    padding: 0;
   }
   .about {
-  position: absolute;
-  bottom: -80px;
-  /* left: 25px; */
-  width: 100%;
-  /* margin: 0 auto 20px; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* flex-direction: row; */
-  /* justify-content: space-evenly; */
-  font-size: 12px;
-}
+    position: absolute;
+    bottom: -80px;
+    /* left: 25px; */
+    width: 100%;
+    /* margin: 0 auto 20px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* flex-direction: row; */
+    /* justify-content: space-evenly; */
+    font-size: 12px;
+  }
 }
 </style>

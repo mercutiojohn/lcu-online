@@ -11,21 +11,18 @@
       <div id="dynamic-left-background-mask"></div>
       <div class="dynamic-content">
         <CalendarBox />
-        <Hitokoto />
       </div>
     </div>
   </div>
 </template>
 <script>
 import CalendarBox from "@/components/CalendarBox";
-import Hitokoto from "@/components/Hitokoto";
 import Navigation from "@/components/Navigation";
 
 export default {
   name: "DynamicMainContent",
   components: {
     CalendarBox,
-    Hitokoto,
     Navigation,
   },
   data() {
@@ -128,8 +125,8 @@ export default {
   flex-direction: column;
   padding: 20px;
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 50px;
+  top: 100px;
   width: 100%;
   height: 100%;
   z-index: 3;

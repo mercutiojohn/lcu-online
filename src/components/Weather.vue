@@ -68,6 +68,7 @@ export default {
       briefOld: "",
       resOld: "",
       resWeatherContent: "",
+      expand:true,
       airInfo: {
         pubTime: "2021-05-13T11:00+08:00",
         aqi: "0",
@@ -243,11 +244,10 @@ hello {
 }
 .weather {
   width: 100%;
-  height: 100%;
+  height: 200px;
   background: linear-gradient(45deg, rgb(0, 140, 255), rgb(36, 211, 255));
   user-select: none;
   box-sizing: border-box;
-
 }
 .weather-content {
   min-height: 100%;
@@ -275,14 +275,14 @@ hello {
   /* flex-direction: column; */
 }
 .tmp-n-brief > .temprature {
-  font-size: 80px;
-  font-family: Mitype2018,ProximaNova, Politica, Palatino, Caecilia,
+  font-size: 60px;
+  font-family: Mitype2018-70,ProximaNova, Politica, Palatino, Caecilia,
     Bookerly;
   font-weight: 900;
   /* padding: 0 0 10px 0; */
 }
 .tmp-n-brief > .brief {
-  font-size: 25px;
+  font-size: 18px;
 }
 .change-city {
   /* position: absolute;

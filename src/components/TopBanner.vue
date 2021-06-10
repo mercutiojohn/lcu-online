@@ -61,7 +61,7 @@ export default {
       fullscreen: false,
       swiperOption: {
         slidesPerView: 1,
-        spaceBetween: 10,
+        spaceBetween: 100,
         loop: true,
         pagination: {
           el: '.swiper-pagination',
@@ -120,14 +120,14 @@ export default {
 .swiper {
   height: 100%;
   width: 100%;
-  transform: translateX(0px);
+  /* transform: translateX(0px); */
 }
 .swiper-slide-prev {
   /* transform:scale(0.95) translateX(200px); */
 }
 .swiper-slide-next {
-  transform: scale(0.95);
-  z-index: -1;
+  /* transform: scale(0.95); */
+  /* z-index: -1; */
 }
 .swiper-slide {
   display: flex;
