@@ -424,12 +424,13 @@ export default {
 }
 #searchbar {
   width: 100vw;
-  position: fixed;
+  position: sticky;
   display: flex;
   justify-content: center;
   top: 0;
   left: 0;
   pointer-events: none;
+  z-index:10000;
 }
 .searchbar-opener {
   display: flex;
@@ -438,10 +439,11 @@ export default {
   border-radius: 10px;
   pointer-events: auto;
   height: 40px;
-  margin-top: 12px;
+  margin: 12px 0;
   background: #00000015;
   color: var(--main-color);
   transition: background-color 0.4s ease;
+  backdrop-filter:blur(30px);
 }
 
 /* @media screen and (prefers-color-scheme: light) {
@@ -462,7 +464,7 @@ export default {
 }
 @media screen and (prefers-color-scheme: dark) {
   .searchbar-opener {
-    background: #ffffff25;
+    background: #ffffff23;
   }
   .searchbar-opener:hover {
     background: #ffffff45 !important;
@@ -495,23 +497,23 @@ export default {
 }
 
 .searchbar-wrap {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
+  position:absolute;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   pointer-events: auto;
   overflow: scroll !important;
+  z-index:10001;
+
 }
 .searchbar-wrap-bg-off{
   /* pointer-events:visible; */
 }
 .searchbar-mask {
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   /* background: #000; */

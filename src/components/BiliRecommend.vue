@@ -8,13 +8,13 @@
     <!-- <swiper-slide -->
     <div class="bili-title">
       <span>B站推荐</span>
-      <button @click="getBili()">刷新</button>
+      <i :class="{ 'iconfont': true, 'icon-refresh': true, 'std-btn': true, 'btn-refreshing':refreshing}" @click="getBili()"></i>
     </div>
     <div v-for="(item, index) in data" :key="index" class="bili-slide">
       <!-- <div class="bili-item"> -->
       <a :href="getVidUrl(item)" :target="!toApp ? '_blank' : ''" class="bili-item">
         <div class="item-cover">
-          <img :src="covers[index]" alt srcset />
+          <img :src="covers[index]" :alt="item.title" />
           <!-- <img :src="covers[0]" alt="" srcset="" /> -->
           <!-- <img :src="getCover(item.cover,index)" alt="" srcset="" /> -->
           <!-- <img :src="getCover(item.cover,index)" alt="" srcset="" /> -->
@@ -40,7 +40,11 @@
       <!-- </div> -->
       <!-- </swiper-slide> -->
     </div>
-      <button @click="addBili()">加载</button>
+
+    <div @click="addBili()" class="bili-load-more">
+      <i :class="{'iconfont':true,'icon-refresh btn-refreshing':loading,'icon-chevron-double-down':!loading}"></i>
+      <span>加载{{loading?'中...':'更多'}}</span>
+    </div>
     <!-- <div class="swiper-pagination" slot="pagination"></div> -->
     <!-- </swiper> -->
   </div>
@@ -57,7 +61,9 @@ export default {
       covers: [],
       index: 0,
       timer_fetch: "",
-      old_length:0,
+      old_length: 0,
+      refreshing: false,
+      loading: false,
       biliSwiperOptions: {
         pagination: {
           el: '.swiper-pagination',
@@ -353,16 +359,19 @@ export default {
       return thing
     },
     getBili() {
+      this.refreshing = true;
       this.$axios
         .get(this.$store.state.apiPath + "/bilibili/main")
         .then(({ data }) => {
           this.covers = [];
           this.data = data.content.data.items;
           this.getAllCover();
+          this.refreshing = false;
         })
         .catch(console.error);
     },
     addBili() {
+      this.loading = true;
       this.old_length = this.data.length;
       this.$axios
         .get(this.$store.state.apiPath + "/bilibili/main")
@@ -371,12 +380,14 @@ export default {
             this.data.push(element);
           });
           this.getNewCover(this.old_length);
+          this.loading = false;
         })
         .catch(console.error);
     },
     getCover(url, index) {
       let coverUrl = encodeURIComponent(url);
       let base;
+      this.covers[index] = require('@/assets/img/function/pic.svg');
       this.$axios
         .get(this.$store.state.apiPath + "/bilibili/get-cover?url=" + coverUrl)
         .then(({ data }) => {
@@ -398,7 +409,7 @@ export default {
         // this.$forceUpdate();
       }
     },
-     getNewCover(index) {
+    getNewCover(index) {
       let _this = this;
       for (var i = index; i < this.data.length; i++) {
         // console.log("get the " + i + " cover")
@@ -494,9 +505,12 @@ export default {
   transform: scale(0.98);
 }
 .bili-title {
+  display: flex;
+  justify-content: space-between;
   border-bottom: 1px solid var(--first-assist-color);
   width: 100%;
   padding: 10px 20px;
+  box-sizing: border-box;
   color: var(--main-color);
   /* height: fit-content; */
 }
@@ -525,7 +539,7 @@ export default {
   box-sizing: border-box;
 }
 .item-cover {
-  background: rgb(55, 165, 255);
+  background: var(--second-assist-color);
   width: 160px;
   flex: 0 0 160px;
   height: calc(160px / 16 * 9);
@@ -604,5 +618,52 @@ export default {
   right: 10px;
   top: 50%;
   transform: translate3d(0, -50%, 0);
+}
+.std-btn {
+  /* position:relative;
+  right: 20px;
+  top: 20px; */
+  padding: 3px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  flex-grow: 0;
+  transition: all 0.2s ease;
+  font-size:17px;
+  /* height: min-content; */
+}
+.std-btn:hover {
+  background: var(--first-assist-color);
+}
+.std-btn:active {
+  background: var(--first-assist-color);
+}
+@keyframes spinning {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+
+  }
+}
+
+.btn-refreshing {
+  animation:spinning 1s infinite;
+}
+.bili-load-more{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:10px 0;
+  cursor:pointer;
+}
+.bili-load-more:hover{
+  background:var(--first-assist-color);
+}
+.bili-load-more:active{
+  background:var(--second-assist-color);
 }
 </style>

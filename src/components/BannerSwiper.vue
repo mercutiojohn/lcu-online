@@ -48,7 +48,7 @@
   }
 </script>
 
-<style >
+<style>
   
 
 .swiper {

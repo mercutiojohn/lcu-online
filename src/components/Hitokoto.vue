@@ -27,7 +27,8 @@ export default {
         created_at: "1583784351",
         length: 26,
       },
-      hitoKind:"a&c=b&c=c&c=d&c=e&c=f&c=g&c=h&c=i&c=j&c=k"
+      // hitoKind:"a&c=b&c=c&c=d&c=e&c=f&c=g&c=h&c=i&c=j&c=k"
+      hitoKind:""
         // a	动画
         // b	漫画
         // c	游戏

@@ -68,6 +68,9 @@ import Utilities from '@/pages/Utilities'
 import MobileHome from '@/pages/MobileHome'
 
 
+Vue.prototype.bus = new Vue;
+
+
 // 1. 定义 (路由) 组件。
 // 可以从其他文件 import 进来
 const Test = {
@@ -115,6 +118,8 @@ const router = new VueRouter({
 
 // 现在，应用已经启动了！
 /* eslint-disable no-new */
+
+
 new Vue({
     router,
     el: '#app',
