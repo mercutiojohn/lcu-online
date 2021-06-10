@@ -7,13 +7,7 @@
         :class="{ 'dynamic-left': true, 'dynamic-left-fullscreen': fullscreen }"
         -->
         <swiper class="swiper" :options="swiperOption" :auto-update="true" :auto-destroy="true">
-          <swiper-slide>
-            <DynamicMainContent />
-          </swiper-slide>
-          <swiper-slide>
-            <DynamicMainContent />
-          </swiper-slide>
-          <swiper-slide>Slide 3</swiper-slide>
+          <swiper-slide>Demo</swiper-slide>
           <div class="swiper-pagination" slot="pagination"></div>
           <div class="swiper-button-prev" slot="button-prev"></div>
           <div class="swiper-button-next" slot="button-next"></div>

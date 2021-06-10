@@ -6,8 +6,10 @@
     <div class="search-tips">
       <Hitokoto />
       <div class="featured-playlists">
-        <span class="playlists-title">推荐歌单</span> <span>快速链接</span>
+        <span class="playlists-title">音乐和电台</span> <span>快速链接</span>
         <div class="playlists-list">
+          <div class="playlist-item"></div>
+          <div class="playlist-item"></div>
           <div class="playlist-item"></div>
           <div class="playlist-item"></div>
           <div class="playlist-item"></div>
@@ -45,6 +47,8 @@
           :noColor="item.noColor ? true : false"
           :index="index"
         ></Navigation>
+        <BiliRecommend />
+
       </div>
     </div>
   </div>
@@ -62,6 +66,7 @@ import EmbedFrame from "@/components/EmbedFrame";
 import Player from "@/components/Player";
 import TopBanner from '@/components/TopBanner';
 import SearchBar from '@/components/SearchBar';
+import BiliRecommend from "@/components/BiliRecommend";
 
 
 export default {
@@ -77,7 +82,8 @@ export default {
     EmbedFrame,
     SideBar,
     TopBanner,
-    SearchBar
+    SearchBar,
+    BiliRecommend
   },
   data() {
     return {
@@ -187,10 +193,10 @@ export default {
   color:var(--main-color);
 }
 .playlist-item {
-  width: 100px;
-  height: 100px;
-  background: #123;
-  border-radius: 10px;
+  width: 80px;
+  height: 80px;
+  background: var(--elem-color);
+  border-radius: 15px;
   margin: 5px;
 }
 #hello-background {
@@ -209,7 +215,7 @@ export default {
   display: flex;
   position: relative;
   /* max-width: 1300px; */
-  background: #000;
+  background: var(--bg-color);
   border-radius: 20px 20px 0 0;
   width: calc(100vw - 20px);
   margin: 0;

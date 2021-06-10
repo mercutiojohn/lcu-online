@@ -659,6 +659,7 @@ export default {
   align-items:center;
   padding:10px 0;
   cursor:pointer;
+  color:var(--main-color);
 }
 .bili-load-more:hover{
   background:var(--first-assist-color);
