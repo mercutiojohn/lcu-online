@@ -483,6 +483,8 @@ export default {
     if (localStorage.bili_data) {
       this.data = JSON.parse(localStorage.bili_data);
     }
+    if (localStorage.bili_status)
+      this.expand = Number(localStorage.bili_status);
     this.timer_fetch = setTimeout(this.getBili(), 600000);
     // window.addEventListener('scroll',this.scrollLoad,false);
   },
@@ -505,6 +507,12 @@ export default {
     //     i++;
     //   });
     // },
+    expand(value) {
+      if (value) localStorage.bili_status = 1;
+      else {
+        localStorage.bili_status = 0;
+      }
+    },
   },
   beforeDestroy() {
     localStorage.bili_data = JSON.stringify(this.data);

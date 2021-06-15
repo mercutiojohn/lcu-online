@@ -1,9 +1,19 @@
 <template>
   <div class="weibo">
-    <div class="weibo-title">
+    <div class="weibo-title" :style="!expand?'border:none':''">
       <span>微博热搜</span>
+      <div class="left-info-icon-area" @click="changeExpand()">
+        <i
+          :class="{
+            iconfont: true,
+            'icon-chevron-up': expand,
+            'icon-chevron-down': !expand,
+            'left-info-icon': true,
+          }"
+        ></i>
+      </div>
     </div>
-    <div class="weibo-list">
+    <div class="weibo-list" v-if="expand">
       <div class="weibo-item" v-for="(item, index) in data" :key="index">
         <a :href="item.url" target="_blank">
           <span class="weibo-content">
@@ -27,22 +37,7 @@ export default {
   name: "weibo",
   data() {
     return {
-      swiperOption: {
-        // autoplay: {
-        //   delay: 3000,
-        //   disableOnInteraction: false,
-        // },
-        loop: false,
-        direction: "vertical",
-        spaceBetween: 0,
-        slidesPerView: "auto",
-        observer: true, //修改swiper自己或子元素时，自动初始化swiper
-        observeParents: true, //修改swiper的父元素时，自动初始化swiper
-        keyboard: {
-          enabled: true,
-        },
-        // autoHeight:true
-      },
+      expand: true,
       data: [
         {
           title: "正在加载",
@@ -53,8 +48,23 @@ export default {
       loading: true,
     };
   },
-
+  watch: {
+    expand(value) {
+      if (value) localStorage.weibo_status = 1;
+      else {
+        localStorage.weibo_status = 0;
+      }
+    },
+  },
   methods: {
+    changeExpand() {
+      if (this.expand == true) {
+        this.expand = false;
+      } else {
+        this.expand = true;
+      }
+      // window.localStorage.setItem("kaoyan_status",this.expand);
+    },
     getWeibo() {
       this.$axios
         .get(this.$store.state.apiPath + "/weibo")
@@ -70,6 +80,8 @@ export default {
   },
   created() {},
   mounted() {
+    if (localStorage.weibo_status)
+      this.expand = Number(localStorage.weibo_status);
     let _this = this;
     _this.getWeibo();
     this.timer = setInterval(() => {
@@ -98,7 +110,28 @@ export default {
   /* height: 100%; */
   flex-direction: column;
 }
+.weibo-title {
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--first-assist-color);
+  width: 100%;
+  padding: 10px 20px;
+  color: var(--main-color);
+  /* height: fit-content; */
+}
+.expand {
+  padding: 3px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  flex-grow: 0;
+}
+
 .weibo-list {
+  box-sizing: border-box;
   width: 100%;
   max-height: 400px;
   overflow: scroll;
@@ -204,13 +237,7 @@ export default {
 .weibo-item a {
   text-decoration: none;
 }
-.weibo-title {
-  border-bottom: 1px solid var(--first-assist-color);
-  width: 100%;
-  padding: 10px 20px;
-  color: var(--main-color);
-  /* height: fit-content; */
-}
+
 .weibo-swiper {
   width: 100%;
   height: calc(100% - 25px);
