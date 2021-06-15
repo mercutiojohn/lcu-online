@@ -448,10 +448,7 @@ export default {
 .searchbar-container-top,.searchbar-opener-top {
   height: 60px!important;
 }
-.searchbar-opener-top {
-  /* backdrop-filter: none; */
-  background: #fff;
-}
+
 /* @media screen and (prefers-color-scheme: light) {
 .searchbar-container{
   background: #00000015;
@@ -481,6 +478,10 @@ export default {
     background: #2d2e30 !important;
     transition: all 0.2s ease;
   }
+}
+.searchbar-opener-top {
+  /* backdrop-filter: none; */
+  background: #fff;
 }
 .searchbar-input {
   width: calc(70vw - 90px);
@@ -555,7 +556,6 @@ export default {
 }
 .searchbar-box-bg-off-top{
   max-height: 60px!important;
-
 }
 .searchbar-container {
   display: flex;
