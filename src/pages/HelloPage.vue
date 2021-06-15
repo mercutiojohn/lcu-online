@@ -97,12 +97,16 @@ export default {
         savePwd: "false",
       },
       labelPosition: "right",
-      headerHeight: 70
+      headerHeight: 70,
+      bgEnable:false
     };
   },
   computed:{
     scrolling:function(){
       return this.$store.state.pageYOffset;
+    },
+    windowHeight: function () {
+      return this.$store.state.windowHeight;
     },
     clockBoxStat:function(){
       return this.$store.state.clockBoxStat;
@@ -227,14 +231,14 @@ export default {
   /* max-width: 1300px; */
   background: var(--blur-color);
   border-radius: 20px 20px 0 0;
-  width: calc(100vw - 20px);
+  width: calc(100vw - 60px);
   margin: 0;
-  padding: 30px;
+  padding: 30px 10px;
   /* height: 100vh; */
   /* overflow: scroll; */
   overflow: hidden;
   z-index: 2;
-  transition:all .2s ease;
+  transition:all .1s ease;
 }
 .hello-content-blur{
   backdrop-filter:blur(50px);
@@ -262,8 +266,6 @@ export default {
   /* overflow:scroll; */
 }
 .content-recommend{
-  background:var(--elem-color);
-  border-radius:5px;
   margin:10px 0;
 }
 .about {

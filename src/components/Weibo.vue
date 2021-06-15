@@ -3,21 +3,21 @@
     <div class="weibo-title">
       <span>微博热搜</span>
     </div>
-
-    <div class="weibo-item" v-for="(item, index) in data" :key="index">
-      <a :href="item.url" target="_blank">
-        <span class="weibo-content">
-          <!-- {{ index + 1 }} -->
-          {{ item.title }}
-        </span>
-      </a>
-      <!-- <div class="weibo-item" v-for="(item, index) in data" :key="index">
+    <div class="weibo-list">
+      <div class="weibo-item" v-for="(item, index) in data" :key="index">
+        <a :href="item.url" target="_blank">
+          <span class="weibo-content">
+            <!-- {{ index + 1 }} -->
+            {{ item.title }}
+          </span>
+        </a>
+        <!-- <div class="weibo-item" v-for="(item, index) in data" :key="index">
       <a :href="item.url"
         ><span class="weibo-content">{{ item.title }}</span></a
       >
       </div>-->
+      </div>
     </div>
-    <span class="weibo-content-end" v-if="!loading">到头了~</span>
   </div>
 </template>
 
@@ -50,7 +50,7 @@ export default {
         },
       ],
       timer: "",
-      loading: true
+      loading: true,
     };
   },
 
@@ -68,7 +68,7 @@ export default {
         .catch(console.error);
     },
   },
-  created() { },
+  created() {},
   mounted() {
     let _this = this;
     _this.getWeibo();
@@ -95,11 +95,84 @@ export default {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: 20px;
   /* height: 100%; */
   flex-direction: column;
-  /* height: 300px; */
 }
+.weibo-list {
+  width: 100%;
+  max-height: 400px;
+  overflow: scroll;
+  padding: 5px 20px;
+  margin: 0 0 20px;
+}
+.weibo-list::-webkit-scrollbar {
+  display: block;
+  width: 8px;
+  height: 0;
+  position: absolute;
+  right: 0;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.weibo-list::-webkit-scrollbar:window-inactive {
+  /* display: none; */
+  width: 0;
+}
+.weibo-list::-webkit-scrollbar-button,
+.weibo-list::-webkit-scrollbar-corner,
+.weibo-list::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.weibo-list::-webkit-scrollbar-button {
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.weibo-list::-webkit-scrollbar-button:vertical {
+  background-position: 50%;
+  width: 18px;
+  height: 18px;
+}
+
+.weibo-list::-webkit-scrollbar-button:horizontal {
+  background-position: 50%;
+  width: 0;
+}
+.weibo-list::-webkit-scrollbar-track {
+  background: transparent;
+  /* width: 100px; */
+}
+
+.weibo-list::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.weibo-list::-webkit-scrollbar-thumb:hover {
+  background-color: #888;
+}
+/* 
+.weibo-list::-webkit-scrollbar-resizer {
+    background-color: #ff6e00
+} */
+.weibo-list::-webkit-scrollbar-button:vertical:increment {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAUUlEQVQ4T6XLMQ6AMAwEwfz/bXRIfOeQCxckK8iKYgqvfCPJLxgNjAZGA6OB0VjCcV55M/8/jkbDMv+VJbSdccHYvsYFo4HRwGhgNDAaGPdl3LNlBnofQ4+bAAAAAElFTkSuQmCC);
+}
+
+.weibo-list::-webkit-scrollbar-button:vertical:increment:hover {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAUklEQVQ4T6XLsQ2AMAwF0ey/A1swAnt95MIFyQlyoniFT/4jyS8YDYwGRgOjgdFYwnFeeTP/P45GwzL/lSW0nXHB2L7GBaOB0cBoYDQwGhj3Zdx8sf7rjOGQqwAAAABJRU5ErkJggg==);
+}
+
+.weibo-list::-webkit-scrollbar-button:vertical:decrement {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAVUlEQVQ4T6XMMQoAIQxEUe9/NrsFrzOSIqDxgzu7xSv8ZGySfsHowOjA6MDowOjAmPozFGpfYQw5vn2CsY5TvQtHoOGq3m+PLzA6MDowOjA6ML6nNgFW+wZ6kTk6FAAAAABJRU5ErkJggg==);
+}
+
+.weibo-list::-webkit-scrollbar-button:vertical:decrement:hover {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAVklEQVQ4T6XMwQ3AIAwEQfrvgS5SAn0d8sMSmJXIJY95sPLRJP2C0YHRgdGB0YHRgTH1ZyjUvsIYcnz7BGMdp3oXjkDDVb3fHl9gdGB0YHRgdGB8T20CB+X+675uLU0AAAAASUVORK5CYII=);
+}
+
 .weibo-item {
   width: 100%;
   padding: 3px 0;
@@ -134,7 +207,7 @@ export default {
 .weibo-title {
   border-bottom: 1px solid var(--first-assist-color);
   width: 100%;
-  padding: 0 0 10px 0;
+  padding: 10px 20px;
   color: var(--main-color);
   /* height: fit-content; */
 }

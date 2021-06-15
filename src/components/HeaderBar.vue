@@ -14,7 +14,7 @@
     </ul>
     
     <div class="header-bar-right">
-      <ClockBox :bgEnable="bgEnable"/>
+      <ClockBox :bgEnable="!bgEnable"/>
     </div>
     
   </div>
@@ -112,7 +112,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   z-index:1000;
-  transition: all .6s ease;
+  transition: all .2s ease;
   padding: 5px 30px 5px 30px;
   /* background: linear-gradient(var(--elem-color),transparent); */
   height: 64px;

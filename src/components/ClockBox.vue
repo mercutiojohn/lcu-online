@@ -11,6 +11,7 @@
             iconfont: true,
             'icon-chevron-right': clockWrapDisplay,
             'icon-chevron-left': !clockWrapDisplay,
+            'clockbox-bg-on':bgEnable&&!clockWrapDisplay
           }"
         ></i
       ></span>
@@ -25,12 +26,12 @@
       <span
         id="clockbox-twelve-label"
         v-if="clockPreferences.twelveFormat"
-        :class="bgStatus ? 'bg-text-style' : '' + handleBgOn()"
+        :class="{'clockbox-bg-on':bgEnable&&!clockWrapDisplay}"
         >{{ clockPreferences.twelveLabel }}</span
       >
       <span
         id="clockbox-time-content"
-        :class="bgStatus ? 'bg-text-style' : '' + handleBgOn()"
+        :class="{'clockbox-bg-on':bgEnable&&!clockWrapDisplay}"
         >{{ date }}</span
       >
     </div>
@@ -38,7 +39,7 @@
       <div
         id="clockbox-wrap"
         v-show="clockWrapDisplay"
-        :class="clockWrapExpand ? 'clockbox-wrap-expanded' : ''"
+        :class="{'clockbox-wrap-expanded':clockWrapExpand}"
       >
         <div id="clockbox-space">
           <!-- <span
@@ -288,7 +289,6 @@ export default {
 #clockbox-week {
   color: var(--main-color);
   margin-left: 5px;
-  /* text-shadow: 0 5px 10px #00000083; */
 }
 .clockbox-open-icon i {
   font-size: 25px !important;
@@ -324,8 +324,10 @@ export default {
   overflow: hidden;
   flex-shrink: 0;
 }
-.clockbox-noshadow {
-  text-shadow: none !important;
+/* TODO: */
+.clockbox-bg-on {
+  color:#fff!important;
+  text-shadow: 0 5px 10px #00000083!important;
   transition: all 0.3s ease;
 }
 #left-col-iframe {

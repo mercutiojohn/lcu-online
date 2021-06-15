@@ -19,8 +19,8 @@
         <span class="content"></span>
       </div>
     </transition> -->
-    <transition name="fade" type="out-in">
-      <div class="weather-content" v-if="!citySelect">
+    <!-- <transition name="fade" type="out-in"> -->
+      <div class="weather-content" >
         <span class="city" @click="changeSelect">{{ city }}</span>
         <div class="weather-loading" v-if="loading">
           <span>天气加载中</span>
@@ -50,7 +50,7 @@
           </div>
         </div>
       </div>
-    </transition>
+    <!-- </transition> -->
   </div>
 </template>
 
@@ -244,10 +244,11 @@ hello {
 }
 .weather {
   width: 100%;
-  height: 200px;
+  /* max-height: 250px; */
   background: linear-gradient(45deg, rgb(0, 140, 255), rgb(36, 211, 255));
   user-select: none;
   box-sizing: border-box;
+  transition: all .2s ease;
 }
 .weather-content {
   min-height: 100%;
@@ -285,9 +286,8 @@ hello {
   font-size: 18px;
 }
 .change-city {
-  /* position: absolute;
-  top:0;
-  left: 0; */
+  /* position: relative; */
+  /* top:0;  */
   width: 100%;
   box-sizing: border-box;
   background: var(--elem-color);
@@ -296,11 +296,12 @@ hello {
   align-items: stretch;
   justify-content: space-evenly;
   padding: 20px;
-  height: 100%;
+  /* height: 100%; */
+  /* border-radius: 0 0 10px 10px; */
 }
 .change-city > .title {
   /* text-align: center; */
-  font-size: 25px;
+  font-size: 18px;
   font-weight: 800;
   color: var(--main-color);
 }
@@ -309,14 +310,13 @@ hello {
   transition: all 0.2s ease;
   border: 3px solid transparent;
   padding: 10px 5px;
-  font-size: 22px;
+  margin: 10px 0;
+  font-size: 16px;
   border-radius: 10px;
   color: var(--main-color);
 }
 
 .change-city > input:focus {
-    background: var(--second-assist-color);
-
   border-color: var(--accent-color);
 }
 .change-city > .options {
@@ -358,6 +358,7 @@ hello {
 }
 .info-item > .label {
   display: flex;
+  font-size: 14px;
   width: max-content;
   background: #6e6e6e;
   border-radius: 5px;
