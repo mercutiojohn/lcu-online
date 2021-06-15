@@ -1,11 +1,11 @@
 <template>
-  <div :class="{'header-bar-container':true,'header-bar-container-bgon':bgEnable, 'header-bar-container-bg-no-blur':clockBoxStat&&bgEnable}">
+  <div :class="{'header-bar-container':true,'header-bar-container-bgon':pageYOffset, 'header-bar-container-bg-no-blur':clockBoxStat&&pageYOffset}">
     <ul class="header-bar-tablist"  @click="printPath()">
       <router-link to="/">
-        <li :class="{'header-bar-tabitem':true,'header-bar-tabitem-bgon':bgEnable,'header-bar-tabitem-active':currTab == '/'}">首页</li>
+        <li :class="{'header-bar-tabitem':true,'header-bar-tabitem-bgon':pageYOffset,'header-bar-tabitem-active':currTab == '/'}">首页</li>
       </router-link>
       <router-link :to="item.url" v-for="(item,index) in navs" :key="index">
-        <li :class="{'header-bar-tabitem':true,'header-bar-tabitem-bgon':bgEnable,'header-bar-tabitem-active':currTab == item.url}">{{item.name}}</li>
+        <li :class="{'header-bar-tabitem':true,'header-bar-tabitem-bgon':pageYOffset,'header-bar-tabitem-active':currTab == item.url}">{{item.name}}</li>
       </router-link>
       <!-- <router-link to="/classic">
         <li :class="'header-bar-tabitem'+handleChangeFontColor()">经典</li>
@@ -49,6 +49,9 @@ export default {
     },
     clockBoxStat:function(){
       return this.$store.state.clockBoxStat;
+    },
+    pageYOffset:function(){
+      return this.$store.state.pageYOffset;
     }
   },
   methods: {
@@ -58,15 +61,19 @@ export default {
     handleScroll() {
       let scrollTop =
         window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      let windowHeight=window.innerHeight;
+        
       // let offsetTop = document.querySelector("body").offsetTop;
       // console.log(scrollTop);
       // console.log(offsetTop);
-      // console.log(this.$store.state.clockBoxStat);
       if (scrollTop) {
         this.bgEnable = true;
       } else{
         this.bgEnable = false;
       }
+      this.$store.commit("update", ["pageYOffset", scrollTop]);
+      // console.log(this.$store.state.pageYOffset);
+      this.$store.commit("update", ["windowHeight", windowHeight]);
     },
     handleShowBg(){
       if(this.bgEnable){
@@ -127,18 +134,23 @@ export default {
   justify-content: center;
 }
 .header-bar-tabitem {
+
   flex-shrink:0;
   width: max-content;
   /* font-size: 15px; */
   color: var(--main-color);
+  text-shadow: 0 2px 10px #00000063;
   margin: 0 5px;
   padding: 8px 15px;
   font-weight: 400;
   border-radius: 25px;
   transition: all 0.2s ease;
+  color:white;
+
 }
 .header-bar-tabitem-bgon {
   text-shadow: none;
+  color: var(--main-color);
 
 }
 .header-bar-tabitem:hover {

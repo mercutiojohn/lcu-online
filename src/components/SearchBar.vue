@@ -1,23 +1,24 @@
 <template>
   <div id="searchbar">
     <transition name="fade-delay">
-      <div :class="{'searchbar-wrap':true}" v-show="searchWrapDisplay">
+      <div :class="{ 'searchbar-wrap': true }" v-show="searchWrapDisplay">
         <div class="searchbar-mask" @click="changeWrapState($event)"></div>
         <div
-          :class="{'searchbar-box':true,'searchbar-box-bg-off':!searchWrapDisplay}"
+          :class="{ 'searchbar-box': true, 'searchbar-box-bg-off': !searchWrapDisplay,'searchbar-box-bg-off-top':!searchWrapDisplay&&scrolling<150 }"
           @click.prevent.stop="searchWrapDisplay = searchWrapDisplay"
         >
-          <div :class="'searchbar-container' + handleChangeBarColor()">
-            <i
+          <div :class="{'searchbar-container':true,'searchbar-container-bgon':bgEnable,'searchbar-container-top':scrolling<150}">
+            <img class="searchbar-icon" :src="getIcon(enginesList[currUrlEnginesListIndex].urls[currUrlIndex].icon)" :style="'background:'+enginesList[currUrlEnginesListIndex].urls[currUrlIndex].bg+';'"/>
+            <!-- <i
               :class="
                 'iconfont icon-search searchbar-icon' +
                 handleChangeBarIconColor()
               "
-            ></i>
+            ></i> -->
             <form
               target="_blank"
               autocomplete="off"
-              :action="enginesList[currUrlEnginesListIndex].urls[currUrlIndex].url+returnSearchItem(enginesList[currUrlEnginesListIndex].urls[currUrlIndex])"
+              :action="enginesList[currUrlEnginesListIndex].urls[currUrlIndex].url + returnSearchItem(enginesList[currUrlEnginesListIndex].urls[currUrlIndex])"
             >
               <input
                 :class="'searchbar-input' + handleChangeBarFontColor()"
@@ -70,13 +71,10 @@
                 >{{ item.title }}</span
               >
             </li>
-          </ul> -->
-              <!-- <span :class="'searchbar-engines-item-title'">{{item.title}}</span> -->
-          
-          <div
-            class="searchbar-suggestions searchbar-wrap-items"
-            v-if="suggestions"
-          >
+          </ul>-->
+          <!-- <span :class="'searchbar-engines-item-title'">{{item.title}}</span> -->
+
+          <div class="searchbar-suggestions searchbar-wrap-items" v-if="suggestions">
             <ul>
               <li
                 v-for="(item, index) in myData"
@@ -86,16 +84,12 @@
                     index === suggestSelected,
                 }"
                 :key="index"
-              >
-                {{ item }}
-              </li>
+              >{{ item }}</li>
             </ul>
           </div>
-          <div
-            class="searchbar-engines searchbar-wrap-items" 
-          >
+          <div class="searchbar-engines searchbar-wrap-items">
             <div
-            id="searchbar-engines"
+              id="searchbar-engines"
               class="engines-categories"
               v-for="(engines, enginesListIndex) in enginesList"
               :key="enginesListIndex"
@@ -103,58 +97,54 @@
             >
               <span class="categories-list-title">{{ engines.name }}</span>
               <div class="engines-categories-list">
-              <div
-                :class="{
-                  'searchbar-engines-item': true,
-                  'searchbar-engines-item-current': currUrlIndex === index && currUrlEnginesListIndex == enginesListIndex,
-                }"
-                v-for="(item, index) in engines.urls"
-                :key="index"
-                @click="changeEngine(enginesListIndex,index)"
-              >
                 <div
-                  :id="index"
                   :class="{
-                    'searchbar-engines-item-icon': true,
+                    'searchbar-engines-item': true,
+                    'searchbar-engines-item-current': currUrlIndex === index && currUrlEnginesListIndex == enginesListIndex,
                   }"
+                  v-for="(item, index) in engines.urls"
+                  :key="index"
+                  @click="changeEngine(enginesListIndex, index)"
                 >
                   <div
-                    :style="
-                      'background:' + item.bg + ';width:100%;height:100%;'
-                    "
+                    :id="index"
+                    :class="{
+                      'searchbar-engines-item-icon': true,
+                    }"
                   >
-                    <img :src="getIcon(item.icon)" alt="" srcset="" />
+                    <div
+                      :style="
+                        'background:' + item.bg + ';width:100%;height:100%;'
+                      "
+                    >
+                      <img :src="getIcon(item.icon)" alt srcset />
+                    </div>
                   </div>
+                  <span
+                    :class="
+                      'searchbar-engines-item-title' +
+                      (currUrlIndex == index
+                        ? ' searchbar-engines-item-title-active'
+                        : '')
+                    "
+                  >{{ item.title }}</span>
+                  <!-- <span :class="'searchbar-engines-item-title'">{{item.title}}</span> -->
                 </div>
-                <span
-                  :class="
-                    'searchbar-engines-item-title' +
-                    (currUrlIndex == index
-                      ? ' searchbar-engines-item-title-active'
-                      : '')
-                  "
-                  >{{ item.title }}</span
-                >
-                <!-- <span :class="'searchbar-engines-item-title'">{{item.title}}</span> -->
-              </div>
               </div>
             </div>
           </div>
         </div>
-        
 
         <!-- <div class="searchbar-recommends searchbar-wrap-items" v-for="i in 100" :key="i"></div> -->
       </div>
     </transition>
-    <div
-      :class="'searchbar-opener' + handleChangeBarColor()"
-      @click="changeWrapState($event)"
-    >
-      <i
+    <div :class="{'searchbar-opener':true, 'searchbar-container-bgon':bgEnable, 'searchbar-opener-top':scrolling<150}" @click="changeWrapState($event)">
+            <img class="searchbar-icon" :src="getIcon(enginesList[currUrlEnginesListIndex].urls[currUrlIndex].icon)" :style="'background:'+enginesList[currUrlEnginesListIndex].urls[currUrlIndex].bg+';'"/>
+      <!-- <i
         :class="
           'iconfont icon-search searchbar-icon' + handleChangeBarIconColor()
         "
-      ></i>
+      ></i> -->
       <form
         target="_blank"
         autocomplete="off"
@@ -198,18 +188,24 @@ export default {
       suggestSelected: -1,
       enginesList: [
         {
-            "name": "网页搜索",
-            "urls": [{
-                    "title": "必应",
-                    "url": "https://cn.bing.com/search",
-                    "queryWord": "q",
-                    "placeholder": "Microsoft Bing 必应搜索",
-                    "bg": "#ffffff",
-                    "icon": "bing.svg"
-                }]
+          "name": "网页搜索",
+          "urls": [{
+            "title": "必应",
+            "url": "https://cn.bing.com/search",
+            "queryWord": "q",
+            "placeholder": "Microsoft Bing 必应搜索",
+            "bg": "#ffffff",
+            "icon": "bing.svg"
+          }]
         }
       ],
     };
+  },
+  computed: {
+    scrolling: function() {
+      return this.$store.state.pageYOffset;
+
+    },
   },
   watch: {
     currUrlIndex(newUrlIndex) {
@@ -220,19 +216,19 @@ export default {
     },
   },
   methods: {
-    returnSearchItem(item){
-      if(item.suffix){
+    returnSearchItem(item) {
+      if (item.suffix) {
         return this.searchItem;
-      }else{
+      } else {
         return ""
       }
     },
-    onScroll() {},
+    onScroll() { },
     setScroll() {
       this.documentObjs = document.getElementsByClassName("engines-categories-list"); // 获取DOM元素节点
       // 添加监听事件（不同浏览器，事件方法不一样，所以可以作判断，也可以如下偷懒）
-      
-      for (var i = 0;i<this.documentObjs.length;i++){
+
+      for (var i = 0; i < this.documentObjs.length; i++) {
         this.documentObjs[i].addEventListener(
           "DOMMouseScroll",
           this.handlerMouserScroll,
@@ -242,7 +238,8 @@ export default {
           "mousewheel",
           this.handlerMouserScroll,
           false
-        );}
+        );      
+}
     },
     handlerMouserScroll(event) {
       let detail = event.wheelDelta || event.detail;
@@ -253,14 +250,14 @@ export default {
       this.documentObj.scrollLeft = this.documentObj.scrollLeft + step;
     },
     stopMove() {
-      let m = function (e) {
+      let m = function(e) {
         e.preventDefault();
       };
       document.body.style.overflow = "hidden";
       document.addEventListener("touchmove", m, { passive: false }); //禁止页面滑动
     },
     move() {
-      let m = function (e) {
+      let m = function(e) {
         e.preventDefault();
       };
       document.body.style.overflow = ""; //出现滚动条
@@ -322,12 +319,12 @@ export default {
     },
     suggestCallBack(queryWord) {
       window.baidu = {
-        sug: function (json) {
+        sug: function(json) {
           console.log(json);
         },
       };
     },
-    changeEngine(enginesListIndex,index) {
+    changeEngine(enginesListIndex, index) {
       this.currUrlEnginesListIndex = enginesListIndex;
       this.currUrlIndex = index;
       this.$refs.search.focus();
@@ -409,18 +406,18 @@ export default {
 
 <style>
 .fade-delay-enter-active {
-    transition: opacity .15s ease;
-    /* transition-delay: -500ms; */
+  transition: opacity 0.15s ease;
+  /* transition-delay: -500ms; */
 }
 
 .fade-delay-leave-active {
-    transition: opacity .1s ease;
-    transition-delay: 200ms;
+  transition: opacity 0.1s ease;
+  transition-delay: 200ms;
 }
 
 .fade-delay-enter,
 .fade-delay-leave-to {
-    opacity: 0;
+  opacity: 0;
 }
 #searchbar {
   width: 100vw;
@@ -430,10 +427,11 @@ export default {
   top: 0;
   left: 0;
   pointer-events: none;
-  z-index:10000;
+  z-index: 10000;
 }
 .searchbar-opener {
   display: flex;
+  align-items:center;
   width: 70vw;
   max-width: 500px;
   border-radius: 10px;
@@ -442,10 +440,17 @@ export default {
   margin: 12px 0;
   background: #00000015;
   color: var(--main-color);
-  transition: background-color 0.4s ease;
-  backdrop-filter:blur(30px);
+  /* transition: background-color 0.4s ease; */
+  /* backdrop-filter: blur(30px); */
+  transition:all .1s ease;
 }
-
+.searchbar-container-top,.searchbar-opener-top {
+  height: 60px!important;
+}
+.searchbar-opener-top {
+  /* backdrop-filter: none; */
+  background: #fff;
+}
 /* @media screen and (prefers-color-scheme: light) {
 .searchbar-container{
   background: #00000015;
@@ -488,26 +493,29 @@ export default {
   color: var(--inactive-color);
 }
 .searchbar-icon {
-  height: 100%;
-  padding: 0 20px;
+  /* height: 100%; */
+  /* padding: 0 20px; */
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--inactive-color);
+  /* color: var(--inactive-color); */
+  margin: 0 20px;
+  width: 30px; 
+  height:30px;
+  border-radius:5px; 
 }
 
 .searchbar-wrap {
-  position:absolute;
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   pointer-events: auto;
-  overflow: scroll !important;
-  z-index:10001;
-
+  /* overflow: scroll !important; */
+  z-index: 10001;
 }
-.searchbar-wrap-bg-off{
+.searchbar-wrap-bg-off {
   /* pointer-events:visible; */
 }
 .searchbar-mask {
@@ -534,7 +542,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: all .2s cubic-bezier(0.18,-0.01, 0, 0.99);
+  transition: all 0.2s cubic-bezier(0.18, -0.01, 0, 0.99);
   max-height: calc(100vh - 12px * 2);
   transition-delay: 100ms;
 }
@@ -543,91 +551,94 @@ export default {
   transition-delay: 0ms;
   /* opacity: 0; */
 }
+.searchbar-box-bg-off-top{
+  max-height: 60px!important;
+
+}
 .searchbar-container {
   display: flex;
+  align-items:center;
   width: 70vw;
   max-width: 500px;
-  height: 50px;
   pointer-events: auto;
   height: 40px;
   color: var(--main-color);
   border-bottom: 1px solid var(--main-color-opa);
   flex-shrink: 0;
 }
+
 /* @media screen and (prefers-color-scheme: dark) {
   .searchbar-container{
   color: #ffffff;
   }
 } */
 .searchbar-wrap-items::-webkit-scrollbar {
-    display: block;
-    width: 8px;
-    height: 0;
-    position: absolute;
-    right: 0;
-    transition: all .2s ease;
-    cursor: pointer;
-
+  display: block;
+  width: 8px;
+  height: 0;
+  position: absolute;
+  right: 0;
+  transition: all 0.2s ease;
+  cursor: pointer;
 }
-.searchbar-wrap-items::-webkit-scrollbar:window-inactive{
+.searchbar-wrap-items::-webkit-scrollbar:window-inactive {
   /* display: none; */
   width: 0;
 }
 .searchbar-wrap-items::-webkit-scrollbar-button,
 .searchbar-wrap-items::-webkit-scrollbar-corner,
 .searchbar-wrap-items::-webkit-scrollbar-track {
-    background-color: transparent
+  background-color: transparent;
 }
 
 .searchbar-wrap-items::-webkit-scrollbar-button {
-    background-repeat: no-repeat;
-    cursor: pointer;
+  background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .searchbar-wrap-items::-webkit-scrollbar-button:vertical {
-    background-position: 50%;
-    width: 18px;
-    height: 18px
+  background-position: 50%;
+  width: 18px;
+  height: 18px;
 }
 
 .searchbar-wrap-items::-webkit-scrollbar-button:horizontal {
-    background-position: 50%;
-    width: 0;
+  background-position: 50%;
+  width: 0;
 }
 .searchbar-wrap-items::-webkit-scrollbar-track {
-    background: transparent;
-    /* width: 100px; */
+  background: transparent;
+  /* width: 100px; */
 }
 
 .searchbar-wrap-items::-webkit-scrollbar-thumb {
-    background-color: #ccc;
-    border-radius: 5px;
-    cursor: pointer;
+  background-color: #ccc;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .searchbar-wrap-items::-webkit-scrollbar-thumb:hover {
-    background-color: #888
+  background-color: #888;
 }
 /* 
 .searchbar-wrap-items::-webkit-scrollbar-resizer {
     background-color: #ff6e00
 } */
 .searchbar-wrap-items::-webkit-scrollbar-button:vertical:increment {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAUUlEQVQ4T6XLMQ6AMAwEwfz/bXRIfOeQCxckK8iKYgqvfCPJLxgNjAZGA6OB0VjCcV55M/8/jkbDMv+VJbSdccHYvsYFo4HRwGhgNDAaGPdl3LNlBnofQ4+bAAAAAElFTkSuQmCC)
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAUUlEQVQ4T6XLMQ6AMAwEwfz/bXRIfOeQCxckK8iKYgqvfCPJLxgNjAZGA6OB0VjCcV55M/8/jkbDMv+VJbSdccHYvsYFo4HRwGhgNDAaGPdl3LNlBnofQ4+bAAAAAElFTkSuQmCC);
 }
 
 .searchbar-wrap-items::-webkit-scrollbar-button:vertical:increment:hover {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAUklEQVQ4T6XLsQ2AMAwF0ey/A1swAnt95MIFyQlyoniFT/4jyS8YDYwGRgOjgdFYwnFeeTP/P45GwzL/lSW0nXHB2L7GBaOB0cBoYDQwGhj3Zdx8sf7rjOGQqwAAAABJRU5ErkJggg==)
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAUklEQVQ4T6XLsQ2AMAwF0ey/A1swAnt95MIFyQlyoniFT/4jyS8YDYwGRgOjgdFYwnFeeTP/P45GwzL/lSW0nXHB2L7GBaOB0cBoYDQwGhj3Zdx8sf7rjOGQqwAAAABJRU5ErkJggg==);
 }
 
 .searchbar-wrap-items::-webkit-scrollbar-button:vertical:decrement {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAVUlEQVQ4T6XMMQoAIQxEUe9/NrsFrzOSIqDxgzu7xSv8ZGySfsHowOjA6MDowOjAmPozFGpfYQw5vn2CsY5TvQtHoOGq3m+PLzA6MDowOjA6ML6nNgFW+wZ6kTk6FAAAAABJRU5ErkJggg==)
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAVUlEQVQ4T6XMMQoAIQxEUe9/NrsFrzOSIqDxgzu7xSv8ZGySfsHowOjA6MDowOjAmPozFGpfYQw5vn2CsY5TvQtHoOGq3m+PLzA6MDowOjA6ML6nNgFW+wZ6kTk6FAAAAABJRU5ErkJggg==);
 }
 
 .searchbar-wrap-items::-webkit-scrollbar-button:vertical:decrement:hover {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAVklEQVQ4T6XMwQ3AIAwEQfrvgS5SAn0d8sMSmJXIJY95sPLRJP2C0YHRgdGB0YHRgTH1ZyjUvsIYcnz7BGMdp3oXjkDDVb3fHl9gdGB0YHRgdGB8T20CB+X+675uLU0AAAAASUVORK5CYII=)
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAVklEQVQ4T6XMwQ3AIAwEQfrvgS5SAn0d8sMSmJXIJY95sPLRJP2C0YHRgdGB0YHRgTH1ZyjUvsIYcnz7BGMdp3oXjkDDVb3fHl9gdGB0YHRgdGB8T20CB+X+675uLU0AAAAASUVORK5CYII=);
 }
-
 
 .searchbar-wrap-items {
   width: 100%;
@@ -639,7 +650,6 @@ export default {
 }
 .searchbar-wrap-items:window-inactive {
   margin-right: 0px;
-  
 }
 .searchbar-suggestions {
   border-top: 5px solid #92929213;
@@ -652,17 +662,15 @@ export default {
   background: var(--body-color);
   margin: 0 10px;
   border-radius: 10px;
-
 }
-.engines-categories-list::-webkit-scrollbar{
+.engines-categories-list::-webkit-scrollbar {
   display: none;
 }
-.categories-list-title{
+.categories-list-title {
   color: var(--main-color);
   box-sizing: border-box;
   display: block;
   padding: 10px 15px;
-
 }
 .searchbar-engines-item {
   display: flex;
@@ -759,7 +767,7 @@ export default {
   .searchbar-box form input {
     width: 100%;
   }
-  #searchbar{
+  #searchbar {
     display: none;
   }
 }

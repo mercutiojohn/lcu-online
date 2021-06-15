@@ -5,7 +5,7 @@
     </div>
     <div class="search-tips">
       <Hitokoto />
-      <div class="featured-playlists">
+      <!-- <div class="featured-playlists">
         <span class="playlists-title">音乐和电台</span> <span>快速链接</span>
         <div class="playlists-list">
           <div class="playlist-item"></div>
@@ -15,26 +15,15 @@
           <div class="playlist-item"></div>
           <div class="playlist-item"></div>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="search-area">
       <SearchBar :bgEnable="bgEnable" />
     </div>
-    <div id="hello-content">
+    <div :class="{'hello-content':true,'hello-content-scrolling':scrolling,'hello-content-blur':!clockBoxStat}">
       <div id="left-info">
         <SideBar />
-        <div class="about">
-          <span class="about-text">鲁ICP备20018544号</span>
-          <a href="http://mercutio.club">
-            <span class="about-text">莫阿白的博客</span>
-          </a>
-          <a href="https://github.com/mercutiojohn/lcu-online/projects/1?fullscreen=true">
-            <span class="about-text" style="font-size: 10px">迭代路线</span>
-          </a>
-          <a href="https://github.com/mercutiojohn/lcu-online/issues">
-            <span class="about-text" style="font-size: 10px">提意见</span>
-          </a>
-        </div>
+        
       </div>
       <div class="home-wrap">
         <top-banner />
@@ -47,8 +36,21 @@
           :noColor="item.noColor ? true : false"
           :index="index"
         ></Navigation>
-        <BiliRecommend />
-
+        <div class="content-recommend">
+          <BiliRecommend />
+        </div>
+        <div class="about">
+          <span class="about-text">鲁ICP备20018544号</span>
+          <a href="http://mercutio.club">
+            <span class="about-text">莫阿白的博客</span>
+          </a>
+          <a href="https://github.com/mercutiojohn/lcu-online/projects/1?fullscreen=true">
+            <span class="about-text" style="font-size: 10px">迭代路线</span>
+          </a>
+          <a href="https://github.com/mercutiojohn/lcu-online/issues">
+            <span class="about-text" style="font-size: 10px">提意见</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -97,6 +99,14 @@ export default {
       labelPosition: "right",
       headerHeight: 70
     };
+  },
+  computed:{
+    scrolling:function(){
+      return this.$store.state.pageYOffset;
+    },
+    clockBoxStat:function(){
+      return this.$store.state.clockBoxStat;
+    }
   },
   methods: {
     linktab() {
@@ -209,23 +219,33 @@ export default {
   /* background: url(https://source.unsplash.com/random/1920x1080) no-repeat fixed center/cover; */
 }
 
-#hello-content {
+.hello-content {
   box-sizing: border-box;
   width: var(--box-width);
   display: flex;
   position: relative;
   /* max-width: 1300px; */
-  background: var(--bg-color);
+  background: var(--blur-color);
   border-radius: 20px 20px 0 0;
   width: calc(100vw - 20px);
   margin: 0;
-  padding: 30px 30px 100px;
+  padding: 30px;
   /* height: 100vh; */
   /* overflow: scroll; */
   overflow: hidden;
   z-index: 2;
+  transition:all .2s ease;
 }
-
+.hello-content-blur{
+  backdrop-filter:blur(50px);
+}
+.hello-content-scrolling{
+  backdrop-filter:none;
+  background: var(--body-color);
+  width: 100vw;
+  padding:30px 40px;
+  border-radius: 0;
+}
 .home-wrap {
   padding-left: calc(350px + 10px);
   padding-right: 20px;
@@ -241,10 +261,14 @@ export default {
   /* height:calc(100vh - 80px); */
   /* overflow:scroll; */
 }
-
+.content-recommend{
+  background:var(--elem-color);
+  border-radius:5px;
+  margin:10px 0;
+}
 .about {
-  position: fixed;
-  bottom: 22px;
+  /* position: fixed; */
+  /* bottom: 22px; */
   /* left: 25px; */
   width: 100%;
   /* margin: 0 auto 20px; */
@@ -279,7 +303,6 @@ export default {
   cursor: pointer;
   transition: all 0.35s ease;
 }
-
 /* Left */
 #left-info {
   /* height: calc(100vh - 115px); */
@@ -341,7 +364,7 @@ export default {
   } */
 }
 @media screen and (max-width: 600px) {
-  #hello-content {
+  .hello-content {
     /* display: none; */
     flex-direction: column;
     margin: 0;
@@ -362,8 +385,8 @@ export default {
     padding: 0;
   }
   .about {
-    position: absolute;
-    bottom: -80px;
+    /* position: absolute; */
+    /* bottom: -80px; */
     /* left: 25px; */
     width: 100%;
     /* margin: 0 auto 20px; */

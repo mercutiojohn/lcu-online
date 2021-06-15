@@ -109,10 +109,10 @@ export default {
   watch: {
     clockWrapDisplay(newStat) {
       const _this = this;
-      console.log(this.$store.state.clockBoxStat);
-      console.log(newStat);
+      // console.log(this.$store.state.clockBoxStat);
+      // console.log(newStat);
       _this.$store.commit("update", ["clockBoxStat", newStat]);
-      console.log(this.$store.state.clockBoxStat);
+      // console.log(this.$store.state.clockBoxStat);
     },
   },
   methods: {
