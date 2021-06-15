@@ -1,19 +1,6 @@
 <template>
   <div id="top-banner">
-    <transition name="fade">
-      <div :class="{ 'dynamic-left': true, 'dynamic-left-fullscreen': fullscreen }">
-        <!-- 
-        @click="changeWrapState"
-        :class="{ 'dynamic-left': true, 'dynamic-left-fullscreen': fullscreen }"
-        -->
-        <swiper class="swiper" :options="swiperOption" :auto-update="true" :auto-destroy="true">
-          <swiper-slide>Demo</swiper-slide>
-          <div class="swiper-pagination" slot="pagination"></div>
-          <div class="swiper-button-prev" slot="button-prev"></div>
-          <div class="swiper-button-next" slot="button-next"></div>
-        </swiper>
-      </div>
-    </transition>
+    
     <div class="dynamic-right">
       <Navigation
         v-for="(item, index) in list"
@@ -51,7 +38,6 @@ export default {
   },
   data() {
     return {
-      bgSrc: "https://source.unsplash.com/random/1920x1080",
       fullscreen: false,
       swiperOption: {
         slidesPerView: 1,
@@ -108,7 +94,7 @@ export default {
 
 #top-banner {
   box-sizing: border-box;
-  height: 350px;
+  /* height: 350px; */
   display: flex;
 }
 .swiper {
@@ -169,7 +155,7 @@ export default {
 }
 .dynamic-right {
   box-sizing: border-box;
-  width: 300px;
+  width: 100%;
   height: 100%;
   background: var(--elem-color);
   display: flex;

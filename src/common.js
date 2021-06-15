@@ -6,6 +6,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
     state: {
         clockBoxStat: false,
+        pageYOffset: 0,
+        windowHeight: 0,
         apiPath: "http://api.mercutio.club"
     },
     mutations: {

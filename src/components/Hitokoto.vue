@@ -84,7 +84,7 @@ export default {
     width: 100%;
   color: #fff;
   display: flex;
-justify-content: flex-start;
+justify-content: flex-end;
     font-size: 10px;
 }
 </style>

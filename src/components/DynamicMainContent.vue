@@ -132,28 +132,5 @@ export default {
   z-index: 3;
   pointer-events: none;
 }
-@media screen and (max-width: 1100px) {
-  #dynamic-main-content {
-    /* zoom: 0.2; */
-    box-sizing: border-box;
-    height: max-content;
-    display: flex;
-    flex-direction: column;
-  }
-  .dynamic-left {
-    zoom: 0.8;
-    height: max-content;
-    margin: 0;
-    margin: 0 0 10px;
-    pointer-events: none;
-    border-radius: 8px;
-  }
-  .dynamic-left-background {
-    min-height: 350px;
-  }
-  .dynamic-right {
-    width: 100%;
-    height: max-content;
-  }
-}
+
 </style>

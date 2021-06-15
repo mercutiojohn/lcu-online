@@ -41,7 +41,7 @@
       <!-- </swiper-slide> -->
     </div>
 
-    <div @click="addBili()" class="bili-load-more">
+    <div @click="addBili()" class="bili-load-more" ref="showMore">
       <i :class="{'iconfont':true,'icon-refresh btn-refreshing':loading,'icon-chevron-double-down':!loading}"></i>
       <span>加载{{loading?'中...':'更多'}}</span>
     </div>
@@ -385,7 +385,7 @@ export default {
         .catch(console.error);
     },
     getCover(url, index) {
-      let coverUrl = encodeURIComponent(url);
+      let coverUrl = encodeURIComponent(url+'@257w_145h_1c_100q.webp');
       let base;
       this.covers[index] = require('@/assets/img/function/pic.svg');
       this.$axios
@@ -423,6 +423,12 @@ export default {
       if (this.toApp) return data.uri;
       else return "https://www.bilibili.com/video/av" + data.args.aid;
     },
+    scrollLoad(){
+      console.log(this.$refs.showMore.offsetTop);
+      if(this.$refs.showMore.offsetTop>this.scrollHeight+this.windowHeight){
+        this.addBili();
+      }
+    }
   },
   created() {
 
@@ -432,12 +438,15 @@ export default {
       this.data = JSON.parse(localStorage.bili_data);
     }
     this.timer_fetch = setTimeout(this.getBili(), 600000);
-    console.log('Current Swiper instance object', this.swiper);
-    this.swiper.slideTo(3, 1000, false)
+    window.addEventListener('scroll',this.scrollLoad,false);
   },
   computed: {
-    swiper() {
-      return this.$refs.mySwiper.$swiper
+    scrollHeight: function() {
+      return this.$store.state.pageYOffset;
+    },
+    windowHeight: function(){
+      return this.$store.state.windowHeight;
+
     }
   },
   watch: {
