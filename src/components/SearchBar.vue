@@ -440,6 +440,7 @@ export default {
   margin: 12px 0;
   background: #00000015;
   color: var(--main-color);
+  cursor: text;
   /* transition: background-color 0.4s ease; */
   /* backdrop-filter: blur(30px); */
   transition:all .1s ease;
@@ -524,7 +525,8 @@ export default {
   left: 0;
   width: 100vw;
   height: 100vh;
-  /* background: #000; */
+  background: #00000096;
+  /* cursor:pointer; */
 }
 .searchbar-box {
   box-sizing: border-box;
