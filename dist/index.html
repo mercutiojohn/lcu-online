@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=X-UA-Compatible content="ie=edge"><title>LCU在线 · 懂你的导航</title><link rel=apple-touch-icon sizes=180x180 href=src/assets/favicon/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=src/assets/favicon/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=src/assets/favicon/favicon-16x16.png><link rel=manifest href=./site.webmanifest><link rel=mask-icon href=src/assets/favicon/safari-pinned-tab.svg color=#005663><meta name=apple-mobile-web-app-title content=LCU在线><meta name=application-name content=LCU在线><meta name=msapplication-TileColor content=#005663><meta name=theme-color content=#ffffff><link rel="shortcut icon" href=.//favicon.ico><link href=.//static/css/app.b8c75753ebd6efd87d1fa4e728ac1e25.css rel=stylesheet></head><style>:root {
+<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=X-UA-Compatible content="ie=edge"><title>LCU在线 · 懂你的导航</title><link rel=apple-touch-icon sizes=180x180 href=src/assets/favicon/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=src/assets/favicon/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=src/assets/favicon/favicon-16x16.png><link rel=manifest href=./site.webmanifest><link rel=mask-icon href=src/assets/favicon/safari-pinned-tab.svg color=#005663><meta name=apple-mobile-web-app-title content=LCU在线><meta name=application-name content=LCU在线><meta name=msapplication-TileColor content=#005663><meta name=theme-color content=#ffffff><link rel="shortcut icon" href=.//favicon.ico><link href=.//static/css/app.63bb29f8049a0cae8d0146de5975c10d.css rel=stylesheet></head><style>:root {
         --body-color: #f1f3f4;
     }
     
@@ -16,5 +16,127 @@
     
     body {
         background: var(--body-color);
+        padding: 0;
+        margin: 0;
         /* background: #343537; */
-    }</style><body><div id=app></div><script type=text/javascript src=.//static/js/manifest.af3afd28e79c633f0c03.js></script><script type=text/javascript src=.//static/js/vendor.d03cf3c8bff1823da486.js></script><script type=text/javascript src=.//static/js/app.c354e41098b97c0be72f.js></script></body></html>
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    
+    ol,
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    
+    input {
+        font-size: 16px;
+    }
+    
+    .loading {
+        background: #00000078;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        z-index: 10012;
+    }
+    
+    .sk-transparent {
+        color: transparent !important
+    }
+    
+    .sk-opacity {
+        opacity: 0 !important
+    }
+    
+    .sk-text-14-2857 {
+        background-image: linear-gradient(transparent 14.2857%, #eee 0, #eee 85.7143%, transparent 0) !important;
+        background-size: 100% 1.4rem;
+        position: relative !important
+    }
+    
+    .sk-text {
+        background-origin: content-box !important;
+        background-clip: content-box !important;
+        background-color: transparent !important;
+        color: transparent !important;
+        background-repeat: repeat-y !important
+    }
+    
+    .sk-text--4-5455 {
+        background-image: linear-gradient(transparent -4.5455%, #eee 0, #eee 104.5455%, transparent 0) !important;
+        background-size: 100% 6.875rem;
+        position: relative !important
+    }
+    
+    .sk-image {
+        background: #efefef !important
+    }
+    
+    .sk-rect {
+        border-radius: 0
+    }
+    
+    .sk-pseudo::after,
+    .sk-pseudo::before {
+        background: #efefef !important;
+        color: transparent !important;
+        border-color: transparent !important
+    }
+    
+    .sk-pseudo-rect::after,
+    .sk-pseudo-rect::before {
+        border-radius: 0 !important
+    }
+    
+    .sk-pseudo-circle::after,
+    .sk-pseudo-circle::before {
+        border-radius: 50% !important
+    }
+    
+    @keyframes loading-rotate {
+        100% {
+            transform: rotate(360deg)
+        }
+    }
+    
+    @keyframes loading-dash {
+        0% {
+            stroke-dasharray: 1, 200;
+            stroke-dashoffset: 0
+        }
+        50% {
+            stroke-dasharray: 90, 150;
+            stroke-dashoffset: -40px
+        }
+        100% {
+            stroke-dasharray: 90, 150;
+            stroke-dashoffset: -120px
+        }
+    }
+    
+    .sk-loading-spinner {
+        top: 50%;
+        margin-top: -1.5rem;
+        width: 100%;
+        text-align: center;
+        position: fixed
+    }
+    
+    .sk-loading-spinner .circular {
+        height: 3rem;
+        width: 3rem;
+        animation: 2s linear infinite loading-rotate
+    }
+    
+    .sk-loading-spinner .path {
+        animation: 1.5s ease-in-out infinite loading-dash;
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: 0;
+        stroke-width: 5;
+        stroke: #409eff;
+        stroke-linecap: round
+    }</style><body><div class=loading><div class=sk-loading-spinner><svg viewBox="25 25 50 50" class=circular><circle cx=50 cy=50 r=20 fill=none class=path></circle></svg></div></div><div id=app></div><script type=text/javascript src=.//static/js/manifest.af3afd28e79c633f0c03.js></script><script type=text/javascript src=.//static/js/vendor.eacc4130cab658e9209a.js></script><script type=text/javascript src=.//static/js/app.fd8436d7ae8a3cb64e2f.js></script></body></html>

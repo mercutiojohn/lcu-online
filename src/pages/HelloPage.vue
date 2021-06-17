@@ -3,7 +3,7 @@
     <div class="charm-intro">
       <DynamicMainContent />
     </div>
-    <div class="search-tips">
+    <div class="search-tips" v-if="settings != 'full'">
       <Hitokoto />
       <!-- <div class="featured-playlists">
         <span class="playlists-title">音乐和电台</span> <span>快速链接</span>
@@ -17,13 +17,25 @@
         </div>
       </div> -->
     </div>
-    <div class="search-area">
+    <div
+      :class="{
+        'search-area': true,
+        'search-area-compact': settings == 'full',
+        'search-area-scroll': settings == 'scroll' || settings == 'none',
+      }"
+    >
       <SearchBar :bgEnable="bgEnable" />
     </div>
-    <div :class="{'hello-content':true,'hello-content-scrolling':scrolling,'hello-content-blur':!clockBoxStat}">
+    <div
+      :class="{
+        'hello-content': true,
+        'hello-content-scrolling': scrolling || settings == 'full',
+        'hello-content-blur': !clockBoxStat&&blurSetting
+        }"
+      v-if="settings != 'none'"
+    >
       <div id="left-info">
         <SideBar />
-        
       </div>
       <div class="home-wrap">
         <top-banner />
@@ -40,16 +52,35 @@
           <BiliRecommend />
         </div>
         <div class="about">
-          <span class="about-text">鲁ICP备20018544号</span>
-          <a href="http://mercutio.club">
-            <span class="about-text">莫阿白的博客</span>
-          </a>
-          <a href="https://github.com/mercutiojohn/lcu-online/projects/1?fullscreen=true">
-            <span class="about-text" style="font-size: 10px">迭代路线</span>
-          </a>
-          <a href="https://github.com/mercutiojohn/lcu-online/issues">
-            <span class="about-text" style="font-size: 10px">提意见</span>
-          </a>
+          <p>
+            <span class="about-text"
+              >背景来自
+              <a href="http://unsplash.com"> Unsplash </a>
+            </span>
+            <span class="about-text"
+              >随机一句来自
+              <a href="http://hitokoto.cn"> Hitokoto </a>
+            </span>
+          </p>
+          <p>
+            <span class="about-text"
+              >搜索栏上方的随机一句、壁纸等内容不代表作者观点。</span
+            >
+          </p>
+          <p>
+            <span class="about-text">鲁ICP备20018544号</span>
+            <a href="http://mercutio.club">
+              <span class="about-text">莫阿白的博客</span>
+            </a>
+            <a
+              href="https://github.com/mercutiojohn/lcu-online/projects/1?fullscreen=true"
+            >
+              <span class="about-text" style="font-size: 10px">迭代路线</span>
+            </a>
+            <a href="https://github.com/mercutiojohn/lcu-online/issues">
+              <span class="about-text" style="font-size: 10px">提意见</span>
+            </a>
+          </p>
         </div>
       </div>
     </div>
@@ -66,10 +97,9 @@ import Homeworks from "@/components/Homeworks";
 import Countdown from "@/components/Countdown";
 import EmbedFrame from "@/components/EmbedFrame";
 import Player from "@/components/Player";
-import TopBanner from '@/components/TopBanner';
-import SearchBar from '@/components/SearchBar';
+import TopBanner from "@/components/TopBanner";
+import SearchBar from "@/components/SearchBar";
 import BiliRecommend from "@/components/BiliRecommend";
-
 
 export default {
   name: "HelloPage",
@@ -85,7 +115,7 @@ export default {
     SideBar,
     TopBanner,
     SearchBar,
-    BiliRecommend
+    BiliRecommend,
   },
   data() {
     return {
@@ -98,18 +128,24 @@ export default {
       },
       labelPosition: "right",
       headerHeight: 70,
-      bgEnable:false
+      bgEnable: false,
     };
   },
-  computed:{
-    scrolling:function(){
+  computed: {
+    scrolling: function () {
       return this.$store.state.pageYOffset;
     },
     windowHeight: function () {
       return this.$store.state.windowHeight;
     },
-    clockBoxStat:function(){
+    clockBoxStat: function () {
       return this.$store.state.clockBoxStat;
+    },
+    settings: function () {
+      return this.$store.state.settings.contents;
+    },
+    blurSetting:function () {
+      return this.$store.state.settings.blur;
     }
   },
   methods: {
@@ -136,7 +172,7 @@ export default {
         .then((_) => {
           done();
         })
-        .catch((_) => { });
+        .catch((_) => {});
     },
     handleSubmit() {
       this.$emit("getLogin", this.login);
@@ -183,9 +219,19 @@ export default {
   margin: calc((100vh - 40px - 64px - 300px) / 3 * 1) 0
     calc((100vh - 40px - 64px - 300px) / 3 * 2);
   /* height:300px; */
-  z-index: 10000;
+  z-index: 999;
   pointer-events: none;
+  transition: margin 0.2s ease;
   /* background:#00000078; */
+}
+.search-area-compact {
+  position: fixed;
+  top: 0;
+  margin: 0;
+}
+.search-area-scroll {
+  margin: calc((100vh - 85px - 64px - 20px) / 5 * 1) 0
+    calc((100vh - 85px - 64px - 20px) / 5 * 4);
 }
 .search-tips {
   top: 150px;
@@ -197,14 +243,14 @@ export default {
   transform: translateY(-50px);
   z-index: 1;
 }
-.featured-playlists{
+.featured-playlists {
   padding-top: 100px;
 }
 .playlists-list {
   display: flex;
 }
-.playlists-title{
-  color:var(--main-color);
+.playlists-title {
+  color: var(--main-color);
 }
 .playlist-item {
   width: 80px;
@@ -229,25 +275,26 @@ export default {
   display: flex;
   position: relative;
   /* max-width: 1300px; */
-  background: var(--blur-color);
+  background: var(--body-color);
   border-radius: 20px 20px 0 0;
-  width: calc(100vw - 60px);
+  width: calc(100vw - 40px);
   margin: 0;
-  padding: 30px 10px;
+  padding: 30px 20px;
   /* height: 100vh; */
   /* overflow: scroll; */
   overflow: hidden;
   z-index: 2;
-  transition:all .1s ease;
+  transition: all 0.3s ease;
 }
-.hello-content-blur{
-  backdrop-filter:blur(50px);
+.hello-content-blur {
+  background: var(--blur-color-solid);
+  backdrop-filter: blur(50px);
 }
-.hello-content-scrolling{
-  backdrop-filter:none;
+.hello-content-scrolling {
+  /* backdrop-filter: none; */
   background: var(--body-color);
   width: 100vw;
-  padding:30px 40px;
+  padding: 30px 40px;
   border-radius: 0;
 }
 .home-wrap {
@@ -265,8 +312,8 @@ export default {
   /* height:calc(100vh - 80px); */
   /* overflow:scroll; */
 }
-.content-recommend{
-  margin:10px 0;
+.content-recommend {
+  margin: 10px 0;
 }
 .about {
   /* position: fixed; */
@@ -274,8 +321,8 @@ export default {
   /* left: 25px; */
   width: 100%;
   /* margin: 0 auto 20px; */
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: center; */
   /* flex-direction: row; */
   /* justify-content: space-evenly; */
   font-size: 12px;
@@ -392,9 +439,9 @@ export default {
     /* left: 25px; */
     width: 100%;
     /* margin: 0 auto 20px; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
     /* flex-direction: row; */
     /* justify-content: space-evenly; */
     font-size: 12px;

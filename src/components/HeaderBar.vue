@@ -1,11 +1,11 @@
 <template>
-  <div :class="{'header-bar-container':true,'header-bar-container-bgon':pageYOffset, 'header-bar-container-bg-no-blur':clockBoxStat&&pageYOffset}">
+  <div :class="{'header-bar-container':true,'header-bar-container-bgon':pageYOffset||settings=='full', 'header-bar-container-bg-no-blur':(clockBoxStat&&pageYOffset)||(settings=='full'&&clockBoxStat)||(!blurSetting&&pageYOffset)}">
     <ul class="header-bar-tablist"  @click="printPath()">
       <router-link to="/">
-        <li :class="{'header-bar-tabitem':true,'header-bar-tabitem-bgon':pageYOffset,'header-bar-tabitem-active':currTab == '/'}">首页</li>
+        <li :class="{'header-bar-tabitem':true,'header-bar-tabitem-bgon':pageYOffset||settings=='full'||currTab!='/','header-bar-tabitem-active':currTab == '/'}">首页</li>
       </router-link>
       <router-link :to="item.url" v-for="(item,index) in navs" :key="index">
-        <li :class="{'header-bar-tabitem':true,'header-bar-tabitem-bgon':pageYOffset,'header-bar-tabitem-active':currTab == item.url}">{{item.name}}</li>
+        <li :class="{'header-bar-tabitem':true,'header-bar-tabitem-bgon':pageYOffset||settings=='full'||currTab!='/','header-bar-tabitem-active':currTab == item.url}">{{item.name}}</li>
       </router-link>
       <!-- <router-link to="/classic">
         <li :class="'header-bar-tabitem'+handleChangeFontColor()">经典</li>
@@ -14,20 +14,20 @@
     </ul>
     
     <div class="header-bar-right">
-      <ClockBox :bgEnable="!bgEnable"/>
+      <ActionCenter :bgEnable="!pageYOffset&&settings!='full'&&currTab=='/'"/>
     </div>
     
   </div>
 </template>
  
 <script>
-import ClockBox from '@/components/ClockBox'
+import ActionCenter from '@/components/ActionCenter'
 
 
 export default {
   name: "HeaderBar",
   components: {
-    ClockBox
+    ActionCenter
   },
   data() {
     return {
@@ -52,6 +52,12 @@ export default {
     },
     pageYOffset:function(){
       return this.$store.state.pageYOffset;
+    },
+    settings:function () {
+      return this.$store.state.settings.contents;
+    },
+    blurSetting:function () {
+      return this.$store.state.settings.blur;
     }
   },
   methods: {
@@ -111,7 +117,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index:1000;
+  z-index:998;
   transition: all .2s ease;
   padding: 5px 30px 5px 30px;
   /* background: linear-gradient(var(--elem-color),transparent); */

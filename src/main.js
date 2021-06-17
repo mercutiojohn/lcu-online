@@ -9,15 +9,15 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 // Element UI
-import ElementUI from 'element-ui'
-Vue.use(ElementUI)
-import 'element-ui/lib/theme-chalk/index.css'
+// import ElementUI from 'element-ui'
+// Vue.use(ElementUI)
+// import 'element-ui/lib/theme-chalk/index.css'
 
 // Vant
-import Vant from 'vant'
-import 'vant/lib/index.css'
-import 'vant/lib/icon/local.css'
-import '@vant/touch-emulator'
+// import Vant from 'vant'
+// import 'vant/lib/index.css'
+// import 'vant/lib/icon/local.css'
+// import '@vant/touch-emulator'
 // Vue.use(Vant) 
 
 
@@ -57,7 +57,7 @@ Vue.use(GeminiScrollbar)
 Vue.config.productionTip = false
 
 
-import store from './common'
+import store from './js/store'
 Vue.prototype.$store = store
 
 

@@ -2,34 +2,7 @@
   <div id="course">
     <!-- <div id="course-background"></div> -->
     <div id="course-box">
-      <el-dialog
-        title="提示"
-        :visible.sync="dialogVisible"
-        width="30%"
-        :before-close="handleClose"
-      > 
-        <span>这是一段信息</span>
-        <span slot="footer" class="dialog-footer">
-          <el-button @click="dialogVisible = false">取 消</el-button>
-          <el-button type="primary" @click="dialogVisible = false"
-            >确 定</el-button
-          >
-        </span>
-      </el-dialog>
-      <!-- <el-tabs v-model="activeName" @tab-click="handleClick" class="course-tab">
-        <el-tab-pane label="用户管理" name="first">
-          <div class="course-blank">用户管理</div>
-          </el-tab-pane>
-        <el-tab-pane label="配置管理" name="second">
-          配置管理
-          </el-tab-pane>
-        <el-tab-pane label="角色管理" name="third">
-          角色管理
-          </el-tab-pane>
-        <el-tab-pane label="定时任务补偿" name="fourth">
-          定时任务补偿
-          </el-tab-pane>
-      </el-tabs> -->
+      
       <div id="course-category-list-box">
         <div class="course-video-list">
           <ul>
@@ -45,10 +18,7 @@
               <span class="course-video-item-title">{{ item.title }}</span>
             </li>
           </ul>
-          <!-- <el-button type="text" @click="dialogVisible = true" hidden
-            >点击打开 Dialog</el-button> -->
         </div>
-        <!-- <div class="course-separator"><i></i><i></i></div> -->
       </div>
 
       <div id="course-video-list-box" class="scalable">

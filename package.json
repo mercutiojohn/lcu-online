@@ -1,6 +1,6 @@
 {
     "name": "lcu-online",
-    "version": "1.0.0",
+    "version": "3.0.0",
     "description": "LCU Online App",
     "author": "MercutioJohn <mercutio_john@foxmail.com>",
     "private": true,
@@ -40,6 +40,7 @@
         "babel-plugin-transform-runtime": "^6.22.0",
         "babel-plugin-transform-vue-jsx": "^3.5.0",
         "babel-preset-env": "^1.3.2",
+        "babel-preset-es2015": "^6.24.1",
         "babel-preset-stage-2": "^6.22.0",
         "chalk": "^2.0.1",
         "copy-webpack-plugin": "^4.0.1",
@@ -51,6 +52,7 @@
         "node-notifier": "^5.4.5",
         "optimize-css-assets-webpack-plugin": "^3.2.0",
         "ora": "^1.2.0",
+        "page-skeleton-webpack-plugin": "^0.10.12",
         "portfinder": "^1.0.28",
         "postcss-import": "^11.0.0",
         "postcss-loader": "^2.0.8",
@@ -67,6 +69,7 @@
         "webpack": "^3.6.0",
         "webpack-bundle-analyzer": "^2.9.0",
         "webpack-dev-server": "^2.11.5",
+        "webpack-log": "^3.0.2",
         "webpack-merge": "^4.1.0"
     },
     "engines": {
