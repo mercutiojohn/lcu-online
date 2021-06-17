@@ -28,6 +28,11 @@ export default {
     document.body.appendChild(script)
 
     this.bus.$emit('loading', false);
+    document.querySelector('.loading').style.display = 'none';
+    if(localStorage.getItem("settings")){
+      let a = JSON.parse(decodeURIComponent(localStorage.getItem("settings")));
+      this.$store.commit("update", ["settings", a]);
+    }
   },
   methods:{
     

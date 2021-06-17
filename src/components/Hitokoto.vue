@@ -1,9 +1,11 @@
 <template>
   <div class="hitokoto">
-    <div class="hitokoto-box">
+    <transition name="fade">
+    <div class="hitokoto-box" v-if="display&&!loading" @click="getHitokoto()">
       <span class="hitokoto-content">{{ data.hitokoto }}</span>
       <span class="hitokoto-from">——{{ data.from }}</span>
     </div>
+    </transition>
   </div>
 </template>
 
@@ -11,6 +13,12 @@
 
 export default {
   name: "Hitokoto",
+  // props:{
+  //   display: {
+  //     type: Boolean,
+  //     default: true
+  //   },
+  // },
   data() {
     return {
       data: {
@@ -26,7 +34,10 @@ export default {
         commit_from: "web",
         created_at: "1583784351",
         length: 26,
+        
       },
+      // display:true,
+      loading:true,
       // hitoKind:"a&c=b&c=c&c=d&c=e&c=f&c=g&c=h&c=i&c=j&c=k"
       hitoKind:""
         // a	动画
@@ -47,13 +58,20 @@ export default {
 
   methods: {
     getHitokoto() {
+      this.loading = true;
       this.$axios
         .get("https://v1.hitokoto.cn?c="+this.hitoKind)
         .then(({ data }) => {
           this.data = data;
+          this.loading = false;
         })
         .catch(console.error);
     },
+  },
+  computed:{
+    display:function(){
+      return this.$store.state.settings.showHitokoto;
+    }
   },
   created() {},
   mounted() {

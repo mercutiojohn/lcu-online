@@ -1,13 +1,23 @@
 <template>
   <div id="dynamic-main-content">
     <div class="dynamic-left-background">
+      <transition name="fade">
       <img
         id="dynamic-left-background-image"
         :src="bgSrc"
         alt=""
         :onerror="defaultBg"
         ref="bgImg"
+        v-if="settings == 'unsplash'&&contentSettings != 'full'&&!loading"
       />
+      <img
+        id="dynamic-left-background-image"
+        :src="defaultBg"
+        alt=""
+        ref="bgImg"
+        v-else-if="settings == 'custom'&&contentSettings != 'full'"
+      />
+      </transition>
       <div id="dynamic-left-background-mask"></div>
       <div class="dynamic-content">
         <CalendarBox />
@@ -18,6 +28,7 @@
 <script>
 import CalendarBox from "@/components/CalendarBox";
 import Navigation from "@/components/Navigation";
+import { Loading } from 'element-ui';
 
 export default {
   name: "DynamicMainContent",
@@ -28,8 +39,8 @@ export default {
   data() {
     return {
       bgSrc: "https://source.unsplash.com/random/1920x1080",
-      fullscreen: false
-      
+      fullscreen: false,
+      loading:false
     };
   },
   methods: {
@@ -62,6 +73,12 @@ export default {
     defaultBg: function () {
       return require("@/assets/img/bg/temp-bg.jpg");
     },
+    settings:function () {
+      return this.$store.state.settings.background;
+    },
+    contentSettings:function () {
+      return this.$store.state.settings.contents;
+    }
   },
 };
 </script>

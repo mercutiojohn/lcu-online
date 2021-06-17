@@ -36,6 +36,7 @@
 <script>
 import UrlEncode from "@/components/tools/UrlEncode";
 import Base64 from "@/components/tools/Base64";
+import NetEase from "@/components/NetEase";
 // import Vue from "vue";
 // Vue.component("under-construction", {
 //   template: "<div style='height:100%;display:flex;align-items:center;justify-content:center;'>正在建设中</div>",
@@ -47,7 +48,8 @@ export default {
     // Player,
     // Dyn,
     Base64,
-    UrlEncode
+    UrlEncode,
+    NetEase
   },
   data() {
     return {
@@ -66,21 +68,17 @@ export default {
             {
               title: "Base64 编码",
               component: "Base64",
-            },
+            }
             
           ],
         },
         // {
-        //   title: "类型转换",
+        //   title: "实验室",
         //   items: [
         //     {
-        //       title: "图片与 Data URL 互转",
-        //       component: "under-construction",
-        //     },
-        //     {
-        //       title: "Unix 时间戳转换",
-        //       component: "under-construction",
-        //     },
+        //       title: "网易云音乐",
+        //       component: "NetEase",
+        //     }
         //   ],
         // },
       ],

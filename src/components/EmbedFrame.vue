@@ -49,16 +49,30 @@ export default {
       type: String,
       default: '200'
     },
+    expand:{
+      type: String,
+      default:true
+    }
   },
   data() {
     return {
-      expand: false,
+      
     };
+  },
+  computed:{
+    expand_:{
+      get(){
+        return this.expand;
+      },
+      set(val){
+        this.$emit("expandUpdate",val);
+      }
+    }
   },
   methods: {
     changeWrapState() {
-      if (this.expand) this.expand = false;
-      else this.expand = true;
+      if (this.expand_) this.expand_ = false;
+      else this.expand_ = true;
     },
   },
 };

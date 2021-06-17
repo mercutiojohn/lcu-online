@@ -1,13 +1,24 @@
 <template>
   <div id="side-bar">
-    <div class="side-bar-content">
+    <!-- <div class="side-bar-content">
       <Countdown />
     </div>
     <div class="side-bar-content">
       <Weather />
+    </div> -->
+    <div class="side-bar-content" v-if="settings.showDida">
+      <EmbedFrame
+        url="https://www.dida365.com/webapp/#q/all/today"
+        title="滴答清单"
+        height="500"
+        :expand="settings.expand.dida"
+        @expandUpdate="updateExpand"
+      />
     </div>
-    <div class="side-bar-content">
-      <EmbedFrame url="https://www.dida365.com/webapp/#q/all/today" title="滴答清单" height="500" />
+    <div class="side-bar-content" v-for="(item, index) in list" :key="index">
+      <keep-alive>
+        <component v-bind:is="item.component" class="card"></component>
+      </keep-alive>
     </div>
     <!-- <div class="side-bar-content">
           <iframe
@@ -22,9 +33,6 @@
     <!-- <div class="side-bar-content">
     </div> -->
 
-    <div class="side-bar-content">
-      <Weibo />
-    </div>
     <!-- <div class="side-bar-content">
       <BiliRecommend />
     </div>
@@ -51,7 +59,6 @@
 </template>
 
 <script>
-
 import Homeworks from "@/components/Homeworks";
 import Countdown from "@/components/Countdown";
 import EmbedFrame from "@/components/EmbedFrame";
@@ -66,19 +73,41 @@ export default {
     EmbedFrame,
     Weibo,
     Weather,
-    BiliRecommend
+    BiliRecommend,
   },
   data() {
     return {
-
+      list: [
+        // {
+        //   component:'EmbedFrame'
+        // },
+        {
+          component: "Countdown",
+        },
+        {
+          component: "Weather",
+        },
+        {
+          component: "Weibo",
+        },
+      ],
     };
   },
-  computed: {},
+  computed: {
+    settings:function(){
+      return this.$store.state.settings.sideBar;
+    }
+  },
   watch: {},
-  methods: {},
-  created() { },
-  mounted() { },
-  beforeDestroy() { },
+  methods: {
+    updateExpand(){
+      console.log("hello")
+      this.$store.commit("dida");
+    }
+  },
+  created() {},
+  mounted() {},
+  beforeDestroy() {},
 };
 </script>
 
