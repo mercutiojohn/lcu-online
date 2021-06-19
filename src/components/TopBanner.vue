@@ -1,6 +1,5 @@
 <template>
   <div id="top-banner">
-    
     <div class="dynamic-right">
       <Navigation
         v-for="(item, index) in list"
@@ -19,8 +18,8 @@ import Navigation from "@/components/Navigation";
 import DynamicMainContent from "@/components/DynamicMainContent";
 import BannerSwiper from "@/components/BannerSwiper";
 
-import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
-import 'swiper/swiper-bundle.css'
+import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
+import "swiper/swiper-bundle.css";
 
 export default {
   name: "TopBanner",
@@ -31,10 +30,10 @@ export default {
     DynamicMainContent,
     BannerSwiper,
     Swiper,
-    SwiperSlide
+    SwiperSlide,
   },
   directives: {
-    swiper: directive
+    swiper: directive,
   },
   data() {
     return {
@@ -44,14 +43,14 @@ export default {
         spaceBetween: 100,
         loop: true,
         pagination: {
-          el: '.swiper-pagination',
-          clickable: true
+          el: ".swiper-pagination",
+          clickable: true,
         },
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
-        }
-      }
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      },
     };
   },
   methods: {
@@ -81,7 +80,7 @@ export default {
     setInterval(this.changeBackground, 480000);
   },
   computed: {
-    defaultBg: function() {
+    defaultBg: function () {
       return require("@/assets/img/bg/temp-bg.jpg");
     },
   },
@@ -122,41 +121,17 @@ export default {
   transition: all 0.2s ease;
   border: 1px solid #000;
 }
-.dynamic-left {
-  /* width: 60%; */
-  box-sizing: border-box;
-  flex: 1;
-  height: 100%;
-  background: #000;
-  border-radius: var(--dynamic-border-radius);
-  margin-right: 10px;
-  overflow: hidden;
-  /* cursor: pointer; */
-  transform: translate(0);
-  transition: transform 0.1s ease;
-  z-index: 80;
-}
-/* .dynamic-left:hover {
-  transform: scale(1.02) translate(0);
-}
-.dynamic-left:active {
-  transform: scale(0.98) translate(0);
-} */
-.dynamic-left-fullscreen {
-  transform: scale(1) translate(0) !important;
-  border-radius: 0;
-  top: 0;
-  left: 0;
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1000;
-  /* padding: 50px; */
-}
 .dynamic-right {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
+  /* background-image: linear-gradient(
+    90deg,
+    #fff2ec 0,
+    #f0f1f6 42%,
+    #e1f0ff 100%
+  ); */
+  /* box-shadow: 0 0 20px -2px inset #00000023; */
   background: var(--elem-color);
   display: flex;
   /* padding: 10px 0; */

@@ -1,5 +1,5 @@
 <template>
-  <div :class="{'header-bar-container':true,'header-bar-container-bgon':pageYOffset||settings=='full', 'header-bar-container-bg-no-blur':(clockBoxStat&&pageYOffset)||(settings=='full'&&clockBoxStat)||(!blurSetting&&pageYOffset)}">
+  <div :class="{'header-bar-container':true,'header-bar-container-bgon':pageYOffset||settings=='full', 'header-bar-container-bg-no-blur':(clockBoxStat&&pageYOffset)||(settings=='full'&&clockBoxStat)||(!blurSetting&&pageYOffset)||(settings=='full'&&!blurSetting),'header-bar-container-full':!pageYOffset&&settings=='full'}">
     <ul class="header-bar-tablist"  @click="printPath()">
       <router-link to="/">
         <li :class="{'header-bar-tabitem':true,'header-bar-tabitem-bgon':pageYOffset||settings=='full'||currTab!='/','header-bar-tabitem-active':currTab == '/'}">首页</li>
@@ -123,16 +123,21 @@ export default {
   /* background: linear-gradient(var(--elem-color),transparent); */
   height: 64px;
 }
+
 .header-bar-container-bgon{
   background: var(--blur-color);
   backdrop-filter: blur(40px) saturate(120%);
   transition: all .05s ease;
-
   box-shadow: 0 0px 10px 4px #00000010;
 }
 .header-bar-container-bg-no-blur{
   background: var(--elem-color)!important;
   backdrop-filter: none;
+}
+.header-bar-container-full{
+  backdrop-filter: none;
+  background: var(--body-color)!important;
+  box-shadow: none;
 }
 .header-bar-tablist {
   display: flex;
@@ -190,7 +195,7 @@ export default {
   display: flex;
 }
 @media screen and (max-width: 600px){
-  .header-bar-container{
+  /* .header-bar-container{
     position: fixed;
     top:unset;
     bottom: 0;
@@ -198,9 +203,10 @@ export default {
     left: 0;
     background: var(--blur-color);
     backdrop-filter: blur(40px) saturate(120%);
-  }
-  .header-bar-tablist{
-    /* display: none; */
+  } */
+    .header-bar-tablist{
+    width: 0;
+    overflow: hidden;
   }
   #clockbox{
     /* display: none; */
@@ -209,9 +215,9 @@ export default {
   
 }
 @media screen and (max-width: 1020px)and (min-width: 600px){
-  .header-bar-tablist{
+  /* .header-bar-tablist{
     width: 0;
     overflow: hidden;
-  }
+  } */
 }
 </style>

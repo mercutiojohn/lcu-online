@@ -1,5 +1,10 @@
 <template>
   <div class="hello-page">
+    <transition name="fade">
+      <div class="back-to-top" @click="scrollToTop()" v-if="scrolling">
+        <i class="iconfont icon-arrow-up"></i>
+      </div>
+    </transition>
     <div class="charm-intro">
       <DynamicMainContent />
     </div>
@@ -30,15 +35,19 @@
       :class="{
         'hello-content': true,
         'hello-content-scrolling': scrolling || settings == 'full',
-        'hello-content-blur': !clockBoxStat&&blurSetting
-        }"
+        'hello-content-blur': !clockBoxStat && blurSetting,
+      }"
       v-if="settings != 'none'"
     >
+
       <div id="left-info">
         <SideBar />
       </div>
       <div class="home-wrap">
         <top-banner />
+        <div class="content-recommend">
+          <BiliRecommend />
+        </div>
         <Navigation
           v-for="(item, index) in list"
           :title="item.title"
@@ -48,9 +57,7 @@
           :noColor="item.noColor ? true : false"
           :index="index"
         ></Navigation>
-        <div class="content-recommend">
-          <BiliRecommend />
-        </div>
+
         <div class="about">
           <p>
             <span class="about-text"
@@ -144,11 +151,15 @@ export default {
     settings: function () {
       return this.$store.state.settings.contents;
     },
-    blurSetting:function () {
+    blurSetting: function () {
       return this.$store.state.settings.blur;
-    }
+    },
   },
   methods: {
+    scrollToTop(){
+      scrollTo(0,0);
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
+    },
     linktab() {
       let goUrl = this.isMobile();
       if (goUrl === 1) {
@@ -352,6 +363,26 @@ export default {
   cursor: pointer;
   transition: all 0.35s ease;
 }
+.back-to-top {
+  padding: 10px;
+  background: var(--elem-color);
+  border-radius: 5px;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  z-index: 100000;
+  color:var(--main-color);
+  box-shadow: 0 1px 10px 1px #00000078;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+.back-to-top:hover{
+  background: var(--accent-color);
+  color:#fff;
+}
+.back-to-top i{
+  font-size: 25px!important;
+}
 /* Left */
 #left-info {
   /* height: calc(100vh - 115px); */
@@ -414,10 +445,18 @@ export default {
 }
 @media screen and (max-width: 600px) {
   .hello-content {
-    /* display: none; */
+    width: calc(100vw - 20px);
+    padding: 30px 10px;
+
     flex-direction: column;
     margin: 0;
-    width: calc(100% - 20px * 2);
+  }
+  .hello-content-scrolling {
+    /* backdrop-filter: none; */
+    background: var(--body-color);
+    width: 100vw;
+    padding: 30px 20px;
+    border-radius: 0;
   }
   #left-info {
     position: unset;
