@@ -236,10 +236,11 @@ export default {
   /* width: 100%; */
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   /* border-right: 1px solid #7e7e7e45; */
   padding-right: 10px;
-  margin: 5px 220px 5px 0;
+  /* margin: 5px 220px 5px 0; */
+  margin: 5px 10px;
   color: var(--main-color);
   flex: 0 0 var(--headbar-height);
 }
@@ -357,10 +358,10 @@ export default {
 @media screen and (max-width: 600px) {
   #action-center-wrap {
     position: fixed;
-    top: calc(-100vh + 64px);
+    /* top: calc(-100vh + 64px); */
     display: flex;
     width: 100vw;
-    height: calc(100vh - 64px);
+    /* height: calc(100vh - 64px); */
     box-shadow: none;
     background: var(--body-color);
   }

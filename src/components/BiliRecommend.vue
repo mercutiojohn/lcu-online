@@ -26,11 +26,18 @@
           'std-btn': true,
           'btn-refreshing': refreshing,
         }"
-        @click="getBili()"  v-if="expand"
+        @click="getBili()"
+        v-if="expand"
       ></i>
     </div>
     <div class="bili-content" v-if="expand">
-      <div v-for="(item, index) in data" :key="index" class="bili-slide">
+      <div
+        v-for="(item, index) in data"
+        :key="index"
+        :id="'bili-slide-' + index"
+        class="bili-slide"
+        :style="getSlideBgColor(index)"
+      >
         <!-- <div class="bili-item"> -->
         <a
           :href="getVidUrl(item)"
@@ -38,14 +45,19 @@
           class="bili-item"
         >
           <div class="item-cover">
-            <img :src="covers[index]" :alt="item.title" />
+            <img
+              :src="covers[index]"
+              :alt="item.title"
+              :id="'item-cover-' + index"
+            />
             <!-- <img :src="covers[0]" alt="" srcset="" /> -->
             <!-- <img :src="getCover(item.cover,index)" alt="" srcset="" /> -->
             <!-- <img :src="getCover(item.cover,index)" alt="" srcset="" /> -->
           </div>
-          <div class="item-content">
-            <span class="item-title">{{ item.title }}</span>
-            <div class="item-desc">
+          <div class="item-content" :style="getItemContentBgColor(index)">
+            <span class="item-title" :style="getSlideTitleColor(index)">{{ item.title }}</span>
+            <!--  -->
+            <div class="item-desc" :style="getSlideDescColor(index)">
               <div class="desc-first-line">
                 <span class="desc-name">{{ item.args.up_name }}</span>
                 <span class="desc-cate">
@@ -71,7 +83,7 @@
         <!-- </swiper-slide> -->
       </div>
     </div>
-    <div @click="addBili()" class="bili-load-more" ref="showMore" v-if="expand">
+    <div @click="addBili();" class="bili-load-more" ref="showMore" v-if="expand">
       <i
         :class="{
           iconfont: true,
@@ -87,6 +99,7 @@
 </template>
 
 <script>
+import ColorThief from "colorthief";
 export default {
   name: "BiliRecommend",
   data() {
@@ -96,6 +109,8 @@ export default {
       cover_0: "",
       toApp: false,
       covers: [],
+      slideColors: [],
+      slideTextColors: [],
       index: 0,
       timer_fetch: "",
       old_length: 0,
@@ -391,12 +406,50 @@ export default {
   },
 
   methods: {
+    isLight(rgb){
+      return (
+        0.213 * rgb[0] + 0.715 * rgb[1] + 0.072 *rgb[2] >255 / 2
+      );
+    },
+    getSlideTitleColor(index){
+      return 'color:'+(this.slideTextColors[index]?'#000000':'#ffffff')+'!important;'
+    },
+    getSlideDescColor(index){
+      return 'color:'+(this.slideTextColors[index]?'#222222b5':'#eeeeeeb5')+'!important;'
+    },
+    getSlideBgColor(index){
+      return 'background-color:rgb(' + this.slideColors[index] + ');'
+    },
+    getItemContentBgColor(index){
+      return 'background-image:linear-gradient(rgba(' + this.slideColors[index] + ',0) 0%,rgba(' + this.slideColors[index] + ',.7) 60px,rgba(' + this.slideColors[index] + ',1) 100px);'
+    },
+    getDominantColor(index) {
+      let _this = this;
+      let img = document.querySelector("#item-cover-" + index);
+      console.log(img);
+      this.slideColors[index] = {
+        // bg:[255, 255, 255],
+        // text:'#000'
+        bg:[0, 0, 0],
+        text:false
+      };
+      console.log(this.slideColors[index]);
+      let colorthief = new ColorThief();
+      img.addEventListener("load", function (e) {
+        console.log(_this);
+        // _this.slideColors[index] = colorthief.getColor(img);
+        let rgb = colorthief.getColor(img);
+        _this.slideColors[index] = rgb;
+        _this.slideTextColors[index] = (0.213 * rgb[0] + 0.715 * rgb[1] + 0.072 *rgb[2] >255 / 2);
+        _this.$forceUpdate();
+      });
+    },
     changeWrapState() {
-        if (this.expand == true) {
-          this.expand = false;
-        } else {
-          this.expand = true;
-        }
+      if (this.expand == true) {
+        this.expand = false;
+      } else {
+        this.expand = true;
+      }
     },
     getItem(thing) {
       console.log(thing);
@@ -409,6 +462,8 @@ export default {
         .then(({ data }) => {
           this.covers = [];
           this.data = data.content.data.items;
+          this.data.pop();
+          this.data.pop();
           this.getAllCover();
           this.refreshing = false;
         })
@@ -423,6 +478,8 @@ export default {
           data.content.data.items.forEach((element) => {
             this.data.push(element);
           });
+          this.data.pop();
+          this.data.pop();
           this.getNewCover(this.old_length);
           this.loading = false;
         })
@@ -431,7 +488,8 @@ export default {
     getCover(url, index) {
       let coverUrl = encodeURIComponent(url + "@257w_145h_1c_100q.webp");
       let base;
-      this.covers[index] = require("@/assets/img/function/pic.svg");
+      this.covers[index] = require("@/assets/img/video-posters/bili-loading.png");
+      // this.covers[index] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAABHCAMAAAB4UkqjAAAAh1BMVEUAAADd3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d0UCIZXAAAALHRSTlMAoJDx4OYL/DcGF+6+JNi4ycSIT2k6LPeWfRzTVPXPszEQrV0hpo12cEZAZFpRNIQAAAJVSURBVFjD7dbZcpswGIbhHwwSi81q8Ib33fnu//oatRIpmliDhQ/aaZ+TKInnjVgkhb4RJMhP9Fzo8PiD+vEA+JPnqS0+1dRHBJhibAzh2HNeekxP9Z8XBSMZM6SmRBYx65QeM6XsY3rKPqanLGMWqeDmOh0b/Io9+YHi3gKtdExgLznSlyjFMGnUphIMlcgY22C4DSPBxTu4IrXDe+yI6IDWbPSqGVoHoohDyip6XZVB4hFN1TgPyUaYQ5rSWQ0nZGcC6UyJukKypa4yIXX3HLLlqCdHX++HLRfS/9bbWvvHLSLNR3N6tRXdFwdxejekiYF4fDnWYa/WqSm2PqRCSy0hrbP5RxAaW8141N17tVbZ+S1fFYbWFF2+1lqg62BoBdAsqWOLroWhxTh+M8vmWuuaxp1WaWjRSn43yl35sHTLUjxiaWlqnYE4LZoJme3v13MibqepFZRL6otV5V+/Hv+xVvi+FsvZG1qh/LQ7uFXnF/HlwcEfYlDktW2r5EARUiXWc1xRWAC8tGwxsdJ9dcRnYrddMdtrjDZyAy3kXrSJ7O89u8zEZAIKxBRnFzbonWD3ZkfCrrmzP+6979nicjAnW3NZ4OS1R6GtVBa8drTek539up3NAgMvcv51WNZQitCiFBZQaqIMSrx1XrWNoWTy/w1r+hk+xjuMSVjGGC6WZ3S1xlDriqTKxzB+Ra3I4bDHne62drqmied57QR9z0D94dHnOEmvJ/pWAMm4ovL2TTcJ5cRyMlHrbkdG5c/5r82fYqt+K/iR89m2JrP9PEZyI80PsPxVT0P3FAEAAAAASUVORK5CYII=";
       this.$axios
         .get(this.$store.state.apiPath + "/bilibili/get-cover?url=" + coverUrl)
         .then(({ data }) => {
@@ -439,6 +497,7 @@ export default {
           base = "data:image/jpg;base64," + data;
           this.covers[index] = base;
           this.$forceUpdate();
+          this.getDominantColor(index);
         })
         .catch(console.error);
       return this.covers[index];
@@ -554,7 +613,9 @@ export default {
 .bili-slide {
   transition: all 0.2s ease;
   position: relative;
-  width: calc(50% - 20px);
+  width: calc(230px - 10px);
+  min-width: calc(25% - 10px);
+  max-width: calc(300px - 10px);
   background: var(--elem-color);
   border-radius: 5px;
   overflow: hidden;
@@ -570,8 +631,8 @@ export default {
 .bili-slide:active {
   transform: scale(0.98);
 }
-.bili-title-left{
-  display:flex;
+.bili-title-left {
+  display: flex;
 }
 .bili-title {
   position: sticky;
@@ -591,11 +652,13 @@ export default {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: stretch;
 }
 
 .bili-item {
   /* border-radius: var(--radius); */
   display: flex;
+  flex-direction: column;
   overflow: hidden;
   padding: 0;
   box-sizing: border-box;
@@ -604,9 +667,10 @@ export default {
 }
 .item-cover {
   background: var(--second-assist-color);
-  width: 200px;
-  flex: 0 0 200px;
-  height: calc(200px / 16 * 9);
+  width: 100%;
+  flex: 0 0 100%;
+  /* height: calc(200px / 16 * 9); */
+  margin-bottom: -100px;
   /* overflow: hidden; */
   display: flex;
   align-items: center;
@@ -622,11 +686,15 @@ export default {
   object-fit: cover;
 }
 .item-content {
-  padding: 10px;
+  box-sizing: border-box;
+  padding: calc(13px + 90px) 13px 13px;
   display: flex;
   flex-direction: column;
-  width: 10px;
-  flex: 1 0 10px;
+  width: 100%;
+  flex: 1 0 100%;
+  z-index: 1000;
+  background-image:linear-gradient(rgba(100,100,100,0) 0%,rgba(100,100,100,.7) 60px,rgba(100,100,100,1) 100px);
+
   /* position: absolute; */
   /* bottom: 0; */
   /* background-image: linear-gradient(#00000000, #000000ee); */
@@ -723,14 +791,16 @@ export default {
   padding: 10px 0;
   cursor: pointer;
   color: var(--main-color);
+  border-radius: 20px;
 }
 .bili-load-more:hover {
-  background: var(--first-assist-color);
-}
-.bili-load-more:active {
   background: var(--second-assist-color);
 }
-.content-hidden{
+.bili-load-more:active {
+  background: var(--accent-color);
+  color:white;
+}
+.content-hidden {
   height: 0;
   overflow: hidden;
 }

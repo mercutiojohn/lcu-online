@@ -54,7 +54,6 @@
                 "icon": "fenbi.svg",
                 "url": "https://www.fenbi.com/spa/pwa/mycourse/index"
             },
-
             {
                 "title": "橙啦",
                 "color": "#ffffff",
@@ -84,46 +83,6 @@
                 "color": "#2a73cc",
                 "icon": "coursera.svg",
                 "url": "https://www.coursera.org/in-progress"
-            }
-        ]
-    },
-    {
-        "title": "校园学习",
-        "list": [{
-                "title": "易班",
-                "color": "#33aacd",
-                "icon": "yiban.svg",
-                "url": "https://www.yooc.me/dashboard/mygroup"
-            },
-            {
-                "title": "U+新工科智慧云",
-                "color": "#1e83ca",
-                "icon": "uplus.svg",
-                "url": "http://www.eec-cn.com/student/group"
-            },
-            {
-                "title": "Unipus",
-                "color": "#289cfb",
-                "icon": "unipus.svg",
-                "url": "http://210.44.112.108"
-            },
-            {
-                "title": "批改网",
-                "color": "#28aae1",
-                "icon": "pigai.svg",
-                "url": "http://www.pigai.org/index.php?c=write&a=myclass&f2=login"
-            },
-            {
-                "title": "学习通",
-                "color": "#b52831",
-                "icon": "chaoxing.svg",
-                "url": "https://mooc2-ans.chaoxing.com/visit/interaction"
-            },
-            {
-                "title": "优学院",
-                "color": "#ea5145",
-                "icon": "youxy.svg",
-                "url": "https://courseweb.ulearning.cn/ulearning/index.html#/index/courseList"
             }
         ]
     },
