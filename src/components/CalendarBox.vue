@@ -3,16 +3,16 @@
     <div class="calendar-background"></div>
     <!-- <span class="block date-content"><span id="localdate"></span></span> -->
     <div class="calendar-content">
-      <span class="block-today day-content">
+      <span :class="{'block-today':true,'day-content':true,'content-day':!darkStyle}">
         <span id="day">{{ day }}</span>
       </span>
-      <span class="bloc-today year-content">
+      <span :class="{'block-today':true,'year-content':true,'content-day':!darkStyle}">
         {{ year }}
         <span style="font-family: sans-serif; font-weight: 300">/</span>
         {{ month }}
       </span>
       <!-- <span class="block month-content"><span id="month"></span>月</span> -->
-      <span class="block-today week-content">星期{{ week }}</span>
+      <span :class="{'block-today':true,'week-content':true,'content-day':!darkStyle}">星期{{ week }}</span>
       <span class="block-today week-content">
         <!-- <span v-if="schoolWeek < 0">开学还有</span> -->
         <!-- <span v-else>第</span>
@@ -35,7 +35,12 @@ export default {
       week: "",
     };
   },
-
+  props: {
+    darkStyle: {
+      type: Boolean,
+      default: false,
+    },
+  },
   methods: {
     showTime(objD) {
       var str;
@@ -195,6 +200,10 @@ export default {
   font-weight: 200;
   padding-bottom: 10px;
   /* background: #eee; */
+}
+.content-day{
+  text-shadow: none;
+  color:var(--main-color);
 }
 
 .calendar {

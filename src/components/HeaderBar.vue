@@ -2,10 +2,10 @@
   <div :class="{'header-bar-container':true,'header-bar-container-bgon':pageYOffset||settings=='full', 'header-bar-container-bg-no-blur':(clockBoxStat&&pageYOffset)||(settings=='full'&&clockBoxStat)||(!blurSetting&&pageYOffset)||(settings=='full'&&!blurSetting),'header-bar-container-full':!pageYOffset&&settings=='full'}">
     <ul class="header-bar-tablist"  @click="printPath()">
       <router-link to="/">
-        <li :class="{'header-bar-tabitem':true,'header-bar-tabitem-bgon':pageYOffset||settings=='full'||currTab!='/','header-bar-tabitem-active':currTab == '/'}">首页</li>
+        <li :class="{'header-bar-tabitem':true,'header-bar-tabitem-bgon':pageYOffset||settings=='full'||currTab!='/'||bgSetting=='none','header-bar-tabitem-active':currTab == '/'}">首页</li>
       </router-link>
       <router-link :to="item.url" v-for="(item,index) in navs" :key="index">
-        <li :class="{'header-bar-tabitem':true,'header-bar-tabitem-bgon':pageYOffset||settings=='full'||currTab!='/','header-bar-tabitem-active':currTab == item.url}">{{item.name}}</li>
+        <li :class="{'header-bar-tabitem':true,'header-bar-tabitem-bgon':pageYOffset||settings=='full'||currTab!='/'||bgSetting=='none','header-bar-tabitem-active':currTab == item.url}">{{item.name}}</li>
       </router-link>
       <!-- <router-link to="/classic">
         <li :class="'header-bar-tabitem'+handleChangeFontColor()">经典</li>
@@ -14,7 +14,7 @@
     </ul>
     
     <div class="header-bar-right">
-      <ActionCenter :bgEnable="!pageYOffset&&settings!='full'&&currTab=='/'"/>
+      <ActionCenter :bgEnable="!pageYOffset&&settings!='full'&&currTab=='/'&&bgSetting!='none'"/>
     </div>
     
   </div>
@@ -58,6 +58,9 @@ export default {
     },
     blurSetting:function () {
       return this.$store.state.settings.blur;
+    },
+    bgSetting:function () {
+      return this.$store.state.settings.background;
     }
   },
   methods: {

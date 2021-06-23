@@ -1,24 +1,36 @@
 <template>
   <div class="hitokoto">
     <transition name="fade">
-    <div class="hitokoto-box" v-if="display&&!loading" @click="getHitokoto()">
-      <span class="hitokoto-content">{{ data.hitokoto }}</span>
-      <span class="hitokoto-from">——{{ data.from }}</span>
-    </div>
+      <div
+        class="hitokoto-box"
+        v-if="display && !loading"
+        @click="getHitokoto()"
+      >
+        <span
+          :class="{
+            'hitokoto-content': true,
+            'hitokoto-content-day': !darkStyle,
+          }"
+          >{{ data.hitokoto }}</span
+        >
+        <span
+          :class="{ 'hitokoto-from': true, 'hitokoto-from-day': !darkStyle }"
+          >——{{ data.from }}</span
+        >
+      </div>
     </transition>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "Hitokoto",
-  // props:{
-  //   display: {
-  //     type: Boolean,
-  //     default: true
-  //   },
-  // },
+  props: {
+    darkStyle: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       data: {
@@ -34,25 +46,24 @@ export default {
         commit_from: "web",
         created_at: "1583784351",
         length: 26,
-        
       },
       // display:true,
-      loading:true,
+      loading: true,
       // hitoKind:"a&c=b&c=c&c=d&c=e&c=f&c=g&c=h&c=i&c=j&c=k"
-      hitoKind:""
-        // a	动画
-        // b	漫画
-        // c	游戏
-        // d	文学
-        // e	原创
-        // f	来自网络
-        // g	其他
-        // h	影视
-        // i	诗词
-        // j	网易云
-        // k	哲学
-        // l	抖机灵
-        // 其他	作为 动画 类型处理
+      hitoKind: "",
+      // a	动画
+      // b	漫画
+      // c	游戏
+      // d	文学
+      // e	原创
+      // f	来自网络
+      // g	其他
+      // h	影视
+      // i	诗词
+      // j	网易云
+      // k	哲学
+      // l	抖机灵
+      // 其他	作为 动画 类型处理
     };
   },
 
@@ -60,7 +71,7 @@ export default {
     getHitokoto() {
       this.loading = true;
       this.$axios
-        .get("https://v1.hitokoto.cn?c="+this.hitoKind)
+        .get("https://v1.hitokoto.cn?c=" + this.hitoKind)
         .then(({ data }) => {
           this.data = data;
           this.loading = false;
@@ -68,10 +79,10 @@ export default {
         .catch(console.error);
     },
   },
-  computed:{
-    display:function(){
+  computed: {
+    display: function () {
       return this.$store.state.settings.showHitokoto;
-    }
+    },
   },
   created() {},
   mounted() {
@@ -81,13 +92,14 @@ export default {
 </script>
 
 <style>
-.hitokoto-box{
+.hitokoto-box {
   width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
+
 .hitokoto-content {
   text-shadow: 0 0 20px #00000094;
   width: 100%;
@@ -97,12 +109,19 @@ export default {
   font-size: 20px;
   font-weight: 600;
 }
+.hitokoto-content-day {
+  color: var(--main-color);
+  text-shadow: none;
+}
 .hitokoto-from {
-    margin-top: 20px;
-    width: 100%;
+  margin-top: 20px;
+  width: 100%;
   color: #fff;
   display: flex;
-justify-content: flex-end;
-    font-size: 10px;
+  justify-content: flex-end;
+  font-size: 10px;
+}
+.hitokoto-from-day {
+  color: var(--main-color);
 }
 </style>

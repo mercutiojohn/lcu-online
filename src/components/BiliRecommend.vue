@@ -55,15 +55,17 @@
             <!-- <img :src="getCover(item.cover,index)" alt="" srcset="" /> -->
           </div>
           <div class="item-content" :style="getItemContentBgColor(index)">
-            <span class="item-title" :style="getSlideTitleColor(index)">{{ item.title }}</span>
+            <span class="desc-cate item-desc" :style="getSlideDescColor(index)">
+              {{ item.desc_button.text }}
+              <br />
+            </span>
+            <span class="item-title" :style="getSlideTitleColor(index)">{{
+              item.title
+            }}</span>
             <!--  -->
             <div class="item-desc" :style="getSlideDescColor(index)">
               <div class="desc-first-line">
                 <span class="desc-name">{{ item.args.up_name }}</span>
-                <span class="desc-cate">
-                  {{ item.desc_button.text }}
-                  <br />
-                </span>
               </div>
               <div class="desc-second-line">
                 <span class="desc-plays"
@@ -83,7 +85,7 @@
         <!-- </swiper-slide> -->
       </div>
     </div>
-    <div @click="addBili();" class="bili-load-more" ref="showMore" v-if="expand">
+    <div @click="addBili()" class="bili-load-more" ref="showMore" v-if="expand">
       <i
         :class="{
           iconfont: true,
@@ -406,22 +408,36 @@ export default {
   },
 
   methods: {
-    isLight(rgb){
+    isLight(rgb) {
+      return 0.213 * rgb[0] + 0.715 * rgb[1] + 0.072 * rgb[2] > 255 / 2;
+    },
+    getSlideTitleColor(index) {
       return (
-        0.213 * rgb[0] + 0.715 * rgb[1] + 0.072 *rgb[2] >255 / 2
+        "color:" +
+        (this.slideTextColors[index] ? "#000000" : "#ffffff") +
+        "!important;"
       );
     },
-    getSlideTitleColor(index){
-      return 'color:'+(this.slideTextColors[index]?'#000000':'#ffffff')+'!important;'
+    getSlideDescColor(index) {
+      return (
+        "color:" +
+        (this.slideTextColors[index] ? "#222222b5" : "#eeeeeeb5") +
+        "!important;"
+      );
     },
-    getSlideDescColor(index){
-      return 'color:'+(this.slideTextColors[index]?'#222222b5':'#eeeeeeb5')+'!important;'
+    getSlideBgColor(index) {
+      return "background-color:rgb(" + this.slideColors[index] + ");";
     },
-    getSlideBgColor(index){
-      return 'background-color:rgb(' + this.slideColors[index] + ');'
-    },
-    getItemContentBgColor(index){
-      return 'background-image:linear-gradient(rgba(' + this.slideColors[index] + ',0) 0%,rgba(' + this.slideColors[index] + ',.7) 60px,rgba(' + this.slideColors[index] + ',1) 100px);'
+    getItemContentBgColor(index) {
+      return (
+        "background-image:linear-gradient(rgba(" +
+        this.slideColors[index] +
+        ",0) 0%,rgba(" +
+        this.slideColors[index] +
+        ",.7) 60px,rgba(" +
+        this.slideColors[index] +
+        ",1) 100px);"
+      );
     },
     getDominantColor(index) {
       let _this = this;
@@ -430,8 +446,8 @@ export default {
       this.slideColors[index] = {
         // bg:[255, 255, 255],
         // text:'#000'
-        bg:[0, 0, 0],
-        text:false
+        bg: [0, 0, 0],
+        text: false,
       };
       console.log(this.slideColors[index]);
       let colorthief = new ColorThief();
@@ -440,7 +456,8 @@ export default {
         // _this.slideColors[index] = colorthief.getColor(img);
         let rgb = colorthief.getColor(img);
         _this.slideColors[index] = rgb;
-        _this.slideTextColors[index] = (0.213 * rgb[0] + 0.715 * rgb[1] + 0.072 *rgb[2] >255 / 2);
+        _this.slideTextColors[index] =
+          0.213 * rgb[0] + 0.715 * rgb[1] + 0.072 * rgb[2] > 255 / 2;
         _this.$forceUpdate();
       });
     },
@@ -488,7 +505,9 @@ export default {
     getCover(url, index) {
       let coverUrl = encodeURIComponent(url + "@257w_145h_1c_100q.webp");
       let base;
-      this.covers[index] = require("@/assets/img/video-posters/bili-loading.png");
+      this.covers[
+        index
+      ] = require("@/assets/img/video-posters/bili-loading.png");
       // this.covers[index] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAABHCAMAAAB4UkqjAAAAh1BMVEUAAADd3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d0UCIZXAAAALHRSTlMAoJDx4OYL/DcGF+6+JNi4ycSIT2k6LPeWfRzTVPXPszEQrV0hpo12cEZAZFpRNIQAAAJVSURBVFjD7dbZcpswGIbhHwwSi81q8Ib33fnu//oatRIpmliDhQ/aaZ+TKInnjVgkhb4RJMhP9Fzo8PiD+vEA+JPnqS0+1dRHBJhibAzh2HNeekxP9Z8XBSMZM6SmRBYx65QeM6XsY3rKPqanLGMWqeDmOh0b/Io9+YHi3gKtdExgLznSlyjFMGnUphIMlcgY22C4DSPBxTu4IrXDe+yI6IDWbPSqGVoHoohDyip6XZVB4hFN1TgPyUaYQ5rSWQ0nZGcC6UyJukKypa4yIXX3HLLlqCdHX++HLRfS/9bbWvvHLSLNR3N6tRXdFwdxejekiYF4fDnWYa/WqSm2PqRCSy0hrbP5RxAaW8141N17tVbZ+S1fFYbWFF2+1lqg62BoBdAsqWOLroWhxTh+M8vmWuuaxp1WaWjRSn43yl35sHTLUjxiaWlqnYE4LZoJme3v13MibqepFZRL6otV5V+/Hv+xVvi+FsvZG1qh/LQ7uFXnF/HlwcEfYlDktW2r5EARUiXWc1xRWAC8tGwxsdJ9dcRnYrddMdtrjDZyAy3kXrSJ7O89u8zEZAIKxBRnFzbonWD3ZkfCrrmzP+6979nicjAnW3NZ4OS1R6GtVBa8drTek539up3NAgMvcv51WNZQitCiFBZQaqIMSrx1XrWNoWTy/w1r+hk+xjuMSVjGGC6WZ3S1xlDriqTKxzB+Ra3I4bDHne62drqmied57QR9z0D94dHnOEmvJ/pWAMm4ovL2TTcJ5cRyMlHrbkdG5c/5r82fYqt+K/iR89m2JrP9PEZyI80PsPxVT0P3FAEAAAAASUVORK5CYII=";
       this.$axios
         .get(this.$store.state.apiPath + "/bilibili/get-cover?url=" + coverUrl)
@@ -679,6 +698,10 @@ export default {
   /* border-radius: 3px; */
   overflow: hidden;
   /* justify-content: center; */
+  transition: all 0.2s ease;
+}
+.item-cover:hover {
+  opacity: 0.5;
 }
 .item-cover > img {
   width: 100%;
@@ -693,7 +716,12 @@ export default {
   width: 100%;
   flex: 1 0 100%;
   z-index: 1000;
-  background-image:linear-gradient(rgba(100,100,100,0) 0%,rgba(100,100,100,.7) 60px,rgba(100,100,100,1) 100px);
+  background-image: linear-gradient(
+    rgba(100, 100, 100, 0) 0%,
+    rgba(100, 100, 100, 0.7) 60px,
+    rgba(100, 100, 100, 1) 100px
+  );
+  pointer-events: none;
 
   /* position: absolute; */
   /* bottom: 0; */
@@ -701,13 +729,13 @@ export default {
   /* background-color: #00000090; */
   /* border-radius: 0 0 30px 30px; */
 }
+
 .item-title {
   font-family: ProximaNova;
   display: flex;
-  margin: 0 0 10px 0;
+  margin: 5px 0;
   color: var(--main-color);
   text-overflow: ellipsis;
-  white-space: wrap;
   display: block;
   font-size: 17px;
   line-height: 25px;
@@ -731,6 +759,10 @@ export default {
   flex-direction: column;
   display: flex;
   /* justify-content: space-between; */
+}
+.desc-name{
+  font-size: 14px;
+  line-height: 20px;
 }
 .item-desc .desc-first-line {
   /* max-width: 50%; */
@@ -798,7 +830,7 @@ export default {
 }
 .bili-load-more:active {
   background: var(--accent-color);
-  color:white;
+  color: white;
 }
 .content-hidden {
   height: 0;

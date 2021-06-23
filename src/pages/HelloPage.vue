@@ -9,7 +9,7 @@
       <DynamicMainContent />
     </div>
     <div class="search-tips" v-if="settings != 'full'">
-      <Hitokoto />
+      <Hitokoto :darkStyle="bgSetting != 'none'"/>
       <!-- <div class="featured-playlists">
         <span class="playlists-title">音乐和电台</span> <span>快速链接</span>
         <div class="playlists-list">
@@ -27,6 +27,7 @@
         'search-area': true,
         'search-area-compact': settings == 'full',
         'search-area-scroll': settings == 'scroll' || settings == 'none',
+        'search-area-bgoff':bgSetting == 'none'
       }"
     >
       <SearchBar :bgEnable="bgEnable" />
@@ -34,8 +35,8 @@
     <div
       :class="{
         'hello-content': true,
-        'hello-content-scrolling': scrolling || settings == 'full',
-        'hello-content-blur': !clockBoxStat && blurSetting,
+        'hello-content-scrolling': scrolling || settings == 'full' || bgSetting == 'none',
+        'hello-content-blur': !clockBoxStat && blurSetting && bgSetting != 'none',
       }"
       v-if="settings != 'none'"
     >
@@ -154,6 +155,9 @@ export default {
     blurSetting: function () {
       return this.$store.state.settings.blur;
     },
+    bgSetting: function () {
+      return this.$store.state.settings.background;
+    },
   },
   methods: {
     scrollToTop(){
@@ -243,6 +247,10 @@ export default {
 .search-area-scroll {
   margin: calc((100vh - 85px - 64px - 20px) / 5 * 1) 0
     calc((100vh - 85px - 64px - 20px) / 5 * 4);
+}
+.search-area-bgoff{
+  margin: calc((100vh - 40px - 64px - 300px) / 3 * 1) 0
+    calc((100vh - 40px - 64px - 300px) / 3 * 0.6);
 }
 .search-tips {
   top: 150px;
