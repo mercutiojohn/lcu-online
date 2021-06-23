@@ -3,7 +3,7 @@
     <div class="dynamic-left-background">
       <transition name="fade">
       <img
-        id="dynamic-left-background-image"
+        class="dynamic-left-background-image"
         :src="bgSrc"
         alt=""
         :onerror="defaultBg"
@@ -11,16 +11,16 @@
         v-if="settings == 'unsplash'&&contentSettings != 'full'&&!loading"
       />
       <img
-        id="dynamic-left-background-image"
+        class="dynamic-left-background-image dynamic-left-background-image-custom"
         :src="defaultBg"
         alt=""
         ref="bgImg"
         v-else-if="settings == 'custom'&&contentSettings != 'full'"
       />
       </transition>
-      <div id="dynamic-left-background-mask"></div>
+      <div id="dynamic-left-background-mask" :class="{'dynamic-left-background-mask-compact':contentSettings == 'full'||settings == 'none'}"></div>
       <div class="dynamic-content">
-        <CalendarBox />
+        <CalendarBox :darkStyle="settings != 'none'"/>
       </div>
     </div>
   </div>
@@ -28,7 +28,7 @@
 <script>
 import CalendarBox from "@/components/CalendarBox";
 import Navigation from "@/components/Navigation";
-import { Loading } from 'element-ui';
+// import { Loading } from 'element-ui';
 
 export default {
   name: "DynamicMainContent",
@@ -106,7 +106,7 @@ export default {
   align-items: flex-start;
   justify-content: flex-start;
 }
-#dynamic-left-background-image {
+.dynamic-left-background-image {
   object-fit: cover;
   position: absolute;
   left: 0;
@@ -135,6 +135,10 @@ export default {
       rgba(0, 0, 0, 0.2) 100%
     );
   pointer-events: none;
+  transition: all .2s ease;
+}
+.dynamic-left-background-mask-compact{
+  background: var(--body-color)!important;
 }
 .dynamic-content {
   box-sizing: border-box;
