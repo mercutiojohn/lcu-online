@@ -27,7 +27,7 @@
         'search-area': true,
         'search-area-compact': settings == 'full',
         'search-area-scroll': settings == 'scroll' || settings == 'none',
-        'search-area-bgoff':bgSetting == 'none'
+        'search-area-bgoff':bgSetting == 'none'&&settings != 'full'
       }"
     >
       <SearchBar :bgEnable="bgEnable" />
