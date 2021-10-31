@@ -276,9 +276,10 @@ export default {
   border-radius: 5px;
   background: #00000056;
   margin: 0 10px 10px 0;
+  padding: 0 0 0 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   text-align: center;
   transition: all 0.1s ease-in;
@@ -333,9 +334,9 @@ export default {
   height: 100%;
 }
 .nav-block-icon {
-  height: fit-content;
-  max-height: 40px;
-  max-width: 80px;
+  /* height: fit-content; */
+  height: 40px;
+  max-width: 100px;
 }
 .nav-block-no-icon,
 .nav-block-top-area-no-icon {
