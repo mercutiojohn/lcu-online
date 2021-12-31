@@ -150,11 +150,14 @@
     {
         "title": "新媒体",
         "list": [{
+<<<<<<< HEAD
                 "title": "稿定设计",
                 "color": "#ffffff",
                 "icon": "gaoding.svg",
                 "url": "https://www.gaoding.com/dam/my-space/"
             }, {
+=======
+>>>>>>> 575c19866119e2649df6ecbcad22d9ed811d4be6
                 "title": "秀米",
                 "color": "#fd8b72",
                 "icon": "xiumi.png",

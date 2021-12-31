@@ -90,9 +90,12 @@ export default {
         {
           component: "Weibo",
         },
+<<<<<<< HEAD
         // {
         //   component: "Homeworks",
         // },
+=======
+>>>>>>> 575c19866119e2649df6ecbcad22d9ed811d4be6
       ],
     };
   },
