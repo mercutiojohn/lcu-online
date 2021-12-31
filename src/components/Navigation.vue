@@ -276,16 +276,10 @@ export default {
   border-radius: 5px;
   background: #00000056;
   margin: 0 10px 10px 0;
-<<<<<<< HEAD
   padding: 0 0 0 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-=======
-  display: flex;
-  flex-direction: column;
-  align-items: center;
->>>>>>> 575c19866119e2649df6ecbcad22d9ed811d4be6
   justify-content: center;
   text-align: center;
   transition: all 0.1s ease-in;
@@ -340,15 +334,9 @@ export default {
   height: 100%;
 }
 .nav-block-icon {
-<<<<<<< HEAD
   /* height: fit-content; */
   height: 40px;
   max-width: 100px;
-=======
-  height: fit-content;
-  max-height: 40px;
-  max-width: 80px;
->>>>>>> 575c19866119e2649df6ecbcad22d9ed811d4be6
 }
 .nav-block-no-icon,
 .nav-block-top-area-no-icon {
