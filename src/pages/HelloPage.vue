@@ -46,9 +46,9 @@
       </div>
       <div class="home-wrap">
         <top-banner />
-        <div class="content-recommend">
+        <!-- <div class="content-recommend">
           <BiliRecommend />
-        </div>
+        </div> -->
         <Navigation
           v-for="(item, index) in list"
           :title="item.title"

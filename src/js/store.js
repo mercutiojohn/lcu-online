@@ -25,7 +25,7 @@ const store = new Vuex.Store({
             contents: 'half',
             blur: true,
             sideBar: {
-                showDida: true,
+                showDida: false,
                 expand: {
                     weather: true,
                     dida: true,

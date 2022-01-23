@@ -65,6 +65,7 @@ import EmbedFrame from "@/components/EmbedFrame";
 import Weibo from "@/components/Weibo";
 import Weather from "@/components/Weather";
 import BiliRecommend from "@/components/BiliRecommend";
+import BiliAnime from "@/components/BiliAnime";
 export default {
   name: "SideBar",
   components: {
@@ -74,6 +75,7 @@ export default {
     Weibo,
     Weather,
     BiliRecommend,
+    BiliAnime
   },
   data() {
     return {
@@ -81,15 +83,18 @@ export default {
         // {
         //   component:'EmbedFrame'
         // },
-        {
-          component: "Countdown",
-        },
+        // {
+        //   component: "Countdown",
+        // },
         {
           component: "Weather",
         },
+        // {
+        //   component: "Weibo",
+        // },
         {
-          component: "Weibo",
-        },
+          component: "BiliAnime",
+        }
         // {
         //   component: "Homeworks",
         // },
