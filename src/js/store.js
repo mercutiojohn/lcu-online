@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
-    // import { storage } from './storage';
+    // import { storage } from './storage'
 
 //     pageYOffset:function(){
 // return this.$store.state.pageYOffset;

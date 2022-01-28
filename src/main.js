@@ -37,22 +37,22 @@ import '../static/icon/music-controls/iconfont.css'
 import { VueJsonp } from 'vue-jsonp'
 Vue.use(VueJsonp)
     //swiper
-import VueAwesomeSwiper from 'vue-awesome-swiper'
-import 'swiper/swiper-bundle.css'
-Vue.use(VueAwesomeSwiper /* { default options with global component } */ )
+    // import VueAwesomeSwiper from 'vue-awesome-swiper'
+    // import 'swiper/swiper-bundle.css'
+    // Vue.use(VueAwesomeSwiper /* { default options with global component } */ )
 
-import { Swiper as SwiperClass, Pagination, Navigation, Mousewheel, Autoplay } from 'swiper/swiper.esm'
-import getAwesomeSwiper from 'vue-awesome-swiper/dist/exporter'
-SwiperClass.use([Pagination, Mousewheel, Navigation, Autoplay])
-Vue.use(getAwesomeSwiper(SwiperClass))
-const { Swiper, SwiperSlide } = getAwesomeSwiper(SwiperClass)
+// import { Swiper as SwiperClass, Pagination, Navigation, Mousewheel, Autoplay } from 'swiper/swiper.esm'
+// import getAwesomeSwiper from 'vue-awesome-swiper/dist/exporter'
+// SwiperClass.use([Pagination, Mousewheel, Navigation, Autoplay])
+// Vue.use(getAwesomeSwiper(SwiperClass))
+// const { Swiper, SwiperSlide } = getAwesomeSwiper(SwiperClass)
 
 // import JsonpCommon from './js/jsonp-common.js'
 // Vue.use(JsonpCommon)
 
 // GeminiScrollBar
-import GeminiScrollbar from 'vue-gemini-scrollbar'
-Vue.use(GeminiScrollbar)
+// import GeminiScrollbar from 'vue-gemini-scrollbar'
+// Vue.use(GeminiScrollbar)
 
 Vue.config.productionTip = false
 
@@ -64,8 +64,6 @@ import router from './router'
 
 Vue.prototype.bus = new Vue;
 
-
-/* eslint-disable no-new */
 
 
 new Vue({
