@@ -295,7 +295,7 @@ export default {
   position: relative;
   /* max-width: 1300px; */
   background: var(--body-color);
-  border-radius: 20px 20px 0 0;
+  border-radius: 30px 30px 0 0;
   width: calc(100vw - 40px);
   margin: 0;
   padding: 30px 20px;

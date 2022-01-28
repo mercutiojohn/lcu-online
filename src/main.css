@@ -30,6 +30,8 @@
     --shadow-color-dark: rgba(29, 29, 29, 0.411);
     --accent-color: rgb(17, 148, 235);
     --accent-color-opa: rgb(17, 148, 235, .6);
+    --dynamic-border-radius: 15px;
+
 }
 
 @media screen and (prefers-color-scheme: light) {

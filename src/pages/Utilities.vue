@@ -36,7 +36,8 @@
 <script>
 import UrlEncode from "@/components/tools/UrlEncode";
 import Base64 from "@/components/tools/Base64";
-import NetEase from "@/components/NetEase";
+import Typing from "@/components/tools/Typing";
+// import NetEase from "@/components/NetEase";
 // import Vue from "vue";
 // Vue.component("under-construction", {
 //   template: "<div style='height:100%;display:flex;align-items:center;justify-content:center;'>正在建设中</div>",
@@ -49,7 +50,8 @@ export default {
     // Dyn,
     Base64,
     UrlEncode,
-    NetEase
+    // NetEase,
+    Typing
   },
   data() {
     return {
@@ -72,15 +74,19 @@ export default {
             
           ],
         },
-        // {
-        //   title: "实验室",
-        //   items: [
-        //     {
-        //       title: "网易云音乐",
-        //       component: "NetEase",
-        //     }
-        //   ],
-        // },
+        {
+          title: "实验室",
+          items: [
+            // {
+            //   title: "网易云音乐",
+            //   component: "NetEase",
+            // },
+            {
+              title: "打字训练",
+              component: "Typing",
+            }
+          ],
+        },
       ],
     };
   },
@@ -124,6 +130,7 @@ export default {
   position: sticky;
   top: 64px;
   overflow-y: scroll;
+  user-select: none;
 }
 .tool-page {
   width: calc(100vw - 300px);

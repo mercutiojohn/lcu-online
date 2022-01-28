@@ -1,4 +1,56 @@
 [{
+        "title": "在线文档",
+        "list": [{
+                "title": "石墨文档",
+                "color": "#ffffff",
+                "icon": "shimo.svg",
+                "url": "https://shimo.im/desktop"
+            },
+            {
+                "title": "语雀",
+                "color": "#ffffff",
+                "icon": "yuque.svg",
+                "url": "https://www.yuque.com/dashboard"
+            },
+            {
+                "title": "幕布",
+                "color": "#ffffff",
+                "icon": "yuque.svg",
+                "url": "https://mubu.com/app"
+            },
+            {
+                "title": "Notion",
+                "color": "#ffffff",
+                "icon": "notion.svg",
+                "url": "https://www.notion.so/"
+            },
+            {
+                "title": "金山文档",
+                "color": "#ffffff",
+                "icon": "kdocs.svg",
+                "url": "https://www.kdocs.cn/?show=all"
+            },
+            {
+                "title": "腾讯文档",
+                "color": "#ffffff",
+                "icon": "txdoc.svg",
+                "url": "https://docs.qq.com/desktop/"
+            },
+            {
+                "title": "我来wolai",
+                "color": "#ffffff",
+                "icon": "wolai.svg",
+                "url": "https://wolai.com/"
+            },
+            {
+                "title": "有道云笔记",
+                "color": "#ffffff",
+                "icon": "wolai.svg",
+                "url": "https://wolai.com/"
+            }
+        ]
+    },
+    {
         "title": "网课平台",
         "list": [{
                 "title": "百度网盘",
@@ -127,44 +179,26 @@
         ]
     },
     {
-        "title": "在线文档",
-        "list": [{
-                "title": "Notion",
-                "color": "#ffffff",
-                "icon": "notion.svg",
-                "url": "https://www.notion.so/"
-            }, {
-                "title": "金山文档",
-                "color": "#ffffff",
-                "icon": "kdocs.svg",
-                "url": "https://www.kdocs.cn/?show=all"
-            },
-            {
-                "title": "腾讯文档",
-                "color": "#ffffff",
-                "icon": "txdoc.svg",
-                "url": "https://docs.qq.com/desktop/"
-            }
-        ]
-    },
-    {
         "title": "新媒体",
         "list": [{
                 "title": "稿定设计",
                 "color": "#ffffff",
                 "icon": "gaoding.svg",
                 "url": "https://www.gaoding.com/dam/my-space/"
-            }, {
+            },
+            {
                 "title": "秀米",
                 "color": "#fd8b72",
                 "icon": "xiumi.png",
                 "url": "https://xiumi.us/studio/v5#/paper/for/new/cube/0"
-            }, {
+            },
+            {
                 "title": "创客贴",
                 "color": "#005ffe",
                 "icon": "ckt.svg",
                 "url": "https://www.chuangkit.com/designtools/startdesign"
-            }, {
+            },
+            {
                 "title": "MAKA",
                 "color": "#ffffff",
                 "icon": "maka.png",
@@ -175,7 +209,8 @@
                 "color": "#f43a6d",
                 "icon": "818ps.png",
                 "url": "https://818ps.com/imageeditor.html"
-            }, {
+            },
+            {
                 "title": "135编辑器",
                 "color": "#ffffff",
                 "icon": "135.png",
@@ -208,7 +243,8 @@
                 "color": "#f83a43",
                 "icon": "huawei.svg",
                 "url": "https://console.huaweicloud.com/ecm/"
-            }, {
+            },
+            {
                 "title": "阿里云",
                 "color": "#ffffff",
                 "icon": "aliyun.svg",
@@ -256,7 +292,8 @@
             "title": "传智播客",
             "color": "#ffffff",
             "icon": "ityxb.svg",
-            "url": "http://stu.ityxb.com/Classroom/course/learning"
+            "url": "http://stu.ityxb.com/Classroom/course/learning",
+            "hidden": true
         }]
     }
 ]

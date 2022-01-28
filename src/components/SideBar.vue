@@ -1,11 +1,5 @@
 <template>
   <div id="side-bar">
-    <!-- <div class="side-bar-content">
-      <Countdown />
-    </div>
-    <div class="side-bar-content">
-      <Weather />
-    </div> -->
     <div class="side-bar-content" v-if="settings.showDida">
       <EmbedFrame
         url="https://www.dida365.com/webapp/#q/all/today"
@@ -16,45 +10,26 @@
       />
     </div>
     <div class="side-bar-content" v-for="(item, index) in list" :key="index">
+      <div class="homeworks-header" v-if="item.header">
+        <span class="homeworks-title">{{item.title}}</span>
+        <!-- <div class="left-info-icon-area" @click="makeGlobalDialogVisible">
+        <i class="iconfont icon-user left-info-icon"></i>
+      </div> -->
+        <div class="left-info-icon-area" @click="changeWrapState(index)">
+          <i
+            :class="{
+              iconfont: true,
+              'icon-chevron-up': item.expand||item.header,
+              'icon-chevron-down': (!item.expand||!item.header),
+              'left-info-icon': true,
+            }"
+          ></i>
+        </div>
+      </div>
       <keep-alive>
-        <component v-bind:is="item.component" class="card"></component>
+        <component v-bind:is="item.component" class="card" v-show="item.expand||(!item.header)"></component>
       </keep-alive>
     </div>
-    <!-- <div class="side-bar-content">
-          <iframe
-            class="side-bar-iframe"
-            allow="autoplay *; encrypted-media *; geolocation; microphone; camera"
-            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-            src="https://www.dida365.com/webapp/#q/all/today"
-            frameborder="0"
-            scrolling="auto"
-          ></iframe>
-    </div>-->
-    <!-- <div class="side-bar-content">
-    </div> -->
-
-    <!-- <div class="side-bar-content">
-      <BiliRecommend />
-    </div>
-    -->
-    <!-- @makeGlobalDialogVisible="dialogVisible = true" -->
-    <!-- 
-    :vals="this.login"-->
-    <!-- <div class="side-bar-content"><Player /></div> -->
-
-    <!-- <div class="about">
-      <span class="about-text">鲁ICP备20018544号</span>
-      <a href="http://mercutio.club"
-        ><span class="about-text">莫阿白的博客</span></a
-      >
-      <a
-        href="https://github.com/mercutiojohn/lcu-online/projects/1?fullscreen=true"
-        ><span class="about-text" style="font-size: 10px">迭代路线</span></a
-      >
-      <a href="https://github.com/mercutiojohn/lcu-online/issues"
-        ><span class="about-text" style="font-size: 10px">提意见</span></a
-      >
-    </div>-->
   </div>
 </template>
 
@@ -62,10 +37,11 @@
 import Homeworks from "@/components/Homeworks";
 import Countdown from "@/components/Countdown";
 import EmbedFrame from "@/components/EmbedFrame";
-import Weibo from "@/components/Weibo";
-import Weather from "@/components/Weather";
+import Weibo from "@/components/cards/Weibo";
+import Weather from "@/components/cards/Weather";
 import BiliRecommend from "@/components/BiliRecommend";
-import BiliAnime from "@/components/BiliAnime";
+import BiliAnime from "@/components/cards/BiliAnime";
+import NetEase from "@/components/cards/NetEase";
 export default {
   name: "SideBar",
   components: {
@@ -75,7 +51,8 @@ export default {
     Weibo,
     Weather,
     BiliRecommend,
-    BiliAnime
+    BiliAnime,
+    NetEase,
   },
   data() {
     return {
@@ -88,30 +65,49 @@ export default {
         // },
         {
           component: "Weather",
+          title: "天气",
+          header: false,
+          expand:true
         },
         // {
         //   component: "Weibo",
         // },
         {
           component: "BiliAnime",
-        }
-        // {
-        //   component: "Homeworks",
-        // },
+          title: "番剧推荐",
+          header: true,
+          expand:true
+        },
+        {
+          component: "NetEase",
+          title: "我的歌单",
+          header: true,
+          expand:true
+        },
       ],
+
     };
   },
   computed: {
-    settings:function(){
+    settings: function () {
       return this.$store.state.settings.sideBar;
-    }
+    },
   },
-  watch: {},
+  watch: {
+  },
   methods: {
-    updateExpand(){
-      console.log("hello")
+    updateExpand() {
+      console.log("hello");
       this.$store.commit("dida");
-    }
+    },
+    changeWrapState(index) {
+
+      if (this.list[index].expand == true) {
+        this.list[index].expand = false;
+      } else {
+        this.list[index].expand = true;
+      }
+    },
   },
   created() {},
   mounted() {},
@@ -141,7 +137,7 @@ export default {
 #side-bar .side-bar-content {
   margin: 10px 5px;
   background: var(--elem-color);
-  border-radius: 5px;
+  border-radius: var(--dynamic-border-radius);
   box-shadow: 0 2px 6px 1px #00000014;
   /* background: #ffffff75;
   backdrop-filter: blur(30px) saturate(180%);
@@ -154,6 +150,32 @@ export default {
   width: 100%;
   height: 500px;
   display: block;
+}
+.homeworks-header {
+  color: var(--main-color);
+  padding: 10px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--first-assist-color);
+}
+.left-info-icon{
+  font-size: 22px;
+}
+.left-info-icon-area{
+  padding: 3px;
+  border-radius: 5px;
+  margin: 0 0 0 4px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.left-info-icon-area:hover{
+  background: var(--first-assist-color);
+}
+.left-info-icon-area:active{
+  background: var(--first-assist-color);
 }
 @media screen and (max-width: 600px) {
   #side-bar {
