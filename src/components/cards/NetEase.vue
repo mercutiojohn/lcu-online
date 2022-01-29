@@ -7,7 +7,7 @@
             <p>{{item.album.name}}</p>
             <hr>
         </div> -->
-      <div class="logs">
+      <div class="logs" v-if="debug">
         <button @click="getMyPlaylists()">获取歌单</button>
         <button @click="getLoginStatus()">获取状态信息</button>
         <button @click="clearCookie()">登出</button>
@@ -25,6 +25,11 @@
         <div class="login-qr" v-else>
           <span class="tip">{{ message }}</span>
           <img :src="loginQR" alt="" srcset="" />
+          <div class="error" v-if="statusType === 'Success'">
+            未跳转?
+            <button @click="permitQR()">重新扫码</button>
+            <button @click="getLoginStatus()">刷新</button>
+          </div>
         </div>
       </div>
       <div class="main-area" v-if="loginStatus">
@@ -87,6 +92,8 @@ export default {
       uid: "",
       cookie: "",
       loginQRPermitted: false,
+      successType:'',
+      debug:false,
     };
   },
   computed: {},
@@ -119,6 +126,7 @@ export default {
       }
     },
     permitQR() {
+      this.successType = '';
       this.loginQRPermitted = true;
       this.loginWithQR();
     },
@@ -159,6 +167,7 @@ export default {
           // 这一步会返回cookie
           clearInterval(timer);
           this.message = "授权登录成功";
+          this.statusType = "Success";
           await this.getLoginStatus();
           this.getMyPlaylists();
         }
@@ -287,6 +296,15 @@ export default {
   align-items: center;
   justify-content: center;
   margin:10px;
+}
+.error{
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color:var(--main-color);
+  font-size: 7px;
 }
 
 </style>
