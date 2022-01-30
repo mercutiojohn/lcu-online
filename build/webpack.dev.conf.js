@@ -62,12 +62,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
             from: path.resolve(__dirname, '../static'),
             to: config.dev.assetsSubDirectory,
             ignore: ['.*']
-        }]),
-        new SkeletonPlugin({
-            pathname: path.resolve(__dirname, '../shell'), // the path to store shell file
-            staticDir: path.resolve(__dirname, '../dist'), // the same as the `output.path`
-            routes: ['/'], // Which routes you want to generate skeleton screen
-        })
+        }])
     ]
 })
 

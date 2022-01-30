@@ -273,16 +273,17 @@ export default {
 .nav-block {
   width: 150px;
   height: 100px;
-  border-radius: 5px;
+  border-radius: var(--dynamic-border-radius);
   background: #00000056;
   margin: 0 10px 10px 0;
+  padding: 0 0 0 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   text-align: center;
   transition: all 0.1s ease-in;
-  box-shadow: 0 2px 5px 1px #00000023;
+  /* box-shadow: 0 2px 5px 1px #00000023; */
   overflow: hidden;
 }
 .nav-block-small {
@@ -313,7 +314,7 @@ export default {
   transform: scale(1);
   transition: all 0.1s ease-out;
   /* box-shadow: 0 2px 5px 1px inset #00000023; */
-  box-shadow: 0 2px 5px 1px #00000023;
+  box-shadow: 0 2px 5px 1px #00000023 inset;
 }
 .nav-block-top-area {
   height: 50%;
@@ -333,9 +334,9 @@ export default {
   height: 100%;
 }
 .nav-block-icon {
-  height: fit-content;
-  max-height: 40px;
-  max-width: 80px;
+  /* height: fit-content; */
+  height: 40px;
+  max-width: 100px;
 }
 .nav-block-no-icon,
 .nav-block-top-area-no-icon {
@@ -413,7 +414,7 @@ export default {
     background: #00000056;
     padding: 0 10px;
   }
-    .nav-block-icon {
+  .nav-block-icon {
     height: fit-content;
     max-height: 32px;
     max-width: 55px;

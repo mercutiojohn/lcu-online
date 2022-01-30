@@ -50,7 +50,8 @@ export default {
 .card-frame {
   margin: 10px 10px;
   background: var(--elem-color);
-  border-radius: 5px;
+  /* border-radius: 5px; */
+  border-radius: var(--dynamic-border-radius);
   box-shadow: 0 2px 6px 1px #00000014;
   overflow: hidden;
   flex-shrink: 0;

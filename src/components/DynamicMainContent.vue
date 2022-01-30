@@ -83,9 +83,6 @@ export default {
 };
 </script>
 <style>
-:root {
-  --dynamic-border-radius: 5px;
-}
 
 #dynamic-main-content {
   width:100%;

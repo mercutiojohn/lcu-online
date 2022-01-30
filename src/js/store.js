@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
-    // import { storage } from './storage';
+    // import { storage } from './storage'
 
 //     pageYOffset:function(){
 // return this.$store.state.pageYOffset;
@@ -15,6 +15,7 @@ const store = new Vuex.Store({
         pageYOffset: 0,
         windowHeight: 0,
         apiPath: "http://api.mercutio.club",
+        // apiPath: "http://127.0.0.1:5000",
         settings: {
             clock: {
                 showSeconds: false,
@@ -25,7 +26,7 @@ const store = new Vuex.Store({
             contents: 'half',
             blur: true,
             sideBar: {
-                showDida: true,
+                showDida: false,
                 expand: {
                     weather: true,
                     dida: true,
@@ -58,7 +59,8 @@ const store = new Vuex.Store({
 
             }
 
-        }
+        },
+        netEaseCokies: ''
     },
     mutations: {
         update(state, [key, value]) {
