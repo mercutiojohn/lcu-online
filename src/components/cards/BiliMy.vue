@@ -137,7 +137,7 @@
 
 <script>
 export default {
-  name: "netease",
+  name: "BiliMy",
   components: {},
   data() {
     return {

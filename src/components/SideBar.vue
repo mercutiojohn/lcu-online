@@ -27,7 +27,10 @@
         </div>
       </div>
       <keep-alive>
+        <transition name="fade">
+        
         <component v-bind:is="item.component" class="card" v-show="item.expand||(!item.header)"></component>
+        </transition>
       </keep-alive>
     </div>
   </div>
@@ -73,17 +76,18 @@ export default {
         //   component: "Weibo",
         // },
         {
-          component: "BiliAnime",
-          title: "番剧推荐",
-          header: true,
-          expand:true
-        },
-        {
           component: "NetEase",
           title: "我的歌单",
           header: true,
           expand:true
         },
+        {
+          component: "BiliAnime",
+          title: "番剧推荐",
+          header: true,
+          expand:true
+        },
+        
       ],
 
     };

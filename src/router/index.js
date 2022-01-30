@@ -7,6 +7,8 @@ import Utilities from '@/pages/Utilities'
 import MobileHome from '@/pages/MobileHome'
 import Detail from '@/pages/Detail'
 
+import NotFound from '@/pages/NotFound'
+
 import NetEase from '@/pages/detail_pages/NetEase'
 import BiliBili from '@/pages/detail_pages/BiliBili'
 
@@ -54,10 +56,14 @@ const routes = [{
             },
 
         ]
+    }, {
+        path: '*',
+        component: NotFound
     }
 ]
 
 
 export default new VueRouter({
+    mode: 'history',
     routes
 })
