@@ -1,7 +1,7 @@
 [{
-    "title": "聊城大学",
+    "title": "校园",
     "list": [{
-            "title": "数字聊大",
+            "title": "数字校园",
             "color": "#059490",
             "icon": "lcu.svg",
             "url": "http://one.lcu.edu.cn/tp_up"
@@ -17,7 +17,7 @@
             "icon": "xyw.svg",
             "url": "http://172.30.2.2:8088/eportal/success.jsp"
         }, {
-            "title": "U+聊城大学",
+            "title": "U+校园版",
             "color": "#1e83ca",
             "icon": "uplus.svg",
             "url": "http://ee-c.lcu.edu.cn/student/group"

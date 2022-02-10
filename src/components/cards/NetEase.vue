@@ -18,10 +18,8 @@
         <p>登录信息: {{ JSON.stringify(loginInfo, null, 2) }}</p>
         <p>播放列表: {{ JSON.stringify(playlists, null, 2) }}</p>
       </div>
-      <div class="ne-loading" v-if="loading">
-        正在加载
-      </div>
-      <div class="login" v-if="!loginStatus&&!loading">
+      <div class="ne-loading" v-if="loading">正在加载</div>
+      <div class="login" v-if="!loginStatus && !loading">
         <div class="login-ask" v-if="!loginQRPermitted">
           <button @click="permitQR()">点击登录网易云音乐</button>
         </div>
@@ -38,48 +36,50 @@
           </div>
         </div>
       </div>
-      <div class="main-area" v-if="loginStatus&&!loading">
+      <div class="main-area" v-if="loginStatus && !loading">
         <div class="scroll-area">
           <div class="list favourite-songs">
             <div class="list-header">
-              <span>{{favourites.name}}</span>
+              <span>{{ favourites.name }}</span>
               <router-link
-              :to="{
-                name: 'NetEase',
-                query: {
-                  type:'song',
-                  songid: favourites.tracks[0].id,
-                  listid: favouriteListId
-                },
-              }"
-            ><button class="">播放</button></router-link>
+                :to="{
+                  name: 'NetEase',
+                  query: {
+                    type: 'song',
+                    songid: favourites.tracks[0].id,
+                    listid: favouriteListId,
+                  },
+                }"
+                ><button class="">播放</button></router-link
+              >
               <router-link
-              :to="{
-                name: 'NetEase',
-                query: {
-                  type:'list',
-                  listid: favouriteListId
-                },
-              }"
-            ><button class="">详情</button></router-link>
+                :to="{
+                  name: 'NetEase',
+                  query: {
+                    type: 'list',
+                    listid: favouriteListId,
+                  },
+                }"
+                ><button class="">详情</button></router-link
+              >
             </div>
             <router-link
               class="list-item"
-              v-for="(item, index) in favourites.tracks.slice(0,5)"
+              v-for="(item, index) in favourites.tracks.slice(0, 5)"
               :key="index"
               :to="{
                 name: 'NetEase',
                 query: {
-                  type:'song',
+                  type: 'song',
                   songid: item.id,
-                  listid: favouriteListId
+                  listid: favouriteListId,
                 },
               }"
             >
               <img class="cover" :src="item.al.picUrl" alt="" srcset="" />
               <div class="song-info">
                 <p class="title">{{ item.name }}</p>
-                <p class="detail">{{ item.al.name }} - {{item.ar[0].name}}</p>
+                <p class="detail"><span v-for="(artist,index) in item.ar" :key="index">{{ artist.name }}{{ (index != item.ar.length-1)?', ':'' }}</span> - {{ item.al.name }}</p>
               </div>
             </router-link>
           </div>
@@ -87,22 +87,23 @@
             <div class="list-header">
               <span>歌单列表</span>
               <router-link
-              :to="{
-                name: 'NetEase',
-                query: {
-                  type:'list_all'
-                },
-              }"
-            ><button class="">全部</button></router-link>
+                :to="{
+                  name: 'NetEase',
+                  query: {
+                    type: 'list_all',
+                  },
+                }"
+                ><button class="">全部</button></router-link
+              >
             </div>
             <router-link
               class="list-item"
-              v-for="(item, index) in playlists.slice(1,7)"
+              v-for="(item, index) in playlists.slice(1, 7)"
               :key="index"
               :to="{
                 name: 'NetEase',
                 query: {
-                  type:'list',
+                  type: 'list',
                   listid: item.id,
                 },
               }"
@@ -121,7 +122,6 @@
           />
           <p>{{ loginInfo.profile.nickname }}</p>
           <button @click="clearCookie()">登出</button>
-
         </div>
       </div>
 
@@ -155,11 +155,11 @@ export default {
       uid: "",
       cookie: "",
       loginQRPermitted: false,
-      successType:'',
-      debug:false,
-      favouriteListId:'',
-      favourites:'',
-      loading:true
+      successType: "",
+      debug: false,
+      favouriteListId: "",
+      favourites: "",
+      loading: true,
     };
   },
   computed: {},
@@ -168,22 +168,22 @@ export default {
       localStorage.netEaseCookie = newCookie;
     },
     loginStatus(newStatus) {
-      if(newStatus == true){
-        if(status){
+      if (newStatus == true) {
+        if (status) {
           this.getMyPlaylists();
           this.getFavourites();
         }
       }
-    }
+    },
   },
   methods: {
     clearCookie() {
       this.cookie = "";
-      localStorage.netEaseCookie = '';
+      localStorage.netEaseCookie = "";
       this.loginInfo = "";
       this.loginStatus = false;
       this.uid = "";
-      this.playlists = '';
+      this.playlists = "";
       this.loginWithQR();
     },
     async login() {
@@ -196,7 +196,7 @@ export default {
       this.loading = false;
     },
     permitQR() {
-      this.successType = '';
+      this.successType = "";
       this.loginQRPermitted = true;
       this.loginWithQR();
     },
@@ -225,7 +225,6 @@ export default {
           clearInterval(timer);
           this.message = "二维码已过期,请重新获取";
           this.statusType = "Failed";
-          
         }
         if (statusRes.code === 803) {
           // console.log('Res-cookie',statusRes.cookie);
@@ -271,7 +270,7 @@ export default {
       });
       console.log(res);
       this.loginInfo = res.data.data;
-      if (res.data.data.account!==null) {
+      if (res.data.data.account !== null) {
         // console.log('account!',res.data.data.account);
         this.loginStatus = true;
         this.uid = res.data.data.account.id;
@@ -296,24 +295,24 @@ export default {
         },
       });
       this.playlists = res.data.playlist;
-      this.favouriteListId = res.data.playlist[0].id
+      this.favouriteListId = res.data.playlist[0].id;
     },
     async getFavourites() {
-      console.log('歌单id',this.favouriteListId);
+      console.log("歌单id", this.favouriteListId);
       const res = await this.$axios({
         // method: "POST",
         // url: `${this.base_url}/user/playlist?uid=${this.loginInfo.account.id}&cookie=${this.cookie}`,
         url: `${this.base_url}/playlist/detail?id=${this.favouriteListId}&cookie=${this.cookie}`,
         withCredentials: true, //关键
         // data: {
-          // id: this.loginInfo.account.id,
-          // timerstamp: Date.now(),
-          // cookie: this.cookie,
-          // limit:10,
-          // offset:1
+        // id: this.loginInfo.account.id,
+        // timerstamp: Date.now(),
+        // cookie: this.cookie,
+        // limit:10,
+        // offset:1
         // },
       });
-      console.log('歌单详情',res.data);
+      console.log("歌单详情", res.data);
       this.favourites = res.data.playlist;
     },
   },
@@ -323,11 +322,17 @@ export default {
     this.login();
   },
   beforeDestroy() {},
+  deactivated(){
+
+  },
+  activated(){
+    
+  }
 };
 </script>
 
 <style scoped>
-.netease{
+.netease {
 }
 .cover {
   width: 50px;
@@ -350,8 +355,8 @@ export default {
   align-items: center;
   box-sizing: border-box;
 }
-.profile > p{
-  color:var(--main-color)
+.profile > p {
+  color: var(--main-color);
 }
 .list {
   padding: 15px 10px;
@@ -379,76 +384,78 @@ export default {
   white-space: nowrap;
   color: var(--main-color);
 }
-.tip{
-  color:var(--main-color);
+.tip {
+  color: var(--main-color);
 }
-.login-ask,.login-qr,.ne-loading{
+.login-ask,
+.login-qr,
+.ne-loading {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin:10px;
-  color:var(--main-color);
+  margin: 10px;
+  color: var(--main-color);
 }
-.error{
+.error {
   margin: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color:var(--main-color);
+  color: var(--main-color);
   font-size: 7px;
 }
-.song-info{
+.song-info {
   margin-left: 10px;
-  color:var(--main-color);
+  color: var(--main-color);
   display: flex;
   flex-direction: column;
 }
-.song-info .title{
+.song-info .title {
   font-size: 14px;
 }
-.song-info .detail{
+.song-info .detail {
   font-size: 12px;
 }
-.song-info p{
-  margin:0;
-  display: -webkit-box; 
-  -webkit-box-orient: vertical; 
-  -webkit-line-clamp: 1; 
+.song-info p {
+  margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
   overflow: hidden;
 }
-.list-header{
+.list-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 0 5px;
   padding-bottom: 5px;
 }
-.list-header span{
+.list-header span {
   font-size: 17px;
   font-weight: 700;
 }
-.scroll-area{
+.scroll-area {
   max-height: 500px;
   overflow: scroll;
 }
-.list-header>span{
-  color:var(--main-color)
+.list-header > span {
+  color: var(--main-color);
 }
-button{
-  border:none;
+button {
+  border: none;
   border-radius: 20px;
   background: var(--first-assist-color);
   cursor: pointer;
-  transition: all .2s ease;
-  padding:8px 14px;
+  transition: all 0.2s ease;
+  padding: 8px 14px;
+  color: var(--main-color);
 }
-button:hover{
+button:hover {
   background: var(--accent-color);
-  color:#fff;
+  color: #fff;
 }
-button:active{
-
+button:active {
 }
 </style>

@@ -18,10 +18,13 @@ return {
 },
 computed: {},
 watch: {},
-methods: {},
+methods: {
+    
+},
 created(){},
 mounted(){
     this.listid = this.$route.query.listid
+
 },
 beforeDestroy(){}
 };

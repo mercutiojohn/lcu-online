@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Course from '@/pages/Course'
 import HelloPage from '@/pages/HelloPage'
 import Fanya from '@/pages/Fanya'
+import MediaCenter from '@/pages/MediaCenter'
 import Utilities from '@/pages/Utilities'
 import MobileHome from '@/pages/MobileHome'
 import Detail from '@/pages/Detail'
@@ -41,6 +42,9 @@ const routes = [{
     }, {
         path: '/mobile',
         component: MobileHome
+    }, {
+        path: '/media',
+        component: MediaCenter
     }, {
         name: 'Detail',
         path: '/c',

@@ -1,5 +1,6 @@
 {
     "name": "lcu-online",
+    "sideEffects": false,
     "version": "3.0.0",
     "description": "LCU Online App",
     "author": "MercutioJohn <mercutio_john@foxmail.com>",

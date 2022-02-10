@@ -1,6 +1,20 @@
 <template>
   <div class="settings">
-    <el-switch></el-switch>
+    <div class="setting-title">云同步</div>
+    <div class="setting-item-group"> 
+      <div class="setting-item">
+        登陆账号
+      </div>
+    </div>
+    <div class="setting-title">账户</div>
+    <div class="setting-item-group">
+      <div class="setting-item">
+        网易云音乐
+      </div>
+      <div class="setting-item">
+        哔哩哔哩
+      </div>
+    </div>
     <div class="setting-title">时间</div>
     <div class="setting-item-group">
       <div class="setting-item">

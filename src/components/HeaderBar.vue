@@ -81,8 +81,8 @@ export default {
           url: "/utils",
         },
         {
-          name: "视频教程",
-          url: "/course",
+          name: "影音",
+          url: "/media",
         },
       ],
     };

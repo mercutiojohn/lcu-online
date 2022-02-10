@@ -67,6 +67,7 @@ export default {
       box: "",
       delX: 0,
       delY: 0,
+      blockStyle:''
     };
   },
   methods: {
@@ -78,38 +79,13 @@ export default {
         }
     },
     blockOver(index) {
-      this.flag = true;
-      //获取需要删除的距离
-      console.log("#nav-block_" + this.title + index);
-      this.delX =
-        event.clientX -
-        document.querySelector("#nav-block_" + this.title + index).offsetLeft;
-
-      this.delY =
-        event.clientY -
-        document.querySelector("#nav-block_" + this.title + index).offsetTop;
-
-      // console.log("监听事件");
+      
     },
     blockMove(index) {
-      if (this.flag) {
-        //删除多余的距离 保持住按下的位置
-        var x = (event.clientX - this.delX) / 10;
-        console.log(event.clientX + " " + this.delX);
-        var y = (event.clientY - this.delY) / 10;
-        console.log(event.clientY + " " + this.delY);
-        document.querySelector(
-          "#nav-block_" + this.title + index
-        ).style.transform =
-          "translateX(" + x + "px)" + "translateY(" + y + "px)";
-      }
-      // console.log("监听事件move");
+      
     },
     blockOut(index) {
-      this.flag = false;
-      document.querySelector(
-        "#nav-block_" + this.title + index
-      ).style.transform = "translateX(0px) translateY(0px)";
+      
     },
     ifWhite(color) {
       if (color == "#ffffff") {

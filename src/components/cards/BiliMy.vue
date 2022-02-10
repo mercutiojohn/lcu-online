@@ -159,7 +159,16 @@ export default {
       debug:false,
       favouriteListId:'',
       favourites:'',
-      loading:true
+      loading:true,
+      tabs:[
+        {
+          name:'我的追番',
+        },{
+          name:'稍后再看'
+        },{
+          name:'收藏夹'
+        }
+      ]
     };
   },
   computed: {},

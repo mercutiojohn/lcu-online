@@ -12,45 +12,45 @@
   </div>
 </template>
 <script>
-import CalendarBox from "@/components/CalendarBox";
-import Hitokoto from "@/components/Hitokoto";
+// import CalendarBox from "@/components/CalendarBox";
+// import Hitokoto from "@/components/Hitokoto";
 import Navigation from "@/components/Navigation";
-import DynamicMainContent from "@/components/DynamicMainContent";
-import BannerSwiper from "@/components/BannerSwiper";
+// import DynamicMainContent from "@/components/DynamicMainContent";
+// import BannerSwiper from "@/components/BannerSwiper";
 
-import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
-import "swiper/swiper-bundle.css";
+// import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
+// import "swiper/swiper-bundle.css";
 
 export default {
   name: "TopBanner",
   components: {
-    CalendarBox,
-    Hitokoto,
+    // CalendarBox,
+    // Hitokoto,
     Navigation,
-    DynamicMainContent,
-    BannerSwiper,
-    Swiper,
-    SwiperSlide,
+    // DynamicMainContent,
+    // BannerSwiper,
+    // Swiper,
+    // SwiperSlide,
   },
-  directives: {
-    swiper: directive,
-  },
+  // directives: {
+  //   swiper: directive,
+  // },
   data() {
     return {
       fullscreen: false,
-      swiperOption: {
-        slidesPerView: 1,
-        spaceBetween: 100,
-        loop: true,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      },
+      // swiperOption: {
+      //   slidesPerView: 1,
+      //   spaceBetween: 100,
+      //   loop: true,
+      //   pagination: {
+      //     el: ".swiper-pagination",
+      //     clickable: true,
+      //   },
+      //   navigation: {
+      //     nextEl: ".swiper-button-next",
+      //     prevEl: ".swiper-button-prev",
+      //   },
+      // },
     };
   },
   methods: {

@@ -15,7 +15,7 @@
             {
                 "title": "幕布",
                 "color": "#ffffff",
-                "icon": "yuque.svg",
+                "icon": "mubu.svg",
                 "url": "https://mubu.com/app"
             },
             {
@@ -45,8 +45,8 @@
             {
                 "title": "有道云笔记",
                 "color": "#ffffff",
-                "icon": "wolai.svg",
-                "url": "https://wolai.com/"
+                "icon": "ydnote.svg",
+                "url": "https://note.youdao.com/web/"
             }
         ]
     },

@@ -60,7 +60,34 @@ const store = new Vuex.Store({
             }
 
         },
-        netEaseCokies: ''
+        media_play_status: {
+            playing: false,
+            current_play_type: 'audio', //types: audio, stream_audio, video, stream_video
+            current_platform: 'netease',
+            current_id: '1420621179',
+            current_info: {
+                title: '',
+                ar: '',
+                al: '',
+            },
+            media_url: '',
+            have_playlist: true,
+            playlist_id: '52069549'
+        },
+        accounts: {
+            netease: {
+                logged_in: false,
+                netease_cookies: '',
+                netease_nick: '',
+                netease_avatar_url: ''
+            },
+            bilibili: {
+                logged_in: false,
+                bilibili_token: '',
+                bilibili_nick: '',
+                bilibili_avatar_url: ''
+            }
+        }
     },
     mutations: {
         update(state, [key, value]) {
